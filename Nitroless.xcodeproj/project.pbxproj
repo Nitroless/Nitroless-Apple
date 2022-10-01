@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA85766128E6251A00AA0A65 /* Border++.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA85766028E6251A00AA0A65 /* Border++.swift */; };
 		AA9F089428E58B450098040D /* NitrolessApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F089328E58B450098040D /* NitrolessApp.swift */; };
 		AA9F089628E58B450098040D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F089528E58B450098040D /* ContentView.swift */; };
 		AA9F089828E58B470098040D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA9F089728E58B470098040D /* Assets.xcassets */; };
@@ -19,7 +18,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AA85766028E6251A00AA0A65 /* Border++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Border++.swift"; sourceTree = "<group>"; };
 		AA9F089028E58B450098040D /* Nitroless.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nitroless.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA9F089328E58B450098040D /* NitrolessApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NitrolessApp.swift; sourceTree = "<group>"; };
 		AA9F089528E58B450098040D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -45,7 +43,6 @@
 		AA85765F28E6250900AA0A65 /* Modifiers */ = {
 			isa = PBXGroup;
 			children = (
-				AA85766028E6251A00AA0A65 /* Border++.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -69,10 +66,10 @@
 		AA9F089228E58B450098040D /* Nitroless */ = {
 			isa = PBXGroup;
 			children = (
-				AA9F08A128E58BA60098040D /* Utilities */,
 				AA9F089328E58B450098040D /* NitrolessApp.swift */,
 				AA9F089528E58B450098040D /* ContentView.swift */,
 				AA9F08AB28E5A8360098040D /* RepoView.swift */,
+				AA9F08A128E58BA60098040D /* Utilities */,
 				AA9F089728E58B470098040D /* Assets.xcassets */,
 				AA9F089928E58B470098040D /* Preview Content */,
 			);
@@ -174,7 +171,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA9F08A528E58C020098040D /* RepositoryManager.swift in Sources */,
-				AA85766128E6251A00AA0A65 /* Border++.swift in Sources */,
 				AA9F089628E58B450098040D /* ContentView.swift in Sources */,
 				AA9F089428E58B450098040D /* NitrolessApp.swift in Sources */,
 				AA9F08A728E58D490098040D /* Constants.swift in Sources */,

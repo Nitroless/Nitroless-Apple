@@ -22,6 +22,10 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             List {
+                if repoMan.repos.isEmpty {
+                    #warning("TODO: Add default repositories button")
+                }
+                
                 ForEach(repoMan.repos, id: \.url) { repo in
                     repoButton(repo: repo)
                 }
