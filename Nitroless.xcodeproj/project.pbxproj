@@ -48,11 +48,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		57F906E228EB3C8D001640BB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AA9F088728E58B450098040D = {
 			isa = PBXGroup;
 			children = (
 				AA9F089228E58B450098040D /* Nitroless */,
 				AA9F089128E58B450098040D /* Products */,
+				57F906E228EB3C8D001640BB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

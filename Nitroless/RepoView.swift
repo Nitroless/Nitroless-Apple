@@ -7,8 +7,10 @@
 
 import Foundation
 import SwiftUI
+import SDWebImage
 import SDWebImageSwiftUI
 import SDWebImageWebPCoder
+import QuickLook
 
 struct RepoView: View {
     
@@ -17,10 +19,14 @@ struct RepoView: View {
     var repo: Repo
     
     @State var stickBannerToTop = false
+    
+    @State var previewUrl: URL? = nil
+    
     var body: some View {
         ScrollView {
             LazyVStack {
                 main
+                    .quickLookPreview($previewUrl)
             }
             .padding(.horizontal, 4)
         }
@@ -92,7 +98,7 @@ struct RepoView: View {
             ForEach(0..<repo.repoData!.emotes.count, id: \.self) { i in
                 let emote = repo.repoData!.emotes[i]
                 
-                EmoteCell(repo: repo, emote: emote, toastShown: $toastShown)
+                EmoteCell(repo: repo, emote: emote, toastShown: $toastShown, ql: $previewUrl)
             }
         }
     }
@@ -103,6 +109,7 @@ struct EmoteCell: View {
     var emote: NitrolessEmote
     
     @Binding var toastShown: Bool
+    @Binding var ql: URL?
     
     var body: some View {
         let imgUrl = repo.url
@@ -130,10 +137,29 @@ struct EmoteCell: View {
             
             Button {
                 UIPasteboard.general.url = imgUrl
+                toastShown = true
             } label: {
-                Text("Copy Link")
+                Label("Copy", systemImage: "doc.on.clipboard")
+            }
+            
+            Button {
+                #warning("Add favourites internal repo")
+            } label: {
+                Label("Favourite", systemImage: "star")
+            }
+            .disabled(true)
+            
+            Button {
+                let imageUrlString = imgUrl.absoluteString
+                let imageCache: SDImageCache = SDImageCache.shared
+                let filepath = URL(filePath: imageCache.diskCache.cachePath(forKey: imageUrlString)!)
+                
+                ql = filepath
+            } label: {
+                Label("Quick Look", systemImage: "magnifyingglass")
             }
 
+            
         }
     }
 }

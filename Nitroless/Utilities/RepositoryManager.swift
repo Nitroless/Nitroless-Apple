@@ -141,7 +141,7 @@ class RepoManager: ObservableObject {
             }
         }
         
-        repositories.append("https://lillieh001.github.io/nitroless/")
+//        repositories.append("https://lillieh001.github.io/nitroless/")
                 
         for repository in repositories {
             let url = URL(string: repository)!

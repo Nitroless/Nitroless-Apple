@@ -24,6 +24,9 @@ struct ContentView: View {
     @State var toastShown = false
     
     @State var showDefaultReposMenu = false
+    
+    @State var sheetDetent: PresentationDetent = .medium
+    
     var body: some View {
         NavigationStack {
             List {
@@ -34,7 +37,8 @@ struct ContentView: View {
                         Label("Add Default Repos", systemImage: "globe")
                     }
                     .sheet(isPresented: $showDefaultReposMenu) {
-                        addDefaultRepos
+                        AddDefaultRepos(isShown: $showDefaultReposMenu, detent: $sheetDetent)
+                            .presentationDetents([.fraction(0.3), .large], selection: $sheetDetent.animation(.easeInOut))
                     }
                 }
                 
@@ -106,13 +110,6 @@ struct ContentView: View {
     }
     
     @ViewBuilder
-    var addDefaultRepos: some View {
-        ScrollView {
-            
-        }
-    }
-    
-    @ViewBuilder
     func repoButton(repo: Repo) -> some View {
         if let data = repo.repoData {
             NavigationLink {
@@ -162,8 +159,106 @@ struct ContentView: View {
     }
 }
 
+struct AddDefaultRepos: View {
+    @Binding var isShown: Bool
+    @Binding var detent: PresentationDetent
+    
+    @Environment(\.colorScheme) var colorScheme
+    
+    var body: some View {
+        switch detent {
+        case .fraction(0.3):
+            ask
+        case .large:
+            page
+        default:
+            ask
+        }
+    }
+    
+    @ViewBuilder
+    var ask: some View {
+        VStack {
+            HStack(alignment: .center) {
+                Image(systemName: "globe")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: 75)
+                    .padding()
+                Text("Default\nRepositories")
+                    .font(.title.bold())
+            }
+            .padding(.top)
+            
+            Spacer()
+            
+            Text("Your repository list is looking a little empty, want to add some to start off with?")
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal)
+            Spacer()
+            
+            Button {
+                withAnimation(.easeInOut) {
+                    detent = .large
+                }
+            } label: {
+                Text("Browse")
+                    .font(.title2.bold())
+            }
+            .buttonStyle(.bordered)
+
+        }
+    }
+    
+    @ViewBuilder
+    var page: some View {
+        ScrollView {
+            Text("hiiii")
+        }
+        .safeAreaInset(edge: .top) {
+            HStack {
+                Button {
+                    detent = .fraction(0.3)
+                    isShown.toggle()
+                } label: {
+                    Circle()
+                        .overlay(content: {
+                            Text("X")
+                                .foregroundColor(.white)
+                        })
+                        .foregroundColor(.secondary)
+                        .brightness(-0.5)
+                        .frame(width: 30, height: 30)
+                }
+                .buttonStyle(.plain)
+                
+                Spacer()
+            }
+            .padding()
+        }
+    }
+}
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        DefaultRepoTest()
+    }
+}
+
+struct DefaultRepoTest: View {
+    @State var detent: PresentationDetent = .fraction(0.3)
+    @State var sheet = false
+    var body: some View {
+        Button("Open Sheet") {
+            sheet.toggle()
+        }
+        .onAppear {
+            sheet.toggle()
+        }
+        .sheet(isPresented: $sheet) {
+            AddDefaultRepos(isShown: $sheet, detent: $detent)
+                .presentationDetents([.fraction(0.3), .large], selection: $detent.animation(.easeInOut))
+        }
     }
 }
