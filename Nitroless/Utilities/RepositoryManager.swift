@@ -182,6 +182,15 @@ class RepoManager: ObservableObject {
             .resume()
         }
     }
+    
+    public func getRepoData(url: URL) async throws -> Repo {
+        let index = url.appending(path: "index.json")
+        let req = URLRequest(url: index)
+        let (data, _) = try await URLSession.shared.data(for: req)
+        let repodata = try JSONDecoder().decode(NitrolessRepo.self, from: data)
+        let repo = Repo(url: url, repoData: repodata)
+        return repo
+    }
 }
 
 struct Repo {

@@ -184,7 +184,7 @@ struct AddDefaultRepos: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(maxWidth: 75)
-                    .padding()
+                    .padding(.trailing)
                 Text("Default\nRepositories")
                     .font(.title.bold())
             }
@@ -204,31 +204,36 @@ struct AddDefaultRepos: View {
                 }
             } label: {
                 Text("Browse")
-                    .font(.title2.bold())
+                    .font(.title2)
             }
             .buttonStyle(.bordered)
-
         }
     }
     
     @ViewBuilder
     var page: some View {
         ScrollView {
-            Text("hiiii")
+            HStack {
+                Text("Our Repositories")
+                    .font(.title)
+                    .bold()
+                Spacer()
+            }
+            .padding(.leading)
         }
         .safeAreaInset(edge: .top) {
             HStack {
                 Button {
-                    detent = .fraction(0.3)
                     isShown.toggle()
+                    detent = .fraction(0.3)
                 } label: {
                     Circle()
+                        .foregroundColor(.secondary)
+                        .brightness(colorScheme == .light ? 0 : -0.6)
                         .overlay(content: {
                             Text("X")
                                 .foregroundColor(.white)
                         })
-                        .foregroundColor(.secondary)
-                        .brightness(-0.5)
                         .frame(width: 30, height: 30)
                 }
                 .buttonStyle(.plain)
@@ -240,9 +245,33 @@ struct AddDefaultRepos: View {
     }
 }
 
+struct DefaultRepoButton: View {
+    var url: URL
+    var data: Repo? = nil
+    
+    var body: some View {
+        ZStack {
+            Text("test")
+        }
+        .frame(maxWidth: .infinity)
+        .frame(height: 80)
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+    }
+}
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        DefaultRepoTest()
+        RepoAddButtonTest()
+    }
+}
+
+struct RepoAddButtonTest: View {
+    var body: some View {
+        VStack {
+            DefaultRepoButton(url: URL(string: "https://lillieh001.github.io/nitroless")!)
+            DefaultRepoButton(url: URL(string: "https://lillieh001.github.io/nitroless")!)
+            DefaultRepoButton(url: URL(string: "https://lillieh001.github.io/nitroless")!)
+        }
     }
 }
 
