@@ -8,11 +8,13 @@
 import Foundation
 import SwiftUI
 import SDWebImageSwiftUI
+import SDWebImageWebPCoder
 
 struct RepoView: View {
     
+    @Binding var toastShown: Bool
+    
     var repo: Repo
-    var url: URL
     
     @State var stickBannerToTop = false
     var body: some View {
@@ -20,10 +22,12 @@ struct RepoView: View {
             LazyVStack {
                 main
             }
+            .padding(.horizontal, 4)
         }
         .toolbar {
             ToolbarItem(placement: .principal) {
                 HStack {
+                    let url = repo.url
                     let imgUrl = url.appending(path: repo.repoData!.icon)
                     WebImage(url: imgUrl)
                         .resizable()
@@ -43,6 +47,7 @@ struct RepoView: View {
     @ViewBuilder
     var main: some View {
         HStack {
+            let url = repo.url
             let imgUrl = url.appending(path: repo.repoData!.icon)
             WebImage(url: imgUrl)
                 .resizable()
@@ -64,12 +69,12 @@ struct RepoView: View {
         .clipShape(Capsule())
         .offset(y: -20)
         .onAppear {
-            withAnimation(.easeOut) {
+            withAnimation(.easeOut(duration: 0.2)) {
                 stickBannerToTop = false
             }
         }
         .onDisappear {
-            withAnimation(.easeOut) {
+            withAnimation(.easeOut(duration: 0.2)) {
                 stickBannerToTop = true
             }
         }
@@ -78,7 +83,7 @@ struct RepoView: View {
     }
     
     let columns = [
-        GridItem(.adaptive(minimum: 80))
+        GridItem(.adaptive(minimum: 40))
     ]
     
     @ViewBuilder
@@ -87,31 +92,48 @@ struct RepoView: View {
             ForEach(0..<repo.repoData!.emotes.count, id: \.self) { i in
                 let emote = repo.repoData!.emotes[i]
                 
-                emoteCell(repo: repo, emote: emote)
+                EmoteCell(repo: repo, emote: emote, toastShown: $toastShown)
             }
-        }
-    }
-    
-    @ViewBuilder
-    func emoteCell(repo: Repo, emote: NitrolessEmote) -> some View {
-        VStack {
-            let imgUrl = repo.url
-                .appending(path: repo.repoData!.path)
-                .appending(path: emote.name)
-                .appendingPathExtension(emote.type)
-            WebImage(url: imgUrl)
-                .resizable()
-                .placeholder {
-                    ProgressView()
-                }
-                .aspectRatio(contentMode: .fit)
         }
     }
 }
 
-var example = NitrolessRepo(name: "Lillie's Repo", icon: "icon.jpg", path: "emotes", emotes:
-                                [
-                                    NitrolessEmote(name: "02love", type: ".webp"),
-                                    NitrolessEmote(name: "menheraheart", type: ".webp")
-                                ]
-)
+struct EmoteCell: View {
+    var repo: Repo
+    var emote: NitrolessEmote
+    
+    @Binding var toastShown: Bool
+    
+    var body: some View {
+        let imgUrl = repo.url
+            .appending(path: repo.repoData!.path)
+            .appending(path: emote.name)
+            .appendingPathExtension(emote.type)
+        
+        Button {
+            toastShown = true
+            UIPasteboard.general.url = imgUrl
+        } label: {
+            VStack {
+                WebImage(url: imgUrl)
+                    .resizable()
+                    .placeholder {
+                        ProgressView()
+                    }
+                    .aspectRatio(contentMode: .fit)
+            }
+        }
+        .contextMenu {
+            Text(emote.name)
+            
+            Divider()
+            
+            Button {
+                UIPasteboard.general.url = imgUrl
+            } label: {
+                Text("Copy Link")
+            }
+
+        }
+    }
+}

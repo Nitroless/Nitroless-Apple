@@ -11,7 +11,17 @@ import SwiftUI
 struct NitrolessApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppView()
         }
+    }
+}
+
+struct AppView: View {
+    
+    @StateObject var repoMan = RepoManager()
+
+    var body: some View {
+        ContentView()
+            .environmentObject(repoMan)
     }
 }

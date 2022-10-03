@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 class RepoManager: ObservableObject {
     @Published var repos: [Repo]
     
@@ -43,7 +42,9 @@ class RepoManager: ObservableObject {
         let final = repositories.joined(separator: "\n")
         try? final.write(to: file, atomically: true, encoding: String.Encoding.utf8)
         
-        repos = []
+        DispatchQueue.main.async {
+            self.repos = []
+        }
         
         loadRepos()
     }
@@ -77,30 +78,39 @@ class RepoManager: ObservableObject {
         
         // get data and add to repo list
         let url = repoUrl
-        let req = URLRequest(url: url)
+        let index = url.appending(path: "index.json")
+        let req = URLRequest(url: index)
         URLSession.shared.dataTask(with: req) { [self] data, res, err in
             
             guard err == nil && "\((res as! HTTPURLResponse).statusCode)".hasPrefix("20") else {
                 let repo = Repo(url: url, repoData: nil)
-                repos.append(repo)
+                DispatchQueue.main.async {
+                    self.repos.append(repo)
+                }
                 return
             }
             
             guard let data = data else {
                 let repo = Repo(url: url, repoData: nil)
-                repos.append(repo)
+                DispatchQueue.main.async {
+                    self.repos.append(repo)
+                }
                 return
             }
             
             guard let json = try? JSONDecoder().decode(NitrolessRepo.self, from: data) else {
                 let repo = Repo(url: url, repoData: nil)
-                repos.append(repo)
+                DispatchQueue.main.async {
+                    self.repos.append(repo)
+                }
                 return
             }
             
             let final = Repo(url: url, repoData: json)
             
-            repos.append(final)
+            DispatchQueue.main.async {
+                self.repos.append(final)
+            }
         }
         .resume()
         
@@ -130,33 +140,44 @@ class RepoManager: ObservableObject {
                 repositories = Array(repositories.dropFirst())
             }
         }
+        
+        repositories.append("https://lillieh001.github.io/nitroless/")
                 
         for repository in repositories {
             let url = URL(string: repository)!
-            let req = URLRequest(url: url)
+            let index = url.appending(path: "index.json")
+            let req = URLRequest(url: index)
             URLSession.shared.dataTask(with: req) { [self] data, res, err in
                 
                 guard err == nil && "\((res as! HTTPURLResponse).statusCode)".hasPrefix("20") else {
                     let repo = Repo(url: url, repoData: nil)
-                    repos.append(repo)
+                    DispatchQueue.main.async {
+                        self.repos.append(repo)
+                    }
                     return
                 }
                 
                 guard let data = data else {
                     let repo = Repo(url: url, repoData: nil)
-                    repos.append(repo)
+                    DispatchQueue.main.async {
+                        self.repos.append(repo)
+                    }
                     return
                 }
                 
                 guard let json = try? JSONDecoder().decode(NitrolessRepo.self, from: data) else {
                     let repo = Repo(url: url, repoData: nil)
-                    repos.append(repo)
+                    DispatchQueue.main.async {
+                        self.repos.append(repo)
+                    }
                     return
                 }
                 
                 let final = Repo(url: url, repoData: json)
                 
-                repos.append(final)
+                DispatchQueue.main.async {
+                    self.repos.append(final)
+                }
             }
             .resume()
         }

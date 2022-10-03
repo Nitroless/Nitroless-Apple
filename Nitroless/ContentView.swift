@@ -7,10 +7,12 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import SDWebImageWebPCoder
+import AlertToast
 
 struct ContentView: View {
     
-    @StateObject var repoMan = RepoManager()
+    @EnvironmentObject var repoMan: RepoManager
     
     @State var urlToDelete: URL? = nil
     @State var showDeletePrompt = false
@@ -19,15 +21,32 @@ struct ContentView: View {
     @State var showAddPrompt = false
     @State var urlInvalidError = false
     
+    @State var toastShown = false
+    
+    @State var showDefaultReposMenu = false
     var body: some View {
         NavigationStack {
             List {
                 if repoMan.repos.isEmpty {
-                    #warning("TODO: Add default repositories button")
+                    Button {
+                        showDefaultReposMenu = true
+                    } label: {
+                        Label("Add Default Repos", systemImage: "globe")
+                    }
+                    .sheet(isPresented: $showDefaultReposMenu) {
+                        addDefaultRepos
+                    }
                 }
                 
                 ForEach(repoMan.repos, id: \.url) { repo in
                     repoButton(repo: repo)
+                }
+            }
+            .toolbar {
+                Button {
+                    showAddPrompt = true
+                } label: {
+                    Image(systemName: "plus.circle")
                 }
             }
             .navigationTitle("Nitroless")
@@ -36,58 +55,68 @@ struct ContentView: View {
                     repoMan.removeRepo(repo: urlToDelete!)
                 }
             }
-            .toolbar {
-                HStack {
-                    Spacer()
-                    Button {
-                        showAddPrompt = true
-                    } label: {
-                        Image(systemName: "plus.circle")
-                    }
-
-                }
-                .alert("Add Repository", isPresented: $showAddPrompt) {
-                    TextField("Repository URL", text: $urlToAdd)
-                    
-                    Button("Add", role: .none) {
-                        if let url = URL(string: urlToAdd) {
-                            if repoMan.addRepo(repo: url.absoluteString) {} else {
-                                urlInvalidError = true
-                            }
-                        } else {
+            .alert("Add Repository", isPresented: $showAddPrompt) {
+                TextField("Repository URL", text: $urlToAdd)
+                
+                Button("Add", role: .none) {
+                    if let url = URL(string: urlToAdd) {
+                        if repoMan.addRepo(repo: url.absoluteString) {} else {
                             urlInvalidError = true
                         }
+                    } else {
+                        urlInvalidError = true
                     }
-                    
-                    Button("Cancel", role: .cancel) {
-                        if let url = URL(string: urlToAdd) {
-                            if repoMan.addRepo(repo: url.absoluteString) {} else {
-                                urlInvalidError = true
-                            }
-                        } else {
-                            urlInvalidError = true
-                        }
-                    }
-                } message: {
-                    Text("Please enter the URL of a Nitroless Repository")
                 }
-                .alert("Invalid URL", isPresented: $urlInvalidError) {
-                    Button("Dismiss", role: .cancel) {}
-                } message: {
-                    Text("Please check the URL and try again.")
-                }
-
+                
+                Button("Cancel", role: .cancel) {}
+            } message: {
+                Text("Please enter the URL of a Nitroless Repository")
             }
+            .alert("Invalid URL", isPresented: $urlInvalidError) {
+                Button("Dismiss", role: .cancel) {}
+            } message: {
+                Text("Please check the URL and try again.")
+            }
+            .onOpenURL { url in
+                handleUrl(url)
+            }
+            
+        }
+        .toast(isPresenting: $toastShown, alert: {
+            AlertToast(displayMode: .hud, type: .systemImage("checkmark", .green), title: "Copied!")
+        })
+    }
+    
+    func handleUrl(_ url: URL) {
+        var str = url.absoluteString
+        str = str.replacingOccurrences(of: "nitroless://", with: "https://nitroless.github.io/")
+        let comp = URLComponents(string: str)!
+        let path = comp.path.dropFirst()
+        
+        switch path {
+        case "add-repository":
+            guard let urlparam = comp.queryItems?.filter({ item in item.name == "url"}).first else { return }
+            guard let param = urlparam.value else { return }
+            
+            urlToAdd = param
+            showAddPrompt = true
+        default:
+            return;
         }
     }
     
-    
+    @ViewBuilder
+    var addDefaultRepos: some View {
+        ScrollView {
+            
+        }
+    }
     
     @ViewBuilder
     func repoButton(repo: Repo) -> some View {
         if let data = repo.repoData {
             NavigationLink {
-                RepoView(repo: repo, url: repo.url)
+                RepoView(toastShown: $toastShown, repo: repo)
             } label: {
                 let imgUrl = repo.url.appending(path: data.icon)
                 WebImage(url: imgUrl)
