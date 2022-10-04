@@ -10,6 +10,7 @@
 		5783B54928ECBA9000CFF460 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5783B54828ECBA9000CFF460 /* KeyboardViewController.swift */; };
 		5783B54D28ECBA9000CFF460 /* Keyboard.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5783B54628ECBA9000CFF460 /* Keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5783B55228ECCDDA00CFF460 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5783B55128ECCDDA00CFF460 /* KeyboardView.swift */; };
+		5783B55428ECD8B300CFF460 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5783B55328ECD8B300CFF460 /* SDWebImageSwiftUI */; };
 		AA6250BC28EB047200C7030E /* SDWebImageWebPCoder in Frameworks */ = {isa = PBXBuildFile; productRef = AA6250BB28EB047200C7030E /* SDWebImageWebPCoder */; };
 		AA6250BE28EB088B00C7030E /* Test Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6250BD28EB088B00C7030E /* Test Data.swift */; };
 		AA9F089428E58B450098040D /* NitrolessApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F089328E58B450098040D /* NitrolessApp.swift */; };
@@ -70,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5783B55428ECD8B300CFF460 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +173,9 @@
 			dependencies = (
 			);
 			name = Keyboard;
+			packageProductDependencies = (
+				5783B55328ECD8B300CFF460 /* SDWebImageSwiftUI */,
+			);
 			productName = Keyboard;
 			productReference = 5783B54628ECBA9000CFF460 /* Keyboard.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -584,6 +589,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5783B55328ECD8B300CFF460 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA9F08A828E5A6360098040D /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
 		AA6250BB28EB047200C7030E /* SDWebImageWebPCoder */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AA6250BA28EB047200C7030E /* XCRemoteSwiftPackageReference "SDWebImageWebPCoder" */;
