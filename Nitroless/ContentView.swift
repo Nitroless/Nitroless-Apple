@@ -36,21 +36,33 @@ struct ContentView: View {
                     } label: {
                         Label("Add Default Repos", systemImage: "globe")
                     }
-                    .sheet(isPresented: $showDefaultReposMenu) {
-                        AddDefaultRepos(isShown: $showDefaultReposMenu, detent: $sheetDetent)
-                            .presentationDetents([.fraction(0.3), .large], selection: $sheetDetent.animation(.easeInOut))
-                    }
                 }
                 
                 ForEach(repoMan.repos, id: \.url) { repo in
                     repoButton(repo: repo)
                 }
             }
+            .sheet(isPresented: $showDefaultReposMenu) {
+                AddDefaultRepos(isShown: $showDefaultReposMenu, detent: $sheetDetent)
+                    .presentationDetents([.fraction(0.3), .large], selection: $sheetDetent.animation(.easeInOut(duration: 0.2)))
+            }
             .toolbar {
-                Button {
-                    showAddPrompt = true
-                } label: {
-                    Image(systemName: "plus.circle")
+                HStack {
+                    
+                    Button {
+                        showDefaultReposMenu = true
+                    } label: {
+                        Image(systemName: "globe")
+                    }
+
+                    
+                    Spacer()
+                    
+                    Button {
+                        showAddPrompt = true
+                    } label: {
+                        Image(systemName: "plus.circle")
+                    }
                 }
             }
             .navigationTitle("Nitroless")
@@ -165,6 +177,8 @@ struct AddDefaultRepos: View {
     
     @Environment(\.colorScheme) var colorScheme
     
+    @EnvironmentObject var repoMan: RepoManager
+    
     var body: some View {
         switch detent {
         case .fraction(0.3):
@@ -192,14 +206,16 @@ struct AddDefaultRepos: View {
             
             Spacer()
             
-            Text("Your repository list is looking a little empty, want to add some to start off with?")
+            Text(
+                repoMan.repos.isEmpty ? "Your repository list is looking a little empty, want to add some to start off with?" : "Want to look at Nitroless-provided repositories?"
+            )
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
             Spacer()
             
             Button {
-                withAnimation(.easeInOut) {
+                withAnimation(.easeInOut(duration: 0.2)) {
                     detent = .large
                 }
             } label: {
@@ -220,6 +236,8 @@ struct AddDefaultRepos: View {
                 Spacer()
             }
             .padding(.leading)
+            
+            DefaultRepoCell(url: URL(string: "https://lillieh001.github.io/nitroless")!)
         }
         .safeAreaInset(edge: .top) {
             HStack {
@@ -245,32 +263,181 @@ struct AddDefaultRepos: View {
     }
 }
 
-struct DefaultRepoButton: View {
+struct DefaultRepoCell: View {
+    
+    @Environment(\.colorScheme) var cs
+    @EnvironmentObject var repoMan: RepoManager
+    
     var url: URL
-    var data: Repo? = nil
+    @State var data: Repo? = nil
+    @State var isAdded = false
     
     var body: some View {
         ZStack {
-            Text("test")
+            Group {
+                // background blur
+                if let data = data {
+                    if data.repoData != nil {
+                        let imgUrl = data.url.appending(path: data.repoData!.icon)
+                        
+                        WebImage(url: imgUrl)
+                            .resizable()
+                            .scaledToFill()
+                            .blur(radius: 40)
+                            .brightness(cs == .light ? 0 : -0.5)
+                    }
+                } else {
+                    Rectangle()
+                        .foregroundColor(.secondary)
+                        .brightness(cs == .light ? 0.6 : -0.8)
+                }
+            }
+            
+            Group {
+                // main content
+                
+                if let data = data {
+                    HStack {
+                        if let repoData = data.repoData {
+                            let imgurl = url.appending(path: repoData.icon)
+                            WebImage(url: imgurl)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .clipShape(RoundedRectangle(cornerRadius: 15))
+                                .padding(10)
+                        } else {
+                            Image(systemName: "questionmark.app.dashed")
+                                .resizable()
+                                .scaledToFit()
+                                .padding(10)
+                        }
+                        
+                        VStack(alignment: .leading) {
+                            Text(url.host() ?? "Unknown")
+                            
+                            if let repoData = data.repoData {
+                                Text("\(repoData.emotes.count) emote\(repoData.emotes.count == 1 ? "" : "s")")
+                                    .font(.caption2)
+                                    .foregroundColor(.secondary)
+                            } else {
+                                Text("Could not access this repository")
+                                    .font(.caption2)
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                        
+                        Spacer()
+                        
+                        Button {
+                            addBtn()
+                        } label: {
+                            if isAdded {
+                                Image(systemName: "checkmark.circle")
+                                    .resizable()
+                                    .foregroundColor(.green)
+                                    .scaledToFit()
+                                    .padding()
+                            } else {
+                                Text("add")
+                                    .lineLimit(1)
+                                    .textCase(.uppercase)
+                                    .bold()
+                                    .foregroundColor(.blue)
+                                    .padding(5)
+                                    .padding(.horizontal, 20)
+                                    .background {
+                                        Capsule()
+                                            .foregroundColor(.init(white: cs == .light ? 0.95 : 0.12))
+                                    }
+                            }
+                        }
+                        .disabled(isAdded)
+                        .padding(10)
+                    }
+                    .frame(height: 80)
+                } else {
+                    HStack {
+                        Image(systemName: "questionmark.app.dashed")
+                            .resizable()
+                            .scaledToFit()
+                            .padding(10)
+                        
+                        VStack(alignment: .leading) {
+                            Text(url.host() ?? "Unknown")
+                            Text("Could not access this repository")
+                                .font(.caption2)
+                                .foregroundColor(.secondary)
+                        }
+                        
+                        Spacer()
+                        
+                        Button {
+                            addBtn()
+                        } label: {
+                            if isAdded {
+                                Image(systemName: "checkmark.circle")
+                                    .resizable()
+                                    .foregroundColor(.green)
+                                    .scaledToFit()
+                                    .padding()
+                            } else {
+                                Text("add")
+                                    .lineLimit(1)
+                                    .textCase(.uppercase)
+                                    .bold()
+                                    .foregroundColor(.blue)
+                                    .padding(5)
+                                    .padding(.horizontal, 20)
+                                    .background {
+                                        Capsule()
+                                            .foregroundColor(.init(white: 0.95))
+                                    }
+                            }
+                        }
+                        .disabled(isAdded)
+                        .padding(10)
+                    }
+                }
+            }
         }
         .frame(maxWidth: .infinity)
         .frame(height: 80)
         .clipShape(RoundedRectangle(cornerRadius: 20))
+        .padding(.horizontal)
+        .task {
+            let reposUrls: [URL] = repoMan.repos.compactMap { repo in return repo.url }
+            if reposUrls.contains(url) {
+                isAdded = true
+            } else {
+                isAdded = false
+            }
+            data = try? await repoMan.getRepoData(url: url)
+        }
+    }
+    
+    func addBtn() {
+        guard isAdded == false else { return }
+        if repoMan.addRepo(repo: url.absoluteString) {
+            withAnimation(.easeInOut(duration: 0.2)) {
+                isAdded = true
+            }
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         RepoAddButtonTest()
+            .environmentObject(RepoManager())
     }
 }
 
 struct RepoAddButtonTest: View {
     var body: some View {
         VStack {
-            DefaultRepoButton(url: URL(string: "https://lillieh001.github.io/nitroless")!)
-            DefaultRepoButton(url: URL(string: "https://lillieh001.github.io/nitroless")!)
-            DefaultRepoButton(url: URL(string: "https://lillieh001.github.io/nitroless")!)
+            DefaultRepoCell(url: URL(string: "https://lillieh001.github.io/nitroless")!)
+            DefaultRepoCell(url: URL(string: "https://lillieh001.github.io/nitroless")!)
+            DefaultRepoCell(url: URL(string: "https://lillieh001.github.io/nitroless")!)
         }
     }
 }
@@ -287,7 +454,7 @@ struct DefaultRepoTest: View {
         }
         .sheet(isPresented: $sheet) {
             AddDefaultRepos(isShown: $sheet, detent: $detent)
-                .presentationDetents([.fraction(0.3), .large], selection: $detent.animation(.easeInOut))
+                .presentationDetents([.fraction(0.3), .large], selection: $detent.animation(.easeInOut(duration: 0.2)))
         }
     }
 }

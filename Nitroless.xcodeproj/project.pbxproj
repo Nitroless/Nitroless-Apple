@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5783B54928ECBA9000CFF460 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5783B54828ECBA9000CFF460 /* KeyboardViewController.swift */; };
+		5783B54D28ECBA9000CFF460 /* Keyboard.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5783B54628ECBA9000CFF460 /* Keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AA6250BC28EB047200C7030E /* SDWebImageWebPCoder in Frameworks */ = {isa = PBXBuildFile; productRef = AA6250BB28EB047200C7030E /* SDWebImageWebPCoder */; };
 		AA6250BE28EB088B00C7030E /* Test Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6250BD28EB088B00C7030E /* Test Data.swift */; };
 		AA9F089428E58B450098040D /* NitrolessApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F089328E58B450098040D /* NitrolessApp.swift */; };
@@ -20,7 +22,34 @@
 		AAD030A228EB155E0040718F /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = AAD030A128EB155E0040718F /* AlertToast */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5783B54B28ECBA9000CFF460 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA9F088828E58B450098040D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5783B54528ECBA9000CFF460;
+			remoteInfo = Keyboard;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		576EB22F28EC8B45005F3D73 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5783B54D28ECBA9000CFF460 /* Keyboard.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		5783B54628ECBA9000CFF460 /* Keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Keyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5783B54828ECBA9000CFF460 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		5783B54A28ECBA9000CFF460 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA6250B828E911C100C7030E /* Nitroless.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nitroless.entitlements; sourceTree = "<group>"; };
 		AA6250B928E9141500C7030E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AA6250BD28EB088B00C7030E /* Test Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test Data.swift"; sourceTree = "<group>"; };
@@ -35,6 +64,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5783B54328ECBA9000CFF460 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AA9F088D28E58B450098040D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -48,6 +84,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5783B54728ECBA9000CFF460 /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				5783B54828ECBA9000CFF460 /* KeyboardViewController.swift */,
+				5783B54A28ECBA9000CFF460 /* Info.plist */,
+			);
+			path = Keyboard;
+			sourceTree = "<group>";
+		};
 		57F906E228EB3C8D001640BB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -59,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				AA9F089228E58B450098040D /* Nitroless */,
+				5783B54728ECBA9000CFF460 /* Keyboard */,
 				AA9F089128E58B450098040D /* Products */,
 				57F906E228EB3C8D001640BB /* Frameworks */,
 			);
@@ -68,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				AA9F089028E58B450098040D /* Nitroless.app */,
+				5783B54628ECBA9000CFF460 /* Keyboard.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -108,6 +155,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5783B54528ECBA9000CFF460 /* Keyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5783B54E28ECBA9000CFF460 /* Build configuration list for PBXNativeTarget "Keyboard" */;
+			buildPhases = (
+				5783B54228ECBA9000CFF460 /* Sources */,
+				5783B54328ECBA9000CFF460 /* Frameworks */,
+				5783B54428ECBA9000CFF460 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Keyboard;
+			productName = Keyboard;
+			productReference = 5783B54628ECBA9000CFF460 /* Keyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		AA9F088F28E58B450098040D /* Nitroless */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA9F089E28E58B470098040D /* Build configuration list for PBXNativeTarget "Nitroless" */;
@@ -115,10 +179,12 @@
 				AA9F088C28E58B450098040D /* Sources */,
 				AA9F088D28E58B450098040D /* Frameworks */,
 				AA9F088E28E58B450098040D /* Resources */,
+				576EB22F28EC8B45005F3D73 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5783B54C28ECBA9000CFF460 /* PBXTargetDependency */,
 			);
 			name = Nitroless;
 			packageProductDependencies = (
@@ -140,6 +206,9 @@
 				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
+					5783B54528ECBA9000CFF460 = {
+						CreatedOnToolsVersion = 14.1;
+					};
 					AA9F088F28E58B450098040D = {
 						CreatedOnToolsVersion = 14.1;
 					};
@@ -164,11 +233,19 @@
 			projectRoot = "";
 			targets = (
 				AA9F088F28E58B450098040D /* Nitroless */,
+				5783B54528ECBA9000CFF460 /* Keyboard */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5783B54428ECBA9000CFF460 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AA9F088E28E58B450098040D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -181,6 +258,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5783B54228ECBA9000CFF460 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5783B54928ECBA9000CFF460 /* KeyboardViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AA9F088C28E58B450098040D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -196,7 +281,65 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		5783B54C28ECBA9000CFF460 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5783B54528ECBA9000CFF460 /* Keyboard */;
+			targetProxy = 5783B54B28ECBA9000CFF460 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		5783B54F28ECBA9000CFF460 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 566RT33SA2;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Keyboard/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Keyboard;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.llsc12.Nitroless.Keyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5783B55028ECBA9000CFF460 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 566RT33SA2;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Keyboard/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Keyboard;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.llsc12.Nitroless.Keyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		AA9F089C28E58B470098040D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -314,6 +457,7 @@
 		AA9F089F28E58B470098040D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Nitroless/Nitroless.entitlements;
@@ -346,6 +490,7 @@
 		AA9F08A028E58B470098040D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Nitroless/Nitroless.entitlements;
@@ -378,6 +523,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5783B54E28ECBA9000CFF460 /* Build configuration list for PBXNativeTarget "Keyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5783B54F28ECBA9000CFF460 /* Debug */,
+				5783B55028ECBA9000CFF460 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		AA9F088B28E58B450098040D /* Build configuration list for PBXProject "Nitroless" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
