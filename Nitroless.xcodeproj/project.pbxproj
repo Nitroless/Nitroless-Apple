@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5783B54928ECBA9000CFF460 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5783B54828ECBA9000CFF460 /* KeyboardViewController.swift */; };
 		5783B54D28ECBA9000CFF460 /* Keyboard.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5783B54628ECBA9000CFF460 /* Keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5783B55228ECCDDA00CFF460 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5783B55128ECCDDA00CFF460 /* KeyboardView.swift */; };
 		AA6250BC28EB047200C7030E /* SDWebImageWebPCoder in Frameworks */ = {isa = PBXBuildFile; productRef = AA6250BB28EB047200C7030E /* SDWebImageWebPCoder */; };
 		AA6250BE28EB088B00C7030E /* Test Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6250BD28EB088B00C7030E /* Test Data.swift */; };
 		AA9F089428E58B450098040D /* NitrolessApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F089328E58B450098040D /* NitrolessApp.swift */; };
@@ -50,6 +51,7 @@
 		5783B54628ECBA9000CFF460 /* Keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Keyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5783B54828ECBA9000CFF460 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		5783B54A28ECBA9000CFF460 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5783B55128ECCDDA00CFF460 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		AA6250B828E911C100C7030E /* Nitroless.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nitroless.entitlements; sourceTree = "<group>"; };
 		AA6250B928E9141500C7030E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AA6250BD28EB088B00C7030E /* Test Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test Data.swift"; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				5783B54828ECBA9000CFF460 /* KeyboardViewController.swift */,
+				5783B55128ECCDDA00CFF460 /* KeyboardView.swift */,
 				5783B54A28ECBA9000CFF460 /* Info.plist */,
 			);
 			path = Keyboard;
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5783B54928ECBA9000CFF460 /* KeyboardViewController.swift in Sources */,
+				5783B55228ECCDDA00CFF460 /* KeyboardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

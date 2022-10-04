@@ -18,12 +18,22 @@ class KeyboardViewController: UIInputViewController {
         // Add custom view sizing constraints here
     }
     
+    private lazy var suiView: UIView = {
+        let view = UIHostingController(rootView: KeyboardView(vc: self)).view!
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let hostingController = UIHostingController(rootView: KeyboardView(vc: self))
-        view.addSubview(hostingController.view)
-        addChild(hostingController)
+        view.addSubview(suiView)
+        NSLayoutConstraint.activate([
+            suiView.topAnchor.constraint(equalTo: view.topAnchor),
+            suiView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            suiView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            suiView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
         
         // Perform custom UI setup here
         self.nextKeyboardButton = UIButton(type: .system)
@@ -64,10 +74,4 @@ class KeyboardViewController: UIInputViewController {
 
 }
 
-struct KeyboardView: View {
-    var vc: KeyboardViewController
-    
-    var body: some View {
-        Text("Hi mom")
-    }
-}
+
