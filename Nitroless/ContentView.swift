@@ -40,6 +40,13 @@ struct ContentView: View {
                 
                 ForEach(repoMan.repos, id: \.url) { repo in
                     repoButton(repo: repo)
+                        .contextMenu {
+                            Button {
+                                UIPasteboard.general.url = repo.url
+                            } label: {
+                                Label("Copy URL", systemImage: "doc.on.clipboard")
+                            }
+                        }
                 }
             }
             .sheet(isPresented: $showDefaultReposMenu) {
@@ -82,9 +89,11 @@ struct ContentView: View {
                     } else {
                         urlInvalidError = true
                     }
+                    
+                    urlToAdd = ""
                 }
                 
-                Button("Cancel", role: .cancel) {}
+                Button("Cancel", role: .cancel) {urlToAdd = ""}
             } message: {
                 Text("Please enter the URL of a Nitroless Repository")
             }
@@ -226,6 +235,7 @@ struct AddDefaultRepos: View {
         }
     }
     
+    @State var defaultRepos: [URL]? = nil
     @ViewBuilder
     var page: some View {
         ScrollView {
@@ -236,8 +246,30 @@ struct AddDefaultRepos: View {
                 Spacer()
             }
             .padding(.leading)
+            .task {
+                if defaultRepos == nil {
+                    do {
+                        let req = URLRequest(url: DefaultReposUrl)
+                        let (data, _) = try await URLSession.shared.data(for: req)
+                        let json = try JSONDecoder().decode([URL].self, from: data)
+                        defaultRepos = json
+                    } catch {
+                        print(error)
+                    }
+                }
+            }
             
-            DefaultRepoCell(url: URL(string: "https://lillieh001.github.io/nitroless")!)
+            if let defaultRepos = defaultRepos {
+                ForEach(defaultRepos, id: \.self) { url in
+                    DefaultRepoCell(url: url)
+                }
+                
+                Text("These repositories are owned by members of the Nitroless Team!")
+                    .foregroundColor(.secondary)
+                    .padding(.top)
+            } else {
+                ProgressView()
+            }
         }
         .safeAreaInset(edge: .top) {
             HStack {
@@ -285,11 +317,13 @@ struct DefaultRepoCell: View {
                             .scaledToFill()
                             .blur(radius: 40)
                             .brightness(cs == .light ? 0 : -0.5)
+                            .allowsHitTesting(false)
                     }
                 } else {
                     Rectangle()
                         .foregroundColor(.secondary)
-                        .brightness(cs == .light ? 0.6 : -0.8)
+                        .brightness(cs == .light ? -0.1 : -0.8)
+                        .allowsHitTesting(false)
                 }
             }
             
@@ -312,14 +346,19 @@ struct DefaultRepoCell: View {
                                 .padding(10)
                         }
                         
-                        VStack(alignment: .leading) {
-                            Text(url.host() ?? "Unknown")
-                            
-                            if let repoData = data.repoData {
+                        if let repoData = data.repoData {
+                            VStack(alignment: .leading) {
+                                Text(repoData.name)
+                                
+                                
                                 Text("\(repoData.emotes.count) emote\(repoData.emotes.count == 1 ? "" : "s")")
                                     .font(.caption2)
                                     .foregroundColor(.secondary)
-                            } else {
+                            }
+                        } else {
+                            VStack(alignment: .leading) {
+                                Text(url.host() ?? "Unknown")
+                                
                                 Text("Could not access this repository")
                                     .font(.caption2)
                                     .foregroundColor(.secondary)
@@ -404,6 +443,7 @@ struct DefaultRepoCell: View {
         .frame(height: 80)
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .padding(.horizontal)
+        .shadow(radius: 4)
         .task {
             let reposUrls: [URL] = repoMan.repos.compactMap { repo in return repo.url }
             if reposUrls.contains(url) {
@@ -411,7 +451,11 @@ struct DefaultRepoCell: View {
             } else {
                 isAdded = false
             }
-            data = try? await repoMan.getRepoData(url: url)
+            do {
+                data = try await repoMan.getRepoData(url: url)
+            } catch {
+                print(error)
+            }
         }
     }
     
