@@ -67,11 +67,8 @@ struct KeyboardView: View {
     
     @ViewBuilder
     var askForAccess: some View {
-        
-        BobbingView(content: {
-            Text("Heya, Nitroless Keyboard requires full keyboard access.\nSettings > General > Keyboards > Keyboard - Nitroless > Allow Full Access")
-        })
-        .frame(height: 400)
+        Text("Heya, Nitroless Keyboard requires full keyboard access.\nSettings > General > Keyboards > Keyboard - Nitroless > Allow Full Access")
+            .padding()
     }
     
     func type(_ str: String) {
