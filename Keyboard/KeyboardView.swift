@@ -44,6 +44,10 @@ struct KeyboardView: View {
     var kb: some View {
         HStack {
             VStack {
+                let path = try? String.init(contentsOf: FileLocations.repoList)
+                if let path = path {
+                    Text(path)
+                }
                 Text("hi mom")
                     .onTapGesture {
                         vc.textDocumentProxy.insertText("\n")

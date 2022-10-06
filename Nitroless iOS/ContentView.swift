@@ -73,6 +73,9 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Nitroless")
+            .refreshable {
+                repoMan.reloadRepos()
+            }
             .confirmationDialog("Delete this broken repository?", isPresented: $showDeletePrompt, titleVisibility: .visible) {
                 Button("Delete", role: .destructive) {
                     repoMan.removeRepo(repo: urlToDelete!)

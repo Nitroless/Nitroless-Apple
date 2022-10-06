@@ -213,6 +213,11 @@ class RepoManager: ObservableObject {
         let repo = Repo(url: url, repoData: repodata)
         return repo
     }
+    
+    public func reloadRepos() {
+        repos = [];
+        loadRepos();
+    }
 }
 
 struct Repo {
