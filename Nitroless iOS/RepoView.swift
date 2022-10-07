@@ -18,7 +18,7 @@ struct RepoView: View {
     
     var repo: Repo
     
-    @State var stickBannerToTop = false
+    @State var showDetails = false
     
     @State var previewUrl: URL? = nil
     
@@ -30,9 +30,10 @@ struct RepoView: View {
                 main
                     .quickLookPreview($previewUrl)
             }
-            .padding(.horizontal, 4)
+            .padding(.horizontal)
         }
         .searchable(text: $searchText, placement: .navigationBarDrawer, prompt: Text("Search Repository"))
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
                 HStack {
@@ -48,55 +49,60 @@ struct RepoView: View {
                         .clipShape(Circle())
                     Text(repo.repoData!.name)
                 }
-                .opacity(stickBannerToTop ? 1 : 0)
+//                .opacity(stickBannerToTop ? 1 : 0)
+            }
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    showDetails = true
+                } label: {
+                    Image(systemName: "info.circle")
+                }
+                .sheet(isPresented: $showDetails) {
+                    info
+                        .presentationDetents([.fraction(0.1)])
+                }
             }
         }
     }
     
     @ViewBuilder
+    var info: some View {
+        VStack {
+            HStack {
+                let url = repo.url
+                let imgUrl = url.appending(path: repo.repoData!.icon)
+                WebImage(url: imgUrl)
+                    .resizable()
+                    .placeholder {
+                        ProgressView()
+                    }
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: 60)
+                    .clipShape(Circle())
+                VStack(alignment: .leading) {
+                    Text(repo.repoData!.name)
+                        .font(.title)
+                    if let author = repo.repoData!.author {
+                        Text("By \(author)")
+                            .font(.footnote)
+                            .foregroundColor(.secondary)
+                    }
+                }
+                Spacer()
+
+                Text("\(repo.repoData!.emotes.count) emotes")
+                    .foregroundColor(.secondary)
+            }
+            .padding()
+            .background(.thickMaterial)
+            .clipShape(Capsule())
+            .padding(.horizontal)
+        }
+    }
+    
+    @ViewBuilder
     var main: some View {
-        // repo header pill
-        HStack {
-            let url = repo.url
-            let imgUrl = url.appending(path: repo.repoData!.icon)
-            WebImage(url: imgUrl)
-                .resizable()
-                .placeholder {
-                    ProgressView()
-                }
-                .aspectRatio(contentMode: .fit)
-                .frame(maxWidth: 60)
-                .clipShape(Circle())
-            VStack(alignment: .leading) {
-                Text(repo.repoData!.name)
-                    .font(.title)
-                if let author = repo.repoData!.author {
-                    Text("By \(author)")
-                        .font(.footnote)
-                        .foregroundColor(.secondary)
-                }
-            }
-            Spacer()
-            
-            Text("\(repo.repoData!.emotes.count) emotes")
-                .foregroundColor(.secondary)
-        }
-        .padding()
-        .background(.thickMaterial)
-        .clipShape(Capsule())
-        .offset(y: -20)
-        .onAppear {
-            withAnimation(.easeOut(duration: 0.2)) {
-                stickBannerToTop = false
-            }
-        }
-        .onDisappear {
-            withAnimation(.easeOut(duration: 0.2)) {
-                stickBannerToTop = true
-            }
-        }
-        //end of pill
-        
         emotePalette
     }
     
@@ -109,7 +115,7 @@ struct RepoView: View {
         LazyVGrid(columns: columns, spacing: 20) {
             let emotes = repo.repoData!.emotes
             let filtered = emotes.filter { emote in
-                emote.name.lowercased().contains(searchText)
+                emote.name.lowercased().contains(searchText) || searchText.isEmpty
             }
             
             ForEach(0..<filtered.count, id: \.self) { i in
