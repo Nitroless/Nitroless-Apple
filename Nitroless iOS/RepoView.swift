@@ -22,6 +22,8 @@ struct RepoView: View {
     
     @State var previewUrl: URL? = nil
     
+    @State var searchText = ""
+    
     var body: some View {
         ScrollView {
             LazyVStack {
@@ -30,6 +32,7 @@ struct RepoView: View {
             }
             .padding(.horizontal, 4)
         }
+        .searchable(text: $searchText, placement: .navigationBarDrawer, prompt: Text("Search Repository"))
         .toolbar {
             ToolbarItem(placement: .principal) {
                 HStack {
@@ -52,6 +55,7 @@ struct RepoView: View {
     
     @ViewBuilder
     var main: some View {
+        // repo header pill
         HStack {
             let url = repo.url
             let imgUrl = url.appending(path: repo.repoData!.icon)
@@ -63,8 +67,15 @@ struct RepoView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(maxWidth: 60)
                 .clipShape(Circle())
-            Text(repo.repoData!.name)
-                .font(.title)
+            VStack(alignment: .leading) {
+                Text(repo.repoData!.name)
+                    .font(.title)
+                if let author = repo.repoData!.author {
+                    Text("By \(author)")
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+                }
+            }
             Spacer()
             
             Text("\(repo.repoData!.emotes.count) emotes")
@@ -84,6 +95,7 @@ struct RepoView: View {
                 stickBannerToTop = true
             }
         }
+        //end of pill
         
         emotePalette
     }
@@ -95,8 +107,13 @@ struct RepoView: View {
     @ViewBuilder
     var emotePalette: some View {
         LazyVGrid(columns: columns, spacing: 20) {
-            ForEach(0..<repo.repoData!.emotes.count, id: \.self) { i in
-                let emote = repo.repoData!.emotes[i]
+            let emotes = repo.repoData!.emotes
+            let filtered = emotes.filter { emote in
+                emote.name.lowercased().contains(searchText)
+            }
+            
+            ForEach(0..<filtered.count, id: \.self) { i in
+                let emote = filtered[i]
                 
                 EmoteCell(repo: repo, emote: emote, toastShown: $toastShown, ql: $previewUrl)
             }

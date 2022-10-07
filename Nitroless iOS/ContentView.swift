@@ -30,24 +30,22 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             List {
-                if repoMan.repos.isEmpty {
-                    Button {
-                        showDefaultReposMenu = true
-                    } label: {
-                        Label("Add Default Repos", systemImage: "globe")
+                Section("Repositories") {
+                    if repoMan.repos.isEmpty {
+                        Button {
+                            showDefaultReposMenu = true
+                        } label: {
+                            Label("Add Default Repos", systemImage: "globe")
+                        }
+                    }
+                    
+                    ForEach(repoMan.repos, id: \.url) { repo in
+                        repoButton(repo: repo)
                     }
                 }
-                
-                ForEach(repoMan.repos, id: \.url) { repo in
-                    repoButton(repo: repo)
-                        .contextMenu {
-                            Button {
-                                UIPasteboard.general.url = repo.url
-                            } label: {
-                                Label("Copy URL", systemImage: "doc.on.clipboard")
-                            }
-                        }
-                }
+            }
+            .refreshable {
+                repoMan.reloadRepos()
             }
             .sheet(isPresented: $showDefaultReposMenu) {
                 AddDefaultRepos(isShown: $showDefaultReposMenu, detent: $sheetDetent)
@@ -73,9 +71,6 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Nitroless")
-            .refreshable {
-                repoMan.reloadRepos()
-            }
             .confirmationDialog("Delete this broken repository?", isPresented: $showDeletePrompt, titleVisibility: .visible) {
                 Button("Delete", role: .destructive) {
                     repoMan.removeRepo(repo: urlToDelete!)
@@ -157,6 +152,18 @@ struct ContentView: View {
                     Image(systemName: "trash")
                 }
                 .tint(.red)
+            }
+            .contextMenu {
+                Button {
+                    UIPasteboard.general.url = repo.url
+                } label: {
+                    Label("Copy URL", systemImage: "doc.on.clipboard")
+                }
+                Button {
+                    repoMan.removeRepo(repo: repo.url)
+                } label: {
+                    Label("Delete", systemImage: "trash")
+                }
             }
         } else {
             Button {
@@ -333,9 +340,9 @@ struct DefaultRepoCell: View {
             Group {
                 // main content
                 
-                if let data = data {
+//                if let data = data {
                     HStack {
-                        if let repoData = data.repoData {
+                        if let repoData = data?.repoData {
                             let imgurl = url.appending(path: repoData.icon)
                             WebImage(url: imgurl)
                                 .resizable()
@@ -349,10 +356,15 @@ struct DefaultRepoCell: View {
                                 .padding(10)
                         }
                         
-                        if let repoData = data.repoData {
+                        if let repoData = data?.repoData {
                             VStack(alignment: .leading) {
                                 Text(repoData.name)
                                 
+                                if let author = repoData.author {
+                                    Text("By \(author)")
+                                        .font(.footnote)
+                                        .foregroundColor(.secondary)
+                                }
                                 
                                 Text("\(repoData.emotes.count) emote\(repoData.emotes.count == 1 ? "" : "s")")
                                     .font(.caption2)
@@ -388,8 +400,13 @@ struct DefaultRepoCell: View {
                                     .padding(5)
                                     .padding(.horizontal, 20)
                                     .background {
-                                        Capsule()
-                                            .foregroundColor(.init(white: cs == .light ? 0.95 : 0.12))
+                                        if data != nil {
+                                            Capsule()
+                                                .foregroundColor(.init(white: cs == .light ? 0.95 : 0.12))
+                                        } else {
+                                            Capsule()
+                                                .foregroundColor(.init(white: 0.95))
+                                        }
                                     }
                             }
                         }
@@ -397,49 +414,6 @@ struct DefaultRepoCell: View {
                         .padding(10)
                     }
                     .frame(height: 80)
-                } else {
-                    HStack {
-                        Image(systemName: "questionmark.app.dashed")
-                            .resizable()
-                            .scaledToFit()
-                            .padding(10)
-                        
-                        VStack(alignment: .leading) {
-                            Text(url.host() ?? "Unknown")
-                            Text("Could not access this repository")
-                                .font(.caption2)
-                                .foregroundColor(.secondary)
-                        }
-                        
-                        Spacer()
-                        
-                        Button {
-                            addBtn()
-                        } label: {
-                            if isAdded {
-                                Image(systemName: "checkmark.circle")
-                                    .resizable()
-                                    .foregroundColor(.green)
-                                    .scaledToFit()
-                                    .padding()
-                            } else {
-                                Text("add")
-                                    .lineLimit(1)
-                                    .textCase(.uppercase)
-                                    .bold()
-                                    .foregroundColor(.blue)
-                                    .padding(5)
-                                    .padding(.horizontal, 20)
-                                    .background {
-                                        Capsule()
-                                            .foregroundColor(.init(white: 0.95))
-                                    }
-                            }
-                        }
-                        .disabled(isAdded)
-                        .padding(10)
-                    }
-                }
             }
         }
         .frame(maxWidth: .infinity)

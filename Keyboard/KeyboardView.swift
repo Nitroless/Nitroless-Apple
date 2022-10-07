@@ -39,7 +39,6 @@ struct KeyboardView: View {
         }
     }
     
-    @State var timer: Timer = Timer()
     @ViewBuilder
     var kb: some View {
         HStack {

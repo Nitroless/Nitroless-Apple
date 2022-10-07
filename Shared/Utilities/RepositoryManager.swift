@@ -92,6 +92,7 @@ class RepoManager: ObservableObject {
                     let repo = Repo(url: url, repoData: nil)
                     DispatchQueue.main.async {
                         self.repos.append(repo)
+                        self.reorderRepos()
                     }
                     return
                 }
@@ -100,6 +101,7 @@ class RepoManager: ObservableObject {
                     let repo = Repo(url: url, repoData: nil)
                     DispatchQueue.main.async {
                         self.repos.append(repo)
+                        self.reorderRepos()
                     }
                     return
                 }
@@ -111,6 +113,7 @@ class RepoManager: ObservableObject {
                     
                     DispatchQueue.main.async {
                         self.repos.append(final)
+                        self.reorderRepos()
                     }
                 } catch {
                     print(error)
@@ -118,6 +121,7 @@ class RepoManager: ObservableObject {
                     let repo = Repo(url: url, repoData: nil)
                     DispatchQueue.main.async {
                         self.repos.append(repo)
+                        self.reorderRepos()
                     }
                     return
                 }
@@ -129,6 +133,16 @@ class RepoManager: ObservableObject {
             print("[AddRepo] Adding \"\(repo)\" failed, couldn't save to repos file")
             
             return false
+        }
+    }
+    
+    public func reorderRepos() {
+        self.repos.sort { r1, r2 in
+            if let r1data = r1.repoData, let r2data = r2.repoData {
+                return r1data.name.lowercased() < r2data.name.lowercased()
+            } else {
+                return r1.url.absoluteString.lowercased() < r2.url.absoluteString.lowercased()
+            }
         }
     }
     
@@ -165,6 +179,7 @@ class RepoManager: ObservableObject {
                     let repo = Repo(url: url, repoData: nil)
                     DispatchQueue.main.async {
                         self.repos.append(repo)
+                        self.reorderRepos()
                     }
                     return
                 }
@@ -173,6 +188,7 @@ class RepoManager: ObservableObject {
                     let repo = Repo(url: url, repoData: nil)
                     DispatchQueue.main.async {
                         self.repos.append(repo)
+                        self.reorderRepos()
                     }
                     return
                 }
@@ -190,6 +206,7 @@ class RepoManager: ObservableObject {
                     
                     DispatchQueue.main.async {
                         self.repos.append(final)
+                        self.reorderRepos()
                     }
                 } catch {
                     print(error)
@@ -197,6 +214,7 @@ class RepoManager: ObservableObject {
                     let repo = Repo(url: url, repoData: nil)
                     DispatchQueue.main.async {
                         self.repos.append(repo)
+                        self.reorderRepos()
                     }
                     return
                 }
@@ -221,21 +239,22 @@ class RepoManager: ObservableObject {
 }
 
 struct Repo {
-    var url: URL
-    var repoData: NitrolessRepo?
+    let url: URL
+    let repoData: NitrolessRepo?
 }
 
 
 
 // MARK: - NitrolessRepo
 struct NitrolessRepo: Codable {
-    var icon: String//?
-    var name, path: String
-    var emotes: [NitrolessEmote]
+    let icon: String
+    let author: String?
+    let name, path: String
+    let emotes: [NitrolessEmote]
 }
 
 // MARK: - NitrolessEmote
 struct NitrolessEmote: Codable {
-    var name, type: String
+    let name, type: String
 }
 
