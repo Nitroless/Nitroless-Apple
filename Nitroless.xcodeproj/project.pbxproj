@@ -21,7 +21,6 @@
 		AA6250BE28EB088B00C7030E /* Test Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6250BD28EB088B00C7030E /* Test Data.swift */; };
 		AA9F089428E58B450098040D /* NitrolessApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F089328E58B450098040D /* NitrolessApp.swift */; };
 		AA9F089628E58B450098040D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F089528E58B450098040D /* ContentView.swift */; };
-		AA9F089828E58B470098040D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA9F089728E58B470098040D /* Assets.xcassets */; };
 		AA9F08A528E58C020098040D /* RepositoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F08A428E58C020098040D /* RepositoryManager.swift */; };
 		AA9F08A728E58D490098040D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F08A628E58D490098040D /* Constants.swift */; };
 		AA9F08AA28E5A6360098040D /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = AA9F08A928E5A6360098040D /* SDWebImageSwiftUI */; };
@@ -69,7 +68,6 @@
 		AA9F089028E58B450098040D /* Nitroless iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nitroless iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA9F089328E58B450098040D /* NitrolessApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NitrolessApp.swift; sourceTree = "<group>"; };
 		AA9F089528E58B450098040D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		AA9F089728E58B470098040D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA9F08A428E58C020098040D /* RepositoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryManager.swift; sourceTree = "<group>"; };
 		AA9F08A628E58D490098040D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AA9F08AB28E5A8360098040D /* RepoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoView.swift; sourceTree = "<group>"; };
@@ -147,6 +145,7 @@
 		AA431D7A28EEEBB90066EBC4 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				AAD5D80928EEC7D900FF08DA /* Assets.xcassets */,
 				AA9F08A128E58BA60098040D /* Utilities */,
 			);
 			path = Shared;
@@ -182,7 +181,6 @@
 				AA9F089328E58B450098040D /* NitrolessApp.swift */,
 				5721D6BF28F1E56400148391 /* Views */,
 				AA9F08AB28E5A8360098040D /* RepoView.swift */,
-				AA9F089728E58B470098040D /* Assets.xcassets */,
 				AA6250BD28EB088B00C7030E /* Test Data.swift */,
 			);
 			path = "Nitroless iOS";
@@ -202,7 +200,6 @@
 			children = (
 				AAD5D80528EEC7D700FF08DA /* Nitroless_macOSApp.swift */,
 				AAD5D80728EEC7D700FF08DA /* ContentView.swift */,
-				AAD5D80928EEC7D900FF08DA /* Assets.xcassets */,
 				AAD5D80E28EEC7D900FF08DA /* Nitroless_macOS.entitlements */,
 			);
 			path = "Nitroless macOS";
@@ -330,7 +327,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA9F089828E58B470098040D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

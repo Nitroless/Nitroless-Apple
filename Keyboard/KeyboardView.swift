@@ -12,6 +12,7 @@ import SDWebImageSwiftUI
 struct KeyboardView: View {
     
     @Environment(\.colorScheme) var cs
+    
     var vc: KeyboardViewController
     
     lazy var showGlobe: Bool = {
@@ -42,29 +43,8 @@ struct KeyboardView: View {
     @ViewBuilder
     var kb: some View {
         HStack {
-            VStack {
-                let path = try? String.init(contentsOf: FileLocations.repoList)
-                if let path = path {
-                    Text(path)
-                }
-                Text("hi mom")
-                    .onTapGesture {
-                        vc.textDocumentProxy.insertText("\n")
-                    }
-                
-                Button("E") {
-                    vc.textDocumentProxy.insertText("E")
-                }
-                .buttonStyle(.bordered)
-            }
-            
-            let mogus = URL(string: "https://cdn.discordapp.com/emojis/820174282037657620.gif?size=48")!
-            WebImage(url: mogus)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .onTapGesture {
-                    type("https://cdn.discordapp.com/emojis/820174282037657620.gif?size=48")
-                }
+//            let repos =
+//            ForEach(0..<, content: <#T##(Data.Element) -> Content#>)
         }
     }
     
