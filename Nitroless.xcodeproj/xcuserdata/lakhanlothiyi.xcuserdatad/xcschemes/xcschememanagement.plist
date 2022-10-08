@@ -7,7 +7,7 @@
 		<key>Keyboard.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<key>Nitroless Keyboard.xcscheme_^#shared#^_</key>
 		<dict>
@@ -17,7 +17,7 @@
 		<key>Nitroless iOS.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>2</integer>
 		</dict>
 		<key>Nitroless macOS.xcscheme_^#shared#^_</key>
 		<dict>
@@ -28,6 +28,24 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>5783B54528ECBA9000CFF460</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AA9F088F28E58B450098040D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AAD5D80228EEC7D700FF08DA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
