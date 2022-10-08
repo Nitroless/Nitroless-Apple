@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5721D6C228F1E5A000148391 /* AddDefaultRepos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5721D6C128F1E5A000148391 /* AddDefaultRepos.swift */; };
+		5721D6C428F1E78D00148391 /* DefaultRepoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5721D6C328F1E78D00148391 /* DefaultRepoCell.swift */; };
 		5783B54928ECBA9000CFF460 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5783B54828ECBA9000CFF460 /* KeyboardViewController.swift */; };
 		5783B54D28ECBA9000CFF460 /* Keyboard.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5783B54628ECBA9000CFF460 /* Keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5783B55228ECCDDA00CFF460 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5783B55128ECCDDA00CFF460 /* KeyboardView.swift */; };
@@ -55,6 +57,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5721D6C128F1E5A000148391 /* AddDefaultRepos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDefaultRepos.swift; sourceTree = "<group>"; };
+		5721D6C328F1E78D00148391 /* DefaultRepoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRepoCell.swift; sourceTree = "<group>"; };
 		5783B54628ECBA9000CFF460 /* Keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Keyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5783B54828ECBA9000CFF460 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		5783B54A28ECBA9000CFF460 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -105,6 +109,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5721D6BF28F1E56400148391 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AA9F089528E58B450098040D /* ContentView.swift */,
+				5721D6C028F1E57A00148391 /* Default Repos */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5721D6C028F1E57A00148391 /* Default Repos */ = {
+			isa = PBXGroup;
+			children = (
+				5721D6C128F1E5A000148391 /* AddDefaultRepos.swift */,
+				5721D6C328F1E78D00148391 /* DefaultRepoCell.swift */,
+			);
+			path = "Default Repos";
+			sourceTree = "<group>";
+		};
 		5783B54728ECBA9000CFF460 /* Keyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,7 +180,7 @@
 				AA6250B928E9141500C7030E /* Info.plist */,
 				AA6250B828E911C100C7030E /* Nitroless.entitlements */,
 				AA9F089328E58B450098040D /* NitrolessApp.swift */,
-				AA9F089528E58B450098040D /* ContentView.swift */,
+				5721D6BF28F1E56400148391 /* Views */,
 				AA9F08AB28E5A8360098040D /* RepoView.swift */,
 				AA9F089728E58B470098040D /* Assets.xcassets */,
 				AA6250BD28EB088B00C7030E /* Test Data.swift */,
@@ -339,7 +361,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA6250BE28EB088B00C7030E /* Test Data.swift in Sources */,
+				5721D6C228F1E5A000148391 /* AddDefaultRepos.swift in Sources */,
 				AA9F08A528E58C020098040D /* RepositoryManager.swift in Sources */,
+				5721D6C428F1E78D00148391 /* DefaultRepoCell.swift in Sources */,
 				AA9F089628E58B450098040D /* ContentView.swift in Sources */,
 				AA9F089428E58B450098040D /* NitrolessApp.swift in Sources */,
 				AA9F08A728E58D490098040D /* Constants.swift in Sources */,
