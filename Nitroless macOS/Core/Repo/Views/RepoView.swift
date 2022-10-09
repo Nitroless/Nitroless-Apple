@@ -143,6 +143,44 @@ struct RepoView: View {
             .onTapGesture {
                 viewModel.getRepoFromUser(title: "Add Repo", question: "Enter Repo URL Here", defaultValue: "")
             }
+            
+            HStack {
+                Rectangle()
+                    .fill(.clear)
+                    .frame(width: 3, height: 0)
+                
+                Image(systemName: "rectangle.lefthalf.inset.filled.arrow.left")
+                    .resizable()
+                    .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                    .background(RoundedRectangle(cornerRadius: 8, style: .continuous).fill(.white))
+                    .foregroundColor((self.hovered.image == "rectangle.lefthalf.inset.filled.arrow.left" && self.hovered.hover == true) ? Color(red: 0.93, green: 0.26, blue: 0.27) : Color(red: 0.21, green: 0.22, blue: 0.25))
+                    .frame(width: 48, height: 48)
+                    .animation(.spring(), value: (self.hovered.image == "rectangle.lefthalf.inset.filled.arrow.left" && self.hovered.hover == true))
+                    .onHover { isHovered in
+                        self.hovered = Hovered(image: "rectangle.lefthalf.inset.filled.arrow.left", hover: isHovered)
+                        DispatchQueue.main.async { //<-- Here
+                            if (self.hovered.hover) {
+                                NSCursor.pointingHand.push()
+                            } else {
+                                NSCursor.pop()
+                            }
+                        }
+                    }
+                    .shadow(radius: 5)
+            }
+            .onHover { isHovered in
+                self.hovered = Hovered(image: "rectangle.lefthalf.inset.filled.arrow.left", hover: isHovered)
+                DispatchQueue.main.async { //<-- Here
+                    if (self.hovered.hover) {
+                        NSCursor.pointingHand.push()
+                    } else {
+                        NSCursor.pop()
+                    }
+                }
+            }
+            .onTapGesture {
+                viewModel.askBeforeExiting()
+            }
         }
         .removeBackground()
         .frame(width: 78)

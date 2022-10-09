@@ -13,8 +13,6 @@
 		571A78AD28F341BE0089A0B1 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A789B28F341BD0089A0B1 /* List.swift */; };
 		571A78AE28F341BE0089A0B1 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A789E28F341BD0089A0B1 /* ContentViewModel.swift */; };
 		571A78AF28F341BE0089A0B1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A789F28F341BD0089A0B1 /* ContentView.swift */; };
-		571A78B028F341BE0089A0B1 /* EmoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A78A228F341BD0089A0B1 /* EmoteView.swift */; };
-		571A78B128F341BE0089A0B1 /* EmotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A78A328F341BD0089A0B1 /* EmotesView.swift */; };
 		571A78B228F341BE0089A0B1 /* RepoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A78A528F341BD0089A0B1 /* RepoView.swift */; };
 		571A78B328F341BE0089A0B1 /* Hovered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A78A628F341BD0089A0B1 /* Hovered.swift */; };
 		571A78B428F341BE0089A0B1 /* Emote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A78A828F341BD0089A0B1 /* Emote.swift */; };
@@ -46,6 +44,8 @@
 		AA9F08AA28E5A6360098040D /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = AA9F08A928E5A6360098040D /* SDWebImageSwiftUI */; };
 		AA9F08AC28E5A8360098040D /* RepoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F08AB28E5A8360098040D /* RepoView.swift */; };
 		AAD030A228EB155E0040718F /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = AAD030A128EB155E0040718F /* AlertToast */; };
+		E619D9B628F356BE006BD8B4 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = E619D9B528F356BE006BD8B4 /* Array.swift */; };
+		E619D9B828F3572E006BD8B4 /* EmotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E619D9B728F3572E006BD8B4 /* EmotesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,8 +80,6 @@
 		571A789B28F341BD0089A0B1 /* List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		571A789E28F341BD0089A0B1 /* ContentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		571A789F28F341BD0089A0B1 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		571A78A228F341BD0089A0B1 /* EmoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoteView.swift; sourceTree = "<group>"; };
-		571A78A328F341BD0089A0B1 /* EmotesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotesView.swift; sourceTree = "<group>"; };
 		571A78A528F341BD0089A0B1 /* RepoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoView.swift; sourceTree = "<group>"; };
 		571A78A628F341BD0089A0B1 /* Hovered.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hovered.swift; sourceTree = "<group>"; };
 		571A78A828F341BD0089A0B1 /* Emote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emote.swift; sourceTree = "<group>"; };
@@ -105,6 +103,8 @@
 		AA9F08A628E58D490098040D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AA9F08AB28E5A8360098040D /* RepoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoView.swift; sourceTree = "<group>"; };
 		AAD5D80928EEC7D900FF08DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E619D9B528F356BE006BD8B4 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		E619D9B728F3572E006BD8B4 /* EmotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				571A789B28F341BD0089A0B1 /* List.swift */,
+				E619D9B528F356BE006BD8B4 /* Array.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -194,8 +195,7 @@
 		571A78A128F341BD0089A0B1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				571A78A228F341BD0089A0B1 /* EmoteView.swift */,
-				571A78A328F341BD0089A0B1 /* EmotesView.swift */,
+				E619D9B728F3572E006BD8B4 /* EmotesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -203,8 +203,7 @@
 		571A78A428F341BD0089A0B1 /* Repo */ = {
 			isa = PBXGroup;
 			children = (
-				571A78A528F341BD0089A0B1 /* RepoView.swift */,
-				571A78A628F341BD0089A0B1 /* Hovered.swift */,
+				E619D9B428F3564E006BD8B4 /* Views */,
 			);
 			path = Repo;
 			sourceTree = "<group>";
@@ -212,6 +211,7 @@
 		571A78A728F341BD0089A0B1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				571A78A628F341BD0089A0B1 /* Hovered.swift */,
 				571A78A828F341BD0089A0B1 /* Emote.swift */,
 			);
 			path = Models;
@@ -313,6 +313,14 @@
 				AA9F08A428E58C020098040D /* RepositoryManager.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		E619D9B428F3564E006BD8B4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				571A78A528F341BD0089A0B1 /* RepoView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -470,13 +478,13 @@
 				571A78B428F341BE0089A0B1 /* Emote.swift in Sources */,
 				571A78B728F341BE0089A0B1 /* EventMonitor.swift in Sources */,
 				571A78B628F341BE0089A0B1 /* SharePicker.swift in Sources */,
+				E619D9B828F3572E006BD8B4 /* EmotesView.swift in Sources */,
 				571A78AE28F341BE0089A0B1 /* ContentViewModel.swift in Sources */,
 				571A78AF28F341BE0089A0B1 /* ContentView.swift in Sources */,
 				571A78B228F341BE0089A0B1 /* RepoView.swift in Sources */,
 				571A78B528F341BE0089A0B1 /* StatusBarController.swift in Sources */,
 				571A78C728F344EA0089A0B1 /* MainViewController.swift in Sources */,
-				571A78B128F341BE0089A0B1 /* EmotesView.swift in Sources */,
-				571A78B028F341BE0089A0B1 /* EmoteView.swift in Sources */,
+				E619D9B628F356BE006BD8B4 /* Array.swift in Sources */,
 				571A788D28F340FE0089A0B1 /* AppDelegate.swift in Sources */,
 				571A78AD28F341BE0089A0B1 /* List.swift in Sources */,
 				571A78B328F341BE0089A0B1 /* Hovered.swift in Sources */,
@@ -537,6 +545,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Nitroless macOS/Nitroless_macOS.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -550,7 +559,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.llsc12.Nitroless-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -566,6 +575,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Nitroless macOS/Nitroless_macOS.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -579,7 +589,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.llsc12.Nitroless-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";

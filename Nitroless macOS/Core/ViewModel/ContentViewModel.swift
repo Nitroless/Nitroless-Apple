@@ -25,6 +25,22 @@ class ContentViewModel: ObservableObject {
         self.selectedRepo = Repo(active: false, url: "", emote: Emote(name: "", icon: "", path: "", emotes: [EmoteElement]()))
     }
     
+    func askBeforeExiting() {
+        let msg = NSAlert()
+        msg.addButton(withTitle: "Yes")
+        msg.addButton(withTitle: "No")
+        msg.messageText = "Quit Nitroless"
+        msg.informativeText = "Want to quit Nitroless?"
+        
+        let response: NSApplication.ModalResponse = msg.runModal()
+        
+        if (response == NSApplication.ModalResponse.alertFirstButtonReturn) {
+            NSApplication.shared.terminate(self)
+        } else {
+            return
+        }
+    }
+    
     func getRepoFromUser(title: String, question: String, defaultValue: String) {
         let msg = NSAlert()
         msg.addButton(withTitle: "OK")      // 1st button
@@ -137,7 +153,8 @@ class ContentViewModel: ObservableObject {
                     guard let data = data else { return }
                     
                     do {
-                        let emote = try JSONDecoder().decode(Emote.self, from: data)
+                        var emote = try JSONDecoder().decode(Emote.self, from: data)
+                        emote = Emote(name: emote.name, icon: emote.icon, path: emote.path, emotes: emote.emotes.unique{$0.name == $1.name})
                         DispatchQueue.main.async {
                             let repo = Repo(active: false, url: urlString, emote: emote)
                             self.repos.append(repo)
