@@ -8,7 +8,10 @@
 import Foundation
 import SwiftUI
 import SDWebImageSwiftUI
-import Introspect
+
+// colors
+let discordBgDark = Color(red: 0.2156, green: 0.2235, blue: 0.2431)
+let discordBgLight = Color(red: 1, green: 1, blue: 1)
 
 struct KeyboardView: View {
     
@@ -16,10 +19,10 @@ struct KeyboardView: View {
     
     var vc: KeyboardViewController
     
-    lazy var showGlobe: Bool = {
+    var showGlobe: Bool {
         let bool = vc.needsInputModeSwitchKey
         return bool
-    }()
+    }
     
     @EnvironmentObject var repoMan: RepoManager
     
@@ -31,13 +34,17 @@ struct KeyboardView: View {
             if vc.hasFullAccess {
                 kb
             } else {
-                askForAccess
+                AskForAccess()
+            }
+            if showGlobe {
+                VStack(alignment: .leading) {
+                    kbSwitch(vc: vc)
+                        .frame(width: 30, height: 30)
+                }
             }
         }
         .frame(maxWidth: .infinity)
         .background {
-            let discordBgDark = Color(red: 0.2156, green: 0.2235, blue: 0.2431)
-            let discordBgLight = Color(red: 1, green: 1, blue: 1)
             Rectangle()
                 .foregroundColor(cs == .light ? discordBgLight : discordBgDark)
         }
@@ -53,18 +60,95 @@ struct KeyboardView: View {
         }
     }
     
-    @ViewBuilder
-    var askForAccess: some View {
-        Text("Heya, Nitroless Keyboard requires full keyboard access.\nSettings > General > Keyboards > Keyboard - Nitroless > Allow Full Access")
-            .padding()
-            .padding(.bottom)
-        
-        kbSwitch(vc: vc)
-            .frame(width: 30, height: 30)
-    }
-    
     func type(_ str: String) {
         vc.textDocumentProxy.insertText(str)
+    }
+}
+
+struct AskForAccess: View {
+    
+    @Environment(\.colorScheme) var cs
+    
+    var width: CGFloat {
+        return UIScreen.main.bounds.width
+    }
+    
+    @State var show1 = true
+    @State var show2 = false
+    
+    @State var offset: CGFloat = 0
+    
+    var body: some View {
+        HStack {
+            if show1 {
+                VStack {
+                    Text("Heya, Nitroless Keyboard requires full keyboard access.\nSettings > General > Keyboards > Keyboard - Nitroless > Allow Full Access")
+                        .padding(10)
+                        .background(content: {
+                            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                                .foregroundColor(cs == .light ? discordBgLight : discordBgDark)
+                                .brightness(-0.1)
+                                .shadow(radius: 5)
+                        })
+                        .padding(12)
+                        .padding(.vertical)
+                        .padding(.horizontal, 5)
+                    
+                    Button("Why?") {
+                        toSecondPage()
+                    }
+                    .buttonStyle(.bordered)
+                    .padding(.bottom, 5)
+                }
+                .frame(width: width)
+            }
+            if show2 {
+                VStack {
+                    Text("We use full access to access networking so we can load repos and emotes. Nothing else happens! Feel free to check the open-source GitHub repo!")
+                        .padding(10)
+                        .background(content: {
+                            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                                .foregroundColor(cs == .light ? discordBgLight : discordBgDark)
+                                .brightness(-0.1)
+                                .shadow(radius: 5)
+                        })
+                        .padding(12)
+                        .padding(.vertical)
+                        .padding(.horizontal, 5)
+                    
+                    Button("Back") {
+                        toFirstPage()
+                    }
+                    .buttonStyle(.bordered)
+                    .padding(.bottom, 5)
+                }
+                .frame(width: width)
+            }
+        }
+        .offset(x: offset)
+    }
+    
+    let idk: CGFloat = -7
+    
+    func toSecondPage() {
+        show1 = true
+        show2 = true
+        offset = (width - idk) / 2
+        
+        withAnimation(.spring()) {
+            offset.negate()
+        }
+    }
+    
+    func toFirstPage() {
+        show1 = true
+        show2 = true
+        offset = ((width - idk) / 2) * -1
+        
+        withAnimation(.spring()) {
+            offset.negate()
+        }
+        
     }
 }
 
@@ -81,14 +165,7 @@ struct kbSwitch: UIViewRepresentable {
         button.sizeToFit()
         button.translatesAutoresizingMaskIntoConstraints = false
         
-        var textColor: UIColor
-        let proxy = vc.textDocumentProxy
-        if proxy.keyboardAppearance == UIKeyboardAppearance.dark {
-            textColor = UIColor.white
-        } else {
-            textColor = UIColor.darkGray
-        }
-        
+        var textColor: UIColor = .lightGray
         button.tintColor = textColor
         return button
     }
@@ -129,18 +206,4 @@ struct BobbingView<Content: View>: View {
         }
     }
     
-}
-
-extension View {
-    public func introspectButton(customize: @escaping (UIButton) -> ()) -> some View {
-        return inject(UIKitIntrospectionView(
-            selector: { introspectionView in
-                guard let viewHost = Introspect.findViewHost(from: introspectionView) else {
-                    return nil
-                }
-                return Introspect.previousSibling(containing: UIButton.self, from: viewHost)
-            },
-            customize: customize
-        ))
-    }
 }
