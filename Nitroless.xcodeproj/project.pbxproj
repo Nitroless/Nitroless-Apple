@@ -7,6 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		571A788D28F340FE0089A0B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A788C28F340FE0089A0B1 /* AppDelegate.swift */; };
+		571A789428F340FF0089A0B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 571A789228F340FF0089A0B1 /* Main.storyboard */; };
+		571A789928F341290089A0B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD5D80928EEC7D900FF08DA /* Assets.xcassets */; };
+		571A78AD28F341BE0089A0B1 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A789B28F341BD0089A0B1 /* List.swift */; };
+		571A78AE28F341BE0089A0B1 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A789E28F341BD0089A0B1 /* ContentViewModel.swift */; };
+		571A78AF28F341BE0089A0B1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A789F28F341BD0089A0B1 /* ContentView.swift */; };
+		571A78B028F341BE0089A0B1 /* EmoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A78A228F341BD0089A0B1 /* EmoteView.swift */; };
+		571A78B128F341BE0089A0B1 /* EmotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A78A328F341BD0089A0B1 /* EmotesView.swift */; };
+		571A78B228F341BE0089A0B1 /* RepoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A78A528F341BD0089A0B1 /* RepoView.swift */; };
+		571A78B328F341BE0089A0B1 /* Hovered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A78A628F341BD0089A0B1 /* Hovered.swift */; };
+		571A78B428F341BE0089A0B1 /* Emote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A78A828F341BD0089A0B1 /* Emote.swift */; };
+		571A78B528F341BE0089A0B1 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A78AA28F341BE0089A0B1 /* StatusBarController.swift */; };
+		571A78B628F341BE0089A0B1 /* SharePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A78AB28F341BE0089A0B1 /* SharePicker.swift */; };
+		571A78B728F341BE0089A0B1 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A78AC28F341BE0089A0B1 /* EventMonitor.swift */; };
+		571A78B928F3427D0089A0B1 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 571A78B828F3427D0089A0B1 /* SDWebImageSwiftUI */; };
+		571A78BB28F3427D0089A0B1 /* SDWebImageWebPCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 571A78BA28F3427D0089A0B1 /* SDWebImageWebPCoder */; };
+		571A78C028F343EB0089A0B1 /* SimpleToast in Frameworks */ = {isa = PBXBuildFile; productRef = 571A78BF28F343EB0089A0B1 /* SimpleToast */; };
+		571A78C228F3440D0089A0B1 /* SDWebImageWebPCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 571A78C128F3440D0089A0B1 /* SDWebImageWebPCoder */; };
+		571A78C528F344550089A0B1 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 571A78C428F344550089A0B1 /* Introspect */; };
+		571A78C728F344EA0089A0B1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A78C628F344EA0089A0B1 /* MainViewController.swift */; };
 		5721D6C228F1E5A000148391 /* AddDefaultRepos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5721D6C128F1E5A000148391 /* AddDefaultRepos.swift */; };
 		5721D6C428F1E78D00148391 /* DefaultRepoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5721D6C328F1E78D00148391 /* DefaultRepoCell.swift */; };
 		5783B54928ECBA9000CFF460 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5783B54828ECBA9000CFF460 /* KeyboardViewController.swift */; };
@@ -53,6 +73,22 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		571A788A28F340FE0089A0B1 /* Nitroless macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nitroless macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		571A788C28F340FE0089A0B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		571A789328F340FF0089A0B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		571A789528F340FF0089A0B1 /* Nitroless_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nitroless_macOS.entitlements; sourceTree = "<group>"; };
+		571A789B28F341BD0089A0B1 /* List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
+		571A789E28F341BD0089A0B1 /* ContentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		571A789F28F341BD0089A0B1 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		571A78A228F341BD0089A0B1 /* EmoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoteView.swift; sourceTree = "<group>"; };
+		571A78A328F341BD0089A0B1 /* EmotesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotesView.swift; sourceTree = "<group>"; };
+		571A78A528F341BD0089A0B1 /* RepoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoView.swift; sourceTree = "<group>"; };
+		571A78A628F341BD0089A0B1 /* Hovered.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hovered.swift; sourceTree = "<group>"; };
+		571A78A828F341BD0089A0B1 /* Emote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emote.swift; sourceTree = "<group>"; };
+		571A78AA28F341BE0089A0B1 /* StatusBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
+		571A78AB28F341BE0089A0B1 /* SharePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharePicker.swift; sourceTree = "<group>"; };
+		571A78AC28F341BE0089A0B1 /* EventMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
+		571A78C628F344EA0089A0B1 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5721D6C128F1E5A000148391 /* AddDefaultRepos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDefaultRepos.swift; sourceTree = "<group>"; };
 		5721D6C328F1E78D00148391 /* DefaultRepoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRepoCell.swift; sourceTree = "<group>"; };
 		5783B54628ECBA9000CFF460 /* Keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Keyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,10 +108,22 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		571A788728F340FE0089A0B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				571A78BB28F3427D0089A0B1 /* SDWebImageWebPCoder in Frameworks */,
+				571A78C528F344550089A0B1 /* Introspect in Frameworks */,
+				571A78C028F343EB0089A0B1 /* SimpleToast in Frameworks */,
+				571A78B928F3427D0089A0B1 /* SDWebImageSwiftUI in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5783B54328ECBA9000CFF460 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				571A78C228F3440D0089A0B1 /* SDWebImageWebPCoder in Frameworks */,
 				5783B55428ECD8B300CFF460 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -93,6 +141,92 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		571A788B28F340FE0089A0B1 /* Nitroless macOS */ = {
+			isa = PBXGroup;
+			children = (
+				571A789C28F341BD0089A0B1 /* Core */,
+				571A789A28F341BD0089A0B1 /* Extensions */,
+				571A78A728F341BD0089A0B1 /* Models */,
+				571A78A928F341BE0089A0B1 /* Utils */,
+				571A788C28F340FE0089A0B1 /* AppDelegate.swift */,
+				571A78C628F344EA0089A0B1 /* MainViewController.swift */,
+				571A789228F340FF0089A0B1 /* Main.storyboard */,
+				571A789528F340FF0089A0B1 /* Nitroless_macOS.entitlements */,
+			);
+			path = "Nitroless macOS";
+			sourceTree = "<group>";
+		};
+		571A789A28F341BD0089A0B1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				571A789B28F341BD0089A0B1 /* List.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		571A789C28F341BD0089A0B1 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				571A789D28F341BD0089A0B1 /* ViewModel */,
+				571A789F28F341BD0089A0B1 /* ContentView.swift */,
+				571A78A028F341BD0089A0B1 /* Emotes */,
+				571A78A428F341BD0089A0B1 /* Repo */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		571A789D28F341BD0089A0B1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				571A789E28F341BD0089A0B1 /* ContentViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		571A78A028F341BD0089A0B1 /* Emotes */ = {
+			isa = PBXGroup;
+			children = (
+				571A78A128F341BD0089A0B1 /* Views */,
+			);
+			path = Emotes;
+			sourceTree = "<group>";
+		};
+		571A78A128F341BD0089A0B1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				571A78A228F341BD0089A0B1 /* EmoteView.swift */,
+				571A78A328F341BD0089A0B1 /* EmotesView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		571A78A428F341BD0089A0B1 /* Repo */ = {
+			isa = PBXGroup;
+			children = (
+				571A78A528F341BD0089A0B1 /* RepoView.swift */,
+				571A78A628F341BD0089A0B1 /* Hovered.swift */,
+			);
+			path = Repo;
+			sourceTree = "<group>";
+		};
+		571A78A728F341BD0089A0B1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				571A78A828F341BD0089A0B1 /* Emote.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		571A78A928F341BE0089A0B1 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				571A78AA28F341BE0089A0B1 /* StatusBarController.swift */,
+				571A78AB28F341BE0089A0B1 /* SharePicker.swift */,
+				571A78AC28F341BE0089A0B1 /* EventMonitor.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		5721D6BF28F1E56400148391 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +277,7 @@
 				AA431D7A28EEEBB90066EBC4 /* Shared */,
 				5783B54728ECBA9000CFF460 /* Keyboard */,
 				AA9F089228E58B450098040D /* Nitroless iOS */,
+				571A788B28F340FE0089A0B1 /* Nitroless macOS */,
 				AA9F089128E58B450098040D /* Products */,
 				57F906E228EB3C8D001640BB /* Frameworks */,
 			);
@@ -153,6 +288,7 @@
 			children = (
 				AA9F089028E58B450098040D /* Nitroless iOS.app */,
 				5783B54628ECBA9000CFF460 /* Keyboard.appex */,
+				571A788A28F340FE0089A0B1 /* Nitroless macOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -182,6 +318,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		571A788928F340FE0089A0B1 /* Nitroless macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 571A789628F340FF0089A0B1 /* Build configuration list for PBXNativeTarget "Nitroless macOS" */;
+			buildPhases = (
+				571A788628F340FE0089A0B1 /* Sources */,
+				571A788728F340FE0089A0B1 /* Frameworks */,
+				571A788828F340FE0089A0B1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Nitroless macOS";
+			packageProductDependencies = (
+				571A78B828F3427D0089A0B1 /* SDWebImageSwiftUI */,
+				571A78BA28F3427D0089A0B1 /* SDWebImageWebPCoder */,
+				571A78BF28F343EB0089A0B1 /* SimpleToast */,
+				571A78C428F344550089A0B1 /* Introspect */,
+			);
+			productName = "Nitroless macOS";
+			productReference = 571A788A28F340FE0089A0B1 /* Nitroless macOS.app */;
+			productType = "com.apple.product-type.application";
+		};
 		5783B54528ECBA9000CFF460 /* Keyboard */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5783B54E28ECBA9000CFF460 /* Build configuration list for PBXNativeTarget "Keyboard" */;
@@ -197,6 +356,7 @@
 			name = Keyboard;
 			packageProductDependencies = (
 				5783B55328ECD8B300CFF460 /* SDWebImageSwiftUI */,
+				571A78C128F3440D0089A0B1 /* SDWebImageWebPCoder */,
 			);
 			productName = Keyboard;
 			productReference = 5783B54628ECBA9000CFF460 /* Keyboard.appex */;
@@ -236,6 +396,9 @@
 				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
+					571A788928F340FE0089A0B1 = {
+						CreatedOnToolsVersion = 14.1;
+					};
 					5783B54528ECBA9000CFF460 = {
 						CreatedOnToolsVersion = 14.1;
 					};
@@ -257,6 +420,8 @@
 				AA9F08A828E5A6360098040D /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				AA6250BA28EB047200C7030E /* XCRemoteSwiftPackageReference "SDWebImageWebPCoder" */,
 				AAD030A028EB155D0040718F /* XCRemoteSwiftPackageReference "AlertToast" */,
+				571A78BC28F343E50089A0B1 /* XCRemoteSwiftPackageReference "SimpleToast" */,
+				571A78C328F344550089A0B1 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = AA9F089128E58B450098040D /* Products */;
 			projectDirPath = "";
@@ -264,11 +429,21 @@
 			targets = (
 				AA9F088F28E58B450098040D /* Nitroless iOS */,
 				5783B54528ECBA9000CFF460 /* Keyboard */,
+				571A788928F340FE0089A0B1 /* Nitroless macOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		571A788828F340FE0089A0B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				571A789928F341290089A0B1 /* Assets.xcassets in Resources */,
+				571A789428F340FF0089A0B1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5783B54428ECBA9000CFF460 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -288,6 +463,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		571A788628F340FE0089A0B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				571A78B428F341BE0089A0B1 /* Emote.swift in Sources */,
+				571A78B728F341BE0089A0B1 /* EventMonitor.swift in Sources */,
+				571A78B628F341BE0089A0B1 /* SharePicker.swift in Sources */,
+				571A78AE28F341BE0089A0B1 /* ContentViewModel.swift in Sources */,
+				571A78AF28F341BE0089A0B1 /* ContentView.swift in Sources */,
+				571A78B228F341BE0089A0B1 /* RepoView.swift in Sources */,
+				571A78B528F341BE0089A0B1 /* StatusBarController.swift in Sources */,
+				571A78C728F344EA0089A0B1 /* MainViewController.swift in Sources */,
+				571A78B128F341BE0089A0B1 /* EmotesView.swift in Sources */,
+				571A78B028F341BE0089A0B1 /* EmoteView.swift in Sources */,
+				571A788D28F340FE0089A0B1 /* AppDelegate.swift in Sources */,
+				571A78AD28F341BE0089A0B1 /* List.swift in Sources */,
+				571A78B328F341BE0089A0B1 /* Hovered.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5783B54228ECBA9000CFF460 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -324,7 +519,76 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		571A789228F340FF0089A0B1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				571A789328F340FF0089A0B1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		571A789728F340FF0089A0B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Nitroless macOS/Nitroless_macOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 566RT33SA2;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.llsc12.Nitroless-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		571A789828F340FF0089A0B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Nitroless macOS/Nitroless_macOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 566RT33SA2;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.llsc12.Nitroless-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		5783B54F28ECBA9000CFF460 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -560,6 +824,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		571A789628F340FF0089A0B1 /* Build configuration list for PBXNativeTarget "Nitroless macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				571A789728F340FF0089A0B1 /* Debug */,
+				571A789828F340FF0089A0B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5783B54E28ECBA9000CFF460 /* Build configuration list for PBXNativeTarget "Keyboard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -590,6 +863,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		571A78BC28F343E50089A0B1 /* XCRemoteSwiftPackageReference "SimpleToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sanzaru/SimpleToast";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.2;
+			};
+		};
+		571A78C328F344550089A0B1 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.4;
+			};
+		};
 		AA6250BA28EB047200C7030E /* XCRemoteSwiftPackageReference "SDWebImageWebPCoder" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageWebPCoder";
@@ -617,6 +906,31 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		571A78B828F3427D0089A0B1 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA9F08A828E5A6360098040D /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+		571A78BA28F3427D0089A0B1 /* SDWebImageWebPCoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA6250BA28EB047200C7030E /* XCRemoteSwiftPackageReference "SDWebImageWebPCoder" */;
+			productName = SDWebImageWebPCoder;
+		};
+		571A78BF28F343EB0089A0B1 /* SimpleToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 571A78BC28F343E50089A0B1 /* XCRemoteSwiftPackageReference "SimpleToast" */;
+			productName = SimpleToast;
+		};
+		571A78C128F3440D0089A0B1 /* SDWebImageWebPCoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA6250BA28EB047200C7030E /* XCRemoteSwiftPackageReference "SDWebImageWebPCoder" */;
+			productName = SDWebImageWebPCoder;
+		};
+		571A78C428F344550089A0B1 /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 571A78C328F344550089A0B1 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
+		};
 		5783B55328ECD8B300CFF460 /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AA9F08A828E5A6360098040D /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
