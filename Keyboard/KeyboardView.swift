@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import SDWebImageSwiftUI
+import Introspect
 
 struct KeyboardView: View {
     
@@ -19,6 +20,8 @@ struct KeyboardView: View {
         let bool = vc.needsInputModeSwitchKey
         return bool
     }()
+    
+    @EnvironmentObject var repoMan: RepoManager
     
     var body: some View {
         // kb needs full access
@@ -43,8 +46,10 @@ struct KeyboardView: View {
     @ViewBuilder
     var kb: some View {
         HStack {
-//            let repos =
-//            ForEach(0..<, content: <#T##(Data.Element) -> Content#>)
+            let repos = repoMan.repos
+            ForEach(0..<repos.count, id: \.self) { i in
+                let repo = repos[i]
+            }
         }
     }
     
@@ -52,11 +57,55 @@ struct KeyboardView: View {
     var askForAccess: some View {
         Text("Heya, Nitroless Keyboard requires full keyboard access.\nSettings > General > Keyboards > Keyboard - Nitroless > Allow Full Access")
             .padding()
+            .padding(.bottom)
+        
+        kbSwitch(vc: vc)
+            .frame(width: 30, height: 30)
     }
     
     func type(_ str: String) {
         vc.textDocumentProxy.insertText(str)
     }
+}
+
+struct kbSwitch: UIViewRepresentable {
+    
+    var vc: KeyboardViewController
+    
+    func makeUIView(context: Context) -> UIButton {
+        let button = UIButton()
+        let imgConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .regular, scale: .large)
+        button.setImage(UIImage(systemName: "globe", withConfiguration: imgConfig), for: .normal)
+        button.addTarget(self, action: #selector(vc.handleInputModeList(from:with:)), for: .allTouchEvents)
+        
+        button.sizeToFit()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        var textColor: UIColor
+        let proxy = vc.textDocumentProxy
+        if proxy.keyboardAppearance == UIKeyboardAppearance.dark {
+            textColor = UIColor.white
+        } else {
+            textColor = UIColor.darkGray
+        }
+        
+        button.tintColor = textColor
+        return button
+    }
+    
+    func updateUIView(_ uiView: UIButton, context: Context) {
+        var textColor: UIColor
+        let proxy = vc.textDocumentProxy
+        if proxy.keyboardAppearance == UIKeyboardAppearance.dark {
+            textColor = UIColor.white
+        } else {
+            textColor = UIColor.black
+        }
+        
+        uiView.tintColor = textColor
+    }
+    
+    typealias UIViewType = UIButton
 }
 
 struct BobbingView<Content: View>: View {
@@ -80,4 +129,18 @@ struct BobbingView<Content: View>: View {
         }
     }
     
+}
+
+extension View {
+    public func introspectButton(customize: @escaping (UIButton) -> ()) -> some View {
+        return inject(UIKitIntrospectionView(
+            selector: { introspectionView in
+                guard let viewHost = Introspect.findViewHost(from: introspectionView) else {
+                    return nil
+                }
+                return Introspect.previousSibling(containing: UIButton.self, from: viewHost)
+            },
+            customize: customize
+        ))
+    }
 }
