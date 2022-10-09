@@ -13,6 +13,8 @@
 		5783B54D28ECBA9000CFF460 /* Keyboard.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5783B54628ECBA9000CFF460 /* Keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5783B55228ECCDDA00CFF460 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5783B55128ECCDDA00CFF460 /* KeyboardView.swift */; };
 		5783B55428ECD8B300CFF460 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5783B55328ECD8B300CFF460 /* SDWebImageSwiftUI */; };
+		57A34C4928F2331A00383807 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD5D80928EEC7D900FF08DA /* Assets.xcassets */; };
+		57A34C4A28F2331F00383807 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD5D80928EEC7D900FF08DA /* Assets.xcassets */; };
 		AA431D7628EEEBB00066EBC4 /* RepositoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F08A428E58C020098040D /* RepositoryManager.swift */; };
 		AA431D7728EEEBB00066EBC4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F08A628E58D490098040D /* Constants.swift */; };
 		AA431D7828EEEBB10066EBC4 /* RepositoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F08A428E58C020098040D /* RepositoryManager.swift */; };
@@ -320,6 +322,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57A34C4A28F2331F00383807 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +330,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57A34C4928F2331A00383807 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
