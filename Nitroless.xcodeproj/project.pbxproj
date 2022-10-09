@@ -17,8 +17,6 @@
 		57A34C4A28F2331F00383807 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD5D80928EEC7D900FF08DA /* Assets.xcassets */; };
 		AA431D7628EEEBB00066EBC4 /* RepositoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F08A428E58C020098040D /* RepositoryManager.swift */; };
 		AA431D7728EEEBB00066EBC4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F08A628E58D490098040D /* Constants.swift */; };
-		AA431D7828EEEBB10066EBC4 /* RepositoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F08A428E58C020098040D /* RepositoryManager.swift */; };
-		AA431D7928EEEBB10066EBC4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F08A628E58D490098040D /* Constants.swift */; };
 		AA6250BC28EB047200C7030E /* SDWebImageWebPCoder in Frameworks */ = {isa = PBXBuildFile; productRef = AA6250BB28EB047200C7030E /* SDWebImageWebPCoder */; };
 		AA6250BE28EB088B00C7030E /* Test Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6250BD28EB088B00C7030E /* Test Data.swift */; };
 		AA9F089428E58B450098040D /* NitrolessApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F089328E58B450098040D /* NitrolessApp.swift */; };
@@ -28,9 +26,6 @@
 		AA9F08AA28E5A6360098040D /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = AA9F08A928E5A6360098040D /* SDWebImageSwiftUI */; };
 		AA9F08AC28E5A8360098040D /* RepoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F08AB28E5A8360098040D /* RepoView.swift */; };
 		AAD030A228EB155E0040718F /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = AAD030A128EB155E0040718F /* AlertToast */; };
-		AAD5D80628EEC7D700FF08DA /* Nitroless_macOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD5D80528EEC7D700FF08DA /* Nitroless_macOSApp.swift */; };
-		AAD5D80828EEC7D700FF08DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD5D80728EEC7D700FF08DA /* ContentView.swift */; };
-		AAD5D80A28EEC7D900FF08DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD5D80928EEC7D900FF08DA /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,11 +68,7 @@
 		AA9F08A428E58C020098040D /* RepositoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryManager.swift; sourceTree = "<group>"; };
 		AA9F08A628E58D490098040D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AA9F08AB28E5A8360098040D /* RepoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoView.swift; sourceTree = "<group>"; };
-		AAD5D80328EEC7D700FF08DA /* Nitroless macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nitroless macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AAD5D80528EEC7D700FF08DA /* Nitroless_macOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nitroless_macOSApp.swift; sourceTree = "<group>"; };
-		AAD5D80728EEC7D700FF08DA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AAD5D80928EEC7D900FF08DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AAD5D80E28EEC7D900FF08DA /* Nitroless_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nitroless_macOS.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,13 +87,6 @@
 				AAD030A228EB155E0040718F /* AlertToast in Frameworks */,
 				AA6250BC28EB047200C7030E /* SDWebImageWebPCoder in Frameworks */,
 				AA9F08AA28E5A6360098040D /* SDWebImageSwiftUI in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AAD5D80028EEC7D700FF08DA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,7 +143,6 @@
 				AA431D7A28EEEBB90066EBC4 /* Shared */,
 				5783B54728ECBA9000CFF460 /* Keyboard */,
 				AA9F089228E58B450098040D /* Nitroless iOS */,
-				AAD5D80428EEC7D700FF08DA /* Nitroless macOS */,
 				AA9F089128E58B450098040D /* Products */,
 				57F906E228EB3C8D001640BB /* Frameworks */,
 			);
@@ -170,7 +153,6 @@
 			children = (
 				AA9F089028E58B450098040D /* Nitroless iOS.app */,
 				5783B54628ECBA9000CFF460 /* Keyboard.appex */,
-				AAD5D80328EEC7D700FF08DA /* Nitroless macOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -195,16 +177,6 @@
 				AA9F08A428E58C020098040D /* RepositoryManager.swift */,
 			);
 			path = Utilities;
-			sourceTree = "<group>";
-		};
-		AAD5D80428EEC7D700FF08DA /* Nitroless macOS */ = {
-			isa = PBXGroup;
-			children = (
-				AAD5D80528EEC7D700FF08DA /* Nitroless_macOSApp.swift */,
-				AAD5D80728EEC7D700FF08DA /* ContentView.swift */,
-				AAD5D80E28EEC7D900FF08DA /* Nitroless_macOS.entitlements */,
-			);
-			path = "Nitroless macOS";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,23 +226,6 @@
 			productReference = AA9F089028E58B450098040D /* Nitroless iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		AAD5D80228EEC7D700FF08DA /* Nitroless macOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AAD5D80F28EEC7D900FF08DA /* Build configuration list for PBXNativeTarget "Nitroless macOS" */;
-			buildPhases = (
-				AAD5D7FF28EEC7D700FF08DA /* Sources */,
-				AAD5D80028EEC7D700FF08DA /* Frameworks */,
-				AAD5D80128EEC7D700FF08DA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Nitroless macOS";
-			productName = "Nitroless macOS";
-			productReference = AAD5D80328EEC7D700FF08DA /* Nitroless macOS.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -278,7 +233,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1400;
+				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					5783B54528ECBA9000CFF460 = {
@@ -286,9 +241,6 @@
 					};
 					AA9F088F28E58B450098040D = {
 						CreatedOnToolsVersion = 14.1;
-					};
-					AAD5D80228EEC7D700FF08DA = {
-						CreatedOnToolsVersion = 14.0;
 					};
 				};
 			};
@@ -310,7 +262,6 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AAD5D80228EEC7D700FF08DA /* Nitroless macOS */,
 				AA9F088F28E58B450098040D /* Nitroless iOS */,
 				5783B54528ECBA9000CFF460 /* Keyboard */,
 			);
@@ -331,14 +282,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				57A34C4928F2331A00383807 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AAD5D80128EEC7D700FF08DA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AAD5D80A28EEC7D900FF08DA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,17 +311,6 @@
 				AA9F089428E58B450098040D /* NitrolessApp.swift in Sources */,
 				AA9F08A728E58D490098040D /* Constants.swift in Sources */,
 				AA9F08AC28E5A8360098040D /* RepoView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AAD5D7FF28EEC7D700FF08DA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AA431D7828EEEBB10066EBC4 /* RepositoryManager.swift in Sources */,
-				AAD5D80828EEC7D700FF08DA /* ContentView.swift in Sources */,
-				AAD5D80628EEC7D700FF08DA /* Nitroless_macOSApp.swift in Sources */,
-				AA431D7928EEEBB10066EBC4 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,68 +557,6 @@
 			};
 			name = Release;
 		};
-		AAD5D81028EEC7D900FF08DA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Nitroless macOS/Nitroless_macOS.entitlements";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = 566RT33SA2;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Nitroless;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.llsc12.Nitroless-macOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		AAD5D81128EEC7D900FF08DA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Nitroless macOS/Nitroless_macOS.entitlements";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = 566RT33SA2;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Nitroless;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.llsc12.Nitroless-macOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -713,15 +583,6 @@
 			buildConfigurations = (
 				AA9F089F28E58B470098040D /* Debug */,
 				AA9F08A028E58B470098040D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		AAD5D80F28EEC7D900FF08DA /* Build configuration list for PBXNativeTarget "Nitroless macOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AAD5D81028EEC7D900FF08DA /* Debug */,
-				AAD5D81128EEC7D900FF08DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
