@@ -52,10 +52,13 @@ struct KeyboardView: View {
     
     @ViewBuilder
     var kb: some View {
-        HStack {
-            let repos = repoMan.repos
-            ForEach(0..<repos.count, id: \.self) { i in
-                let repo = repos[i]
+        ScrollView(.horizontal) {
+            HStack {
+                let repos = repoMan.repos
+                ForEach(0..<repos.count, id: \.self) { i in
+                    let repo = repos[i]
+                    Text(repo.repoData!.name)
+                }
             }
         }
     }
@@ -63,7 +66,7 @@ struct KeyboardView: View {
     func type(_ str: String) {
         vc.textDocumentProxy.insertText(str)
     }
-}
+} //cum
 
 struct AskForAccess: View {
     
@@ -165,20 +168,13 @@ struct kbSwitch: UIViewRepresentable {
         button.sizeToFit()
         button.translatesAutoresizingMaskIntoConstraints = false
         
-        var textColor: UIColor = .lightGray
+        let textColor: UIColor = .lightGray
         button.tintColor = textColor
         return button
     }
     
     func updateUIView(_ uiView: UIButton, context: Context) {
-        var textColor: UIColor
-        let proxy = vc.textDocumentProxy
-        if proxy.keyboardAppearance == UIKeyboardAppearance.dark {
-            textColor = UIColor.white
-        } else {
-            textColor = UIColor.black
-        }
-        
+        let textColor: UIColor = .lightGray
         uiView.tintColor = textColor
     }
     

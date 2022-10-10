@@ -58,6 +58,7 @@ struct AddDefaultRepos: View {
             } label: {
                 Text("Browse")
                     .font(.title2)
+                    .padding(.bottom, 4)
             }
             .buttonStyle(.bordered)
         }
