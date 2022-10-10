@@ -130,7 +130,7 @@ struct EmotesView: View {
             })
         } else {
             List {
-                Text("Welcome to Nitroless")
+                HomeView(viewModel: viewModel)
             }
             .removeBackground()
         }

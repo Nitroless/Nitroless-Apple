@@ -12,6 +12,7 @@ class ContentViewModel: ObservableObject {
     @Published var selectedRepo = Repo(active: false, url: "", emote: Emote(name: "", icon: "", path: "", emotes: [EmoteElement]()))
     @Published var isLoading = false
     @Published var isHomeActive = true
+    @Published var isAboutActive = true
     
     init() {
         self.fetchRepos()

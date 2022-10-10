@@ -46,6 +46,8 @@
 		AAD030A228EB155E0040718F /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = AAD030A128EB155E0040718F /* AlertToast */; };
 		E619D9B628F356BE006BD8B4 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = E619D9B528F356BE006BD8B4 /* Array.swift */; };
 		E619D9B828F3572E006BD8B4 /* EmotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E619D9B728F3572E006BD8B4 /* EmotesView.swift */; };
+		E619D9D128F3BA99006BD8B4 /* UniSans.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = E619D9CE28F3BA2D006BD8B4 /* UniSans.otf */; };
+		E619D9D528F3BC36006BD8B4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E619D9D428F3BC36006BD8B4 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,16 @@
 				5783B54D28ECBA9000CFF460 /* Keyboard.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E619D9D028F3BA86006BD8B4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Fonts;
+			dstSubfolderSpec = 7;
+			files = (
+				E619D9D128F3BA99006BD8B4 /* UniSans.otf in CopyFiles */,
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -105,6 +117,9 @@
 		AAD5D80928EEC7D900FF08DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E619D9B528F356BE006BD8B4 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		E619D9B728F3572E006BD8B4 /* EmotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotesView.swift; sourceTree = "<group>"; };
+		E619D9CE28F3BA2D006BD8B4 /* UniSans.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = UniSans.otf; sourceTree = "<group>"; };
+		E619D9CF28F3BA69006BD8B4 /* Nitroless-macOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Nitroless-macOS-Info.plist"; sourceTree = SOURCE_ROOT; };
+		E619D9D428F3BC36006BD8B4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +159,8 @@
 		571A788B28F340FE0089A0B1 /* Nitroless macOS */ = {
 			isa = PBXGroup;
 			children = (
+				E619D9CF28F3BA69006BD8B4 /* Nitroless-macOS-Info.plist */,
+				E619D9CD28F3BA20006BD8B4 /* Fonts */,
 				571A789C28F341BD0089A0B1 /* Core */,
 				571A789A28F341BD0089A0B1 /* Extensions */,
 				571A78A728F341BD0089A0B1 /* Models */,
@@ -168,6 +185,7 @@
 		571A789C28F341BD0089A0B1 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				E619D9D228F3BC17006BD8B4 /* Home */,
 				571A789D28F341BD0089A0B1 /* ViewModel */,
 				571A789F28F341BD0089A0B1 /* ContentView.swift */,
 				571A78A028F341BD0089A0B1 /* Emotes */,
@@ -323,6 +341,30 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		E619D9CD28F3BA20006BD8B4 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E619D9CE28F3BA2D006BD8B4 /* UniSans.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		E619D9D228F3BC17006BD8B4 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				E619D9D328F3BC23006BD8B4 /* Views */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		E619D9D328F3BC23006BD8B4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E619D9D428F3BC36006BD8B4 /* HomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -333,6 +375,7 @@
 				571A788628F340FE0089A0B1 /* Sources */,
 				571A788728F340FE0089A0B1 /* Frameworks */,
 				571A788828F340FE0089A0B1 /* Resources */,
+				E619D9D028F3BA86006BD8B4 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -476,6 +519,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				571A78B428F341BE0089A0B1 /* Emote.swift in Sources */,
+				E619D9D528F3BC36006BD8B4 /* HomeView.swift in Sources */,
 				571A78B728F341BE0089A0B1 /* EventMonitor.swift in Sources */,
 				571A78B628F341BE0089A0B1 /* SharePicker.swift in Sources */,
 				E619D9B828F3572E006BD8B4 /* EmotesView.swift in Sources */,
@@ -552,6 +596,7 @@
 				DEVELOPMENT_TEAM = 566RT33SA2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Nitroless-macOS-Info.plist";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -582,6 +627,7 @@
 				DEVELOPMENT_TEAM = 566RT33SA2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Nitroless-macOS-Info.plist";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
