@@ -18,9 +18,17 @@ struct Emote: Codable {
     let emotes: [EmoteElement]
 }
 
-struct EmoteElement: Codable {
+struct EmoteElement: Codable, Equatable {
     let name: String
     let type: TypeEnum
+}
+
+func ==(lhs: EmoteElement, rhs: EmoteElement) -> Bool {
+    if lhs.name == rhs.name && lhs.type == rhs.type {
+        return true
+    } else {
+        return false
+    }
 }
 
 enum TypeEnum: String, Codable {

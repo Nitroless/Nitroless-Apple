@@ -30,6 +30,7 @@ struct EmotesView: View {
                         Text("\(viewModel.selectedRepo.emote.name)")
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
+                    .font(.title)
                     Spacer()
                     HStack(spacing: 1) {
                         Text("URL: ")
@@ -95,17 +96,21 @@ struct EmotesView: View {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 50))]) {
                     ForEach (viewModel.selectedRepo.emote.emotes, id: \.name) {
                         emote in
-                        Button {
-                            self.showToast = true
-                            pasteboard.clearContents()
-                            pasteboard.setString(String("\(viewModel.selectedRepo.url)\(viewModel.selectedRepo.emote.path == "" ? "" : "\(viewModel.selectedRepo.emote.path)/")\(emote.name).\(emote.type)"), forType: NSPasteboard.PasteboardType.string)
-                        } label: {
-                            WebImage(url: URL(string: "\(viewModel.selectedRepo.url)\(viewModel.selectedRepo.emote.path == "" ? "" : "\(viewModel.selectedRepo.emote.path)/")\(emote.name).\(emote.type)"))
-                                .resizable()
-                                .frame(width: 48, height: 48)
-                                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                        if viewModel.isAnimating {
+                            Button {
+                                self.showToast = true
+                                pasteboard.clearContents()
+                                pasteboard.setString(String("\(viewModel.selectedRepo.url)\(viewModel.selectedRepo.emote.path == "" ? "" : "\(viewModel.selectedRepo.emote.path)/")\(emote.name).\(emote.type)"), forType: NSPasteboard.PasteboardType.string)
+                                //TODO
+//                                viewModel.addToFrequentlyUsedEmotes(frequentEmote: FrequentlyUsedEmotes(url: viewModel.selectedRepo.url, path: viewModel.selectedRepo.emote.path, emote: EmoteElement(name: emote.name, type: emote.type)))
+                            } label: {
+                                WebImage(url: URL(string: "\(viewModel.selectedRepo.url)\(viewModel.selectedRepo.emote.path == "" ? "" : "\(viewModel.selectedRepo.emote.path)/")\(emote.name).\(emote.type)"))
+                                    .resizable()
+                                    .frame(width: 48, height: 48)
+                                    .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                            }
+                            .buttonStyle(.plain)
                         }
-                        .buttonStyle(.plain)
                     }
                 }
                 .padding(20)

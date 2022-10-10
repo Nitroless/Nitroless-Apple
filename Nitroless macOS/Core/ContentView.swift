@@ -20,7 +20,11 @@ struct ContentView: View {
                maxWidth: .infinity,
                minHeight: 0,
                maxHeight: .infinity
-        )
+        ).onAppear {
+            viewModel.allowAnimation()
+        }.onDisappear {
+            viewModel.killAnimation()
+        }
     }
 }
 

@@ -48,6 +48,9 @@
 		E619D9B828F3572E006BD8B4 /* EmotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E619D9B728F3572E006BD8B4 /* EmotesView.swift */; };
 		E619D9D128F3BA99006BD8B4 /* UniSans.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = E619D9CE28F3BA2D006BD8B4 /* UniSans.otf */; };
 		E619D9D528F3BC36006BD8B4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E619D9D428F3BC36006BD8B4 /* HomeView.swift */; };
+		E6ADBB7B28F4634700754936 /* HomeChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADBB7A28F4634700754936 /* HomeChildView.swift */; };
+		E6ADBB7D28F4635E00754936 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADBB7C28F4635E00754936 /* AboutView.swift */; };
+		E6ADBB7F28F4670100754936 /* FrequentlyUsedEmotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADBB7E28F4670100754936 /* FrequentlyUsedEmotes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +123,9 @@
 		E619D9CE28F3BA2D006BD8B4 /* UniSans.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = UniSans.otf; sourceTree = "<group>"; };
 		E619D9CF28F3BA69006BD8B4 /* Nitroless-macOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Nitroless-macOS-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E619D9D428F3BC36006BD8B4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E6ADBB7A28F4634700754936 /* HomeChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeChildView.swift; sourceTree = "<group>"; };
+		E6ADBB7C28F4635E00754936 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		E6ADBB7E28F4670100754936 /* FrequentlyUsedEmotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentlyUsedEmotes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +237,7 @@
 			children = (
 				571A78A628F341BD0089A0B1 /* Hovered.swift */,
 				571A78A828F341BD0089A0B1 /* Emote.swift */,
+				E6ADBB7E28F4670100754936 /* FrequentlyUsedEmotes.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -361,6 +368,8 @@
 			isa = PBXGroup;
 			children = (
 				E619D9D428F3BC36006BD8B4 /* HomeView.swift */,
+				E6ADBB7A28F4634700754936 /* HomeChildView.swift */,
+				E6ADBB7C28F4635E00754936 /* AboutView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -518,6 +527,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6ADBB7D28F4635E00754936 /* AboutView.swift in Sources */,
 				571A78B428F341BE0089A0B1 /* Emote.swift in Sources */,
 				E619D9D528F3BC36006BD8B4 /* HomeView.swift in Sources */,
 				571A78B728F341BE0089A0B1 /* EventMonitor.swift in Sources */,
@@ -527,9 +537,11 @@
 				571A78AF28F341BE0089A0B1 /* ContentView.swift in Sources */,
 				571A78B228F341BE0089A0B1 /* RepoView.swift in Sources */,
 				571A78B528F341BE0089A0B1 /* StatusBarController.swift in Sources */,
+				E6ADBB7B28F4634700754936 /* HomeChildView.swift in Sources */,
 				571A78C728F344EA0089A0B1 /* MainViewController.swift in Sources */,
 				E619D9B628F356BE006BD8B4 /* Array.swift in Sources */,
 				571A788D28F340FE0089A0B1 /* AppDelegate.swift in Sources */,
+				E6ADBB7F28F4670100754936 /* FrequentlyUsedEmotes.swift in Sources */,
 				571A78AD28F341BE0089A0B1 /* List.swift in Sources */,
 				571A78B328F341BE0089A0B1 /* Hovered.swift in Sources */,
 			);
