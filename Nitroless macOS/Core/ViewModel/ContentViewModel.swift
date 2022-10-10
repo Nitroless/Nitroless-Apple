@@ -10,12 +10,27 @@ import SwiftUI
 class ContentViewModel: ObservableObject {
     @Published var repos = [Repo]()
     @Published var selectedRepo = Repo(active: false, url: "", emote: Emote(name: "", icon: "", path: "", emotes: [EmoteElement]()))
+    @Published var frequentlyUsedEmotes = [FrequentlyUsedEmotes]()
     @Published var isLoading = false
     @Published var isHomeActive = true
-    @Published var isAboutActive = true
+    @Published var isAboutActive = false
+    @Published var isAnimating = false
     
     init() {
-        self.fetchRepos()
+        Task {
+            self.fetchRepos()
+        }
+        Task {
+            self.fetchFrequentlyUsedEmotes()
+        }
+    }
+    
+    func allowAnimation() {
+        self.isAnimating = true
+    }
+    
+    func killAnimation() {
+        self.isAnimating = false
     }
     
     func selectRepo(selectedRepo: Repo) {
@@ -127,7 +142,24 @@ class ContentViewModel: ObservableObject {
         
         DispatchQueue.main.async {
             self.repos = newRepos
-            self.isHomeActive = true
+            if self.isHomeActive == false {
+                self.isHomeActive = true
+                if self.isAboutActive == true {
+                    self.isAboutActive = false
+                }
+            }
+            
+        }
+    }
+    
+    func makeAboutActive() {
+        DispatchQueue.main.async {
+            if self.isHomeActive == true {
+                self.isHomeActive = false
+                if self.isAboutActive == false {
+                    self.isAboutActive = true
+                }
+            }
         }
     }
     
@@ -210,5 +242,49 @@ class ContentViewModel: ObservableObject {
             self.fetchEmotes(urls: array)
         }
         
+    }
+    
+    func fetchFrequentlyUsedEmotes() {
+        let frequentlyUsedEmotesArray = UserDefaults.standard.object(forKey: "frequentlyUsedEmotes") as? [FrequentlyUsedEmotes] ?? [FrequentlyUsedEmotes]()
+        
+        if(frequentlyUsedEmotesArray.isEmpty) {
+            return
+        } else {
+            DispatchQueue.main.async {
+                self.frequentlyUsedEmotes = frequentlyUsedEmotesArray
+            }
+        }
+    }
+    
+    func addToFrequentlyUsedEmotes(frequentEmote: FrequentlyUsedEmotes) {
+        var frequentlyUsedEmotesArray = UserDefaults.standard.object(forKey: "frequentlyUsedEmotes") as? [FrequentlyUsedEmotes] ?? [FrequentlyUsedEmotes]()
+        
+        if(frequentlyUsedEmotesArray.isEmpty) {
+            frequentlyUsedEmotesArray.append(frequentEmote)
+        } else {
+            if frequentlyUsedEmotesArray.contains(frequentEmote) {
+                for (index, frequentlyUsedEmote) in frequentlyUsedEmotesArray.enumerated() {
+                
+                    if (frequentlyUsedEmote == frequentEmote) {
+                        frequentlyUsedEmotesArray.remove(at: index)
+                        frequentlyUsedEmotesArray.insert(frequentEmote, at: 0)
+                        break
+                    }
+                }
+            }
+            
+            
+            if(frequentlyUsedEmotesArray.count < 25) {
+                frequentlyUsedEmotesArray.removeLast()
+            }
+            
+            frequentlyUsedEmotesArray.insert(frequentEmote, at: 0)
+        }
+        
+        DispatchQueue.main.async {
+            UserDefaults.standard.set(frequentlyUsedEmotesArray, forKey: "frequentlyUsedEmotes")
+            self.frequentlyUsedEmotes = [FrequentlyUsedEmotes]()
+            self.fetchFrequentlyUsedEmotes()
+        }
     }
 }

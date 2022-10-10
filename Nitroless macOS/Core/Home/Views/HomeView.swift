@@ -18,16 +18,16 @@ struct HomeView: View {
             
             HStack(alignment: .center) {
                 Button {
-                    
+                    viewModel.makeAllReposInactive()
                 } label: {
                     VStack {
                         Text("Home")
                     }
-                    .foregroundColor(self.hovered.image == "Home" && self.hovered.hover == true ? Color(.white) : Color(red: 0.35, green: 0.40, blue: 0.95))
+                    .foregroundColor((self.hovered.image == "Home" && self.hovered.hover == true) || viewModel.isHomeActive == true ? Color(.white) : Color(red: 0.35, green: 0.40, blue: 0.95))
                     .padding(10)
-                    .background(self.hovered.image == "Home" && self.hovered.hover == true ? Color(red: 0.35, green: 0.40, blue: 0.95) : Color(red: 0.21, green: 0.22, blue: 0.25))
+                    .background((self.hovered.image == "Home" && self.hovered.hover == true) || viewModel.isHomeActive == true ? Color(red: 0.35, green: 0.40, blue: 0.95) : Color(red: 0.21, green: 0.22, blue: 0.25))
                     .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-                    .animation(.spring(), value: self.hovered.hover)
+                    .animation(.spring(), value: self.hovered.hover && viewModel.isHomeActive == false)
                     .shadow(radius: 5)
                 }
                 .buttonStyle(.plain)
@@ -36,16 +36,16 @@ struct HomeView: View {
                 }
                 
                 Button {
-                    
+                    viewModel.makeAboutActive()
                 } label: {
                     VStack {
                         Text("About")
                     }
-                    .foregroundColor(self.hovered.image == "About" && self.hovered.hover == true ? Color(.white) : Color(red: 0.35, green: 0.40, blue: 0.95))
+                    .foregroundColor((self.hovered.image == "About" && self.hovered.hover == true) || viewModel.isAboutActive == true ? Color(.white) : Color(red: 0.35, green: 0.40, blue: 0.95))
                     .padding(10)
-                    .background(self.hovered.image == "About" && self.hovered.hover == true ? Color(red: 0.35, green: 0.40, blue: 0.95) : Color(red: 0.21, green: 0.22, blue: 0.25))
+                    .background((self.hovered.image == "About" && self.hovered.hover == true) || viewModel.isAboutActive == true ? Color(red: 0.35, green: 0.40, blue: 0.95) : Color(red: 0.21, green: 0.22, blue: 0.25))
                     .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-                    .animation(.spring(), value: self.hovered.hover)
+                    .animation(.spring(), value: self.hovered.hover && viewModel.isAboutActive == false)
                     .shadow(radius: 5)
                 }
                 .buttonStyle(.plain)
@@ -79,5 +79,9 @@ struct HomeView: View {
         .overlay(
             RoundedRectangle(cornerRadius: 20)
                 .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
+        
+        VStack {
+            HomeChildView(viewModel: viewModel)
+        }
     }
 }
