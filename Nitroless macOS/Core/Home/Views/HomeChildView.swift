@@ -28,15 +28,15 @@ struct HomeChildView: View {
                 Text("Start using Nitroless to show your frequently used emotes here.")
             } else {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 50))]) {
-                    ForEach (viewModel.frequentlyUsedEmotes, id: \.emote.name) {
+                    ForEach (viewModel.frequentlyUsedEmotes, id: \.self) {
                         emote in
                         Button {
                             self.showToast = true
                             pasteboard.clearContents()
-                            pasteboard.setString(String("\(emote.url)\(emote.path == "" ? "" : "\(emote.path)/")\(emote.emote.name).\(emote.emote.type)"), forType: NSPasteboard.PasteboardType.string)
-                            viewModel.addToFrequentlyUsedEmotes(frequentEmote: FrequentlyUsedEmotes(url: emote.url, path: emote.path, emote: EmoteElement(name: emote.emote.name, type: emote.emote.type)))
+                            pasteboard.setString(emote, forType: NSPasteboard.PasteboardType.string)
+                            viewModel.addToFrequentlyUsedEmotes(frequentEmote: emote)
                         } label: {
-                            WebImage(url: URL(string: "\(emote.url)\(emote.path == "" ? "" : "\(emote.path)/")\(emote.emote.name).\(emote.emote.type)"))
+                            WebImage(url: URL(string: emote))
                                 .resizable()
                                 .frame(width: 48, height: 48)
                                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))

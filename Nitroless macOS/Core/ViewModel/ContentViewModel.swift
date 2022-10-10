@@ -10,7 +10,7 @@ import SwiftUI
 class ContentViewModel: ObservableObject {
     @Published var repos = [Repo]()
     @Published var selectedRepo = Repo(active: false, url: "", emote: Emote(name: "", icon: "", path: "", emotes: [EmoteElement]()))
-    @Published var frequentlyUsedEmotes = [FrequentlyUsedEmotes]()
+    @Published var frequentlyUsedEmotes = [String]()
     @Published var isLoading = false
     @Published var isHomeActive = true
     @Published var isAboutActive = false
@@ -245,9 +245,9 @@ class ContentViewModel: ObservableObject {
     }
     
     func fetchFrequentlyUsedEmotes() {
-        let frequentlyUsedEmotesArray = UserDefaults.standard.object(forKey: "frequentlyUsedEmotes") as? [FrequentlyUsedEmotes] ?? [FrequentlyUsedEmotes]()
+        let frequentlyUsedEmotesArray = UserDefaults.standard.object(forKey: "frequentlyUsedEmotes") as? [String] ?? [String]();
         
-        if(frequentlyUsedEmotesArray.isEmpty) {
+        if frequentlyUsedEmotesArray.isEmpty {
             return
         } else {
             DispatchQueue.main.async {
@@ -256,34 +256,31 @@ class ContentViewModel: ObservableObject {
         }
     }
     
-    func addToFrequentlyUsedEmotes(frequentEmote: FrequentlyUsedEmotes) {
-        var frequentlyUsedEmotesArray = UserDefaults.standard.object(forKey: "frequentlyUsedEmotes") as? [FrequentlyUsedEmotes] ?? [FrequentlyUsedEmotes]()
+    func addToFrequentlyUsedEmotes(frequentEmote: String) {
+        var frequentlyUsedEmotesArray = UserDefaults.standard.object(forKey: "frequentlyUsedEmotes") as? [String] ?? [String]();
         
-        if(frequentlyUsedEmotesArray.isEmpty) {
+        if frequentlyUsedEmotesArray.isEmpty {
             frequentlyUsedEmotesArray.append(frequentEmote)
         } else {
             if frequentlyUsedEmotesArray.contains(frequentEmote) {
                 for (index, frequentlyUsedEmote) in frequentlyUsedEmotesArray.enumerated() {
-                
-                    if (frequentlyUsedEmote == frequentEmote) {
+                    if frequentlyUsedEmote == frequentEmote {
                         frequentlyUsedEmotesArray.remove(at: index)
-                        frequentlyUsedEmotesArray.insert(frequentEmote, at: 0)
                         break
                     }
                 }
             }
             
-            
-            if(frequentlyUsedEmotesArray.count < 25) {
+            if frequentlyUsedEmotesArray.count > 24 {
                 frequentlyUsedEmotesArray.removeLast()
             }
             
             frequentlyUsedEmotesArray.insert(frequentEmote, at: 0)
         }
         
+        UserDefaults.standard.set(frequentlyUsedEmotesArray, forKey: "frequentlyUsedEmotes")
         DispatchQueue.main.async {
-            UserDefaults.standard.set(frequentlyUsedEmotesArray, forKey: "frequentlyUsedEmotes")
-            self.frequentlyUsedEmotes = [FrequentlyUsedEmotes]()
+            self.frequentlyUsedEmotes = [String]()
             self.fetchFrequentlyUsedEmotes()
         }
     }

@@ -50,7 +50,6 @@
 		E619D9D528F3BC36006BD8B4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E619D9D428F3BC36006BD8B4 /* HomeView.swift */; };
 		E6ADBB7B28F4634700754936 /* HomeChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADBB7A28F4634700754936 /* HomeChildView.swift */; };
 		E6ADBB7D28F4635E00754936 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADBB7C28F4635E00754936 /* AboutView.swift */; };
-		E6ADBB7F28F4670100754936 /* FrequentlyUsedEmotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADBB7E28F4670100754936 /* FrequentlyUsedEmotes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,7 +124,6 @@
 		E619D9D428F3BC36006BD8B4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E6ADBB7A28F4634700754936 /* HomeChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeChildView.swift; sourceTree = "<group>"; };
 		E6ADBB7C28F4635E00754936 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
-		E6ADBB7E28F4670100754936 /* FrequentlyUsedEmotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentlyUsedEmotes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,7 +235,6 @@
 			children = (
 				571A78A628F341BD0089A0B1 /* Hovered.swift */,
 				571A78A828F341BD0089A0B1 /* Emote.swift */,
-				E6ADBB7E28F4670100754936 /* FrequentlyUsedEmotes.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -541,7 +538,6 @@
 				571A78C728F344EA0089A0B1 /* MainViewController.swift in Sources */,
 				E619D9B628F356BE006BD8B4 /* Array.swift in Sources */,
 				571A788D28F340FE0089A0B1 /* AppDelegate.swift in Sources */,
-				E6ADBB7F28F4670100754936 /* FrequentlyUsedEmotes.swift in Sources */,
 				571A78AD28F341BE0089A0B1 /* List.swift in Sources */,
 				571A78B328F341BE0089A0B1 /* Hovered.swift in Sources */,
 			);

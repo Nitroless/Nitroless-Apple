@@ -101,8 +101,7 @@ struct EmotesView: View {
                                 self.showToast = true
                                 pasteboard.clearContents()
                                 pasteboard.setString(String("\(viewModel.selectedRepo.url)\(viewModel.selectedRepo.emote.path == "" ? "" : "\(viewModel.selectedRepo.emote.path)/")\(emote.name).\(emote.type)"), forType: NSPasteboard.PasteboardType.string)
-                                //TODO
-//                                viewModel.addToFrequentlyUsedEmotes(frequentEmote: FrequentlyUsedEmotes(url: viewModel.selectedRepo.url, path: viewModel.selectedRepo.emote.path, emote: EmoteElement(name: emote.name, type: emote.type)))
+                                viewModel.addToFrequentlyUsedEmotes(frequentEmote: "\(viewModel.selectedRepo.url)\(viewModel.selectedRepo.emote.path == "" ? "" : "\(viewModel.selectedRepo.emote.path)/")\(emote.name).\(emote.type)")
                             } label: {
                                 WebImage(url: URL(string: "\(viewModel.selectedRepo.url)\(viewModel.selectedRepo.emote.path == "" ? "" : "\(viewModel.selectedRepo.emote.path)/")\(emote.name).\(emote.type)"))
                                     .resizable()
