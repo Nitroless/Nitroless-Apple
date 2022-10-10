@@ -253,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				AA9F089528E58B450098040D /* ContentView.swift */,
+				AA9F08AB28E5A8360098040D /* RepoView.swift */,
 				5721D6C028F1E57A00148391 /* Default Repos */,
 			);
 			path = Views;
@@ -322,7 +323,6 @@
 				AA6250B828E911C100C7030E /* Nitroless.entitlements */,
 				AA9F089328E58B450098040D /* NitrolessApp.swift */,
 				5721D6BF28F1E56400148391 /* Views */,
-				AA9F08AB28E5A8360098040D /* RepoView.swift */,
 				AA6250BD28EB088B00C7030E /* Test Data.swift */,
 			);
 			path = "Nitroless iOS";

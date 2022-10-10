@@ -238,6 +238,18 @@ class RepoManager: ObservableObject {
     }
 }
 
+class FavouritesManager: ObservableObject {
+    @Published var favourited: [FavEmote]
+    
+    init() {
+        favourited = []
+    }
+}
+
+struct FavEmote {
+    
+}
+
 struct Repo {
     let url: URL
     let repoData: NitrolessRepo?

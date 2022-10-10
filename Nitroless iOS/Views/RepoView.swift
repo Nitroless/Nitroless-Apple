@@ -60,7 +60,7 @@ struct RepoView: View {
                 }
                 .sheet(isPresented: $showDetails) {
                     info
-                        .presentationDetents([.fraction(0.1)])
+                        .presentationDetents([.fraction(0.2)])
                 }
             }
         }
@@ -115,7 +115,7 @@ struct RepoView: View {
         LazyVGrid(columns: columns, spacing: 20) {
             let emotes = repo.repoData!.emotes
             let filtered = emotes.filter { emote in
-                emote.name.lowercased().contains(searchText) || searchText.isEmpty
+                emote.name.lowercased().contains(searchText.lowercased()) || searchText.isEmpty
             }
             
             ForEach(0..<filtered.count, id: \.self) { i in
