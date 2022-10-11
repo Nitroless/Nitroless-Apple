@@ -30,7 +30,7 @@ struct ContentView: View {
         ).onAppear {
             viewModel.allowAnimation()
             
-            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
+            Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { _ in
                 self.isShown = NSApplication.shared.isActive
             }
             
