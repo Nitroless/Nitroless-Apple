@@ -11,8 +11,7 @@ import SimpleToast
 
 struct EmotesView: View {
     @StateObject var viewModel: ContentViewModel
-    @State var hovered = Hovered(image: "", hover: false)
-    @State var showToast: Bool = false;
+    @State var hovered = Hovered(image: "", hover: false) 
     let pasteboard = NSPasteboard.general
     @State private var showPicker = false
     
@@ -43,7 +42,7 @@ struct EmotesView: View {
                     Spacer(minLength: 10)
                     HStack {
                         Button {
-                            self.showToast = true
+                            viewModel.showToast = true
                             pasteboard.clearContents()
                             pasteboard.setString(String("Check out this awesome Repo \(viewModel.selectedRepo.emote.name) - \(viewModel.selectedRepo.url)"), forType: NSPasteboard.PasteboardType.string)
                         } label: {
@@ -96,20 +95,7 @@ struct EmotesView: View {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 50))]) {
                     ForEach (viewModel.selectedRepo.emote.emotes, id: \.name) {
                         emote in
-                        if viewModel.isAnimating {
-                            Button {
-                                self.showToast = true
-                                pasteboard.clearContents()
-                                pasteboard.setString(String("\(viewModel.selectedRepo.url)\(viewModel.selectedRepo.emote.path == "" ? "" : "\(viewModel.selectedRepo.emote.path)/")\(emote.name).\(emote.type)"), forType: NSPasteboard.PasteboardType.string)
-                                viewModel.addToFrequentlyUsedEmotes(frequentEmote: "\(viewModel.selectedRepo.url)\(viewModel.selectedRepo.emote.path == "" ? "" : "\(viewModel.selectedRepo.emote.path)/")\(emote.name).\(emote.type)")
-                            } label: {
-                                WebImage(url: URL(string: "\(viewModel.selectedRepo.url)\(viewModel.selectedRepo.emote.path == "" ? "" : "\(viewModel.selectedRepo.emote.path)/")\(emote.name).\(emote.type)"))
-                                    .resizable()
-                                    .frame(width: 48, height: 48)
-                                    .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-                            }
-                            .buttonStyle(.plain)
-                        }
+                        EmoteView(url: viewModel.selectedRepo.url, path: viewModel.selectedRepo.emote.path, emote: emote, viewModel: viewModel)
                     }
                 }
                 .padding(20)
@@ -121,7 +107,7 @@ struct EmotesView: View {
                 )
             }
             .removeBackground()
-            .simpleToast(isPresented: $showToast, options: SimpleToastOptions(hideAfter: 1, animation: .linear), content: {
+            .simpleToast(isPresented: $viewModel.showToast, options: SimpleToastOptions(hideAfter: 1, animation: .linear), content: {
                 HStack {
                     Image(systemName: "doc.on.doc.fill")
                     Text("Copied")
@@ -137,6 +123,17 @@ struct EmotesView: View {
                 HomeView(viewModel: viewModel)
             }
             .removeBackground()
+            .simpleToast(isPresented: $viewModel.showToast, options: SimpleToastOptions(hideAfter: 1, animation: .linear), content: {
+                HStack {
+                    Image(systemName: "doc.on.doc.fill")
+                    Text("Copied")
+                }
+                .padding()
+                .background(Color(red: 0.35, green: 0.40, blue: 0.95))
+                .foregroundColor(Color.white)
+                .cornerRadius(10)
+                .offset(y: 120)
+            })
         }
         
     }
