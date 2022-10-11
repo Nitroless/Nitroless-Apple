@@ -14,6 +14,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var statusBar: StatusBarController?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        NSAppleEventManager.shared().setEventHandler(self, andSelector: #selector(self.handleGetURL(event:reply:)), forEventClass: UInt32(kInternetEventClass), andEventID: UInt32(kAEGetURL) )
+        
         // Create the SwiftUI view that provides the contents
         let contentView = ContentView()
         NSApp.setActivationPolicy(NSApplication.ActivationPolicy.accessory)
@@ -30,5 +32,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
+    
+    @objc func handleGetURL(event: NSAppleEventDescriptor, reply:NSAppleEventDescriptor) {
+        NSApp.setActivationPolicy(NSApplication.ActivationPolicy.accessory)
+        if let urlString = event.paramDescriptor(forKeyword: keyDirectObject)?.stringValue {
+            print("got urlString \(urlString)")
+        }
+    }
+    
 }
 
