@@ -107,7 +107,7 @@ struct RepoView: View {
     }
     
     let columns = [
-        GridItem(.adaptive(minimum: 40))
+        GridItem(.adaptive(minimum: 50))
     ]
     
     @ViewBuilder
@@ -134,6 +134,8 @@ struct EmoteCell: View {
     @Binding var toastShown: Bool
     @Binding var ql: URL?
     
+    @State var isVisible = false
+    
     var body: some View {
         let imgUrl = repo.url
             .appending(path: repo.repoData!.path)
@@ -144,14 +146,28 @@ struct EmoteCell: View {
             toastShown = true
             UIPasteboard.general.url = imgUrl
         } label: {
+            let size: CGFloat = 50
+            
             VStack {
-                WebImage(url: imgUrl)
-                    .resizable()
-                    .placeholder {
-                        ProgressView()
-                    }
-                    .aspectRatio(contentMode: .fit)
+                if isVisible {
+                    WebImage(url: imgUrl)
+                        .resizable()
+                        .placeholder {
+                            ProgressView()
+                        }
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: size, height: size)
+                } else {
+                    Text("")
+                        .frame(width: size, height: size)
+                }
             }
+        }
+        .onAppear {
+            isVisible = true
+        }
+        .onDisappear {
+            isVisible = false
         }
         .contextMenu {
             Text(emote.name)

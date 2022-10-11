@@ -147,4 +147,21 @@ struct RepoView: View {
         .removeBackground()
         .frame(width: 78)
     }
+    
+    func handleUrl(_ url: URL) {
+        var str = url.absoluteString
+        str = str.replacingOccurrences(of: "nitroless://", with: "https://nitroless.github.io/")
+        let comp = URLComponents(string: str)!
+        let path = comp.path.dropFirst()
+        
+        switch path {
+        case "add-repository":
+            guard let urlparam = comp.queryItems?.filter({ item in item.name == "url"}).first else { return }
+            guard let urlToAdd = urlparam.value else { return }
+            
+            viewModel.getRepoFromUser(title: "Add Repo", question: "Enter Repo URL Here", defaultValue: urlToAdd)
+        default:
+            return;
+        }
+    }
 }
