@@ -10,7 +10,6 @@ import SDWebImageSwiftUI
 
 struct HomeChildView: View {
     @StateObject var viewModel: ContentViewModel
-    @State var showToast = false
     let pasteboard = NSPasteboard.general
     
     var body: some View {
@@ -31,14 +30,14 @@ struct HomeChildView: View {
                     ForEach (viewModel.frequentlyUsedEmotes, id: \.self) {
                         emote in
                         Button {
-                            self.showToast = true
+                            viewModel.showToast = true
                             pasteboard.clearContents()
                             pasteboard.setString(emote, forType: NSPasteboard.PasteboardType.string)
                             viewModel.addToFrequentlyUsedEmotes(frequentEmote: emote)
                         } label: {
                             WebImage(url: URL(string: emote))
                                 .resizable()
-                                .frame(width: 48, height: 48)
+                                .frame(height: 48)
                                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
                         }
                         .buttonStyle(.plain)

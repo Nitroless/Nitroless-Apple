@@ -11,10 +11,11 @@ class ContentViewModel: ObservableObject {
     @Published var repos = [Repo]()
     @Published var selectedRepo = Repo(active: false, url: "", emote: Emote(name: "", icon: "", path: "", emotes: [EmoteElement]()))
     @Published var frequentlyUsedEmotes = [String]()
-    @Published var isLoading = false
-    @Published var isHomeActive = true
-    @Published var isAboutActive = false
-    @Published var isAnimating = false
+    @Published var isLoading: Bool = false
+    @Published var isHomeActive: Bool = true
+    @Published var isAboutActive: Bool = false
+    @Published var isAnimating: Bool = false
+    @Published var showToast: Bool = false;
     
     init() {
         Task {

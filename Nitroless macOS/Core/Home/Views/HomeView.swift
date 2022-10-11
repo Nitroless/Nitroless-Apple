@@ -81,7 +81,11 @@ struct HomeView: View {
                 .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
         
         VStack {
-            HomeChildView(viewModel: viewModel)
+            if(viewModel.isAboutActive) {
+                AboutView()
+            } else {
+                HomeChildView(viewModel: viewModel)
+            }
         }
     }
 }

@@ -50,6 +50,8 @@
 		E619D9D528F3BC36006BD8B4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E619D9D428F3BC36006BD8B4 /* HomeView.swift */; };
 		E6ADBB7B28F4634700754936 /* HomeChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADBB7A28F4634700754936 /* HomeChildView.swift */; };
 		E6ADBB7D28F4635E00754936 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADBB7C28F4635E00754936 /* AboutView.swift */; };
+		E6F1ECED28F5A37D001594B6 /* EmoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F1ECEC28F5A37D001594B6 /* EmoteView.swift */; };
+		E6F1ECEF28F5AB0C001594B6 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F1ECEE28F5AB0C001594B6 /* EmptyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +126,8 @@
 		E619D9D428F3BC36006BD8B4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E6ADBB7A28F4634700754936 /* HomeChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeChildView.swift; sourceTree = "<group>"; };
 		E6ADBB7C28F4635E00754936 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		E6F1ECEC28F5A37D001594B6 /* EmoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmoteView.swift; sourceTree = "<group>"; };
+		E6F1ECEE28F5AB0C001594B6 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +198,7 @@
 				571A789F28F341BD0089A0B1 /* ContentView.swift */,
 				571A78A028F341BD0089A0B1 /* Emotes */,
 				571A78A428F341BD0089A0B1 /* Repo */,
+				E6F1ECEE28F5AB0C001594B6 /* EmptyView.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -218,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				E619D9B728F3572E006BD8B4 /* EmotesView.swift */,
+				E6F1ECEC28F5A37D001594B6 /* EmoteView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -534,8 +540,10 @@
 				571A78AF28F341BE0089A0B1 /* ContentView.swift in Sources */,
 				571A78B228F341BE0089A0B1 /* RepoView.swift in Sources */,
 				571A78B528F341BE0089A0B1 /* StatusBarController.swift in Sources */,
+				E6F1ECEF28F5AB0C001594B6 /* EmptyView.swift in Sources */,
 				E6ADBB7B28F4634700754936 /* HomeChildView.swift in Sources */,
 				571A78C728F344EA0089A0B1 /* MainViewController.swift in Sources */,
+				E6F1ECED28F5A37D001594B6 /* EmoteView.swift in Sources */,
 				E619D9B628F356BE006BD8B4 /* Array.swift in Sources */,
 				571A788D28F340FE0089A0B1 /* AppDelegate.swift in Sources */,
 				571A78AD28F341BE0089A0B1 /* List.swift in Sources */,
