@@ -30,7 +30,7 @@ struct DefaultRepoCell: View {
                             .resizable()
                             .scaledToFill()
                             .blur(radius: 40)
-                            .brightness(cs == .light ? 0 : -0.5)
+                            .brightness(cs == .light ? 0 : -0.4)
                             .allowsHitTesting(false)
                     }
                 } else {

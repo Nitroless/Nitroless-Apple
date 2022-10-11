@@ -53,13 +53,10 @@ struct KeyboardView: View {
     @ViewBuilder
     var kb: some View {
         ScrollView(.horizontal) {
-            HStack {
-                let repos = repoMan.repos
-                ForEach(0..<repos.count, id: \.self) { i in
-                    let repo = repos[i]
-                    Text(repo.repoData!.name)
-                }
-            }
+            Text("gm")
+        }
+        .task {
+            print("[Nitroless KB] \(repoMan.repos.debugDescription)")
         }
     }
     
