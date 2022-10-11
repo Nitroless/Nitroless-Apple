@@ -11,7 +11,7 @@ import Combine
 
 struct ContentView: View {
     @StateObject var viewModel = ContentViewModel()
-    @State var isShown = false
+    @State var isShown = true
     
     var body: some View {
         HStack {
@@ -19,10 +19,8 @@ struct ContentView: View {
             if isShown {
                 EmotesView(viewModel: viewModel)
             } else {
-                List {
-                    ProgressView()
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                }.removeBackground()
+                ProgressView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
         .frame(minWidth: 0,

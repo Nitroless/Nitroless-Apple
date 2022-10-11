@@ -17,7 +17,7 @@ struct EmotesView: View {
     
     var body: some View {
         if viewModel.selectedRepo.active == true {
-            List {
+            ScrollView {
                 VStack(alignment: .leading) {
                     HStack {
                         WebImage(url: URL(string: "\(viewModel.selectedRepo.url)/\(viewModel.selectedRepo.emote.icon)"))
@@ -92,21 +92,26 @@ struct EmotesView: View {
                         .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1)
                 )
                 
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 50))]) {
-                    ForEach (viewModel.selectedRepo.emote.emotes, id: \.name) {
-                        emote in
-                        EmoteView(url: viewModel.selectedRepo.url, path: viewModel.selectedRepo.emote.path, emote: emote, viewModel: viewModel)
+                VStack {
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 50))]) {
+                        ForEach (viewModel.selectedRepo.emote.emotes, id: \.name) {
+                            emote in
+                            EmoteView(url: viewModel.selectedRepo.url, path: viewModel.selectedRepo.emote.path, emote: emote, viewModel: viewModel)
+                        }
                     }
+                    .padding(20)
+                    .background(Color(red: 0.13, green: 0.13, blue: 0.15).opacity(0.6))
+                    .cornerRadius(20)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1)
+                    )
                 }
-                .padding(20)
-                .background(Color(red: 0.13, green: 0.13, blue: 0.15).opacity(0.6))
-                .cornerRadius(20)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1)
-                )
+                .padding(.bottom)
+                
             }
-            .removeBackground()
+            .padding([.top, .trailing])
+            .padding(.leading, 6)
             .simpleToast(isPresented: $viewModel.showToast, options: SimpleToastOptions(hideAfter: 1, animation: .linear), content: {
                 HStack {
                     Image(systemName: "doc.on.doc.fill")
@@ -119,16 +124,16 @@ struct EmotesView: View {
                 .offset(y: 170)
             })
         } else {
-            List {
+            ScrollView {
                 HomeView(viewModel: viewModel)
+                    .padding([.top, .trailing])
+                    .padding(.leading, 6)
             }
-            .removeBackground()
             .simpleToast(isPresented: $viewModel.showToast, options: SimpleToastOptions(hideAfter: 1, animation: .linear), content: {
                 HStack {
                     Image(systemName: "doc.on.doc.fill")
                     Text("Copied")
                 }
-                .padding()
                 .background(Color(red: 0.35, green: 0.40, blue: 0.95))
                 .foregroundColor(Color.white)
                 .cornerRadius(10)

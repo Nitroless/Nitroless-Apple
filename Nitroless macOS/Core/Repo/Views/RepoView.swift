@@ -14,7 +14,7 @@ struct RepoView: View {
     @State private var hovered = Hovered(image: "", hover: false)
     
     var body: some View {
-        List {
+        ScrollView {
             HStack {
                 Rectangle()
                     .fill(.white)
@@ -39,6 +39,7 @@ struct RepoView: View {
                     }
                     .shadow(radius: 5)
             }
+            .padding([.top, .leading, .trailing])
             .onHover { isHovered in
                 self.hovered = Hovered(image: "Icon", hover: isHovered)
                 DispatchQueue.main.async { //<-- Here
@@ -56,7 +57,7 @@ struct RepoView: View {
             
             Divider()
                 .frame(width: 40)
-                .offset(x: 15)
+                .offset(x: 5)
             
             VStack {
                 ForEach(viewModel.repos, id: \.url) {
@@ -101,10 +102,11 @@ struct RepoView: View {
                     }
                 }
             }
+            .padding(.horizontal)
             
             Divider()
                 .frame(width: 40)
-                .offset(x: 15)
+                .offset(x: 5)
             
             HStack {
                 Rectangle()
@@ -130,6 +132,7 @@ struct RepoView: View {
                     }
                     .shadow(radius: 5)
             }
+            .padding(.horizontal)
             .onHover { isHovered in
                 self.hovered = Hovered(image: "plus.app.fill", hover: isHovered)
                 DispatchQueue.main.async { //<-- Here
@@ -144,7 +147,6 @@ struct RepoView: View {
                 viewModel.getRepoFromUser(title: "Add Repo", question: "Enter Repo URL Here", defaultValue: "")
             }
         }
-        .removeBackground()
-        .frame(width: 78)
+        .frame(width: 64)
     }
 }

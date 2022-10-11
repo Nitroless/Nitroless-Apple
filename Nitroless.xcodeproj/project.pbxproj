@@ -10,7 +10,6 @@
 		571A788D28F340FE0089A0B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A788C28F340FE0089A0B1 /* AppDelegate.swift */; };
 		571A789428F340FF0089A0B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 571A789228F340FF0089A0B1 /* Main.storyboard */; };
 		571A789928F341290089A0B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD5D80928EEC7D900FF08DA /* Assets.xcassets */; };
-		571A78AD28F341BE0089A0B1 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A789B28F341BD0089A0B1 /* List.swift */; };
 		571A78AE28F341BE0089A0B1 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A789E28F341BD0089A0B1 /* ContentViewModel.swift */; };
 		571A78AF28F341BE0089A0B1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A789F28F341BD0089A0B1 /* ContentView.swift */; };
 		571A78B228F341BE0089A0B1 /* RepoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A78A528F341BD0089A0B1 /* RepoView.swift */; };
@@ -51,7 +50,6 @@
 		E6ADBB7B28F4634700754936 /* HomeChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADBB7A28F4634700754936 /* HomeChildView.swift */; };
 		E6ADBB7D28F4635E00754936 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADBB7C28F4635E00754936 /* AboutView.swift */; };
 		E6F1ECED28F5A37D001594B6 /* EmoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F1ECEC28F5A37D001594B6 /* EmoteView.swift */; };
-		E6F1ECEF28F5AB0C001594B6 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F1ECEE28F5AB0C001594B6 /* EmptyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,7 +91,6 @@
 		571A788C28F340FE0089A0B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		571A789328F340FF0089A0B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		571A789528F340FF0089A0B1 /* Nitroless_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nitroless_macOS.entitlements; sourceTree = "<group>"; };
-		571A789B28F341BD0089A0B1 /* List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		571A789E28F341BD0089A0B1 /* ContentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		571A789F28F341BD0089A0B1 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		571A78A528F341BD0089A0B1 /* RepoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoView.swift; sourceTree = "<group>"; };
@@ -127,7 +124,6 @@
 		E6ADBB7A28F4634700754936 /* HomeChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeChildView.swift; sourceTree = "<group>"; };
 		E6ADBB7C28F4635E00754936 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		E6F1ECEC28F5A37D001594B6 /* EmoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmoteView.swift; sourceTree = "<group>"; };
-		E6F1ECEE28F5AB0C001594B6 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,7 +180,6 @@
 		571A789A28F341BD0089A0B1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				571A789B28F341BD0089A0B1 /* List.swift */,
 				E619D9B528F356BE006BD8B4 /* Array.swift */,
 			);
 			path = Extensions;
@@ -193,12 +188,10 @@
 		571A789C28F341BD0089A0B1 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				E619D9D228F3BC17006BD8B4 /* Home */,
 				571A789D28F341BD0089A0B1 /* ViewModel */,
 				571A789F28F341BD0089A0B1 /* ContentView.swift */,
 				571A78A028F341BD0089A0B1 /* Emotes */,
 				571A78A428F341BD0089A0B1 /* Repo */,
-				E6F1ECEE28F5AB0C001594B6 /* EmptyView.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -214,6 +207,7 @@
 		571A78A028F341BD0089A0B1 /* Emotes */ = {
 			isa = PBXGroup;
 			children = (
+				E619D9D228F3BC17006BD8B4 /* Home */,
 				571A78A128F341BD0089A0B1 /* Views */,
 			);
 			path = Emotes;
@@ -540,13 +534,11 @@
 				571A78AF28F341BE0089A0B1 /* ContentView.swift in Sources */,
 				571A78B228F341BE0089A0B1 /* RepoView.swift in Sources */,
 				571A78B528F341BE0089A0B1 /* StatusBarController.swift in Sources */,
-				E6F1ECEF28F5AB0C001594B6 /* EmptyView.swift in Sources */,
 				E6ADBB7B28F4634700754936 /* HomeChildView.swift in Sources */,
 				571A78C728F344EA0089A0B1 /* MainViewController.swift in Sources */,
 				E6F1ECED28F5A37D001594B6 /* EmoteView.swift in Sources */,
 				E619D9B628F356BE006BD8B4 /* Array.swift in Sources */,
 				571A788D28F340FE0089A0B1 /* AppDelegate.swift in Sources */,
-				571A78AD28F341BE0089A0B1 /* List.swift in Sources */,
 				571A78B328F341BE0089A0B1 /* Hovered.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -609,7 +601,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 566RT33SA2;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Nitroless-macOS-Info.plist";
@@ -640,7 +632,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 566RT33SA2;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Nitroless-macOS-Info.plist";
