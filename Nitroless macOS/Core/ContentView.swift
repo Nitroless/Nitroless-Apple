@@ -7,14 +7,21 @@
 
 import SwiftUI
 import AppKit
+import Combine
 
 struct ContentView: View {
     @StateObject var viewModel = ContentViewModel()
+    @State var isShown = false
     
     var body: some View {
         HStack {
             RepoView(viewModel: viewModel)
-            EmotesView(viewModel: viewModel)
+            if isShown {
+                EmotesView(viewModel: viewModel)
+            } else {
+                ProgressView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
         }
         .frame(minWidth: 0,
                maxWidth: .infinity,
@@ -22,15 +29,13 @@ struct ContentView: View {
                maxHeight: .infinity
         ).onAppear {
             viewModel.allowAnimation()
+            
+            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
+                self.isShown = NSApplication.shared.isActive
+            }
+            
         }.onDisappear {
             viewModel.killAnimation()
         }
-    }
-}
-
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }
