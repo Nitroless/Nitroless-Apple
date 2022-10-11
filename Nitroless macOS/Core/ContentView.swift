@@ -19,8 +19,10 @@ struct ContentView: View {
             if isShown {
                 EmotesView(viewModel: viewModel)
             } else {
-                ProgressView()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                List {
+                    ProgressView()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }.removeBackground()
             }
         }
         .frame(minWidth: 0,

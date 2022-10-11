@@ -132,7 +132,7 @@ struct EmotesView: View {
                 .background(Color(red: 0.35, green: 0.40, blue: 0.95))
                 .foregroundColor(Color.white)
                 .cornerRadius(10)
-                .offset(y: 120)
+                .offset(y: 12)
             })
         }
         

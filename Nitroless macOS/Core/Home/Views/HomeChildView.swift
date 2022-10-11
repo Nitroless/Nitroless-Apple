@@ -37,7 +37,7 @@ struct HomeChildView: View {
                         } label: {
                             WebImage(url: URL(string: emote))
                                 .resizable()
-                                .frame(width: 48, height: 48)
+                                .frame(height: 48)
                                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
                         }
                         .buttonStyle(.plain)
