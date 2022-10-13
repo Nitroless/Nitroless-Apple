@@ -20,7 +20,6 @@
 		571A78B728F341BE0089A0B1 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A78AC28F341BE0089A0B1 /* EventMonitor.swift */; };
 		571A78B928F3427D0089A0B1 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 571A78B828F3427D0089A0B1 /* SDWebImageSwiftUI */; };
 		571A78BB28F3427D0089A0B1 /* SDWebImageWebPCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 571A78BA28F3427D0089A0B1 /* SDWebImageWebPCoder */; };
-		571A78C028F343EB0089A0B1 /* SimpleToast in Frameworks */ = {isa = PBXBuildFile; productRef = 571A78BF28F343EB0089A0B1 /* SimpleToast */; };
 		571A78C228F3440D0089A0B1 /* SDWebImageWebPCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 571A78C128F3440D0089A0B1 /* SDWebImageWebPCoder */; };
 		571A78C528F344550089A0B1 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 571A78C428F344550089A0B1 /* Introspect */; };
 		571A78C728F344EA0089A0B1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A78C628F344EA0089A0B1 /* MainViewController.swift */; };
@@ -36,6 +35,7 @@
 		AA431D7728EEEBB00066EBC4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F08A628E58D490098040D /* Constants.swift */; };
 		AA6250BC28EB047200C7030E /* SDWebImageWebPCoder in Frameworks */ = {isa = PBXBuildFile; productRef = AA6250BB28EB047200C7030E /* SDWebImageWebPCoder */; };
 		AA6250BE28EB088B00C7030E /* Test Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6250BD28EB088B00C7030E /* Test Data.swift */; };
+		AA67BDB628F7FE7C001A37BF /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = AA67BDB528F7FE7C001A37BF /* AlertToast */; };
 		AA9F089428E58B450098040D /* NitrolessApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F089328E58B450098040D /* NitrolessApp.swift */; };
 		AA9F089628E58B450098040D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F089528E58B450098040D /* ContentView.swift */; };
 		AA9F08A528E58C020098040D /* RepositoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F08A428E58C020098040D /* RepositoryManager.swift */; };
@@ -132,8 +132,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				571A78BB28F3427D0089A0B1 /* SDWebImageWebPCoder in Frameworks */,
+				AA67BDB628F7FE7C001A37BF /* AlertToast in Frameworks */,
 				571A78C528F344550089A0B1 /* Introspect in Frameworks */,
-				571A78C028F343EB0089A0B1 /* SimpleToast in Frameworks */,
 				571A78B928F3427D0089A0B1 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -391,8 +391,8 @@
 			packageProductDependencies = (
 				571A78B828F3427D0089A0B1 /* SDWebImageSwiftUI */,
 				571A78BA28F3427D0089A0B1 /* SDWebImageWebPCoder */,
-				571A78BF28F343EB0089A0B1 /* SimpleToast */,
 				571A78C428F344550089A0B1 /* Introspect */,
+				AA67BDB528F7FE7C001A37BF /* AlertToast */,
 			);
 			productName = "Nitroless macOS";
 			productReference = 571A788A28F340FE0089A0B1 /* Nitroless macOS.app */;
@@ -477,7 +477,6 @@
 				AA9F08A828E5A6360098040D /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				AA6250BA28EB047200C7030E /* XCRemoteSwiftPackageReference "SDWebImageWebPCoder" */,
 				AAD030A028EB155D0040718F /* XCRemoteSwiftPackageReference "AlertToast" */,
-				571A78BC28F343E50089A0B1 /* XCRemoteSwiftPackageReference "SimpleToast" */,
 				571A78C328F344550089A0B1 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = AA9F089128E58B450098040D /* Products */;
@@ -927,14 +926,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		571A78BC28F343E50089A0B1 /* XCRemoteSwiftPackageReference "SimpleToast" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sanzaru/SimpleToast";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.6.2;
-			};
-		};
 		571A78C328F344550089A0B1 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect";
@@ -980,11 +971,6 @@
 			package = AA6250BA28EB047200C7030E /* XCRemoteSwiftPackageReference "SDWebImageWebPCoder" */;
 			productName = SDWebImageWebPCoder;
 		};
-		571A78BF28F343EB0089A0B1 /* SimpleToast */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 571A78BC28F343E50089A0B1 /* XCRemoteSwiftPackageReference "SimpleToast" */;
-			productName = SimpleToast;
-		};
 		571A78C128F3440D0089A0B1 /* SDWebImageWebPCoder */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AA6250BA28EB047200C7030E /* XCRemoteSwiftPackageReference "SDWebImageWebPCoder" */;
@@ -1004,6 +990,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AA6250BA28EB047200C7030E /* XCRemoteSwiftPackageReference "SDWebImageWebPCoder" */;
 			productName = SDWebImageWebPCoder;
+		};
+		AA67BDB528F7FE7C001A37BF /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AAD030A028EB155D0040718F /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
 		};
 		AA9F08A928E5A6360098040D /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;

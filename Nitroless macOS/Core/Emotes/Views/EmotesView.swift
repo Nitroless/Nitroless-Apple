@@ -7,7 +7,7 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
-import SimpleToast
+import AlertToast
 
 struct EmotesView: View {
     @StateObject var viewModel: ContentViewModel
@@ -112,16 +112,8 @@ struct EmotesView: View {
             }
             .padding([.top, .trailing])
             .padding(.leading, 6)
-            .simpleToast(isPresented: $viewModel.showToast, options: SimpleToastOptions(hideAfter: 1, animation: .linear), content: {
-                HStack {
-                    Image(systemName: "doc.on.doc.fill")
-                    Text("Copied")
-                }
-                .padding()
-                .background(Color(red: 0.35, green: 0.40, blue: 0.95))
-                .foregroundColor(Color.white)
-                .cornerRadius(10)
-                .offset(y: 170)
+            .toast(isPresenting: $viewModel.showToast, alert: {
+                AlertToast(displayMode: .hud, type: .systemImage("checkmark", .green), title: "Copied!")
             })
         } else {
             ScrollView {
@@ -129,15 +121,8 @@ struct EmotesView: View {
                     .padding([.top, .trailing])
                     .padding(.leading, 6)
             }
-            .simpleToast(isPresented: $viewModel.showToast, options: SimpleToastOptions(hideAfter: 1, animation: .linear), content: {
-                HStack {
-                    Image(systemName: "doc.on.doc.fill")
-                    Text("Copied")
-                }
-                .background(Color(red: 0.35, green: 0.40, blue: 0.95))
-                .foregroundColor(Color.white)
-                .cornerRadius(10)
-                .offset(y: 12)
+            .toast(isPresenting: $viewModel.showToast, alert: {
+                AlertToast(displayMode: .hud, type: .systemImage("checkmark", .green), title: "Copied!")
             })
         }
         
