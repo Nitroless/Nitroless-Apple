@@ -7,7 +7,6 @@
 
 import SwiftUI
 import AppKit
-import Combine
 
 struct ContentView: View {
     @StateObject var viewModel = ContentViewModel()
