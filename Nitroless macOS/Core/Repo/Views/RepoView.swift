@@ -13,9 +13,7 @@ struct RepoView: View {
     @StateObject var viewModel: ContentViewModel
     @State private var hovered = Hovered(image: "", hover: false)
     @ObservedObject var AppKitEventsObj = AppKitEvents.shared
-    
-    @State var lastReceivedUrl: URL? = nil
-    
+        
     var body: some View {
         ScrollView {
             HStack {
@@ -150,9 +148,8 @@ struct RepoView: View {
                 viewModel.getRepoFromUser(title: "Add Repo", question: "Enter Repo URL Here", defaultValue: "")
             }
             .onReceive(AppKitEventsObj.receivedUrl.publisher) { _ in
-                guard AppKitEventsObj.receivedUrl != lastReceivedUrl else { print("Omitting received URL because duplicate call"); return }
                 guard let url = AppKitEventsObj.receivedUrl else { return }
-                lastReceivedUrl = url
+                AppKitEvents.shared.receivedUrl = nil
                 handleUrl(url)
             }
         }
