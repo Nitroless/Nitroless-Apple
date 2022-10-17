@@ -43,6 +43,11 @@ class ContentViewModel: ObservableObject {
     }
     
     func askBeforeExiting() {
+        
+        
+        let delegate = NSApplication.shared.delegate as! AppDelegate
+        delegate.popMenubarView()
+        
         let msg = NSAlert()
         msg.addButton(withTitle: "Yes")
         msg.addButton(withTitle: "No")
@@ -69,16 +74,20 @@ class ContentViewModel: ObservableObject {
         txt.stringValue = defaultValue
 
         msg.accessoryView = txt
+        
+        let delegate = NSApplication.shared.delegate as! AppDelegate
+        delegate.popMenubarView()
+        
         let response: NSApplication.ModalResponse = msg.runModal()
 
         if (response == NSApplication.ModalResponse.alertFirstButtonReturn) {
-            var url = txt.stringValue
+            let urlStr = txt.stringValue
+            let url = URL(string: urlStr)
             
-            if txt.stringValue.last! != "/" {
-                url = "\(txt.stringValue)/"
-            }
+            delegate.showMenubarView()
             
-            addToUserDefaults(url: url)
+            guard let url = url else { return }
+            addToUserDefaults(url: url.absoluteString)
         } else {
             return
         }

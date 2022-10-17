@@ -28,17 +28,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Create the Status Bar Item with the Popover
         statusBar = StatusBarController.init(popover)
     }
-
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
-    }
     
     @objc func handleGetURL(event: NSAppleEventDescriptor, reply:NSAppleEventDescriptor) {
         NSApp.setActivationPolicy(NSApplication.ActivationPolicy.accessory)
         if let urlString = event.paramDescriptor(forKeyword: keyDirectObject)?.stringValue {
-            print("got urlString \(urlString)")
+            guard let url = URL(string: urlString) else { return }
+            
+            AppKitEvents.shared.receivedUrl = url
+            print("Received and stored URL in AppKitEvents class")
         }
     }
     
+    func popMenubarView() {
+        guard let statusBar = statusBar else { return }
+        statusBar.hidePopover(nil)
+    }
+    
+    func showMenubarView() {
+        guard let statusBar = statusBar else { return }
+        statusBar.showPopover(nil)
+    }
 }
 
+class AppKitEvents: ObservableObject {
+    static let shared = AppKitEvents()
+    
+    @Published var receivedUrl: URL? = nil
+}

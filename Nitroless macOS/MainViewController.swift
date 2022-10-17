@@ -8,19 +8,18 @@
 import AppKit
 
 class MainViewController: NSViewController {
-    override func viewDidAppear()
-    {
+    override func viewDidAppear() {
         super.viewDidAppear()
-        let fontFamilies = NSFontManager.shared.availableFontFamilies.sorted()
-        for family in fontFamilies {
-            print(family)
-            let familyFonts = NSFontManager.shared.availableMembers(ofFontFamily: family)
-            if let fonts = familyFonts {
-                for font in fonts {
-                    print("\t\(font)")
-                }
-            }
-        }
+//        let fontFamilies = NSFontManager.shared.availableFontFamilies.sorted()
+//        for family in fontFamilies {
+//            print(family)
+//            let familyFonts = NSFontManager.shared.availableMembers(ofFontFamily: family)
+//            if let fonts = familyFonts {
+//                for font in fonts {
+//                    print("\t\(font)")
+//                }
+//            }
+//        }
     }
 }
 
