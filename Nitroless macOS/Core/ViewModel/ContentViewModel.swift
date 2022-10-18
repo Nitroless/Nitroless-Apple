@@ -43,8 +43,6 @@ class ContentViewModel: ObservableObject {
     }
     
     func askBeforeExiting() {
-        
-        
         let delegate = NSApplication.shared.delegate as! AppDelegate
         delegate.popMenubarView()
         
@@ -83,25 +81,42 @@ class ContentViewModel: ObservableObject {
         if (response == NSApplication.ModalResponse.alertFirstButtonReturn) {
             let urlStr = txt.stringValue
             let url = URL(string: urlStr)
-            
-            delegate.showMenubarView()
-            
-            guard let url = url else { return }
+            guard let url = url else {
+                delegate.showMenubarView()
+                return
+            }
             addToUserDefaults(url: url.absoluteString)
         } else {
+            delegate.showMenubarView()
             return
         }
     }
     
     func addToUserDefaults(url: String) {
+        let msg = NSAlert()
+        let delegate = NSApplication.shared.delegate as! AppDelegate
+        
+        msg.addButton(withTitle: "I'm Sorry, I'm Stupid!")      // 1st button
+        msg.messageText = "Repo already added!"
+        msg.informativeText = "Repo is already added, why add again bro?"
+        
         var repos = UserDefaults.standard.object(forKey:"repos") as? [String] ?? [String]()
         
-        repos.append(url)
-        
-        UserDefaults.standard.set(repos, forKey: "repos")
-        self.repos = [Repo]()
-        
-        self.fetchEmotes(urls: repos)
+        if repos.contains(url) || repos.contains(url + "/") {
+            let response: NSApplication.ModalResponse = msg.runModal()
+            
+            if response == NSApplication.ModalResponse.alertFirstButtonReturn {
+                getRepoFromUser(title: "Add Repo", question: "Enter Repo URL Here", defaultValue: "")
+                return
+            }
+        } else {
+            repos.append(url)
+            
+            UserDefaults.standard.set(repos, forKey: "repos")
+            self.repos = [Repo]()
+            self.fetchEmotes(urls: repos)
+            delegate.showMenubarView()
+        }
     }
     
     func removeFromUserDefaults(url: String) {
