@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AppKit
+import AlertToast
 
 struct ContentView: View {
     @StateObject var viewModel = ContentViewModel()
@@ -17,6 +18,9 @@ struct ContentView: View {
             RepoView(viewModel: viewModel)
             if isShown {
                 EmotesView(viewModel: viewModel)
+                    .toast(isPresenting: $viewModel.showToast, alert: {
+                        AlertToast(displayMode: .hud, type: .systemImage("checkmark", .green), title: "Copied!")
+                    })
             } else {
                 ProgressView()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)

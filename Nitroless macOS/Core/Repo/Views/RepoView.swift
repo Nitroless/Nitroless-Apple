@@ -15,7 +15,7 @@ struct RepoView: View {
     @ObservedObject var AppKitEventsObj = AppKitEvents.shared
         
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             HStack {
                 Rectangle()
                     .fill(.white)

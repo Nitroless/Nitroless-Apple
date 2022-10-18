@@ -7,7 +7,6 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
-import AlertToast
 
 struct EmotesView: View {
     @StateObject var viewModel: ContentViewModel
@@ -17,7 +16,7 @@ struct EmotesView: View {
     
     var body: some View {
         if viewModel.selectedRepo.active == true {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 VStack(alignment: .leading) {
                     HStack {
                         WebImage(url: URL(string: "\(viewModel.selectedRepo.url)/\(viewModel.selectedRepo.emote.icon)"))
@@ -112,18 +111,12 @@ struct EmotesView: View {
             }
             .padding([.top, .trailing])
             .padding(.leading, 6)
-            .toast(isPresenting: $viewModel.showToast, alert: {
-                AlertToast(displayMode: .hud, type: .systemImage("checkmark", .green), title: "Copied!")
-            })
         } else {
             ScrollView {
                 HomeView(viewModel: viewModel)
                     .padding([.top, .trailing])
                     .padding(.leading, 6)
             }
-            .toast(isPresenting: $viewModel.showToast, alert: {
-                AlertToast(displayMode: .hud, type: .systemImage("checkmark", .green), title: "Copied!")
-            })
         }
         
     }
