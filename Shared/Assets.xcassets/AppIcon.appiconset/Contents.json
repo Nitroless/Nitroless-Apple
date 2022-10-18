@@ -64,6 +64,12 @@
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "512x512"
+    },
+    {
+      "filename" : "logo192_srcnn_anime_noise0_16x_srcnn_anime_noise0_antialiasing_srcnn_anime_antialiasing.png",
+      "idiom" : "universal",
+      "platform" : "watchos",
+      "size" : "1024x1024"
     }
   ],
   "info" : {

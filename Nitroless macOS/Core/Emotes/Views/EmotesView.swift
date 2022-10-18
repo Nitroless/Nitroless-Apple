@@ -7,7 +7,6 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
-import AlertToast
 
 struct EmotesView: View {
     @StateObject var viewModel: ContentViewModel

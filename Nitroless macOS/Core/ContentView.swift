@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AppKit
+import AlertToast
 
 struct ContentView: View {
     @StateObject var viewModel = ContentViewModel()
