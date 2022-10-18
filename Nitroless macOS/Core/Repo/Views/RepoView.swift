@@ -15,31 +15,48 @@ struct RepoView: View {
     @ObservedObject var AppKitEventsObj = AppKitEvents.shared
         
     var body: some View {
-        ScrollView {
-            HStack {
-                Rectangle()
-                    .fill(.white)
-                    .frame(width: 3, height: (viewModel.isHomeActive == true) || (self.hovered.image == "Icon" && self.hovered.hover == true) ? 32 : (viewModel.isHomeActive == false) && (self.hovered.image == "Icon" && self.hovered.hover == true) ? 8 : 0 )
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                    .animation(.spring(), value: self.hovered.hover && !viewModel.isHomeActive)
-                
-                Image("Icon")
-                    .resizable()
-                    .frame(width: 48, height: 48)
-                    .clipShape(RoundedRectangle(cornerRadius: (viewModel.isHomeActive == true) || (self.hovered.image == "Icon" && self.hovered.hover == true) ? 8 : 99, style: .continuous))
-                    .animation(.spring(), value: self.hovered.hover && !viewModel.isHomeActive)
-                    .onHover { isHovered in
-                        self.hovered = Hovered(image: "Icon", hover: isHovered)
-                        DispatchQueue.main.async { //<-- Here
-                            if (self.hovered.hover) {
-                                NSCursor.pointingHand.push()
-                            } else {
-                                NSCursor.pop()
+        ScrollView(showsIndicators: false) {
+            ZStack {
+                HStack{
+                    Rectangle()
+                        .fill(.white)
+                        .frame(width: 3, height: (viewModel.isHomeActive == true) || (self.hovered.image == "Icon" && self.hovered.hover == true) ? 32 : (viewModel.isHomeActive == false) && (self.hovered.image == "Icon" && self.hovered.hover == true) ? 8 : 0 )
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .animation(.spring(), value: self.hovered.hover && !viewModel.isHomeActive)
+                    
+                    Image("Icon")
+                        .resizable()
+                        .frame(width: 48, height: 48)
+                        .clipShape(RoundedRectangle(cornerRadius: (viewModel.isHomeActive == true) || (self.hovered.image == "Icon" && self.hovered.hover == true) ? 8 : 99, style: .continuous))
+                        .animation(.spring(), value: self.hovered.hover && !viewModel.isHomeActive)
+                        .onHover { isHovered in
+                            self.hovered = Hovered(image: "Icon", hover: isHovered)
+                            DispatchQueue.main.async { //<-- Here
+                                if (self.hovered.hover) {
+                                    NSCursor.pointingHand.push()
+                                } else {
+                                    NSCursor.pop()
+                                }
                             }
                         }
-                    }
-                    .shadow(radius: 5)
+                        .shadow(radius: 5)
+                }
+                HStack {
+                    TriangleShape()
+                        .fill(.black)
+                        .frame(width: 20, height: 15)
+                        .offset(y: 15)
+                        .rotationEffect(.degrees(-90))
+                    
+                    Text("Home")
+                        .padding(10)
+                        .background(RoundedRectangle(cornerRadius: 8).fill(.black))
+                }
+                .opacity(self.hovered.image == "Icon" && self.hovered.hover == true ? 1 : 0)
+                .offset(x: 50)
+                .animation(.spring(), value: self.hovered.hover)
             }
+            .frame(width: 150)
             .padding([.top, .leading, .trailing])
             .onHover { isHovered in
                 self.hovered = Hovered(image: "Icon", hover: isHovered)
@@ -63,44 +80,62 @@ struct RepoView: View {
             VStack {
                 ForEach(viewModel.repos, id: \.url) {
                     repo in
-                    HStack {
-                        Rectangle()
-                            .fill(.white)
-                            .frame(width: 3, height: (self.hovered.image == "\(repo.url)/\(repo.emote.icon)" && self.hovered.hover == true) || (repo.active == true) ? 32 : (self.hovered.image == "\(repo.url)/\(repo.emote.icon)" && self.hovered.hover == true) && (repo.active == false) ? 8 : 0)
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
-                            .animation(.spring(), value: self.hovered.hover && !repo.active)
-                        
-                        WebImage(url: URL(string: "\(repo.url)/\(repo.emote.icon)"))
-                            .resizable()
-                            .frame(width: 48, height: 48)
-                            .clipShape(RoundedRectangle(cornerRadius: (self.hovered.image == "\(repo.url)/\(repo.emote.icon)" && self.hovered.hover == true) || (repo.active == true) ? 8 : 99, style: .continuous))
-                            .animation(.spring(), value: self.hovered.hover && !repo.active)
-                            .onHover { isHovered in
-                                self.hovered = Hovered(image: "\(repo.url)/\(repo.emote.icon)", hover: isHovered)
-                                DispatchQueue.main.async { //<-- Here
-                                    if (self.hovered.hover) {
-                                        NSCursor.pointingHand.push()
-                                    } else {
-                                        NSCursor.pop()
+                    ZStack {
+                        HStack {
+                            Rectangle()
+                                .fill(.white)
+                                .frame(width: 3, height: (self.hovered.image == "\(repo.url)/\(repo.emote.icon)" && self.hovered.hover == true) || (repo.active == true) ? 32 : (self.hovered.image == "\(repo.url)/\(repo.emote.icon)" && self.hovered.hover == true) && (repo.active == false) ? 8 : 0)
+                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                                .animation(.spring(), value: self.hovered.hover && !repo.active)
+                            
+                            WebImage(url: URL(string: "\(repo.url)/\(repo.emote.icon)"))
+                                .resizable()
+                                .frame(width: 48, height: 48)
+                                .clipShape(RoundedRectangle(cornerRadius: (self.hovered.image == "\(repo.url)/\(repo.emote.icon)" && self.hovered.hover == true) || (repo.active == true) ? 8 : 99, style: .continuous))
+                                .animation(.spring(), value: self.hovered.hover && !repo.active)
+                                .onHover { isHovered in
+                                    self.hovered = Hovered(image: "\(repo.url)/\(repo.emote.icon)", hover: isHovered)
+                                    DispatchQueue.main.async { //<-- Here
+                                        if (self.hovered.hover) {
+                                            NSCursor.pointingHand.push()
+                                        } else {
+                                            NSCursor.pop()
+                                        }
                                     }
                                 }
-                            }
-                            .shadow(radius: 5)
-                    }
-                    .onHover { isHovered in
-                        self.hovered = Hovered(image: "\(repo.url)/\(repo.emote.icon)", hover: isHovered)
-                        DispatchQueue.main.async { //<-- Here
-                            if (self.hovered.hover) {
-                                NSCursor.pointingHand.push()
-                            } else {
-                                NSCursor.pop()
+                                .shadow(radius: 5)
+                        }
+                        .onHover { isHovered in
+                            self.hovered = Hovered(image: "\(repo.url)/\(repo.emote.icon)", hover: isHovered)
+                            DispatchQueue.main.async { //<-- Here
+                                if (self.hovered.hover) {
+                                    NSCursor.pointingHand.push()
+                                } else {
+                                    NSCursor.pop()
+                                }
                             }
                         }
+                        .onTapGesture {
+                            viewModel.makeRepoActive(url: repo.url)
+                            viewModel.selectRepo(selectedRepo: Repo(active: true, url: repo.url, emote: repo.emote))
+                        }
+                        
+                        HStack {
+                            TriangleShape()
+                                .fill(.black)
+                                .frame(width: 20, height: 15)
+                                .offset(y: 15)
+                                .rotationEffect(.degrees(-90))
+                            
+                            Text(repo.emote.name.prefix(5))
+                                .padding(10)
+                                .background(RoundedRectangle(cornerRadius: 8).fill(.black))
+                        }
+                        .opacity(self.hovered.image == "\(repo.url)/\(repo.emote.icon)" && self.hovered.hover == true ? 1 : 0)
+                        .offset(x: 50)
+                        .animation(.spring(), value: self.hovered.hover)
                     }
-                    .onTapGesture {
-                        viewModel.makeRepoActive(url: repo.url)
-                        viewModel.selectRepo(selectedRepo: Repo(active: true, url: repo.url, emote: repo.emote))
-                    }
+                    
                 }
             }
             .padding(.horizontal)

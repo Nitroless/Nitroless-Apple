@@ -90,6 +90,72 @@ struct AboutView: View {
                 
                 VStack {
                     HStack(alignment: .top) {
+                        WebImage(url: URL(string: "https://github.com/TheAlphaStream.png"))
+                            .resizable()
+                            .frame(width: 64, height: 64)
+                            .clipShape(RoundedRectangle(cornerRadius: 99, style: .continuous))
+                        VStack {
+                            Text("Alpha_Stream")
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .font(.headline)
+                            
+                            Text("Founder and Designer")
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            
+                            Button {
+                                NSWorkspace.shared.open(URL(string: "https://alphastream.weebly.com/")!)
+                            } label: {
+                                HStack {
+                                    Image(systemName: "link")
+                                        .resizable()
+                                        .frame(width: 18, height: 18)
+                                    
+                                    Text("Portfolio")
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                }
+                                .font(.subheadline)
+                            }
+                            .buttonStyle(.plain)
+                            
+                            Button {
+                                NSWorkspace.shared.open(URL(string: "https://github.com/TheAlphaStream/")!)
+                            } label: {
+                                HStack {
+                                    Image("GithubIcon")
+                                        .resizable()
+                                        .frame(width: 18, height: 18)
+                                        .colorInvert()
+                                    
+                                    Text("TheAlphaStream")
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                }
+                                .font(.subheadline)
+                            }
+                            .buttonStyle(.plain)
+                            
+                            Button {
+                                NSWorkspace.shared.open(URL(string: "https://twitter.com/Kutarin_/")!)
+                            } label: {
+                                HStack {
+                                    Image("TwitterIcon")
+                                        .resizable()
+                                        .frame(width: 18, height: 18)
+                                        .colorInvert()
+                                    
+                                    Text("@Kutarin_")
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                }
+                                .font(.subheadline)
+                            }
+                            .buttonStyle(.plain)
+                        }
+                        .padding(.leading)
+                    }
+                }
+                .padding(.bottom)
+                
+                VStack {
+                    HStack(alignment: .top) {
                         WebImage(url: URL(string: "https://github.com/paraskcd1315.png"))
                             .resizable()
                             .frame(width: 64, height: 64)
@@ -211,72 +277,6 @@ struct AboutView: View {
                                         .colorInvert()
                                     
                                     Text("@llsc121")
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                }
-                                .font(.subheadline)
-                            }
-                            .buttonStyle(.plain)
-                        }
-                        .padding(.leading)
-                    }
-                }
-                .padding(.bottom)
-                
-                VStack {
-                    HStack(alignment: .top) {
-                        WebImage(url: URL(string: "https://github.com/TheAlphaStream.png"))
-                            .resizable()
-                            .frame(width: 64, height: 64)
-                            .clipShape(RoundedRectangle(cornerRadius: 99, style: .continuous))
-                        VStack {
-                            Text("Alpha_Stream")
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .font(.headline)
-                            
-                            Text("Web Developer")
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            
-                            Button {
-                                NSWorkspace.shared.open(URL(string: "https://alphastream.weebly.com/")!)
-                            } label: {
-                                HStack {
-                                    Image(systemName: "link")
-                                        .resizable()
-                                        .frame(width: 18, height: 18)
-                                    
-                                    Text("Portfolio")
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                }
-                                .font(.subheadline)
-                            }
-                            .buttonStyle(.plain)
-                            
-                            Button {
-                                NSWorkspace.shared.open(URL(string: "https://github.com/TheAlphaStream/")!)
-                            } label: {
-                                HStack {
-                                    Image("GithubIcon")
-                                        .resizable()
-                                        .frame(width: 18, height: 18)
-                                        .colorInvert()
-                                    
-                                    Text("TheAlphaStream")
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                }
-                                .font(.subheadline)
-                            }
-                            .buttonStyle(.plain)
-                            
-                            Button {
-                                NSWorkspace.shared.open(URL(string: "https://twitter.com/Kutarin_/")!)
-                            } label: {
-                                HStack {
-                                    Image("TwitterIcon")
-                                        .resizable()
-                                        .frame(width: 18, height: 18)
-                                        .colorInvert()
-                                    
-                                    Text("@Kutarin_")
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                 }
                                 .font(.subheadline)

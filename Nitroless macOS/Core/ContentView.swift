@@ -13,19 +13,58 @@ struct ContentView: View {
     @State var isShown = true
     
     var body: some View {
-        HStack {
+        ZStack(alignment: .leading) {
             RepoView(viewModel: viewModel)
+                .zIndex(1)
+            
             if isShown {
-                EmotesView(viewModel: viewModel)
+                HStack {
+                    Text("")
+                        .frame(width: 80)
+                    EmotesView(viewModel: viewModel)
+                }
+                .zIndex(-1)
+                
             } else {
-                ProgressView()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                HStack {
+                    Text("")
+                        .frame(width: 80)
+                    
+                    ScrollView(showsIndicators: false) {
+                        VStack {
+                            Text("Nitroless")
+                                .font(.custom("Uni Sans", size: 32))
+                        }
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .padding(20)
+                        .background(Color(red: 0.13, green: 0.13, blue: 0.15).opacity(0.6))
+                        .cornerRadius(20)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
+                        
+                        VStack {
+                            Text("Nitroless got inactive\nClick to Reactivate")
+                                .multilineTextAlignment(.center)
+                        }
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .padding(20)
+                        .background(Color(red: 0.13, green: 0.13, blue: 0.15).opacity(0.6))
+                        .cornerRadius(20)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
+                    }
+                    .padding([.top, .trailing])
+                    .padding(.leading, 6)
+                }
             }
         }
         .frame(minWidth: 0,
                maxWidth: .infinity,
                minHeight: 0,
                maxHeight: .infinity
+               
         ).onAppear {
             viewModel.allowAnimation()
             

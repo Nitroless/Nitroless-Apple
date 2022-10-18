@@ -24,7 +24,7 @@ struct EmoteView: View {
         } label: {
             WebImage(url: URL(string: "\(url)\(path == "" ? "" : "\(path)/")\(emote.name).\(emote.type)"))
                 .resizable()
-                .frame(height: 48)
+                .frame(width: 48,height: 48)
                 .aspectRatio(contentMode: .fit)
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
         }

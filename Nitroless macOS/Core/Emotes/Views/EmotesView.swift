@@ -17,7 +17,7 @@ struct EmotesView: View {
     
     var body: some View {
         if viewModel.selectedRepo.active == true {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 VStack(alignment: .leading) {
                     HStack {
                         WebImage(url: URL(string: "\(viewModel.selectedRepo.url)/\(viewModel.selectedRepo.emote.icon)"))
@@ -110,20 +110,25 @@ struct EmotesView: View {
                 .padding(.bottom)
                 
             }
-            .padding([.top, .trailing])
-            .padding(.leading, 6)
+            .padding(.top)
+            .padding(.trailing, 40)
+            .padding(.leading, 10)
             .toast(isPresenting: $viewModel.showToast, alert: {
                 AlertToast(displayMode: .hud, type: .systemImage("checkmark", .green), title: "Copied!")
             })
+            
         } else {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 HomeView(viewModel: viewModel)
-                    .padding([.top, .trailing])
-                    .padding(.leading, 6)
+                    .padding(.top)
+                    .padding(.trailing, 40)
+                    .padding(.leading, 10)
+                    
             }
             .toast(isPresenting: $viewModel.showToast, alert: {
                 AlertToast(displayMode: .hud, type: .systemImage("checkmark", .green), title: "Copied!")
             })
+            
         }
         
     }

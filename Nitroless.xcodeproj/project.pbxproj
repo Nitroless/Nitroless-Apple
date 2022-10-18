@@ -47,6 +47,7 @@
 		E619D9B828F3572E006BD8B4 /* EmotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E619D9B728F3572E006BD8B4 /* EmotesView.swift */; };
 		E619D9D128F3BA99006BD8B4 /* UniSans.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = E619D9CE28F3BA2D006BD8B4 /* UniSans.otf */; };
 		E619D9D528F3BC36006BD8B4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E619D9D428F3BC36006BD8B4 /* HomeView.swift */; };
+		E6A1D17D28FF0940004DDFD4 /* TriangleShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1D17C28FF0940004DDFD4 /* TriangleShape.swift */; };
 		E6ADBB7B28F4634700754936 /* HomeChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADBB7A28F4634700754936 /* HomeChildView.swift */; };
 		E6ADBB7D28F4635E00754936 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADBB7C28F4635E00754936 /* AboutView.swift */; };
 		E6F1ECED28F5A37D001594B6 /* EmoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F1ECEC28F5A37D001594B6 /* EmoteView.swift */; };
@@ -121,6 +122,7 @@
 		E619D9CE28F3BA2D006BD8B4 /* UniSans.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = UniSans.otf; sourceTree = "<group>"; };
 		E619D9CF28F3BA69006BD8B4 /* Nitroless-macOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Nitroless-macOS-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E619D9D428F3BC36006BD8B4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E6A1D17C28FF0940004DDFD4 /* TriangleShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleShape.swift; sourceTree = "<group>"; };
 		E6ADBB7A28F4634700754936 /* HomeChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeChildView.swift; sourceTree = "<group>"; };
 		E6ADBB7C28F4635E00754936 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		E6F1ECEC28F5A37D001594B6 /* EmoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmoteView.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				571A78AA28F341BE0089A0B1 /* StatusBarController.swift */,
 				571A78AB28F341BE0089A0B1 /* SharePicker.swift */,
 				571A78AC28F341BE0089A0B1 /* EventMonitor.swift */,
+				E6A1D17C28FF0940004DDFD4 /* TriangleShape.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -532,6 +535,7 @@
 				571A78AE28F341BE0089A0B1 /* ContentViewModel.swift in Sources */,
 				571A78AF28F341BE0089A0B1 /* ContentView.swift in Sources */,
 				571A78B228F341BE0089A0B1 /* RepoView.swift in Sources */,
+				E6A1D17D28FF0940004DDFD4 /* TriangleShape.swift in Sources */,
 				571A78B528F341BE0089A0B1 /* StatusBarController.swift in Sources */,
 				E6ADBB7B28F4634700754936 /* HomeChildView.swift in Sources */,
 				571A78C728F344EA0089A0B1 /* MainViewController.swift in Sources */,
