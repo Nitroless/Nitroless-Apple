@@ -112,9 +112,6 @@ struct EmotesView: View {
             .padding(.top)
             .padding(.trailing, 40)
             .padding(.leading, 10)
-            .toast(isPresenting: $viewModel.showToast, alert: {
-                AlertToast(displayMode: .hud, type: .systemImage("checkmark", .green), title: "Copied!")
-            })
             
         } else {
             ScrollView(showsIndicators: false) {
@@ -124,9 +121,6 @@ struct EmotesView: View {
                     .padding(.leading, 10)
                     
             }
-            .toast(isPresenting: $viewModel.showToast, alert: {
-                AlertToast(displayMode: .hud, type: .systemImage("checkmark", .green), title: "Copied!")
-            })
             
         }
         

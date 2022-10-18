@@ -23,7 +23,7 @@ struct HomeView: View {
                     VStack {
                         Text("Home")
                     }
-                    .foregroundColor((self.hovered.image == "Home" && self.hovered.hover == true) || viewModel.isHomeActive == true ? Color(.white) : Color(red: 0.35, green: 0.40, blue: 0.95))
+                    .foregroundColor(Color(.white))
                     .padding(10)
                     .background((self.hovered.image == "Home" && self.hovered.hover == true) || viewModel.isHomeActive == true ? Color(red: 0.35, green: 0.40, blue: 0.95) : Color(red: 0.21, green: 0.22, blue: 0.25))
                     .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
@@ -41,7 +41,7 @@ struct HomeView: View {
                     VStack {
                         Text("About")
                     }
-                    .foregroundColor((self.hovered.image == "About" && self.hovered.hover == true) || viewModel.isAboutActive == true ? Color(.white) : Color(red: 0.35, green: 0.40, blue: 0.95))
+                    .foregroundColor(Color(.white))
                     .padding(10)
                     .background((self.hovered.image == "About" && self.hovered.hover == true) || viewModel.isAboutActive == true ? Color(red: 0.35, green: 0.40, blue: 0.95) : Color(red: 0.21, green: 0.22, blue: 0.25))
                     .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
@@ -59,7 +59,7 @@ struct HomeView: View {
                     VStack {
                         Text("Quit App")
                     }
-                    .foregroundColor(self.hovered.image == "Quit" && self.hovered.hover == true ? Color(.white) : Color(red: 0.35, green: 0.40, blue: 0.95))
+                    .foregroundColor(Color(.white))
                     .padding(10)
                     .background(self.hovered.image == "Quit" && self.hovered.hover == true ? Color(red: 0.35, green: 0.40, blue: 0.95) : Color(red: 0.21, green: 0.22, blue: 0.25))
                     .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))

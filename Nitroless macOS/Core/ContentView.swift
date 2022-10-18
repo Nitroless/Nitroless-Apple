@@ -56,8 +56,9 @@ struct ContentView: View {
                             RoundedRectangle(cornerRadius: 20)
                                 .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
                     }
-                    .padding([.top, .trailing])
-                    .padding(.leading, 6)
+                    .padding(.top)
+                    .padding(.trailing, 40)
+                    .padding(.leading, 10)
                 }
             }
         }
