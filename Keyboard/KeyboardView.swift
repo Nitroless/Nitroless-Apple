@@ -10,8 +10,8 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 // colors
-let discordBgDark = Color(red: 0.2156, green: 0.2235, blue: 0.2431)
-let discordBgLight = Color(red: 1, green: 1, blue: 1)
+let discordBgDark = Color(red: 0.2156, green: 0.2235, blue: 0.2431) // thanks to r/jb for randomly
+let discordBgLight = Color(red: 1, green: 1, blue: 1)               // telling me these exact colors
 
 struct KeyboardView: View {
     
