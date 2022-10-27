@@ -32,6 +32,8 @@ struct AboutView: View {
         VStack {
             HStack {
                 Button {
+                    let delegate = NSApplication.shared.delegate as! AppDelegate
+                    delegate.popMenubarView()
                     NSWorkspace.shared.open(URL(string: "https://github.com/Nitroless")!)
                 } label: {
                     HStack {
@@ -46,6 +48,8 @@ struct AboutView: View {
                 .padding(.trailing)
                 .buttonStyle(.plain)
                 Button {
+                    let delegate = NSApplication.shared.delegate as! AppDelegate
+                    delegate.popMenubarView()
                     NSWorkspace.shared.open(URL(string: "https://nitroless.github.io/")!)
                 } label: {
                     HStack {
@@ -58,6 +62,8 @@ struct AboutView: View {
                 .padding(.trailing)
                 .buttonStyle(.plain)
                 Button {
+                    let delegate = NSApplication.shared.delegate as! AppDelegate
+                    delegate.popMenubarView()
                     NSWorkspace.shared.open(URL(string: "https://twitter.com/nitroless_")!)
                 } label: {
                     HStack {
@@ -103,6 +109,8 @@ struct AboutView: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             
                             Button {
+                                let delegate = NSApplication.shared.delegate as! AppDelegate
+                                delegate.popMenubarView()
                                 NSWorkspace.shared.open(URL(string: "https://alphastream.weebly.com/")!)
                             } label: {
                                 HStack {
@@ -118,6 +126,8 @@ struct AboutView: View {
                             .buttonStyle(.plain)
                             
                             Button {
+                                let delegate = NSApplication.shared.delegate as! AppDelegate
+                                delegate.popMenubarView()
                                 NSWorkspace.shared.open(URL(string: "https://github.com/TheAlphaStream/")!)
                             } label: {
                                 HStack {
@@ -134,6 +144,8 @@ struct AboutView: View {
                             .buttonStyle(.plain)
                             
                             Button {
+                                let delegate = NSApplication.shared.delegate as! AppDelegate
+                                delegate.popMenubarView()
                                 NSWorkspace.shared.open(URL(string: "https://twitter.com/Kutarin_/")!)
                             } label: {
                                 HStack {
@@ -170,6 +182,8 @@ struct AboutView: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             
                             Button {
+                                let delegate = NSApplication.shared.delegate as! AppDelegate
+                                delegate.popMenubarView()
                                 NSWorkspace.shared.open(URL(string: "https://paraskcd.com/")!)
                             } label: {
                                 HStack {
@@ -185,6 +199,8 @@ struct AboutView: View {
                             .buttonStyle(.plain)
                             
                             Button {
+                                let delegate = NSApplication.shared.delegate as! AppDelegate
+                                delegate.popMenubarView()
                                 NSWorkspace.shared.open(URL(string: "https://github.com/paraskcd1315/")!)
                             } label: {
                                 HStack {
@@ -201,6 +217,8 @@ struct AboutView: View {
                             .buttonStyle(.plain)
                             
                             Button {
+                                let delegate = NSApplication.shared.delegate as! AppDelegate
+                                delegate.popMenubarView()
                                 NSWorkspace.shared.open(URL(string: "https://twitter.com/ParasKCD")!)
                             } label: {
                                 HStack {
@@ -237,6 +255,8 @@ struct AboutView: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             
                             Button {
+                                let delegate = NSApplication.shared.delegate as! AppDelegate
+                                delegate.popMenubarView()
                                 NSWorkspace.shared.open(URL(string: "https://llsc12.github.io/")!)
                             } label: {
                                 HStack {
@@ -252,6 +272,8 @@ struct AboutView: View {
                             .buttonStyle(.plain)
                             
                             Button {
+                                let delegate = NSApplication.shared.delegate as! AppDelegate
+                                delegate.popMenubarView()
                                 NSWorkspace.shared.open(URL(string: "https://github.com/llsc12/")!)
                             } label: {
                                 HStack {
@@ -268,6 +290,8 @@ struct AboutView: View {
                             .buttonStyle(.plain)
                             
                             Button {
+                                let delegate = NSApplication.shared.delegate as! AppDelegate
+                                delegate.popMenubarView()
                                 NSWorkspace.shared.open(URL(string: "https://twitter.com/llsc121")!)
                             } label: {
                                 HStack {
@@ -303,6 +327,8 @@ struct AboutView: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             
                             Button {
+                                let delegate = NSApplication.shared.delegate as! AppDelegate
+                                delegate.popMenubarView()
                                 NSWorkspace.shared.open(URL(string: "https://github.com/Superbro9/")!)
                             } label: {
                                 HStack {
@@ -319,6 +345,8 @@ struct AboutView: View {
                             .buttonStyle(.plain)
                             
                             Button {
+                                let delegate = NSApplication.shared.delegate as! AppDelegate
+                                delegate.popMenubarView()
                                 NSWorkspace.shared.open(URL(string: "https://twitter.com/suuperbro/")!)
                             } label: {
                                 HStack {
@@ -354,6 +382,8 @@ struct AboutView: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             
                             Button {
+                                let delegate = NSApplication.shared.delegate as! AppDelegate
+                                delegate.popMenubarView()
                                 NSWorkspace.shared.open(URL(string: "https://lillieh001.github.io/")!)
                             } label: {
                                 HStack {
@@ -369,6 +399,8 @@ struct AboutView: View {
                             .buttonStyle(.plain)
                             
                             Button {
+                                let delegate = NSApplication.shared.delegate as! AppDelegate
+                                delegate.popMenubarView()
                                 NSWorkspace.shared.open(URL(string: "https://github.com/LillieH001/")!)
                             } label: {
                                 HStack {
@@ -385,6 +417,8 @@ struct AboutView: View {
                             .buttonStyle(.plain)
                             
                             Button {
+                                let delegate = NSApplication.shared.delegate as! AppDelegate
+                                delegate.popMenubarView()
                                 NSWorkspace.shared.open(URL(string: "https://twitter.com/LillieWeeb/")!)
                             } label: {
                                 HStack {
