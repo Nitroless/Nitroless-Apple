@@ -29,6 +29,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusBar = StatusBarController.init(popover)
     }
     
+    func applicationDidBecomeActive(_ notification: Notification) {
+        NSApp.setActivationPolicy(NSApplication.ActivationPolicy.accessory)
+    }
+    
     @objc func handleGetURL(event: NSAppleEventDescriptor, reply:NSAppleEventDescriptor) {
         NSApp.setActivationPolicy(NSApplication.ActivationPolicy.accessory)
         if let urlString = event.paramDescriptor(forKeyword: keyDirectObject)?.stringValue {
