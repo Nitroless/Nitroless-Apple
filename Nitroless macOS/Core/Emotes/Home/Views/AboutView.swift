@@ -9,6 +9,8 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct AboutView: View {
+    let delegate = NSApplication.shared.delegate as! AppDelegate
+    
     var body: some View {
         VStack {
             HStack {
@@ -32,7 +34,6 @@ struct AboutView: View {
         VStack {
             HStack {
                 Button {
-                    let delegate = NSApplication.shared.delegate as! AppDelegate
                     delegate.popMenubarView()
                     NSWorkspace.shared.open(URL(string: "https://github.com/Nitroless")!)
                 } label: {
@@ -48,7 +49,6 @@ struct AboutView: View {
                 .padding(.trailing)
                 .buttonStyle(.plain)
                 Button {
-                    let delegate = NSApplication.shared.delegate as! AppDelegate
                     delegate.popMenubarView()
                     NSWorkspace.shared.open(URL(string: "https://nitroless.github.io/")!)
                 } label: {
@@ -62,7 +62,6 @@ struct AboutView: View {
                 .padding(.trailing)
                 .buttonStyle(.plain)
                 Button {
-                    let delegate = NSApplication.shared.delegate as! AppDelegate
                     delegate.popMenubarView()
                     NSWorkspace.shared.open(URL(string: "https://twitter.com/nitroless_")!)
                 } label: {
@@ -109,7 +108,6 @@ struct AboutView: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             
                             Button {
-                                let delegate = NSApplication.shared.delegate as! AppDelegate
                                 delegate.popMenubarView()
                                 NSWorkspace.shared.open(URL(string: "https://alphastream.weebly.com/")!)
                             } label: {
@@ -126,7 +124,6 @@ struct AboutView: View {
                             .buttonStyle(.plain)
                             
                             Button {
-                                let delegate = NSApplication.shared.delegate as! AppDelegate
                                 delegate.popMenubarView()
                                 NSWorkspace.shared.open(URL(string: "https://github.com/TheAlphaStream/")!)
                             } label: {
@@ -144,7 +141,6 @@ struct AboutView: View {
                             .buttonStyle(.plain)
                             
                             Button {
-                                let delegate = NSApplication.shared.delegate as! AppDelegate
                                 delegate.popMenubarView()
                                 NSWorkspace.shared.open(URL(string: "https://twitter.com/Kutarin_/")!)
                             } label: {
@@ -182,7 +178,6 @@ struct AboutView: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             
                             Button {
-                                let delegate = NSApplication.shared.delegate as! AppDelegate
                                 delegate.popMenubarView()
                                 NSWorkspace.shared.open(URL(string: "https://paraskcd.com/")!)
                             } label: {
@@ -199,7 +194,6 @@ struct AboutView: View {
                             .buttonStyle(.plain)
                             
                             Button {
-                                let delegate = NSApplication.shared.delegate as! AppDelegate
                                 delegate.popMenubarView()
                                 NSWorkspace.shared.open(URL(string: "https://github.com/paraskcd1315/")!)
                             } label: {
@@ -217,7 +211,6 @@ struct AboutView: View {
                             .buttonStyle(.plain)
                             
                             Button {
-                                let delegate = NSApplication.shared.delegate as! AppDelegate
                                 delegate.popMenubarView()
                                 NSWorkspace.shared.open(URL(string: "https://twitter.com/ParasKCD")!)
                             } label: {
@@ -255,7 +248,6 @@ struct AboutView: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             
                             Button {
-                                let delegate = NSApplication.shared.delegate as! AppDelegate
                                 delegate.popMenubarView()
                                 NSWorkspace.shared.open(URL(string: "https://llsc12.github.io/")!)
                             } label: {
@@ -272,7 +264,6 @@ struct AboutView: View {
                             .buttonStyle(.plain)
                             
                             Button {
-                                let delegate = NSApplication.shared.delegate as! AppDelegate
                                 delegate.popMenubarView()
                                 NSWorkspace.shared.open(URL(string: "https://github.com/llsc12/")!)
                             } label: {
@@ -290,7 +281,6 @@ struct AboutView: View {
                             .buttonStyle(.plain)
                             
                             Button {
-                                let delegate = NSApplication.shared.delegate as! AppDelegate
                                 delegate.popMenubarView()
                                 NSWorkspace.shared.open(URL(string: "https://twitter.com/llsc121")!)
                             } label: {
@@ -327,7 +317,6 @@ struct AboutView: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             
                             Button {
-                                let delegate = NSApplication.shared.delegate as! AppDelegate
                                 delegate.popMenubarView()
                                 NSWorkspace.shared.open(URL(string: "https://github.com/Superbro9/")!)
                             } label: {
@@ -345,7 +334,6 @@ struct AboutView: View {
                             .buttonStyle(.plain)
                             
                             Button {
-                                let delegate = NSApplication.shared.delegate as! AppDelegate
                                 delegate.popMenubarView()
                                 NSWorkspace.shared.open(URL(string: "https://twitter.com/suuperbro/")!)
                             } label: {
@@ -382,7 +370,6 @@ struct AboutView: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             
                             Button {
-                                let delegate = NSApplication.shared.delegate as! AppDelegate
                                 delegate.popMenubarView()
                                 NSWorkspace.shared.open(URL(string: "https://lillieh001.github.io/")!)
                             } label: {
@@ -399,7 +386,6 @@ struct AboutView: View {
                             .buttonStyle(.plain)
                             
                             Button {
-                                let delegate = NSApplication.shared.delegate as! AppDelegate
                                 delegate.popMenubarView()
                                 NSWorkspace.shared.open(URL(string: "https://github.com/LillieH001/")!)
                             } label: {
@@ -417,7 +403,6 @@ struct AboutView: View {
                             .buttonStyle(.plain)
                             
                             Button {
-                                let delegate = NSApplication.shared.delegate as! AppDelegate
                                 delegate.popMenubarView()
                                 NSWorkspace.shared.open(URL(string: "https://twitter.com/LillieWeeb/")!)
                             } label: {
