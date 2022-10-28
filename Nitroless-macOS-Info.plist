@@ -10,7 +10,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>CFBundleURLName</key>
-			<string>com.llsc12.Nitroless-macOS</string>
+			<string>com.llsc12.Nitroless</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>nitroless</string>

@@ -88,7 +88,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		571A788A28F340FE0089A0B1 /* Nitroless macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nitroless macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		571A788A28F340FE0089A0B1 /* Nitroless.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nitroless.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		571A788C28F340FE0089A0B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		571A789328F340FF0089A0B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		571A789528F340FF0089A0B1 /* Nitroless_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nitroless_macOS.entitlements; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 		AA6250B828E911C100C7030E /* Nitroless.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nitroless.entitlements; sourceTree = "<group>"; };
 		AA6250B928E9141500C7030E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AA6250BD28EB088B00C7030E /* Test Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test Data.swift"; sourceTree = "<group>"; };
-		AA9F089028E58B450098040D /* Nitroless iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nitroless iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA9F089028E58B450098040D /* Nitroless.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nitroless.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA9F089328E58B450098040D /* NitrolessApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NitrolessApp.swift; sourceTree = "<group>"; };
 		AA9F089528E58B450098040D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AA9F08A428E58C020098040D /* RepositoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryManager.swift; sourceTree = "<group>"; };
@@ -312,9 +312,9 @@
 		AA9F089128E58B450098040D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AA9F089028E58B450098040D /* Nitroless iOS.app */,
+				AA9F089028E58B450098040D /* Nitroless.app */,
 				5783B54628ECBA9000CFF460 /* Keyboard.appex */,
-				571A788A28F340FE0089A0B1 /* Nitroless macOS.app */,
+				571A788A28F340FE0089A0B1 /* Nitroless.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -399,7 +399,7 @@
 				AA67BDB528F7FE7C001A37BF /* AlertToast */,
 			);
 			productName = "Nitroless macOS";
-			productReference = 571A788A28F340FE0089A0B1 /* Nitroless macOS.app */;
+			productReference = 571A788A28F340FE0089A0B1 /* Nitroless.app */;
 			productType = "com.apple.product-type.application";
 		};
 		5783B54528ECBA9000CFF460 /* Keyboard */ = {
@@ -444,7 +444,7 @@
 				AAD030A128EB155E0040718F /* AlertToast */,
 			);
 			productName = Nitroless;
-			productReference = AA9F089028E58B450098040D /* Nitroless iOS.app */;
+			productReference = AA9F089028E58B450098040D /* Nitroless.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -643,7 +643,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.llsc12.Nitroless;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Nitroless;
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -676,7 +676,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.llsc12.Nitroless;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Nitroless;
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -875,7 +875,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.llsc12.Nitroless;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Nitroless;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -908,7 +908,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.llsc12.Nitroless;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Nitroless;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
