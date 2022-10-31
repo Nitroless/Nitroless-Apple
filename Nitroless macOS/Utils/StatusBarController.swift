@@ -29,6 +29,7 @@ class StatusBarController {
         }
         
         eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown], handler: mouseEventHandler)
+        showPopover(nil)
     }
     
     @objc func togglePopover(sender: AnyObject) {

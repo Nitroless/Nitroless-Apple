@@ -13,6 +13,7 @@ struct EmotesView: View {
     @State var hovered = Hovered(image: "", hover: false) 
     let pasteboard = NSPasteboard.general
     @State private var showPicker = false
+    let delegate = NSApplication.shared.delegate as! AppDelegate
     
     var body: some View {
         if viewModel.selectedRepo.active == true {
@@ -32,9 +33,20 @@ struct EmotesView: View {
                     Spacer()
                     HStack(spacing: 1) {
                         Text("URL: ")
-                        Link(viewModel.selectedRepo.url, destination: URL(string: viewModel.selectedRepo.url)!)
-                            .foregroundColor(Color(red: 0.35, green: 0.40, blue: 0.95))
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Button {
+                            delegate.popMenubarView()
+                            NSWorkspace.shared.open(URL(string: viewModel.selectedRepo.url)!)
+                        } label: {
+                            HStack {
+                                Text(viewModel.selectedRepo.url)
+                                    .foregroundColor(Color(red: 0.35, green: 0.40, blue: 0.95))
+                            }
+                            
+                        }
+                        .padding(.trailing)
+                        .buttonStyle(.plain)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                            
                     }
                     Text("Number of Emotes: \(viewModel.selectedRepo.emote.emotes.count)")
                         .frame(maxWidth: .infinity, alignment: .leading)
