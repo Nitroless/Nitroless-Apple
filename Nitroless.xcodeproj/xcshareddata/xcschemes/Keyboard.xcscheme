@@ -29,7 +29,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AA9F088F28E58B450098040D"
-               BuildableName = "Nitroless iOS.app"
+               BuildableName = "Nitroless.app"
                BlueprintName = "Nitroless iOS"
                ReferencedContainer = "container:Nitroless.xcodeproj">
             </BuildableReference>
@@ -61,7 +61,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AA9F088F28E58B450098040D"
-            BuildableName = "Nitroless iOS.app"
+            BuildableName = "Nitroless.app"
             BlueprintName = "Nitroless iOS"
             ReferencedContainer = "container:Nitroless.xcodeproj">
          </BuildableReference>
@@ -73,13 +73,14 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES"
+      askForAppToLaunch = "Yes"
       launchAutomaticallySubstyle = "2">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AA9F088F28E58B450098040D"
-            BuildableName = "Nitroless iOS.app"
+            BuildableName = "Nitroless.app"
             BlueprintName = "Nitroless iOS"
             ReferencedContainer = "container:Nitroless.xcodeproj">
          </BuildableReference>

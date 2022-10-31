@@ -202,7 +202,23 @@ struct RepoView: View {
             guard let urlparam = comp.queryItems?.filter({ item in item.name == "url"}).first else { return }
             guard let urlToAdd = urlparam.value else { return }
             
-            viewModel.getRepoFromUser(title: "Add Repo", question: "Enter Repo URL Here", defaultValue: urlToAdd)
+            let repos = UserDefaults.standard.object(forKey:"repos") as? [String] ?? [String]()
+            
+            let msg = NSAlert()
+            msg.addButton(withTitle: "OMG! I didn't know, I'm so stupid, sorry!")      // 1st button
+            msg.messageText = "Repo already added!"
+            msg.informativeText = "Repo is already added, why add again bro?"
+            
+            if repos.contains(urlToAdd) || repos.contains(urlToAdd + "/") {
+                let response: NSApplication.ModalResponse = msg.runModal()
+                
+                if response == NSApplication.ModalResponse.alertFirstButtonReturn {
+                    return
+                }
+            } else {
+                viewModel.getRepoFromUser(title: "Add Repo", question: "Enter Repo URL Here", defaultValue: urlToAdd)
+            }
+            
         default:
             return;
         }
