@@ -29,7 +29,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AA9F088F28E58B450098040D"
-               BuildableName = "Nitroless iOS.app"
+               BuildableName = "Nitroless.app"
                BlueprintName = "Nitroless iOS"
                ReferencedContainer = "container:Nitroless.xcodeproj">
             </BuildableReference>
@@ -61,7 +61,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AA9F088F28E58B450098040D"
-            BuildableName = "Nitroless iOS.app"
+            BuildableName = "Nitroless.app"
             BlueprintName = "Nitroless iOS"
             ReferencedContainer = "container:Nitroless.xcodeproj">
          </BuildableReference>
@@ -79,7 +79,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AA9F088F28E58B450098040D"
-            BuildableName = "Nitroless iOS.app"
+            BuildableName = "Nitroless.app"
             BlueprintName = "Nitroless iOS"
             ReferencedContainer = "container:Nitroless.xcodeproj">
          </BuildableReference>
