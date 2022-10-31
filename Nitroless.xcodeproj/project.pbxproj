@@ -45,8 +45,16 @@
 		AAD030A228EB155E0040718F /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = AAD030A128EB155E0040718F /* AlertToast */; };
 		E619D9B628F356BE006BD8B4 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = E619D9B528F356BE006BD8B4 /* Array.swift */; };
 		E619D9B828F3572E006BD8B4 /* EmotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E619D9B728F3572E006BD8B4 /* EmotesView.swift */; };
-		E619D9D128F3BA99006BD8B4 /* UniSans.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = E619D9CE28F3BA2D006BD8B4 /* UniSans.otf */; };
 		E619D9D528F3BC36006BD8B4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E619D9D428F3BC36006BD8B4 /* HomeView.swift */; };
+		E69E3A2829100D800030EFA3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A2729100D800030EFA3 /* HomeView.swift */; };
+		E69E3A2B29100E060030EFA3 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A2A29100E060030EFA3 /* Color.swift */; };
+		E69E3A30291010B80030EFA3 /* UniSans.otf in Resources */ = {isa = PBXBuildFile; fileRef = E619D9CE28F3BA2D006BD8B4 /* UniSans.otf */; };
+		E69E3A31291010B90030EFA3 /* UniSans.otf in Resources */ = {isa = PBXBuildFile; fileRef = E619D9CE28F3BA2D006BD8B4 /* UniSans.otf */; };
+		E69E3A332910112B0030EFA3 /* UniSans.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = E619D9CE28F3BA2D006BD8B4 /* UniSans.otf */; };
+		E69E3A37291025E10030EFA3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A36291025E10030EFA3 /* HomeViewModel.swift */; };
+		E69E3A3A291028420030EFA3 /* FrequentUsedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A39291028420030EFA3 /* FrequentUsedView.swift */; };
+		E69E3A3D291028590030EFA3 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A3C291028590030EFA3 /* AboutView.swift */; };
+		E69E3A402910589C0030EFA3 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A3F2910589C0030EFA3 /* SidebarView.swift */; };
 		E6A1D17D28FF0940004DDFD4 /* TriangleShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1D17C28FF0940004DDFD4 /* TriangleShape.swift */; };
 		E6ADBB7B28F4634700754936 /* HomeChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADBB7A28F4634700754936 /* HomeChildView.swift */; };
 		E6ADBB7D28F4635E00754936 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADBB7C28F4635E00754936 /* AboutView.swift */; };
@@ -81,7 +89,7 @@
 			dstPath = Fonts;
 			dstSubfolderSpec = 7;
 			files = (
-				E619D9D128F3BA99006BD8B4 /* UniSans.otf in CopyFiles */,
+				E69E3A332910112B0030EFA3 /* UniSans.otf in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +130,12 @@
 		E619D9CE28F3BA2D006BD8B4 /* UniSans.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = UniSans.otf; sourceTree = "<group>"; };
 		E619D9CF28F3BA69006BD8B4 /* Nitroless-macOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Nitroless-macOS-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E619D9D428F3BC36006BD8B4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E69E3A2729100D800030EFA3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E69E3A2A29100E060030EFA3 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		E69E3A36291025E10030EFA3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		E69E3A39291028420030EFA3 /* FrequentUsedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentUsedView.swift; sourceTree = "<group>"; };
+		E69E3A3C291028590030EFA3 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		E69E3A3F2910589C0030EFA3 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		E6A1D17C28FF0940004DDFD4 /* TriangleShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleShape.swift; sourceTree = "<group>"; };
 		E6ADBB7A28F4634700754936 /* HomeChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeChildView.swift; sourceTree = "<group>"; };
 		E6ADBB7C28F4635E00754936 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
@@ -166,7 +180,6 @@
 			isa = PBXGroup;
 			children = (
 				E619D9CF28F3BA69006BD8B4 /* Nitroless-macOS-Info.plist */,
-				E619D9CD28F3BA20006BD8B4 /* Fonts */,
 				571A789C28F341BD0089A0B1 /* Core */,
 				571A789A28F341BD0089A0B1 /* Extensions */,
 				571A78A728F341BD0089A0B1 /* Models */,
@@ -255,6 +268,8 @@
 		5721D6BF28F1E56400148391 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E69E3A3E2910588D0030EFA3 /* Sidebar */,
+				E69E3A2629100D5F0030EFA3 /* Home */,
 				AA9F089528E58B450098040D /* ContentView.swift */,
 				AA9F08AB28E5A8360098040D /* RepoView.swift */,
 				5721D6C028F1E57A00148391 /* Default Repos */,
@@ -291,6 +306,7 @@
 		AA431D7A28EEEBB90066EBC4 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				E619D9CD28F3BA20006BD8B4 /* Fonts */,
 				AAD5D80928EEC7D900FF08DA /* Assets.xcassets */,
 				AA9F08A128E58BA60098040D /* Utilities */,
 			);
@@ -322,6 +338,8 @@
 		AA9F089228E58B450098040D /* Nitroless iOS */ = {
 			isa = PBXGroup;
 			children = (
+				E69E3A34291025B70030EFA3 /* ViewModel */,
+				E69E3A2929100DF30030EFA3 /* Extensions */,
 				AA6250B928E9141500C7030E /* Info.plist */,
 				AA6250B828E911C100C7030E /* Nitroless.entitlements */,
 				AA9F089328E58B450098040D /* NitrolessApp.swift */,
@@ -353,7 +371,8 @@
 			children = (
 				E619D9CE28F3BA2D006BD8B4 /* UniSans.otf */,
 			);
-			path = Fonts;
+			name = Fonts;
+			path = "../Nitroless macOS/Fonts";
 			sourceTree = "<group>";
 		};
 		E619D9D228F3BC17006BD8B4 /* Home */ = {
@@ -372,6 +391,64 @@
 				E6ADBB7C28F4635E00754936 /* AboutView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E69E3A2629100D5F0030EFA3 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				E69E3A3B2910284B0030EFA3 /* About */,
+				E69E3A382910281E0030EFA3 /* FrequentUsed */,
+				E69E3A35291025CB0030EFA3 /* ViewModel */,
+				E69E3A2729100D800030EFA3 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		E69E3A2929100DF30030EFA3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E69E3A2A29100E060030EFA3 /* Color.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E69E3A34291025B70030EFA3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E69E3A35291025CB0030EFA3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E69E3A36291025E10030EFA3 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E69E3A382910281E0030EFA3 /* FrequentUsed */ = {
+			isa = PBXGroup;
+			children = (
+				E69E3A39291028420030EFA3 /* FrequentUsedView.swift */,
+			);
+			path = FrequentUsed;
+			sourceTree = "<group>";
+		};
+		E69E3A3B2910284B0030EFA3 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				E69E3A3C291028590030EFA3 /* AboutView.swift */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
+		E69E3A3E2910588D0030EFA3 /* Sidebar */ = {
+			isa = PBXGroup;
+			children = (
+				E69E3A3F2910589C0030EFA3 /* SidebarView.swift */,
+			);
+			path = Sidebar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -509,6 +586,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57A34C4A28F2331F00383807 /* Assets.xcassets in Resources */,
+				E69E3A30291010B80030EFA3 /* UniSans.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +595,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57A34C4928F2331A00383807 /* Assets.xcassets in Resources */,
+				E69E3A31291010B90030EFA3 /* UniSans.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -584,14 +663,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E69E3A2829100D800030EFA3 /* HomeView.swift in Sources */,
+				E69E3A37291025E10030EFA3 /* HomeViewModel.swift in Sources */,
 				AA6250BE28EB088B00C7030E /* Test Data.swift in Sources */,
 				5721D6C228F1E5A000148391 /* AddDefaultRepos.swift in Sources */,
+				E69E3A3D291028590030EFA3 /* AboutView.swift in Sources */,
+				E69E3A2B29100E060030EFA3 /* Color.swift in Sources */,
 				AA9F08A528E58C020098040D /* RepositoryManager.swift in Sources */,
 				5721D6C428F1E78D00148391 /* DefaultRepoCell.swift in Sources */,
 				AA9F089628E58B450098040D /* ContentView.swift in Sources */,
+				E69E3A402910589C0030EFA3 /* SidebarView.swift in Sources */,
 				AA9F089428E58B450098040D /* NitrolessApp.swift in Sources */,
 				AA9F08A728E58D490098040D /* Constants.swift in Sources */,
 				AA9F08AC28E5A8360098040D /* RepoView.swift in Sources */,
+				E69E3A3A291028420030EFA3 /* FrequentUsedView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

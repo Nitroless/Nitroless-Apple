@@ -9,6 +9,7 @@ import Foundation
 
 class RepoManager: ObservableObject {
     @Published var repos: [Repo]
+    @Published var frequentlyUsed: [String] = []
     
     init() {
         self.repos = []
