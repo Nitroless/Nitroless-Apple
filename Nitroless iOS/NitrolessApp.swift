@@ -12,6 +12,7 @@ struct NitrolessApp: App {
     var body: some Scene {
         WindowGroup {
             AppView()
+                .preferredColorScheme(.dark)
         }
     }
 }
