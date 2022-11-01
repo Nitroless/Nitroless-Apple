@@ -48,8 +48,8 @@ struct HomeView: View {
                     AboutView()
                 }
             }
-            .frame(minWidth: 0, maxWidth: .infinity)
         }
+        .offset(y: viewModel.isAboutActive ? -11 : 0)
         .frame(minWidth: 0, maxWidth: .infinity)
         .padding(10)
         .animation(.spring(), value: viewModel.isHomeActive)
