@@ -34,14 +34,12 @@ struct AddDefaultRepos: View {
                 Image(systemName: "globe")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(maxWidth: 75)
+                    .frame(maxWidth: 64)
                     .padding(.trailing)
                 Text("Community\nRepositories")
                     .font(.title.bold())
             }
-            .padding(.top)
-            
-            Spacer()
+            .padding(.top, 30)
             
             Text(
                 repoMan.repos.isEmpty ? "Your repository list is looking a little empty, want to add some to start off with?" : "Want to look at community repositories?"
@@ -57,14 +55,20 @@ struct AddDefaultRepos: View {
                 }
             } label: {
                 Text("Browse")
-                    .font(.title2)
-                    .padding(.bottom, 4)
+                    .foregroundColor(Color(.white))
+                    .padding(10)
+                    .background(Color.theme.appPrimaryColor)
+                    .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                    .shadow(radius: 5)
             }
-            .buttonStyle(.bordered)
+            .buttonStyle(.plain)
         }
+        .frame(minWidth: 0, maxWidth: .infinity)
+        .background(Color.theme.appBGTertiaryColor)
     }
     
     @State var defaultRepos: [URL]? = nil
+    
     @ViewBuilder
     var page: some View {
         ScrollView {
@@ -96,20 +100,21 @@ struct AddDefaultRepos: View {
                 ProgressView()
             }
         }
+        .background(Color.theme.appBGTertiaryColor)
         .safeAreaInset(edge: .top) {
             HStack {
                 Button {
                     isShown.toggle()
                     detent = .fraction(0.3)
                 } label: {
-                    Circle()
-                        .foregroundColor(.secondary)
-                        .brightness(colorScheme == .light ? 0 : -0.6)
-                        .overlay(content: {
-                            Text("X")
-                                .foregroundColor(.white)
-                        })
-                        .frame(width: 30, height: 30)
+                    Image(systemName: "xmark.circle")
+                        .resizable()
+                        .frame(width: 24, height: 24)
+                        .foregroundColor(Color(.white))
+                        .padding(10)
+                        .background(Color.theme.appBGColor)
+                        .clipShape(Capsule())
+                        .shadow(radius: 5)
                 }
                 .buttonStyle(.plain)
                 

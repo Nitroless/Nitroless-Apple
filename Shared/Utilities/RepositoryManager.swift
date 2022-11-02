@@ -10,10 +10,19 @@ import Foundation
 class RepoManager: ObservableObject {
     @Published var repos: [Repo]
     @Published var frequentlyUsed: [String] = []
+    @Published var selectedRepo: SelectedRepo?
     
     init() {
         self.repos = []
         loadRepos()
+    }
+    
+    public func selectRepo(selectedRepo: SelectedRepo) {
+        self.selectedRepo = selectedRepo
+    }
+    
+    public func selectHome() {
+        self.selectedRepo = nil
     }
     
     public func removeRepo(repo: URL) {
@@ -256,6 +265,10 @@ struct Repo {
     let repoData: NitrolessRepo?
 }
 
+struct SelectedRepo {
+    let active: Bool
+    let repo: Repo
+}
 
 // MARK: - NitrolessRepo
 struct NitrolessRepo: Codable {

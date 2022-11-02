@@ -90,26 +90,21 @@ struct DefaultRepoCell: View {
                         if isAdded {
                             Image(systemName: "checkmark.circle")
                                 .resizable()
-                                .foregroundColor(.green)
-                                .scaledToFit()
-                                .padding()
+                                .frame(width: 24, height: 24)
+                                .foregroundColor(Color.theme.appSuccessColor)
+                                .padding(10)
+                                .background(Color.theme.appBGColor)
+                                .clipShape(Capsule())
+                                .shadow(radius: 5)
                         } else {
-                            Text("add")
-                                .lineLimit(1)
-                                .textCase(.uppercase)
-                                .bold()
-                                .foregroundColor(.blue)
-                                .padding(5)
-                                .padding(.horizontal, 20)
-                                .background {
-                                    if data != nil {
-                                        Capsule()
-                                            .foregroundColor(.init(white: cs == .light ? 0.95 : 0.12))
-                                    } else {
-                                        Capsule()
-                                            .foregroundColor(.init(white: 0.95))
-                                    }
-                                }
+                            Image(systemName: "plus.circle")
+                                .resizable()
+                                .frame(width: 24, height: 24)
+                                .foregroundColor(Color(.white))
+                                .padding(10)
+                                .background(Color.theme.appPrimaryColor)
+                                .clipShape(Capsule())
+                                .shadow(radius: 5)
                         }
                     }
                     .disabled(isAdded)

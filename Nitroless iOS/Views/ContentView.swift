@@ -26,9 +26,13 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             ZStack(alignment: .leading) {
-                SidebarView()
+                SidebarView(repoMan: repoMan, showDefaultReposMenu: { toggleShowDefaultReposMenu() }, showAddPrompt: { toggleShowAddPrompt() }, closeSidebar: { closeSidebar() })
                 ScrollView {
-                    HomeView()
+                    if repoMan.selectedRepo == nil {
+                        HomeView(repoMan: repoMan)
+                    } else {
+                        RepoView(toastShown: $toastShown, repo: repoMan.selectedRepo!.repo)
+                    }
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .background(Color.theme.appBGColor)
@@ -50,12 +54,10 @@ struct ContentView: View {
                         .onEnded({ value in
                             if value.translation.width > 0 {
                                 if value.translation.width > 5 {
-                                    self.offset = 72
-                                    self.sidebarOpened = true
+                                    openSidebar()
                                 }
                             } else {
-                                self.offset = 0
-                                self.sidebarOpened = false
+                                closeSidebar()
                             }
                         })
                 )
@@ -65,11 +67,9 @@ struct ContentView: View {
                         HStack {
                             Button {
                                 if self.offset == 0 {
-                                    self.offset = 72
-                                    self.sidebarOpened = true
+                                    openSidebar()
                                 } else if self.offset == 72 {
-                                    self.offset = 0
-                                    self.sidebarOpened = false
+                                    closeSidebar()
                                 }
                             } label: {
                                 if !self.sidebarOpened {
@@ -94,96 +94,97 @@ struct ContentView: View {
                             
                             Text("Nitroless")
                                 .font(.custom("Uni Sans", size: 32))
-                                .offset(x: -8)
+                                .offset(x: repoMan.selectedRepo == nil ? 2 : 19)
+                            
                             Spacer()
-                            Text("")
+                            
+                            if repoMan.selectedRepo == nil {
+                                NavigationLink {
+                                    AboutView()
+                                } label: {
+                                    Image(systemName: "info.circle")
+                                        .foregroundColor(Color.theme.appPrimaryColor)
+                                }
+                                .buttonStyle(.plain)
+                            } else {
+                                HStack {
+                                    Button {
+                                        
+                                    } label: {
+                                        Image(systemName: "square.and.arrow.up.circle")
+                                            .foregroundColor(Color.theme.appPrimaryColor)
+                                    }
+                                    .buttonStyle(.plain)
+                                    Button {
+                                        
+                                    } label: {
+                                        Image(systemName: "trash.circle")
+                                            .foregroundColor(Color.theme.appDangerColor)
+                                    }
+                                    .buttonStyle(.plain)
+                                }
+                            }
                         }
                     }
                 }
                 .toolbarBackground(Color.theme.appBGTertiaryColor, for: .navigationBar)
             }
-            
+            .sheet(isPresented: $showDefaultReposMenu) {
+                AddDefaultRepos(isShown: $showDefaultReposMenu, detent: $sheetDetent)
+                    .presentationDetents([.fraction(0.3), .large],
+                                         selection: $sheetDetent.animation(.easeInOut(duration: 0.2)))
+            }
+            .confirmationDialog("Delete this broken repository?", isPresented: $showDeletePrompt, titleVisibility: .visible) {
+                Button("Delete", role: .destructive) {
+                    repoMan.removeRepo(repo: urlToDelete!)
+                }
+            }
+            .alert("Add Repository", isPresented: $showAddPrompt) {
+                TextField("Repository URL", text: $urlToAdd)
+
+                Button("Add", role: .none) {
+                    if let url = URL(string: urlToAdd) {
+                        if repoMan.addRepo(repo: url.absoluteString) {} else {
+                            urlInvalidError = true
+                        }
+                    } else {
+                        urlInvalidError = true
+                    }
+
+                    urlToAdd = ""
+                }
+
+                Button("Cancel", role: .cancel) {urlToAdd = ""}
+            } message: {
+                Text("Please enter the URL of a Nitroless Repository")
+            }
+            .alert("Invalid URL", isPresented: $urlInvalidError) {
+                Button("Dismiss", role: .cancel) {}
+            } message: {
+                Text("Please check the URL and try again.")
+            }
+            .onOpenURL { url in
+                handleUrl(url)
+            }
         }
-        
-//        NavigationStack {
-//            List {
-//                Section("Repositories") {
-//                    if repoMan.repos.isEmpty {
-//                        Button {
-//                            showDefaultReposMenu = true
-//                        } label: {
-//                            Label("Add Community Repos", systemImage: "globe")
-//                        }
-//                    }
-//
-//                    ForEach(repoMan.repos, id: \.url) { repo in
-//                        repoButton(repo: repo)
-//                    }
-//                }
-//            }
-//            .refreshable {
-//                repoMan.reloadRepos()
-//            }
-//            .sheet(isPresented: $showDefaultReposMenu) {
-//                AddDefaultRepos(isShown: $showDefaultReposMenu, detent: $sheetDetent)
-//                    .presentationDetents([.fraction(0.3), .large], selection: $sheetDetent.animation(.easeInOut(duration: 0.2)))
-//            }
-//            .toolbar {
-//                HStack {
-//
-//                    Button {
-//                        showDefaultReposMenu = true
-//                    } label: {
-//                        Image(systemName: "globe")
-//                    }
-//
-//                    Spacer()
-//
-//                    Button {
-//                        showAddPrompt = true
-//                    } label: {
-//                        Image(systemName: "plus.circle")
-//                    }
-//                }
-//            }
-//            .navigationTitle("Nitroless")
-//            .confirmationDialog("Delete this broken repository?", isPresented: $showDeletePrompt, titleVisibility: .visible) {
-//                Button("Delete", role: .destructive) {
-//                    repoMan.removeRepo(repo: urlToDelete!)
-//                }
-//            }
-//            .alert("Add Repository", isPresented: $showAddPrompt) {
-//                TextField("Repository URL", text: $urlToAdd)
-//
-//                Button("Add", role: .none) {
-//                    if let url = URL(string: urlToAdd) {
-//                        if repoMan.addRepo(repo: url.absoluteString) {} else {
-//                            urlInvalidError = true
-//                        }
-//                    } else {
-//                        urlInvalidError = true
-//                    }
-//
-//                    urlToAdd = ""
-//                }
-//
-//                Button("Cancel", role: .cancel) {urlToAdd = ""}
-//            } message: {
-//                Text("Please enter the URL of a Nitroless Repository")
-//            }
-//            .alert("Invalid URL", isPresented: $urlInvalidError) {
-//                Button("Dismiss", role: .cancel) {}
-//            } message: {
-//                Text("Please check the URL and try again.")
-//            }
-//            .onOpenURL { url in
-//                handleUrl(url)
-//            }
-//
-//        }
-//        .toast(isPresenting: $toastShown, alert: {
-//            AlertToast(displayMode: .hud, type: .systemImage("checkmark", .green), title: "Copied!")
-//        })
+    }
+    
+    func closeSidebar() {
+        self.offset = 0
+        self.sidebarOpened = false
+    }
+    
+    func openSidebar() {
+        self.offset = 72
+        self.sidebarOpened = true
+    }
+    
+    func toggleShowDefaultReposMenu() {
+        self.showDefaultReposMenu = !self.showDefaultReposMenu
+    }
+    
+    func toggleShowAddPrompt() {
+        self.showAddPrompt = !self.showAddPrompt
     }
     
     func handleUrl(_ url: URL) {

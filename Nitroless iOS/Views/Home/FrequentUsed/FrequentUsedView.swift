@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FrequentUsedView: View {
-    @EnvironmentObject var repoMan: RepoManager
+    var repoMan: RepoManager
     
     var body: some View {
         VStack {
