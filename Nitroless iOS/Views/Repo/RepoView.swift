@@ -114,7 +114,7 @@ struct EmoteCell: View {
     @Binding var toastShown: Bool
     @Binding var ql: URL?
     
-    @State var isVisible = false
+//    @State var isVisible = false
     
     var body: some View {
         let imgUrl = repo.url
@@ -129,7 +129,7 @@ struct EmoteCell: View {
             let size: CGFloat = 50
             
             VStack {
-                if isVisible {
+//                if isVisible {
                     WebImage(url: imgUrl)
                         .resizable()
                         .placeholder {
@@ -137,18 +137,18 @@ struct EmoteCell: View {
                         }
                         .aspectRatio(contentMode: .fit)
                         .frame(width: size, height: size)
-                } else {
-                    Text("")
-                        .frame(width: size, height: size)
-                }
+//                } else {
+//                    Text("")
+//                        .frame(width: size, height: size)
+//                }
             }
         }
-        .onAppear {
-            isVisible = true
-        }
-        .onDisappear {
-            isVisible = false
-        }
+//        .onAppear {
+//            isVisible = true
+//        }
+//        .onDisappear {
+//            isVisible = false
+//        }
         .contextMenu {
             Text(emote.name)
             

@@ -167,6 +167,9 @@ struct ContentView: View {
                 handleUrl(url)
             }
         }
+        .toast(isPresenting: $toastShown) {
+            AlertToast(displayMode: .hud, type: .systemImage("checkmark", .green), title: "Copied!")
+        }
     }
     
     func closeSidebar() {

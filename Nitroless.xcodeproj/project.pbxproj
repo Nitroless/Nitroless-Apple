@@ -34,7 +34,6 @@
 		AA431D7628EEEBB00066EBC4 /* RepositoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F08A428E58C020098040D /* RepositoryManager.swift */; };
 		AA431D7728EEEBB00066EBC4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F08A628E58D490098040D /* Constants.swift */; };
 		AA6250BC28EB047200C7030E /* SDWebImageWebPCoder in Frameworks */ = {isa = PBXBuildFile; productRef = AA6250BB28EB047200C7030E /* SDWebImageWebPCoder */; };
-		AA6250BE28EB088B00C7030E /* Test Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6250BD28EB088B00C7030E /* Test Data.swift */; };
 		AA67BDB628F7FE7C001A37BF /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = AA67BDB528F7FE7C001A37BF /* AlertToast */; };
 		AA9F089428E58B450098040D /* NitrolessApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F089328E58B450098040D /* NitrolessApp.swift */; };
 		AA9F089628E58B450098040D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F089528E58B450098040D /* ContentView.swift */; };
@@ -118,7 +117,6 @@
 		5783B55128ECCDDA00CFF460 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		AA6250B828E911C100C7030E /* Nitroless.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nitroless.entitlements; sourceTree = "<group>"; };
 		AA6250B928E9141500C7030E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		AA6250BD28EB088B00C7030E /* Test Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test Data.swift"; sourceTree = "<group>"; };
 		AA9F089028E58B450098040D /* Nitroless.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nitroless.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA9F089328E58B450098040D /* NitrolessApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NitrolessApp.swift; sourceTree = "<group>"; };
 		AA9F089528E58B450098040D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -270,11 +268,10 @@
 		5721D6BF28F1E56400148391 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E69E3A46291302DB0030EFA3 /* Repo */,
-				E69E3A3B2910284B0030EFA3 /* About */,
-				E69E3A3E2910588D0030EFA3 /* Sidebar */,
-				E69E3A2629100D5F0030EFA3 /* Home */,
 				AA9F089528E58B450098040D /* ContentView.swift */,
+				E69E3A2629100D5F0030EFA3 /* Home */,
+				E69E3A46291302DB0030EFA3 /* Repo */,
+				E69E3A3E2910588D0030EFA3 /* Sidebar */,
 				5721D6C028F1E57A00148391 /* Default Repos */,
 			);
 			path = Views;
@@ -347,7 +344,6 @@
 				AA6250B828E911C100C7030E /* Nitroless.entitlements */,
 				AA9F089328E58B450098040D /* NitrolessApp.swift */,
 				5721D6BF28F1E56400148391 /* Views */,
-				AA6250BD28EB088B00C7030E /* Test Data.swift */,
 			);
 			path = "Nitroless iOS";
 			sourceTree = "<group>";
@@ -399,6 +395,7 @@
 		E69E3A2629100D5F0030EFA3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				E69E3A3B2910284B0030EFA3 /* About */,
 				E69E3A382910281E0030EFA3 /* FrequentUsed */,
 				E69E3A35291025CB0030EFA3 /* ViewModel */,
 				E69E3A2729100D800030EFA3 /* HomeView.swift */,
@@ -676,7 +673,6 @@
 			files = (
 				E69E3A2829100D800030EFA3 /* HomeView.swift in Sources */,
 				E69E3A37291025E10030EFA3 /* HomeViewModel.swift in Sources */,
-				AA6250BE28EB088B00C7030E /* Test Data.swift in Sources */,
 				5721D6C228F1E5A000148391 /* AddDefaultRepos.swift in Sources */,
 				E69E3A452912D05C0030EFA3 /* SidebarItemView.swift in Sources */,
 				E69E3A3D291028590030EFA3 /* AboutView.swift in Sources */,
