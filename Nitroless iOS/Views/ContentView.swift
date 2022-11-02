@@ -108,15 +108,15 @@ struct ContentView: View {
                                 .buttonStyle(.plain)
                             } else {
                                 HStack {
-                                    Button {
-                                        
-                                    } label: {
+                                    ShareLink(item: repoMan.selectedRepo!.repo.url, subject: Text(repoMan.selectedRepo!.repo.repoData!.name), message: Text("Check out this Awesome Repo")) {
                                         Image(systemName: "square.and.arrow.up.circle")
                                             .foregroundColor(Color.theme.appPrimaryColor)
                                     }
                                     .buttonStyle(.plain)
+                                    
                                     Button {
-                                        
+                                        repoMan.removeRepo(repo: repoMan.selectedRepo!.repo.url)
+                                        repoMan.selectHome()
                                     } label: {
                                         Image(systemName: "trash.circle")
                                             .foregroundColor(Color.theme.appDangerColor)

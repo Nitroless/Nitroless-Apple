@@ -39,9 +39,12 @@ struct SidebarView: View {
                 .frame(minWidth: 0, maxWidth: .infinity)
                 .animation(.spring(), value: repoMan.selectedRepo == nil)
                 
-                Divider()
-                    .frame(width: 40)
-                    .offset(x: -2)
+                if !repoMan.repos.isEmpty {
+                    Divider()
+                        .frame(width: 40)
+                        .offset(x: -2)
+                }
+                
                 
                 ForEach(repoMan.repos, id: \.url) { repo in
                     SidebarItemView(repo: repo, removeRepo: { repoMan.removeRepo(repo: repo.url) }, selectRepo: { repoMan.selectRepo(selectedRepo: SelectedRepo(active: true, repo: repo)) },  closeSidebar: { self.closeSidebar() }, selectedRepo: repoMan.selectedRepo)
