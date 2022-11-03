@@ -9,12 +9,14 @@ import Foundation
 
 class RepoManager: ObservableObject {
     @Published var repos: [Repo]
-    @Published var frequentlyUsed: [String] = []
+    @Published var frequentlyUsed: [URL]
     @Published var selectedRepo: SelectedRepo?
     
     init() {
         self.repos = []
+        self.frequentlyUsed = []
         loadRepos()
+        loadFrequentEmotes()
     }
     
     public func selectRepo(selectedRepo: SelectedRepo) {
@@ -57,6 +59,54 @@ class RepoManager: ObservableObject {
         }
         
         loadRepos()
+    }
+    
+    public func addToFrequentlyUsed(emote: String) -> Void {
+        guard let emoteURL = URL(string: emote) else {
+            print("[AddToFrequentlyUsed] Adding \"\(emote)\" failed, invalid URL")
+            return
+        }
+        
+        let file = FileLocations.frequentEmotes
+        if !FileManager.default.fileExists(atPath: file.path) {
+            try? "".write(to: file, atomically: true, encoding: String.Encoding.utf8)
+        }
+        
+        let emotesString: String = (try? String(contentsOf: file, encoding: .utf8)) ?? ""
+        var emotes = emotesString.components(separatedBy: "\n")
+        
+        if let e = emotes.first {
+            if e.isEmpty {
+                emotes = Array(emotes.dropFirst())
+            }
+        }
+        
+        //Check if emote already exists
+        for em in emotes {
+            if emote == em {
+                let index = emotes.firstIndex(of: em)!
+                emotes.remove(at: index)
+            }
+        }
+        
+        emotes.insert(emote, at: 0)
+        
+        //Check if frequently used emotes is above 50
+        if emotes.count > 50 {
+            emotes.removeLast()
+        }
+        
+        let final = emotes.joined(separator: "\n")
+        
+        do {
+            try final.write(to: file, atomically: true, encoding: String.Encoding.utf8)
+            
+            loadFrequentEmotes()
+            return
+        } catch {
+            print("[AddToFrequentlyUsed] Adding \"\(emote)\" failed, couldn't save to frequentEmotes file")
+            return
+        }
     }
     
     public func addRepo(repo: String) -> Bool {
@@ -156,6 +206,30 @@ class RepoManager: ObservableObject {
         }
     }
     
+    private func loadFrequentEmotes() {
+        self.frequentlyUsed = []
+        let file = FileLocations.frequentEmotes
+        if !FileManager.default.fileExists(atPath: file.path) {
+            try? "".write(to: file, atomically: true, encoding: String.Encoding.utf8)
+        }
+        
+        let emotesString = (try? String(contentsOf: file, encoding: .utf8))
+        
+        guard let emotesString = emotesString else { return }
+        var emotes = emotesString.components(separatedBy: "\n")
+        
+        if let e = emotes.first {
+            if e.isEmpty {
+                emotes = Array(emotes.dropFirst())
+            }
+        }
+        
+        for emote in emotes {
+            let url = URL(string: emote)!
+            self.frequentlyUsed.append(url)
+        }
+    }
+    
     private func loadRepos() {
 
         let file = FileLocations.repoList
@@ -203,12 +277,6 @@ class RepoManager: ObservableObject {
                     return
                 }
                 
-                // hacky fixes for older repos if you want it
-//                var str = String(data: data, encoding: .utf8)!
-//                str = str.replacingOccurrences(of: "\"type\": \".", with: "\"type\": \"")
-//                data = str.data(using: .utf8)!
-                //end of hacky fix
-                
                 do {
                     let json = try JSONDecoder().decode(NitrolessRepo.self, from: data)
                     
@@ -243,8 +311,12 @@ class RepoManager: ObservableObject {
     }
     
     public func reloadRepos() {
-        repos = [];
-        loadRepos();
+        repos = []
+        loadRepos()
+    }
+    
+    public func reloadFrequentlyUsed() {
+        loadFrequentEmotes()
     }
 }
 

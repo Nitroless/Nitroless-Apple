@@ -13,6 +13,8 @@ import SDWebImageWebPCoder
 import QuickLook
 
 struct RepoView: View {
+    @EnvironmentObject var repoMan: RepoManager
+    
     @Binding var toastShown: Bool
     
     var repo: Repo
@@ -100,7 +102,7 @@ struct RepoView: View {
             ForEach(0..<filtered.count, id: \.self) { i in
                 let emote = filtered[i]
                 
-                EmoteCell(repo: repo, emote: emote, toastShown: $toastShown, ql: $previewUrl)
+                EmoteCell(repo: repo, emote: emote, toastShown: $toastShown, ql: $previewUrl, repoMan: repoMan)
             }
         }
     }
@@ -113,7 +115,7 @@ struct EmoteCell: View {
     @Binding var toastShown: Bool
     @Binding var ql: URL?
     
-//    @State var isVisible = false
+    var repoMan: RepoManager
     
     var body: some View {
         let imgUrl = repo.url
@@ -122,32 +124,22 @@ struct EmoteCell: View {
             .appendingPathExtension(emote.type)
         
         Button {
-            toastShown = true
             UIPasteboard.general.url = imgUrl
+            toastShown = true
+            repoMan.addToFrequentlyUsed(emote: imgUrl.absoluteString)
         } label: {
             let size: CGFloat = 50
-            
             VStack {
-//                if isVisible {
-                    WebImage(url: imgUrl)
-                        .resizable()
-                        .placeholder {
-                            ProgressView()
-                        }
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: size, height: size)
-//                } else {
-//                    Text("")
-//                        .frame(width: size, height: size)
-//                }
+                WebImage(url: imgUrl)
+                    .resizable()
+                    .placeholder {
+                        ProgressView()
+                    }
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: size, height: size)
+                    .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
             }
         }
-//        .onAppear {
-//            isVisible = true
-//        }
-//        .onDisappear {
-//            isVisible = false
-//        }
         .contextMenu {
             Text(emote.name)
             
@@ -156,6 +148,7 @@ struct EmoteCell: View {
             Button {
                 UIPasteboard.general.url = imgUrl
                 toastShown = true
+                repoMan.addToFrequentlyUsed(emote: imgUrl.absoluteString)
             } label: {
                 Label("Copy", systemImage: "doc.on.clipboard")
             }
@@ -176,8 +169,6 @@ struct EmoteCell: View {
             } label: {
                 Label("Quick Look", systemImage: "magnifyingglass")
             }
-
-            
         }
     }
 }

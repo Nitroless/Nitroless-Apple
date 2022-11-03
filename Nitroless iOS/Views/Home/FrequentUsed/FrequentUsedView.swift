@@ -6,9 +6,16 @@
 //
 
 import SwiftUI
+import SDWebImage
+import SDWebImageSwiftUI
+import SDWebImageWebPCoder
+import QuickLook
 
 struct FrequentUsedView: View {
     var repoMan: RepoManager
+    
+    @State var searchText = ""
+    @State var previewUrl: URL? = nil
     
     var body: some View {
         VStack {
@@ -24,6 +31,8 @@ struct FrequentUsedView: View {
             if repoMan.frequentlyUsed.count == 0 {
                 Text("Start using Nitroless to show your frequently used emotes here.")
                     .frame(maxWidth: .infinity)
+            } else {
+                main.quickLookPreview($previewUrl)
             }
         }
         .padding(20)
@@ -32,6 +41,67 @@ struct FrequentUsedView: View {
         .overlay(
             RoundedRectangle(cornerRadius: 20)
                 .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
-        
+    }
+    
+    @ViewBuilder
+    var main: some View {
+        emotePalette
+    }
+    
+    let columns = [
+        GridItem(.adaptive(minimum: 50))
+    ]
+    
+    @ViewBuilder
+    var emotePalette: some View {
+        LazyVGrid(columns: columns, spacing: 20) {
+            let emotes = repoMan.frequentlyUsed
+            let filtered = emotes.filter { emote in
+                emote.absoluteString.lowercased().contains(searchText.lowercased()) || searchText.isEmpty
+            }
+            
+            ForEach(0..<filtered.count, id: \.self) { i in
+                let emote = filtered[i]
+                
+                Button {
+                    UIPasteboard.general.url = emote
+                    repoMan.addToFrequentlyUsed(emote: emote.absoluteString)
+                    repoMan.reloadFrequentlyUsed()
+                } label: {
+                    let size: CGFloat = 50
+                    VStack {
+                        WebImage(url: emote)
+                            .resizable()
+                            .placeholder {
+                                ProgressView()
+                            }
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: size, height: size)
+                            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                    }
+                }
+                .contextMenu {
+                    Divider()
+                    
+                    Button {
+                        UIPasteboard.general.url = emote
+                        repoMan.addToFrequentlyUsed(emote: emote.absoluteString)
+                        repoMan.reloadFrequentlyUsed()
+                    } label: {
+                        Label("Copy", systemImage: "doc.on.clipboard")
+                    }
+                    
+                    Button {
+                        let imageUrlString = emote.absoluteString
+                        let imageCache: SDImageCache = SDImageCache.shared
+                        let filepath = URL(filePath: imageCache.diskCache.cachePath(forKey: imageUrlString)!)
+                        
+                        self.previewUrl = filepath
+                    } label: {
+                        Label("Quick Look", systemImage: "magnifyingglass")
+                    }
+                }
+            }
+        }
     }
 }
