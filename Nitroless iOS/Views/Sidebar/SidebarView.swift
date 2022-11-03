@@ -13,6 +13,10 @@ struct SidebarView: View {
     var showAddPrompt: () -> Void
     var closeSidebar: () -> Void
     
+    @State var urlToDelete: URL? = nil
+    @State var showDeletePrompt = false
+    @State var showBadRepoDeletePrompt = false
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -47,7 +51,29 @@ struct SidebarView: View {
                 
                 
                 ForEach(repoMan.repos, id: \.url) { repo in
-                    SidebarItemView(repo: repo, removeRepo: { repoMan.removeRepo(repo: repo.url) }, selectRepo: { repoMan.selectRepo(selectedRepo: SelectedRepo(active: true, repo: repo)) },  closeSidebar: { self.closeSidebar() }, selectedRepo: repoMan.selectedRepo)
+                    if repo.repoData != nil {
+                        SidebarItemView(repo: repo, removeRepo: { urlToDelete = repo.url
+                            showDeletePrompt = true
+                        }, selectRepo: { repoMan.selectRepo(selectedRepo: SelectedRepo(active: true, repo: repo)) },  closeSidebar: { self.closeSidebar() }, selectedRepo: repoMan.selectedRepo)
+                    } else {
+                        Button {
+                            urlToDelete = repo.url
+                            showBadRepoDeletePrompt = true
+                        } label: {
+                            HStack {
+                                Image(systemName: "exclamationmark.triangle")
+                                    .resizable()
+                                    .foregroundColor(.red)
+                                    .frame(width: 28, height: 28)
+                            }
+                        }
+                        .buttonStyle(.plain)
+                        .padding(0)
+                        .frame(width: 48, height: 48)
+                        .background(Color.theme.appBGColor)
+                        .clipShape(RoundedRectangle(cornerRadius: 99, style: .continuous))
+                        .offset(x: -2)
+                    }
                 }
                 
                 Divider()
@@ -87,5 +113,15 @@ struct SidebarView: View {
         .padding(.leading, 0)
         .frame(width: 75)
         .background(Color.theme.appBGTertiaryColor)
+        .confirmationDialog("Remove this broken repository?", isPresented: $showBadRepoDeletePrompt, titleVisibility: .visible) {
+            Button("Remove", role: .destructive) {
+                repoMan.removeRepo(repo: urlToDelete!)
+            }
+        }
+        .confirmationDialog("Are you sure you want to remove this Repo?", isPresented: $showDeletePrompt, titleVisibility: .visible) {
+            Button("Remove", role: .destructive) {
+                repoMan.removeRepo(repo: urlToDelete!)
+            }
+        }
     }
 }

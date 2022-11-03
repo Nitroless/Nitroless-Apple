@@ -13,16 +13,15 @@ import SDWebImageWebPCoder
 import QuickLook
 
 struct RepoView: View {
-    
     @Binding var toastShown: Bool
     
     var repo: Repo
     
     @State var showDetails = false
-    
     @State var previewUrl: URL? = nil
-    
     @State var searchText = ""
+    @State var urlToDelete: URL? = nil
+    @State var showDeletePrompt = false
     
     var body: some View {
         ScrollView {

@@ -12,14 +12,14 @@ import AlertToast
 
 struct ContentView: View {
     @EnvironmentObject var repoMan: RepoManager
-    @State var urlToDelete: URL? = nil
-    @State var showDeletePrompt = false
     @State var urlToAdd: String = ""
     @State var showAddPrompt = false
     @State var urlInvalidError = false
     @State var toastShown = false
     @State var showDefaultReposMenu = false
     @State var sheetDetent: PresentationDetent = .medium
+    @State var urlToDelete: URL? = nil
+    @State var showDeletePrompt = false
     @State private var offset: CGFloat = 0
     @State private var sidebarOpened: Bool = false
     
@@ -115,8 +115,8 @@ struct ContentView: View {
                                     .buttonStyle(.plain)
                                     
                                     Button {
-                                        repoMan.removeRepo(repo: repoMan.selectedRepo!.repo.url)
-                                        repoMan.selectHome()
+                                        urlToDelete = repoMan.selectedRepo!.repo.url
+                                        showDeletePrompt = true
                                     } label: {
                                         Image(systemName: "trash.circle")
                                             .foregroundColor(Color.theme.appDangerColor)
@@ -133,11 +133,6 @@ struct ContentView: View {
                 AddDefaultRepos(isShown: $showDefaultReposMenu, detent: $sheetDetent)
                     .presentationDetents([.fraction(0.3), .large],
                                          selection: $sheetDetent.animation(.easeInOut(duration: 0.2)))
-            }
-            .confirmationDialog("Delete this broken repository?", isPresented: $showDeletePrompt, titleVisibility: .visible) {
-                Button("Delete", role: .destructive) {
-                    repoMan.removeRepo(repo: urlToDelete!)
-                }
             }
             .alert("Add Repository", isPresented: $showAddPrompt) {
                 TextField("Repository URL", text: $urlToAdd)
@@ -166,9 +161,15 @@ struct ContentView: View {
             .onOpenURL { url in
                 handleUrl(url)
             }
+            .confirmationDialog("Are you sure you want to remove this Repo?", isPresented: $showDeletePrompt, titleVisibility: .visible) {
+                Button("Remove", role: .destructive) {
+                    repoMan.selectHome()
+                    repoMan.removeRepo(repo: urlToDelete!)
+                }
+            }
         }
         .toast(isPresenting: $toastShown) {
-            AlertToast(displayMode: .hud, type: .systemImage("checkmark", .green), title: "Copied!")
+            AlertToast(displayMode: .hud, type: .systemImage("checkmark", Color.theme.appSuccessColor), title: "Copied!", style: AlertToast.AlertStyle.style(backgroundColor: Color.theme.appBGTertiaryColor, titleColor: .white))
         }
     }
     
@@ -205,67 +206,6 @@ struct ContentView: View {
             showAddPrompt = true
         default:
             return;
-        }
-    }
-    
-    @ViewBuilder
-    func repoButton(repo: Repo) -> some View {
-        if let data = repo.repoData {
-            NavigationLink {
-                RepoView(toastShown: $toastShown, repo: repo)
-            } label: {
-                let imgUrl = repo.url.appending(path: data.icon)
-                WebImage(url: imgUrl)
-                    .resizable()
-                    .placeholder {
-                        ProgressView()
-                    }
-                    .aspectRatio(contentMode: .fit)
-                    .frame(maxWidth: 30)
-                    .clipShape(Circle())
-                Text(data.name)
-            }
-            .swipeActions(allowsFullSwipe: true) {
-                Button {
-                    repoMan.removeRepo(repo: repo.url)
-                } label: {
-                    Image(systemName: "trash")
-                }
-                .tint(.red)
-            }
-            .contextMenu {
-                Button {
-                    UIPasteboard.general.url = repo.url
-                } label: {
-                    Label("Copy URL", systemImage: "doc.on.clipboard")
-                }
-                Button {
-                    repoMan.removeRepo(repo: repo.url)
-                } label: {
-                    Label("Delete", systemImage: "trash")
-                }
-            }
-        } else {
-            Button {
-                urlToDelete = repo.url
-                showDeletePrompt = true
-            } label: {
-                HStack {
-                    Text(repo.url.absoluteString)
-                    Spacer()
-                    Image(systemName: "x.circle.fill")
-                        .foregroundColor(.red)
-                        .offset(x: 5)
-                }
-            }
-            .swipeActions(allowsFullSwipe: true) {
-                Button {
-                    repoMan.removeRepo(repo: repo.url)
-                } label: {
-                    Image(systemName: "trash")
-                }
-                .tint(.red)
-            }
         }
     }
 }
