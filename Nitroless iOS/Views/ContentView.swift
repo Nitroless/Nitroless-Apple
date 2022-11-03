@@ -26,10 +26,10 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             ZStack(alignment: .leading) {
-                SidebarView(repoMan: repoMan, showDefaultReposMenu: { toggleShowDefaultReposMenu() }, showAddPrompt: { toggleShowAddPrompt() }, closeSidebar: { closeSidebar() })
+                SidebarView(showDefaultReposMenu: { toggleShowDefaultReposMenu() }, showAddPrompt: { toggleShowAddPrompt() }, closeSidebar: { closeSidebar() })
                 ScrollView {
                     if repoMan.selectedRepo == nil {
-                        HomeView(repoMan: repoMan)
+                        HomeView(toastShown: $toastShown)
                     } else {
                         RepoView(toastShown: $toastShown, repo: repoMan.selectedRepo!.repo)
                     }

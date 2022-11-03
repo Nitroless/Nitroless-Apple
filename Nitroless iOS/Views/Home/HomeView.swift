@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct HomeView: View {
-    var repoMan: RepoManager
+    @EnvironmentObject var repoMan: RepoManager
+    
+    @Binding var toastShown: Bool
     
     var body: some View {
         VStack {
-            FrequentUsedView(repoMan: repoMan)
+            ForEach(repoMan.repos, id: \.url) { repo in
+                if repo.favouriteEmotes != nil {
+                    FavouriteEmotesView(repoName: repo.repoData!.name, emotes: repo.favouriteEmotes!, repoURL: repo.url, toastShown: $toastShown)
+                }
+            }
+            FrequentUsedView(toastShown: $toastShown)
         }
         .frame(minWidth: 0, maxWidth: .infinity)
         .padding(10)

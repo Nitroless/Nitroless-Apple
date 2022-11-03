@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SidebarView: View {
-    var repoMan: RepoManager
+    @EnvironmentObject var repoMan: RepoManager
     var showDefaultReposMenu: () -> Void
     var showAddPrompt: () -> Void
     var closeSidebar: () -> Void

@@ -1,8 +1,8 @@
 //
-//  FrequentUsedView.swift
+//  FavouriteEmotesView.swift
 //  Nitroless iOS
 //
-//  Created by Paras KCD on 2022-10-31.
+//  Created by Paras KCD on 2022-11-03.
 //
 
 import SwiftUI
@@ -11,30 +11,28 @@ import SDWebImageSwiftUI
 import SDWebImageWebPCoder
 import QuickLook
 
-struct FrequentUsedView: View {
+struct FavouriteEmotesView: View {
     @EnvironmentObject var repoMan: RepoManager
-    
     @State var previewUrl: URL? = nil
+    
+    let repoName: String
+    let emotes: [URL]
+    let repoURL: URL
     
     @Binding var toastShown: Bool
     
     var body: some View {
         VStack {
             HStack {
-                Image(systemName: "clock.arrow.circlepath")
-                Text("Frequently used emotes")
+                Image(systemName: "star")
+                Text("\(repoName.count > 15 ? "\(repoName.prefix(15))..." : repoName)'s Favourite Emotes")
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .font(.title)
+            .font(.headline)
             
             Spacer()
             
-            if repoMan.frequentlyUsed.count == 0 {
-                Text("Start using Nitroless to show your frequently used emotes here.")
-                    .frame(maxWidth: .infinity)
-            } else {
-                main.quickLookPreview($previewUrl)
-            }
+            main.quickLookPreview($previewUrl).padding(.top, 20)
         }
         .padding(20)
         .background(Color.theme.appBGSecondaryColor)
@@ -56,7 +54,7 @@ struct FrequentUsedView: View {
     @ViewBuilder
     var emotePalette: some View {
         LazyVGrid(columns: columns, spacing: 20) {
-            let emotes = repoMan.frequentlyUsed
+            let emotes = emotes
             
             ForEach(0..<emotes.count, id: \.self) { i in
                 let emote = emotes[i]
@@ -80,8 +78,6 @@ struct FrequentUsedView: View {
                     }
                 }
                 .contextMenu {
-                    Divider()
-                    
                     Button {
                         UIPasteboard.general.url = emote
                         toastShown = true
@@ -89,6 +85,12 @@ struct FrequentUsedView: View {
                         repoMan.reloadFrequentlyUsed()
                     } label: {
                         Label("Copy", systemImage: "doc.on.clipboard")
+                    }
+                    
+                    Button(role: .destructive) {
+                        repoMan.removeFromFavourite(repo: repoURL.absoluteString, emote: emote.absoluteString)
+                    } label: {
+                        Label("Unfavourite", systemImage: "star.fill")
                     }
                     
                     Button {
