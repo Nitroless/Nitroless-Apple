@@ -80,8 +80,6 @@ struct FrequentUsedView: View {
                     }
                 }
                 .contextMenu {
-                    Divider()
-                    
                     Button {
                         UIPasteboard.general.url = emote
                         toastShown = true

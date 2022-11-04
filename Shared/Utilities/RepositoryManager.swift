@@ -24,7 +24,6 @@ class RepoManager: ObservableObject {
         self.frequentlyUsed = []
         loadRepos()
         loadFrequentEmotes()
-        print(self.repos)
     }
     
     public func selectRepo(selectedRepo: SelectedRepo) {
