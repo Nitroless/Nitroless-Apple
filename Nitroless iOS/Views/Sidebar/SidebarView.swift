@@ -20,7 +20,7 @@ struct SidebarView: View {
     var body: some View {
         ScrollView {
             VStack {
-                HStack{
+                HStack {
                     Rectangle()
                         .fill(.white)
                         .frame(width: 3, height: repoMan.selectedRepo == nil ? 32 : 0 )
