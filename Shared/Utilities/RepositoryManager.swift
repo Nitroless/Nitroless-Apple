@@ -24,6 +24,7 @@ class RepoManager: ObservableObject {
         self.frequentlyUsed = []
         loadRepos()
         loadFrequentEmotes()
+        print(self.repos)
     }
     
     public func selectRepo(selectedRepo: SelectedRepo) {
@@ -42,7 +43,7 @@ class RepoManager: ObservableObject {
         }
         rep.removeAll(where: {removeFromURL.contains($0)})
         
-        let file = URL.documentsDirectory.appending(path: rep).appendingPathExtension("nitroless")
+        let file = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.llsc12.Nitroless")!.appendingPathComponent("Documents").appending(path: rep).appendingPathExtension("nitroless")
         
         if FileManager.default.fileExists(atPath: file.path) {
             let emoteString = (try? String(contentsOf: file, encoding: .utf8))
@@ -117,7 +118,7 @@ class RepoManager: ObservableObject {
             return
         }
         
-        let file = URL.documentsDirectory.appending(path: rep).appendingPathExtension("nitroless")
+        let file = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.llsc12.Nitroless")!.appendingPathComponent("Documents").appending(path: rep).appendingPathExtension("nitroless")
         
         if !FileManager.default.fileExists(atPath: file.path) {
             try? "".write(to: file, atomically: true, encoding: String.Encoding.utf8)
@@ -368,7 +369,7 @@ class RepoManager: ObservableObject {
             }
             rep.removeAll(where: {removeFromURL.contains($0)})
             
-            let favEmotesFile = URL.documentsDirectory.appending(path: rep).appendingPathExtension("nitroless")
+            let favEmotesFile = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.llsc12.Nitroless")!.appendingPathComponent("Documents").appending(path: rep).appendingPathExtension("nitroless")
             
             if FileManager.default.fileExists(atPath: favEmotesFile.path) {
                 favouriteEmotes = []
