@@ -17,7 +17,6 @@ struct ContentView: View {
     @State var urlInvalidError = false
     @State var toastShown = false
     @State var showDefaultReposMenu = false
-    @State var sheetDetent: PresentationDetent = .medium
     @State var urlToDelete: URL? = nil
     @State var showDeletePrompt = false
     @State private var offset: CGFloat = 0
@@ -130,9 +129,7 @@ struct ContentView: View {
                 .toolbarBackground(Color.theme.appBGTertiaryColor, for: .navigationBar)
             }
             .sheet(isPresented: $showDefaultReposMenu) {
-                AddDefaultRepos(isShown: $showDefaultReposMenu, detent: $sheetDetent)
-                    .presentationDetents([.fraction(0.3), .large],
-                                         selection: $sheetDetent.animation(.easeInOut(duration: 0.2)))
+                AddDefaultRepos(isShown: $showDefaultReposMenu)
             }
             .alert("Add Repository", isPresented: $showAddPrompt) {
                 TextField("Repository URL", text: $urlToAdd)
@@ -158,15 +155,13 @@ struct ContentView: View {
             } message: {
                 Text("Please check the URL and try again.")
             }
-            .onOpenURL { url in
-                handleUrl(url)
-            }
             .confirmationDialog("Are you sure you want to remove this Repo?", isPresented: $showDeletePrompt, titleVisibility: .visible) {
                 Button("Remove", role: .destructive) {
                     repoMan.selectHome()
                     repoMan.removeRepo(repo: urlToDelete!)
                 }
             }
+            .onOpenURL(perform: handleUrl)
         }
         .toast(isPresenting: $toastShown) {
             AlertToast(displayMode: .hud, type: .systemImage("checkmark", Color.theme.appSuccessColor), title: "Copied!", style: AlertToast.AlertStyle.style(backgroundColor: Color.theme.appBGTertiaryColor, titleColor: .white))
@@ -184,11 +179,11 @@ struct ContentView: View {
     }
     
     func toggleShowDefaultReposMenu() {
-        self.showDefaultReposMenu = !self.showDefaultReposMenu
+        self.showDefaultReposMenu.toggle()
     }
     
     func toggleShowAddPrompt() {
-        self.showAddPrompt = !self.showAddPrompt
+        self.showAddPrompt.toggle()
     }
     
     func handleUrl(_ url: URL) {
