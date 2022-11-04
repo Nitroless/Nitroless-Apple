@@ -14,9 +14,6 @@ let discordBgDark = Color(red: 0.2156, green: 0.2235, blue: 0.2431) // thanks to
 let discordBgLight = Color(red: 1, green: 1, blue: 1)               // telling me these exact colors
 
 struct KeyboardView: View {
-    
-    @Environment(\.colorScheme) var cs
-    
     var vc: KeyboardViewController
     
     var showGlobe: Bool {
@@ -24,13 +21,9 @@ struct KeyboardView: View {
         return bool
     }
     
-    var repoMan: RepoManager = RepoManager()
-    
+    @StateObject var repoMan: RepoManager = RepoManager()
     
     var body: some View {
-        // kb needs full access
-        // thanks emily
-        
         VStack {
             if vc.hasFullAccess {
                 kb
@@ -45,14 +38,21 @@ struct KeyboardView: View {
             }
         }
         .frame(maxWidth: .infinity)
-        .padding([.top, .leading], 10)
         .background(Color.theme.appBGColor)
     }
     
     @ViewBuilder
     var kb: some View {
         VStack {
-            BottomBarView(repoMan: repoMan)
+            if repoMan.selectedRepo == nil {
+                MainView(kbv: vc)
+                    .environmentObject(repoMan)
+            } else {
+                RepoView(kbv: vc)
+                    .environmentObject(repoMan)
+            }
+            BottomBarView()
+                .environmentObject(repoMan)
         }
         .task {
             print("[Nitroless KB] \(repoMan.repos.debugDescription)")
@@ -62,12 +62,9 @@ struct KeyboardView: View {
     func type(_ str: String) {
         vc.textDocumentProxy.insertText(str)
     }
-} //cum
+}
 
 struct AskForAccess: View {
-    
-    @Environment(\.colorScheme) var cs
-    
     var width: CGFloat {
         return UIScreen.main.bounds.width
     }
