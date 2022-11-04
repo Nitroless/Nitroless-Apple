@@ -17,9 +17,7 @@ class KeyboardViewController: UIInputViewController {
     }
     
     private lazy var suiView: UIView = {
-        
         let kbView = KeyboardView(vc: self)
-            .environmentObject(RepoManager())
         
         let view = UIHostingController(rootView: kbView).view!
         view.translatesAutoresizingMaskIntoConstraints = false

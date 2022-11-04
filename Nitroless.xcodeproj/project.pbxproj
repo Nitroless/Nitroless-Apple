@@ -50,12 +50,13 @@
 		E69E3A30291010B80030EFA3 /* UniSans.otf in Resources */ = {isa = PBXBuildFile; fileRef = E619D9CE28F3BA2D006BD8B4 /* UniSans.otf */; };
 		E69E3A31291010B90030EFA3 /* UniSans.otf in Resources */ = {isa = PBXBuildFile; fileRef = E619D9CE28F3BA2D006BD8B4 /* UniSans.otf */; };
 		E69E3A332910112B0030EFA3 /* UniSans.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = E619D9CE28F3BA2D006BD8B4 /* UniSans.otf */; };
-		E69E3A37291025E10030EFA3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A36291025E10030EFA3 /* HomeViewModel.swift */; };
 		E69E3A3A291028420030EFA3 /* FrequentUsedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A39291028420030EFA3 /* FrequentUsedView.swift */; };
 		E69E3A3D291028590030EFA3 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A3C291028590030EFA3 /* AboutView.swift */; };
 		E69E3A402910589C0030EFA3 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A3F2910589C0030EFA3 /* SidebarView.swift */; };
 		E69E3A452912D05C0030EFA3 /* SidebarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A442912D05C0030EFA3 /* SidebarItemView.swift */; };
 		E69E3A4D291457660030EFA3 /* FavouriteEmotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A4C291457660030EFA3 /* FavouriteEmotesView.swift */; };
+		E69E3A50291540310030EFA3 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A4F291540310030EFA3 /* Color.swift */; };
+		E69E3A53291546A70030EFA3 /* BottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A52291546A70030EFA3 /* BottomBarView.swift */; };
 		E6A1D17D28FF0940004DDFD4 /* TriangleShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1D17C28FF0940004DDFD4 /* TriangleShape.swift */; };
 		E6ADBB7B28F4634700754936 /* HomeChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADBB7A28F4634700754936 /* HomeChildView.swift */; };
 		E6ADBB7D28F4635E00754936 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADBB7C28F4635E00754936 /* AboutView.swift */; };
@@ -132,12 +133,14 @@
 		E619D9D428F3BC36006BD8B4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E69E3A2729100D800030EFA3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E69E3A2A29100E060030EFA3 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		E69E3A36291025E10030EFA3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		E69E3A39291028420030EFA3 /* FrequentUsedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentUsedView.swift; sourceTree = "<group>"; };
 		E69E3A3C291028590030EFA3 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		E69E3A3F2910589C0030EFA3 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		E69E3A442912D05C0030EFA3 /* SidebarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItemView.swift; sourceTree = "<group>"; };
 		E69E3A4C291457660030EFA3 /* FavouriteEmotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteEmotesView.swift; sourceTree = "<group>"; };
+		E69E3A4F291540310030EFA3 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		E69E3A52291546A70030EFA3 /* BottomBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarView.swift; sourceTree = "<group>"; };
+		E69E3A5429156D3E0030EFA3 /* Keyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Keyboard.entitlements; sourceTree = "<group>"; };
 		E6A1D17C28FF0940004DDFD4 /* TriangleShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleShape.swift; sourceTree = "<group>"; };
 		E6ADBB7A28F4634700754936 /* HomeChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeChildView.swift; sourceTree = "<group>"; };
 		E6ADBB7C28F4635E00754936 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
@@ -292,6 +295,9 @@
 		5783B54728ECBA9000CFF460 /* Keyboard */ = {
 			isa = PBXGroup;
 			children = (
+				E69E3A5429156D3E0030EFA3 /* Keyboard.entitlements */,
+				E69E3A512915468F0030EFA3 /* BottomBar */,
+				E69E3A4E291540180030EFA3 /* Extensions */,
 				5783B54828ECBA9000CFF460 /* KeyboardViewController.swift */,
 				5783B55128ECCDDA00CFF460 /* KeyboardView.swift */,
 				5783B54A28ECBA9000CFF460 /* Info.plist */,
@@ -400,7 +406,6 @@
 			children = (
 				E69E3A4B2914573C0030EFA3 /* FavouriteEmotes */,
 				E69E3A382910281E0030EFA3 /* FrequentUsed */,
-				E69E3A35291025CB0030EFA3 /* ViewModel */,
 				E69E3A2729100D800030EFA3 /* HomeView.swift */,
 			);
 			path = Home;
@@ -417,14 +422,6 @@
 		E69E3A34291025B70030EFA3 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		E69E3A35291025CB0030EFA3 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				E69E3A36291025E10030EFA3 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -468,6 +465,22 @@
 				E69E3A4C291457660030EFA3 /* FavouriteEmotesView.swift */,
 			);
 			path = FavouriteEmotes;
+			sourceTree = "<group>";
+		};
+		E69E3A4E291540180030EFA3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E69E3A4F291540310030EFA3 /* Color.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E69E3A512915468F0030EFA3 /* BottomBar */ = {
+			isa = PBXGroup;
+			children = (
+				E69E3A52291546A70030EFA3 /* BottomBarView.swift */,
+			);
+			path = BottomBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -674,6 +687,8 @@
 				AA431D7628EEEBB00066EBC4 /* RepositoryManager.swift in Sources */,
 				5783B54928ECBA9000CFF460 /* KeyboardViewController.swift in Sources */,
 				5783B55228ECCDDA00CFF460 /* KeyboardView.swift in Sources */,
+				E69E3A53291546A70030EFA3 /* BottomBarView.swift in Sources */,
+				E69E3A50291540310030EFA3 /* Color.swift in Sources */,
 				AA431D7728EEEBB00066EBC4 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -683,7 +698,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E69E3A2829100D800030EFA3 /* HomeView.swift in Sources */,
-				E69E3A37291025E10030EFA3 /* HomeViewModel.swift in Sources */,
 				5721D6C228F1E5A000148391 /* AddDefaultRepos.swift in Sources */,
 				E69E3A452912D05C0030EFA3 /* SidebarItemView.swift in Sources */,
 				E69E3A3D291028590030EFA3 /* AboutView.swift in Sources */,
@@ -791,12 +805,14 @@
 		5783B54F28ECBA9000CFF460 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Keyboard/Keyboard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 566RT33SA2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Keyboard/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Keyboard;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -817,12 +833,14 @@
 		5783B55028ECBA9000CFF460 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Keyboard/Keyboard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 566RT33SA2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Keyboard/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Keyboard;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (

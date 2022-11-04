@@ -8,11 +8,18 @@
 import Foundation
 
 class RepoManager: ObservableObject {
+    let fileManager = FileManager.default
+    
     @Published var repos: [Repo]
     @Published var frequentlyUsed: [URL]
     @Published var selectedRepo: SelectedRepo?
     
     init() {
+        if let directory = self.fileManager.containerURL(forSecurityApplicationGroupIdentifier: "group.llsc12.Nitroless") {
+            let newDirectory = directory.appendingPathComponent("Documents")
+            try? fileManager.createDirectory(at: newDirectory, withIntermediateDirectories: false, attributes: nil)
+        }
+        
         self.repos = []
         self.frequentlyUsed = []
         loadRepos()

@@ -24,7 +24,8 @@ struct KeyboardView: View {
         return bool
     }
     
-    @EnvironmentObject var repoMan: RepoManager
+    var repoMan: RepoManager = RepoManager()
+    
     
     var body: some View {
         // kb needs full access
@@ -44,16 +45,14 @@ struct KeyboardView: View {
             }
         }
         .frame(maxWidth: .infinity)
-        .background {
-            Rectangle()
-                .foregroundColor(cs == .light ? discordBgLight : discordBgDark)
-        }
+        .padding([.top, .leading], 10)
+        .background(Color.theme.appBGColor)
     }
     
     @ViewBuilder
     var kb: some View {
-        ScrollView(.horizontal) {
-            Text("gm")
+        VStack {
+            BottomBarView(repoMan: repoMan)
         }
         .task {
             print("[Nitroless KB] \(repoMan.repos.debugDescription)")
@@ -82,44 +81,56 @@ struct AskForAccess: View {
         HStack {
             if show1 {
                 VStack {
-                    Text("Heya, Nitroless Keyboard requires full keyboard access.\nSettings > General > Keyboards > Keyboard - Nitroless > Allow Full Access")
-                        .padding(10)
-                        .background(content: {
-                            RoundedRectangle(cornerRadius: 15, style: .continuous)
-                                .foregroundColor(cs == .light ? discordBgLight : discordBgDark)
-                                .brightness(-0.1)
-                                .shadow(radius: 5)
-                        })
-                        .padding(12)
-                        .padding(.vertical)
-                        .padding(.horizontal, 5)
-                    
-                    Button("Why?") {
-                        toSecondPage()
+                    ScrollView {
+                        Text("Heya! To use the Nitroless Keyboard you will require to give it Full Keyboard Access.\nSettings > General > Keyboards > Keyboard - Nitroless > Allow Full Access")
+                            .padding(.bottom, 20)
                     }
-                    .buttonStyle(.bordered)
+                    .padding([.top, .leading, .trailing], 20)
+                    .background(Color.theme.appBGSecondaryColor)
+                    .cornerRadius(20)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
+                    
+                    Button {
+                        toSecondPage()
+                    } label: {
+                        Text("Why?")
+                            .foregroundColor(Color(.white))
+                            .padding(10)
+                            .background(Color.theme.appPrimaryColor)
+                            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                            .shadow(radius: 5)
+                    }
+                    .buttonStyle(.plain)
                     .padding(.bottom, 5)
                 }
                 .frame(width: width)
             }
             if show2 {
                 VStack {
-                    Text("We use full access to access networking so we can load repos and emotes. Nothing else happens! Feel free to check the open-source GitHub repo!")
-                        .padding(10)
-                        .background(content: {
-                            RoundedRectangle(cornerRadius: 15, style: .continuous)
-                                .foregroundColor(cs == .light ? discordBgLight : discordBgDark)
-                                .brightness(-0.1)
-                                .shadow(radius: 5)
-                        })
-                        .padding(12)
-                        .padding(.vertical)
-                        .padding(.horizontal, 5)
-                    
-                    Button("Back") {
-                        toFirstPage()
+                    ScrollView {
+                        Text("Full Access allows the Keyboard to access the internet so we can load the repos and emotes. Nothing else happens! Feel free to check our Open-Source GitHub Repo.")
+                            .padding(.bottom, 20)
                     }
-                    .buttonStyle(.bordered)
+                    .padding([.top, .leading, .trailing], 20)
+                    .background(Color.theme.appBGSecondaryColor)
+                    .cornerRadius(20)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
+                    
+                    Button {
+                        toFirstPage()
+                    } label: {
+                        Text("Back")
+                            .foregroundColor(Color(.white))
+                            .padding(10)
+                            .background(Color.theme.appPrimaryColor)
+                            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                            .shadow(radius: 5)
+                    }
+                    .buttonStyle(.plain)
                     .padding(.bottom, 5)
                 }
                 .frame(width: width)
