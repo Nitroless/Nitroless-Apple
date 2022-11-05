@@ -27,7 +27,7 @@ struct KeyboardView: View {
                 AskForAccess()
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: 340)
+        .frame(maxWidth: .infinity, maxHeight: 360)
         .background(Color.theme.appBGColor)
     }
     
