@@ -49,7 +49,7 @@ struct MainView: View {
                 
                 ForEach(repoMan.repos, id: \.url) { repo in
                     if repo.favouriteEmotes != nil && repo.favouriteEmotes!.count > 0 {
-                        FavouritesView(repo: repo, kbv: kbv, rows: rows)
+                        FavouritesView(repo: repo, kbv: kbv, rows: rows, flag: false)
                             .environmentObject(repoMan)
                     }
                 }

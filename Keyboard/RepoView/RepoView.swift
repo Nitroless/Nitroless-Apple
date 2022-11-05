@@ -12,46 +12,53 @@ struct RepoView: View {
     var kbv: KeyboardViewController
     @EnvironmentObject var repoMan: RepoManager
     
-    var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            VStack {
-                if repoMan.selectedRepo != nil {
-                    HStack {
-                        let imgUrl = repoMan.selectedRepo!.repo.url.appending(path: repoMan.selectedRepo!.repo.repoData!.icon)
-                        WebImage(url: imgUrl)
-                            .resizable()
-                            .placeholder {
-                                ProgressView()
-                            }
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 20, height: 20)
-                            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-                        Text(repoMan.selectedRepo!.repo.repoData!.name)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    .font(.headline)
-                    
-                    Spacer()
-                    
-                    LazyHStack {
-                        emotesGrid
-                    }
-                }
-            }
-            .padding(20)
-            .background(Color.theme.appBGSecondaryColor)
-            .cornerRadius(20)
-            .overlay(
-                RoundedRectangle(cornerRadius: 20)
-                    .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
-            .padding([.top, .horizontal], 20)
-        }
-        .frame(height: 240)
-    }
-    
     let rows = [
         GridItem(.adaptive(minimum: 45))
     ]
+    
+    var body: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack {
+                if repoMan.selectedRepo != nil && repoMan.selectedRepo!.repo.favouriteEmotes != nil && repoMan.selectedRepo!.repo.favouriteEmotes!.count > 0 {
+                    FavouritesView(repo: repoMan.selectedRepo!.repo, kbv: kbv, rows: rows, flag: true)
+                        .environmentObject(repoMan)
+                }
+                
+                VStack {
+                    if repoMan.selectedRepo != nil {
+                        HStack {
+                            let imgUrl = repoMan.selectedRepo!.repo.url.appending(path: repoMan.selectedRepo!.repo.repoData!.icon)
+                            WebImage(url: imgUrl)
+                                .resizable()
+                                .placeholder {
+                                    ProgressView()
+                                }
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 20, height: 20)
+                                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                            Text(repoMan.selectedRepo!.repo.repoData!.name)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                        .font(.headline)
+                        
+                        Spacer()
+                        
+                        LazyHStack {
+                            emotesGrid
+                        }
+                    }
+                }
+                .padding(20)
+                .background(Color.theme.appBGSecondaryColor)
+                .cornerRadius(20)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
+                .padding([.top, .horizontal], 20)
+            }
+        }
+        .frame(height: 240)
+    }
     
     @ViewBuilder
     var emotesGrid: some View {

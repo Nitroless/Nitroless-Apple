@@ -13,13 +13,19 @@ struct FavouritesView: View {
     var repo: Repo
     var kbv: KeyboardViewController
     var rows: [GridItem]
+    var flag: Bool
     
     var body: some View {
         VStack {
             HStack {
                 Image(systemName: "star")
-                Text("\(repo.repoData!.name)'s Favourite Emotes")
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                if flag {
+                    Text("Favourite Emotes")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                } else {
+                    Text("\(repo.repoData!.name)'s Favourite Emotes")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
             }
             .font(.headline)
             
