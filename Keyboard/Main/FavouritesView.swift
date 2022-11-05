@@ -12,7 +12,7 @@ struct FavouritesView: View {
     @EnvironmentObject var repoMan: RepoManager
     var repo: Repo
     var kbv: KeyboardViewController
-    var rows: [GridItem]
+    var column: [GridItem]
     var flag: Bool
     
     var body: some View {
@@ -31,8 +31,8 @@ struct FavouritesView: View {
             
             Spacer()
             
-            LazyHStack {
-                LazyHGrid(rows: rows) {
+            LazyVStack {
+                LazyVGrid(columns: column) {
                     let emotes = repo.favouriteEmotes
                     
                     ForEach(0..<emotes!.count, id: \.self) { i in
@@ -64,7 +64,7 @@ struct FavouritesView: View {
         .overlay(
             RoundedRectangle(cornerRadius: 20)
                 .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
-        .padding(.top, 20)
+        .padding(.vertical, 5)
         .padding(.horizontal, 10)
     }
 }

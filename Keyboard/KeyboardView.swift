@@ -26,12 +26,6 @@ struct KeyboardView: View {
             } else {
                 AskForAccess()
             }
-            if showGlobe {
-                VStack(alignment: .leading) {
-                    kbSwitch(vc: vc)
-                        .frame(width: 30, height: 30)
-                }
-            }
         }
         .frame(maxWidth: .infinity, maxHeight: 340)
         .background(Color.theme.appBGColor)
@@ -47,7 +41,7 @@ struct KeyboardView: View {
                 RepoView(kbv: vc)
                     .environmentObject(repoMan)
             }
-            BottomBarView(kbv: vc)
+            BottomBarView(kbv: vc, showGlobe: showGlobe)
                 .environmentObject(repoMan)
         }
         .task {

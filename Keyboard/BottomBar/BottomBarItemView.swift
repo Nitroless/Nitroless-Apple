@@ -26,18 +26,17 @@ struct BottomBarItemView: View {
                         ProgressView()
                     }
                     .background(Color.theme.appBGSecondaryColor)
-                    .frame(width: 40, height: 40)
+                    .frame(width: 30, height: 30)
                     .clipShape(RoundedRectangle(cornerRadius: selectedRepo == nil ? 99 : selectedRepo?.repo.url == repo.url ? 8 : 99, style: .continuous))
             }
             .padding(0)
-            .frame(width: 48, height: 48)
             .buttonStyle(.plain)
             .contentShape(.contextMenuPreview, RoundedRectangle(cornerRadius: selectedRepo == nil && selectedRepo?.repo.url == repo.url ? 99 : selectedRepo?.repo.url == repo.url ? 8 : 99, style: .continuous))
             .shadow(radius: 5)
             
             Rectangle()
                 .fill(.white)
-                .frame(width: selectedRepo == nil ? 0 : selectedRepo?.repo.url == repo.url ? 32 : 0, height: 3)
+                .frame(width: selectedRepo == nil ? 0 : selectedRepo?.repo.url == repo.url ? 28 : 0, height: 3)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .offset(y: 1)
                 .opacity(selectedRepo == nil ? 0 : selectedRepo?.repo.url == repo.url ? 1 : 0)

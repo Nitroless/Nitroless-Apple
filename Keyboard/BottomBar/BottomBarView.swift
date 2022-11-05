@@ -10,12 +10,15 @@ import SwiftUI
 struct BottomBarView: View {
     @EnvironmentObject var repoMan: RepoManager
     var kbv: KeyboardViewController
+    var showGlobe: Bool
     
     var body: some View {
         HStack {
-            kbSwitch(vc: kbv)
-                .frame(width: 30, height: 30)
-                .padding(.leading, 10)
+            if showGlobe {
+                kbSwitch(vc: kbv)
+                    .frame(width: 30, height: 30)
+                    .padding(.leading, 10)
+            }
             
             VStack {
                 Button {
@@ -23,18 +26,19 @@ struct BottomBarView: View {
                 } label: {
                     Image("Icon")
                         .resizable()
-                        .frame(width: 40, height: 40)
+                        .frame(width: 30, height: 30)
                         .clipShape(RoundedRectangle(cornerRadius: repoMan.selectedRepo == nil ? 8 : 99, style: .continuous))
                         .shadow(radius: 5)
                 }
                 Rectangle()
                     .fill(.white)
-                    .frame(width: repoMan.selectedRepo == nil ? 32 : 0, height: 3)
+                    .frame(width: repoMan.selectedRepo == nil ? 28 : 0, height: 3)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
                     .offset(y: 1)
                     .opacity(repoMan.selectedRepo == nil ? 1 : 0)
             }
             .padding([.top, .horizontal], 5)
+            .padding(.leading, showGlobe ? 0 : 10)
             
             Divider()
                 .frame(height: 40)

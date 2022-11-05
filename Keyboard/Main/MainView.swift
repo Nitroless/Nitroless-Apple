@@ -12,13 +12,20 @@ struct MainView: View {
     var kbv: KeyboardViewController
     @EnvironmentObject var repoMan: RepoManager
     
-    let rows = [
+    let column = [
         GridItem(.adaptive(minimum: 45))
     ]
     
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
+        ScrollView(showsIndicators: false) {
+            VStack {
+                ForEach(repoMan.repos, id: \.url) { repo in
+                    if repo.favouriteEmotes != nil && repo.favouriteEmotes!.count > 0 {
+                        FavouritesView(repo: repo, kbv: kbv, column: column, flag: false)
+                            .environmentObject(repoMan)
+                    }
+                }
+                
                 VStack {
                     HStack {
                         Image(systemName: "clock.arrow.circlepath")
@@ -33,7 +40,7 @@ struct MainView: View {
                         Text("Start using Nitroless \nto show your frequently used emotes here.")
                             .frame(maxWidth: .infinity)
                     } else {
-                        LazyHStack {
+                        LazyVStack {
                             emotesGrid
                         }
                     }
@@ -44,15 +51,8 @@ struct MainView: View {
                 .overlay(
                     RoundedRectangle(cornerRadius: 20)
                         .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
-                .padding(.top, 20)
+                .padding(.vertical, 5)
                 .padding(.horizontal, 10)
-                
-                ForEach(repoMan.repos, id: \.url) { repo in
-                    if repo.favouriteEmotes != nil && repo.favouriteEmotes!.count > 0 {
-                        FavouritesView(repo: repo, kbv: kbv, rows: rows, flag: false)
-                            .environmentObject(repoMan)
-                    }
-                }
             }
         }
         .frame(height: 240)
@@ -60,7 +60,7 @@ struct MainView: View {
     
     @ViewBuilder
     var emotesGrid: some View {
-        LazyHGrid(rows: rows) {
+        LazyVGrid(columns: column) {
             let emotes = repoMan.frequentlyUsed
             
             ForEach(0..<emotes.count, id: \.self) { i in

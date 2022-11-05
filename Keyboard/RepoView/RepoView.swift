@@ -12,13 +12,18 @@ struct RepoView: View {
     var kbv: KeyboardViewController
     @EnvironmentObject var repoMan: RepoManager
     
-    let rows = [
+    let columns = [
         GridItem(.adaptive(minimum: 45))
     ]
     
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
+        ScrollView(showsIndicators: false) {
+            VStack {
+                if repoMan.selectedRepo != nil && repoMan.selectedRepo!.repo.favouriteEmotes != nil && repoMan.selectedRepo!.repo.favouriteEmotes!.count > 0 {
+                    FavouritesView(repo: repoMan.selectedRepo!.repo, kbv: kbv, column: columns, flag: true)
+                        .environmentObject(repoMan)
+                }
+                
                 VStack {
                     if repoMan.selectedRepo != nil {
                         HStack {
@@ -38,7 +43,7 @@ struct RepoView: View {
                         
                         Spacer()
                         
-                        LazyHStack {
+                        LazyVStack {
                             emotesGrid
                         }
                     }
@@ -49,13 +54,8 @@ struct RepoView: View {
                 .overlay(
                     RoundedRectangle(cornerRadius: 20)
                         .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
-                .padding(.top, 20)
+                .padding(.vertical, 5)
                 .padding(.horizontal, 10)
-                
-                if repoMan.selectedRepo != nil && repoMan.selectedRepo!.repo.favouriteEmotes != nil && repoMan.selectedRepo!.repo.favouriteEmotes!.count > 0 {
-                    FavouritesView(repo: repoMan.selectedRepo!.repo, kbv: kbv, rows: rows, flag: true)
-                        .environmentObject(repoMan)
-                }
             }
         }
         .frame(height: 240)
@@ -63,7 +63,7 @@ struct RepoView: View {
     
     @ViewBuilder
     var emotesGrid: some View {
-        LazyHGrid(rows: rows) {
+        LazyVGrid(columns: columns) {
             let emotes = repoMan.selectedRepo!.repo.repoData!.emotes
             
             ForEach(0..<emotes.count, id: \.self) { i in
