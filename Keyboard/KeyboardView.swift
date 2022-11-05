@@ -169,13 +169,13 @@ struct kbSwitch: UIViewRepresentable {
         button.sizeToFit()
         button.translatesAutoresizingMaskIntoConstraints = false
         
-        let textColor: UIColor = .lightGray
+        let textColor: UIColor = .white
         button.tintColor = textColor
         return button
     }
     
     func updateUIView(_ uiView: UIButton, context: Context) {
-        let textColor: UIColor = .lightGray
+        let textColor: UIColor = .white
         uiView.tintColor = textColor
     }
     

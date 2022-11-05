@@ -13,6 +13,10 @@ struct BottomBarView: View {
     
     var body: some View {
         HStack {
+            kbSwitch(vc: kbv)
+                .frame(width: 30, height: 30)
+                .padding(.leading, 10)
+            
             VStack {
                 Button {
                     repoMan.selectHome()
@@ -31,7 +35,6 @@ struct BottomBarView: View {
                     .opacity(repoMan.selectedRepo == nil ? 1 : 0)
             }
             .padding([.top, .horizontal], 5)
-            .padding(.leading, 20)
             
             Divider()
                 .frame(height: 40)
@@ -72,13 +75,13 @@ struct BottomBarView: View {
                     }
                 }
             } label: {
-                Image(systemName: "delete.left.fill")
+                Image(systemName: "delete.left")
                     .resizable()
-                    .frame(width: 30, height: 25)
+                    .frame(width: 25, height: 20)
             }
             .buttonStyle(.plain)
             .padding([.top, .horizontal], 5)
-            .padding(.trailing, 20)
+            .padding(.trailing, 10)
             .offset(y: -2)
         }
     }

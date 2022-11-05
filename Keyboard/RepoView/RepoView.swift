@@ -19,11 +19,6 @@ struct RepoView: View {
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                if repoMan.selectedRepo != nil && repoMan.selectedRepo!.repo.favouriteEmotes != nil && repoMan.selectedRepo!.repo.favouriteEmotes!.count > 0 {
-                    FavouritesView(repo: repoMan.selectedRepo!.repo, kbv: kbv, rows: rows, flag: true)
-                        .environmentObject(repoMan)
-                }
-                
                 VStack {
                     if repoMan.selectedRepo != nil {
                         HStack {
@@ -54,7 +49,13 @@ struct RepoView: View {
                 .overlay(
                     RoundedRectangle(cornerRadius: 20)
                         .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
-                .padding([.top, .horizontal], 20)
+                .padding(.top, 20)
+                .padding(.horizontal, 10)
+                
+                if repoMan.selectedRepo != nil && repoMan.selectedRepo!.repo.favouriteEmotes != nil && repoMan.selectedRepo!.repo.favouriteEmotes!.count > 0 {
+                    FavouritesView(repo: repoMan.selectedRepo!.repo, kbv: kbv, rows: rows, flag: true)
+                        .environmentObject(repoMan)
+                }
             }
         }
         .frame(height: 240)
