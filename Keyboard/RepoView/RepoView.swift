@@ -13,7 +13,7 @@ struct RepoView: View {
     @EnvironmentObject var repoMan: RepoManager
     
     var body: some View {
-        ScrollView(.horizontal) {
+        ScrollView(.horizontal, showsIndicators: false) {
             VStack {
                 if repoMan.selectedRepo != nil {
                     HStack {
@@ -68,6 +68,7 @@ struct RepoView: View {
                 
                 Button {
                     kbv.textDocumentProxy.insertText(imgUrl.absoluteString)
+                    repoMan.selectedEmote = imgUrl.absoluteString
                     repoMan.addToFrequentlyUsed(emote: imgUrl.absoluteString)
                     repoMan.reloadFrequentlyUsed()
                 } label: {

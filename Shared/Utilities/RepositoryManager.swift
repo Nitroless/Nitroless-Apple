@@ -13,6 +13,7 @@ class RepoManager: ObservableObject {
     @Published var repos: [Repo]
     @Published var frequentlyUsed: [URL]
     @Published var selectedRepo: SelectedRepo?
+    @Published var selectedEmote: String?
     
     init() {
         if let directory = self.fileManager.containerURL(forSecurityApplicationGroupIdentifier: "group.llsc12.Nitroless") {

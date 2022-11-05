@@ -9,10 +9,6 @@ import Foundation
 import SwiftUI
 import SDWebImageSwiftUI
 
-// colors
-let discordBgDark = Color(red: 0.2156, green: 0.2235, blue: 0.2431) // thanks to r/jb for randomly
-let discordBgLight = Color(red: 1, green: 1, blue: 1)               // telling me these exact colors
-
 struct KeyboardView: View {
     var vc: KeyboardViewController
     
@@ -37,7 +33,7 @@ struct KeyboardView: View {
                 }
             }
         }
-        .frame(maxWidth: .infinity)
+        .frame(maxWidth: .infinity, maxHeight: 340)
         .background(Color.theme.appBGColor)
     }
     
@@ -51,7 +47,7 @@ struct KeyboardView: View {
                 RepoView(kbv: vc)
                     .environmentObject(repoMan)
             }
-            BottomBarView()
+            BottomBarView(kbv: vc)
                 .environmentObject(repoMan)
         }
         .task {

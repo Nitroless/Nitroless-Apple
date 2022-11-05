@@ -63,6 +63,7 @@
 		E6E161EB2915A165001E1698 /* BottomBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E161EA2915A165001E1698 /* BottomBarItemView.swift */; };
 		E6E161EE2915A7F9001E1698 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E161ED2915A7F9001E1698 /* MainView.swift */; };
 		E6E161F12915B57D001E1698 /* RepoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E161F02915B57D001E1698 /* RepoView.swift */; };
+		E6E161F329162295001E1698 /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E161F229162295001E1698 /* FavouritesView.swift */; };
 		E6F1ECED28F5A37D001594B6 /* EmoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F1ECEC28F5A37D001594B6 /* EmoteView.swift */; };
 /* End PBXBuildFile section */
 
@@ -150,6 +151,7 @@
 		E6E161EA2915A165001E1698 /* BottomBarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarItemView.swift; sourceTree = "<group>"; };
 		E6E161ED2915A7F9001E1698 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		E6E161F02915B57D001E1698 /* RepoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoView.swift; sourceTree = "<group>"; };
+		E6E161F229162295001E1698 /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
 		E6F1ECEC28F5A37D001594B6 /* EmoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmoteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -496,6 +498,7 @@
 			isa = PBXGroup;
 			children = (
 				E6E161ED2915A7F9001E1698 /* MainView.swift */,
+				E6E161F229162295001E1698 /* FavouritesView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -717,6 +720,7 @@
 				E69E3A53291546A70030EFA3 /* BottomBarView.swift in Sources */,
 				E69E3A50291540310030EFA3 /* Color.swift in Sources */,
 				E6E161F12915B57D001E1698 /* RepoView.swift in Sources */,
+				E6E161F329162295001E1698 /* FavouritesView.swift in Sources */,
 				AA431D7728EEEBB00066EBC4 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
