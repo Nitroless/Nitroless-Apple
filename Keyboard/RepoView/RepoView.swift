@@ -9,7 +9,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct RepoView: View {
-    var kbv: KeyboardViewController
+    @EnvironmentObject var kbv: KeyboardViewController
     @EnvironmentObject var repoMan: RepoManager
     
     let columns = [
@@ -20,8 +20,7 @@ struct RepoView: View {
         ScrollView(showsIndicators: false) {
             VStack {
                 if repoMan.selectedRepo != nil && repoMan.selectedRepo!.repo.favouriteEmotes != nil && repoMan.selectedRepo!.repo.favouriteEmotes!.count > 0 {
-                    FavouritesView(repo: repoMan.selectedRepo!.repo, kbv: kbv, column: columns, flag: true)
-                        .environmentObject(repoMan)
+                    FavouritesView(repo: repoMan.selectedRepo!.repo, column: columns, flag: true)
                 }
                 
                 VStack {

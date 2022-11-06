@@ -9,7 +9,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct MainView: View {
-    var kbv: KeyboardViewController
+    @EnvironmentObject var kbv: KeyboardViewController
     @EnvironmentObject var repoMan: RepoManager
     
     let column = [
@@ -21,8 +21,7 @@ struct MainView: View {
             VStack {
                 ForEach(repoMan.repos, id: \.url) { repo in
                     if repo.favouriteEmotes != nil && repo.favouriteEmotes!.count > 0 {
-                        FavouritesView(repo: repo, kbv: kbv, column: column, flag: false)
-                            .environmentObject(repoMan)
+                        FavouritesView(repo: repo, column: column, flag: false)
                     }
                 }
                 

@@ -11,7 +11,7 @@ import SDWebImageSwiftUI
 struct FavouritesView: View {
     @EnvironmentObject var repoMan: RepoManager
     var repo: Repo
-    var kbv: KeyboardViewController
+    @EnvironmentObject var kbv: KeyboardViewController
     var column: [GridItem]
     var flag: Bool
     

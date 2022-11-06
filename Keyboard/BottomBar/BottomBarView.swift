@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BottomBarView: View {
     @EnvironmentObject var repoMan: RepoManager
-    var kbv: KeyboardViewController
+    @EnvironmentObject var kbv: KeyboardViewController
     var showGlobe: Bool
     
     var body: some View {

@@ -64,7 +64,7 @@ struct SidebarItemView: View {
                 
                 Button(role: .cancel) {
                 } label: {
-                    Label("Cancel", image: "trash")
+                    Text("Cancel")
                 }
             }
             .offset(x: -8)

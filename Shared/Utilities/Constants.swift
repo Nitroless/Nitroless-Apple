@@ -12,5 +12,5 @@ struct FileLocations {
     static let frequentEmotes = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.llsc12.Nitroless")!.appendingPathComponent("Documents").appending(path: "frequentEmotes").appendingPathExtension("nitroless")
 }
 
-var DefaultReposUrl = URL(string: "https://nitroless.github.io/default.json")!
+//var DefaultReposUrl = URL(string: "https://nitroless.app/default.json")!
 

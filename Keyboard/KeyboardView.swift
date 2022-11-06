@@ -22,9 +22,13 @@ struct KeyboardView: View {
     var body: some View {
         VStack {
             if vc.hasFullAccess {
-                kb
+                if repoMan.repos.isEmpty {
+                    AddReposPrompt(vc: vc)
+                } else {
+                    kb
+                }
             } else {
-                AskForAccess()
+                AskForAccess(vc: vc)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: 360)
@@ -35,15 +39,14 @@ struct KeyboardView: View {
     var kb: some View {
         VStack {
             if repoMan.selectedRepo == nil {
-                MainView(kbv: vc)
-                    .environmentObject(repoMan)
+                MainView()
             } else {
-                RepoView(kbv: vc)
-                    .environmentObject(repoMan)
+                RepoView()
             }
-            BottomBarView(kbv: vc, showGlobe: showGlobe)
-                .environmentObject(repoMan)
+            BottomBarView(showGlobe: showGlobe)
         }
+        .environmentObject(repoMan)
+        .environmentObject(vc)
         .task {
             print("[Nitroless KB] \(repoMan.repos.debugDescription)")
         }
@@ -54,7 +57,78 @@ struct KeyboardView: View {
     }
 }
 
+struct AddReposPrompt: View {
+    
+    var vc: KeyboardViewController
+    
+    var width: CGFloat {
+        return UIScreen.main.bounds.width
+    }
+        
+    var body: some View {
+        VStack {
+            ScrollView {
+                Text("You have no repositories available, please add some in the app.")
+                    .padding(.bottom, 20)
+            }
+            .padding([.top, .leading, .trailing], 20)
+            .background(Color.theme.appBGSecondaryColor)
+            .cornerRadius(20)
+            .overlay(
+                RoundedRectangle(cornerRadius: 20)
+                    .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
+            
+            Button {
+                openParentApp()
+            } label: {
+                Text("Open Nitroless")
+                    .foregroundColor(Color(.white))
+                    .padding(10)
+                    .background(Color.theme.appPrimaryColor)
+                    .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                    .shadow(radius: 5)
+            }
+            .buttonStyle(.plain)
+            .padding(.bottom, 5)
+        }
+        .overlay(alignment: .bottomLeading, content: {
+            if vc.needsInputModeSwitchKey {
+                kbSwitch(vc: vc)
+                    .frame(width: 30, height: 30)
+                    .padding(.leading, 10)
+            }
+        })
+    }
+    
+    func openParentApp() {
+        let url = URL(string: "nitroless://")!
+        openURL(url: url as NSURL)
+    }
+    
+    
+    func openURL(url: NSURL) {
+        guard let application = try? self.sharedApplication() else { return }
+        application.performSelector(inBackground: "openURL:", with: url)
+    }
+
+    func sharedApplication() throws -> UIApplication {
+        var responder: UIResponder? = vc
+        while responder != nil {
+            if let application = responder as? UIApplication {
+                return application
+            }
+
+            responder = responder?.next
+        }
+
+        throw NSError(domain: "UIInputViewController+sharedApplication.swift", code: 1, userInfo: nil)
+    }
+}
+
 struct AskForAccess: View {
+    
+    var vc: KeyboardViewController
+    
     var width: CGFloat {
         return UIScreen.main.bounds.width
     }
@@ -92,6 +166,13 @@ struct AskForAccess: View {
                     .buttonStyle(.plain)
                     .padding(.bottom, 5)
                 }
+                .overlay(alignment: .bottomLeading, content: {
+                    if vc.needsInputModeSwitchKey {
+                        kbSwitch(vc: vc)
+                            .frame(width: 30, height: 30)
+                            .padding(.leading, 10)
+                    }
+                })
                 .frame(width: width)
             }
             if show2 {
@@ -120,6 +201,13 @@ struct AskForAccess: View {
                     .buttonStyle(.plain)
                     .padding(.bottom, 5)
                 }
+                .overlay(alignment: .bottomLeading, content: {
+                    if vc.needsInputModeSwitchKey {
+                        kbSwitch(vc: vc)
+                            .frame(width: 30, height: 30)
+                            .padding(.leading, 10)
+                    }
+                })
                 .frame(width: width)
             }
         }
@@ -174,27 +262,4 @@ struct kbSwitch: UIViewRepresentable {
     }
     
     typealias UIViewType = UIButton
-}
-
-struct BobbingView<Content: View>: View {
-    @State var timer: Timer = Timer()
-    @ViewBuilder var content: Content
-    @State var bob = false
-    
-    var body: some View {
-        VStack {
-            content
-                .offset(y: bob ? 10 : -10)
-        }
-        .onAppear {
-            if timer.isValid == false {
-                timer = Timer.scheduledTimer(withTimeInterval: 4, repeats: true, block: { _ in
-                    withAnimation(.easeInOut(duration: 4)) {
-                        bob.toggle()
-                    }
-                })
-            }
-        }
-    }
-    
 }
