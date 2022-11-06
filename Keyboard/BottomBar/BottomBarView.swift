@@ -43,25 +43,17 @@ struct BottomBarView: View {
             Divider()
                 .frame(height: 40)
                 .offset(y: 4)
-            
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    if repoMan.repos.isEmpty {
-                        Text("Please use the Nitroless App\nto add some Repos")
-                            .multilineTextAlignment(.center)
-                            .foregroundColor(Color(.white))
-                            .padding(.vertical, 10)
-                            .padding(.horizontal, 20)
-                            .background(Color.theme.appBGSecondaryColor)
-                            .cornerRadius(20)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
-                            .padding(10)
-                    } else {
-                        ForEach(repoMan.repos, id: \.url) { repo in
-                            if repo.repoData != nil {
-                                BottomBarItemView(repo: repo, selectRepo: { repoMan.selectRepo(selectedRepo: SelectedRepo(active: true, repo: repo))}, selectedRepo: repoMan.selectedRepo)
+        
+            HStack {
+                if repoMan.repos.isEmpty {
+                    ProgressView()
+                } else {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        LazyHStack {
+                            ForEach(repoMan.repos, id: \.url) { repo in
+                                if repo.repoData != nil {
+                                    BottomBarItemView(repo: repo, selectRepo: { repoMan.selectRepo(selectedRepo: SelectedRepo(active: true, repo: repo))}, selectedRepo: repoMan.selectedRepo)
+                                }
                             }
                         }
                     }

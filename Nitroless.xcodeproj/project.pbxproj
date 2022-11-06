@@ -303,12 +303,12 @@
 		5783B54728ECBA9000CFF460 /* Keyboard */ = {
 			isa = PBXGroup;
 			children = (
+				5783B54828ECBA9000CFF460 /* KeyboardViewController.swift */,
 				E6E161EF2915B563001E1698 /* RepoView */,
 				E6E161EC2915A7D9001E1698 /* Main */,
 				E69E3A5429156D3E0030EFA3 /* Keyboard.entitlements */,
 				E69E3A512915468F0030EFA3 /* BottomBar */,
 				E69E3A4E291540180030EFA3 /* Extensions */,
-				5783B54828ECBA9000CFF460 /* KeyboardViewController.swift */,
 				5783B55128ECCDDA00CFF460 /* KeyboardView.swift */,
 				5783B54A28ECBA9000CFF460 /* Info.plist */,
 			);

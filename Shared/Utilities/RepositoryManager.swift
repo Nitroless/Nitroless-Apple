@@ -35,6 +35,29 @@ class RepoManager: ObservableObject {
         self.selectedRepo = nil
     }
     
+    public func hasRepositories() -> Bool {
+        let file = FileLocations.repoList
+        
+        let fileExists = FileManager.default.fileExists(atPath: file.path)
+        
+        if !fileExists {
+            try? "".write(to: file, atomically: true, encoding: String.Encoding.utf8)
+        }
+        
+        let repoString = (try? String(contentsOf: file, encoding: .utf8))
+        
+        guard let repoString = repoString else { return false }
+        var repositories = repoString.components(separatedBy: "\n")
+        
+        if let e = repositories.first {
+            if e.isEmpty {
+                repositories = Array(repositories.dropFirst())
+            }
+        }
+        
+        return !repositories.isEmpty
+    }
+    
     public func removeFromFavourite(repo: String, emote: String) {
         var rep = repo
         let removeFromURL: Set<Character> = [".", "/"]

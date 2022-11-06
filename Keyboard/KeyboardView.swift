@@ -22,10 +22,10 @@ struct KeyboardView: View {
     var body: some View {
         VStack {
             if vc.hasFullAccess {
-                if repoMan.repos.isEmpty {
-                    AddReposPrompt(vc: vc)
-                } else {
+                if repoMan.hasRepositories() {
                     kb
+                } else {
+                    AddReposPrompt(vc: vc)
                 }
             } else {
                 AskForAccess(vc: vc)
@@ -50,10 +50,6 @@ struct KeyboardView: View {
         .task {
             print("[Nitroless KB] \(repoMan.repos.debugDescription)")
         }
-    }
-    
-    func type(_ str: String) {
-        vc.textDocumentProxy.insertText(str)
     }
 }
 
