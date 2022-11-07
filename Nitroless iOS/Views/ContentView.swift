@@ -91,8 +91,8 @@ struct ContentView: View {
                             
                             Spacer()
                             
-                            Text("Nitroless")
-                                .font(.custom("Uni Sans", size: 32))
+                            banner()
+                                .padding(.vertical, 5)
                                 .offset(x: repoMan.selectedRepo == nil ? 2 : 19)
                             
                             Spacer()
@@ -202,5 +202,31 @@ struct ContentView: View {
         default:
             return;
         }
+    }
+}
+
+struct banner: View {
+    
+    @Environment(\.colorScheme) var cs
+    
+    var body: some View {
+        HStack {
+            if cs == .light {
+                Image("banner")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .colorInvert()
+            } else {
+                Image("banner")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            }
+        }
+    }
+}
+
+struct test_Previews: PreviewProvider {
+    static var previews: some View {
+        banner()
     }
 }
