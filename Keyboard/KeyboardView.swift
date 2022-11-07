@@ -101,7 +101,6 @@ struct AddReposPrompt: View {
         openURL(url: url as NSURL)
     }
     
-    
     func openURL(url: NSURL) {
         guard let application = try? self.sharedApplication() else { return }
         application.performSelector(inBackground: "openURL:", with: url)
@@ -140,9 +139,8 @@ struct AskForAccess: View {
                 VStack {
                     ScrollView {
                         Text("Heya! To use the Nitroless Keyboard you will require to give it Full Keyboard Access.\nSettings > General > Keyboards > Keyboard - Nitroless > Allow Full Access")
-                            .padding(.bottom, 20)
                     }
-                    .padding([.top, .leading, .trailing], 20)
+                    .padding(20)
                     .background(Color.theme.appBGSecondaryColor)
                     .cornerRadius(20)
                     .overlay(
@@ -175,9 +173,8 @@ struct AskForAccess: View {
                 VStack {
                     ScrollView {
                         Text("Full Access allows the Keyboard to access the internet so we can load the repos and emotes. Nothing else happens! Feel free to check our Open-Source GitHub Repo.")
-                            .padding(.bottom, 20)
                     }
-                    .padding([.top, .leading, .trailing], 20)
+                    .padding(20)
                     .background(Color.theme.appBGSecondaryColor)
                     .cornerRadius(20)
                     .overlay(

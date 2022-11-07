@@ -103,7 +103,7 @@ struct RepoView: View {
                 Text("Favourite Emotes")
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .font(.title)
+            .font(.headline)
             
             LazyVGrid(columns: columns) {
                 ForEach(0..<repoMan.selectedRepo!.repo.favouriteEmotes!.count, id: \.self) { i in

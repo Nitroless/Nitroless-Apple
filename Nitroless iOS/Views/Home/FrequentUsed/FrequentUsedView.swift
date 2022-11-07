@@ -22,10 +22,10 @@ struct FrequentUsedView: View {
         VStack {
             HStack {
                 Image(systemName: "clock.arrow.circlepath")
-                Text("Frequently used emotes")
+                Text("Frequently used")
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .font(.title)
+            .font(.headline)
             
             Spacer()
             

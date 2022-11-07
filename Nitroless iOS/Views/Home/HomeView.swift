@@ -14,10 +14,8 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
-            ForEach(repoMan.repos, id: \.url) { repo in
-                if repo.favouriteEmotes != nil && repo.favouriteEmotes!.count > 0 {
-                    FavouriteEmotesView(repoName: repo.repoData!.name, emotes: repo.favouriteEmotes!, repoURL: repo.url, toastShown: $toastShown)
-                }
+            if repoMan.favouriteEmotes.count > 0 {
+                FavouriteEmotesView(emotes: repoMan.favouriteEmotes, toastShown: $toastShown)
             }
             FrequentUsedView(toastShown: $toastShown)
         }

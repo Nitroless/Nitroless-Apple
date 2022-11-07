@@ -14,10 +14,8 @@ import QuickLook
 struct FavouriteEmotesView: View {
     @EnvironmentObject var repoMan: RepoManager
     @State var previewUrl: URL? = nil
-    
-    let repoName: String
+
     let emotes: [URL]
-    let repoURL: URL
     
     @Binding var toastShown: Bool
     
@@ -25,7 +23,7 @@ struct FavouriteEmotesView: View {
         VStack {
             HStack {
                 Image(systemName: "star")
-                Text("\(repoName.count > 15 ? "\(repoName.prefix(15))..." : repoName)'s Favourite Emotes")
+                Text("Favourite Emotes")
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             .font(.headline)
@@ -85,12 +83,6 @@ struct FavouriteEmotesView: View {
                         repoMan.reloadFrequentlyUsed()
                     } label: {
                         Label("Copy", systemImage: "doc.on.clipboard")
-                    }
-                    
-                    Button(role: .destructive) {
-                        repoMan.removeFromFavourite(repo: repoURL.absoluteString, emote: emote.absoluteString)
-                    } label: {
-                        Label("Unfavourite", systemImage: "star.fill")
                     }
                     
                     Button {
