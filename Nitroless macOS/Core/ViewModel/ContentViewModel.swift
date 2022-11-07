@@ -9,8 +9,9 @@ import SwiftUI
 
 class ContentViewModel: ObservableObject {
     @Published var repos = [Repo]()
-    @Published var selectedRepo = Repo(active: false, url: "", emote: Emote(name: "", icon: "", path: "", emotes: [EmoteElement]()))
+    @Published var selectedRepo = Repo(active: false, url: "", favouriteEmotes: [String](), emote: Emote(name: "", icon: "", path: "", author: "", emotes: [EmoteElement]()))
     @Published var frequentlyUsedEmotes = [String]()
+    @Published var favouriteEmotes = [String]()
     @Published var isLoading: Bool = false
     @Published var isHomeActive: Bool = true
     @Published var isAboutActive: Bool = false
@@ -23,6 +24,9 @@ class ContentViewModel: ObservableObject {
         }
         Task {
             self.fetchFrequentlyUsedEmotes()
+        }
+        Task {
+            self.fetchFavouriteEmotes()
         }
     }
     
@@ -39,7 +43,7 @@ class ContentViewModel: ObservableObject {
     }
     
     func deselectRepo() {
-        self.selectedRepo = Repo(active: false, url: "", emote: Emote(name: "", icon: "", path: "", emotes: [EmoteElement]()))
+        self.selectedRepo = Repo(active: false, url: "", favouriteEmotes: [String](), emote: Emote(name: "", icon: "", path: "", author: "", emotes: [EmoteElement]()))
     }
     
     func askBeforeExiting() {
@@ -191,6 +195,15 @@ class ContentViewModel: ObservableObject {
     func fetchEmotes(urls: [String]) {
         DispatchQueue.main.async {
             for urlString in urls {
+                var rep = urlString
+                let removeFromURL: Set<Character> = [".", "/"]
+                if rep.prefix(8) == "https://" {
+                    rep.removeFirst(8)
+                }
+                rep.removeAll(where: {removeFromURL.contains($0)})
+                
+                var repoArray = UserDefaults.standard.object(forKey: rep) as? [String] ?? [String]()
+                
                 guard let url = URL(string: "\(urlString)/index.json") else { continue }
                 
                 URLSession.shared.dataTask(with: url) {
@@ -212,11 +225,22 @@ class ContentViewModel: ObservableObject {
                     
                     do {
                         var emote = try JSONDecoder().decode(Emote.self, from: data)
-                        emote = Emote(name: emote.name, icon: emote.icon, path: emote.path, emotes: emote.emotes.unique{$0.name == $1.name})
+                        emote = Emote(name: emote.name, icon: emote.icon, path: emote.path, author: emote.author, emotes: emote.emotes.unique{$0.name == $1.name})
                         DispatchQueue.main.async {
-                            let repo = Repo(active: false, url: urlString, emote: emote)
+                            let repo = Repo(active: false, url: urlString, favouriteEmotes: repoArray, emote: emote)
                             self.repos.append(repo)
+                            self.reorderRepos()
                             self.isLoading = false
+                        }
+                        DispatchQueue.main.async {
+                            if self.selectedRepo.active == true {
+                                for repo in self.repos {
+                                    if self.selectedRepo.url == repo.url {
+                                    self.selectedRepo.favouriteEmotes = repo.favouriteEmotes
+                                        break
+                                    }
+                                }
+                            }
                         }
                     } catch let error {
                         print("DEBUG: Failed to decode because of Error - \(error)")
@@ -281,8 +305,96 @@ class ContentViewModel: ObservableObject {
         }
     }
     
+    func fetchFavouriteEmotes() {
+        let favouriteEmotesArray = UserDefaults.standard.object(forKey: "favouriteEmotes") as? [String] ?? [String]()
+        
+        if favouriteEmotesArray.isEmpty {
+            return
+        } else {
+            DispatchQueue.main.async {
+                self.favouriteEmotes = favouriteEmotesArray
+            }
+        }
+    }
+    
+    func removeFromFavouriteEmotes(repo: String, favouriteEmote: String) {
+        var rep = repo
+        let removeFromURL: Set<Character> = [".", "/"]
+        if rep.prefix(8) == "https://" {
+            rep.removeFirst(8)
+        }
+        rep.removeAll(where: {removeFromURL.contains($0)})
+        
+        var repoArray = UserDefaults.standard.object(forKey: rep) as? [String] ?? [String]()
+        var favsArray = UserDefaults.standard.object(forKey: "favouriteEmotes") as? [String] ?? [String]()
+        
+        repoArray = repoArray.filter({$0 != favouriteEmote})
+        favsArray = favsArray.filter({$0 != favouriteEmote})
+        
+        UserDefaults.standard.set(repoArray, forKey: rep)
+        UserDefaults.standard.set(favsArray, forKey: "favouriteEmotes")
+        
+        DispatchQueue.main.async {
+            self.repos = [Repo]()
+            self.favouriteEmotes = [String]()
+            self.fetchRepos()
+            self.fetchFavouriteEmotes()
+        }
+    }
+    
+    func addToFavouriteEmotes(repo: String, favouriteEmote: String) {
+        var rep = repo
+        let removeFromURL: Set<Character> = [".", "/"]
+        if rep.prefix(8) == "https://" {
+            rep.removeFirst(8)
+        }
+        rep.removeAll(where: {removeFromURL.contains($0)})
+        
+        var repoArray = UserDefaults.standard.object(forKey: rep) as? [String] ?? [String]()
+        var favsArray = UserDefaults.standard.object(forKey: "favouriteEmotes") as? [String] ?? [String]()
+        
+        if repoArray.isEmpty {
+            repoArray.append(favouriteEmote)
+        } else {
+            if repoArray.contains(favouriteEmote) {
+                for(index, favEmote) in repoArray.enumerated() {
+                    if favEmote == favouriteEmote {
+                        repoArray.remove(at: index)
+                        break
+                    }
+                }
+            }
+            
+            repoArray.insert(favouriteEmote, at: 0)
+        }
+        
+        if favsArray.isEmpty {
+            favsArray.append(favouriteEmote)
+        } else {
+            if favsArray.contains(favouriteEmote) {
+                for(index, favEmote) in favsArray.enumerated() {
+                    if favEmote == favouriteEmote {
+                        favsArray.remove(at: index)
+                        break
+                    }
+                }
+            }
+            
+            favsArray.insert(favouriteEmote, at: 0)
+        }
+        
+        UserDefaults.standard.set(repoArray, forKey: rep)
+        UserDefaults.standard.set(favsArray, forKey: "favouriteEmotes")
+        DispatchQueue.main.async {
+            self.repos = [Repo]()
+            self.favouriteEmotes = [String]()
+            self.fetchRepos()
+            self.fetchFavouriteEmotes()
+        }
+    }
+    
     func addToFrequentlyUsedEmotes(frequentEmote: String) {
-        var frequentlyUsedEmotesArray = UserDefaults.standard.object(forKey: "frequentlyUsedEmotes") as? [String] ?? [String]();
+        var frequentlyUsedEmotesArray = UserDefaults.standard.object(forKey: "frequentlyUsedEmotes") as? [String] ?? [String]()
         
         if frequentlyUsedEmotesArray.isEmpty {
             frequentlyUsedEmotesArray.append(frequentEmote)
@@ -307,6 +419,12 @@ class ContentViewModel: ObservableObject {
         DispatchQueue.main.async {
             self.frequentlyUsedEmotes = [String]()
             self.fetchFrequentlyUsedEmotes()
+        }
+    }
+    
+    func reorderRepos() {
+        self.repos.sort { r1, r2 in
+            return r1.emote.name.lowercased() < r2.emote.name.lowercased()
         }
     }
 }

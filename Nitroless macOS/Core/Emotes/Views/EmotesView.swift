@@ -19,116 +19,174 @@ struct EmotesView: View {
         if viewModel.selectedRepo.active == true {
             ScrollView(showsIndicators: false) {
                 VStack(alignment: .leading) {
-                    HStack {
-                        WebImage(url: URL(string: "\(viewModel.selectedRepo.url)/\(viewModel.selectedRepo.emote.icon)"))
-                            .resizable()
-                            .frame(width: 48, height: 48)
-                            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-                            .shadow(radius: 5)
-                        
-                        Text("\(viewModel.selectedRepo.emote.name)")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    .font(.title)
-                    Spacer()
-                    HStack(spacing: 1) {
-                        Text("URL: ")
-                        Button {
-                            delegate.popMenubarView()
-                            NSWorkspace.shared.open(URL(string: viewModel.selectedRepo.url)!)
-                        } label: {
-                            HStack {
-                                Text(viewModel.selectedRepo.url)
-                                    .foregroundColor(Color(red: 0.35, green: 0.40, blue: 0.95))
-                            }
+                    Button {
+                        NSWorkspace.shared.open(URL(string: viewModel.selectedRepo.url)!)
+                    } label: {
+                        HStack {
+                            WebImage(url: URL(string: "\(viewModel.selectedRepo.url)/\(viewModel.selectedRepo.emote.icon)"))
+                                .resizable()
+                                .placeholder {
+                                    ProgressView()
+                                }
+                                .aspectRatio(contentMode: .fit)
+                                .frame(maxWidth: 48)
+                                .clipShape(Circle())
                             
-                        }
-                        .padding(.trailing)
-                        .buttonStyle(.plain)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                            
-                    }
-                    Text("Number of Emotes: \(viewModel.selectedRepo.emote.emotes.count)")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Spacer(minLength: 10)
-                    HStack {
-                        Button {
-                            viewModel.showToast = true
-                            pasteboard.clearContents()
-                            pasteboard.setString(String("Check out this awesome Repo \(viewModel.selectedRepo.emote.name) - \(viewModel.selectedRepo.url)"), forType: NSPasteboard.PasteboardType.string)
-                        } label: {
-                            HStack {
-                                Image(systemName: "square.and.arrow.up.fill")
-                                Text("Share")
+                            VStack(alignment: .leading) {
+                                Text(viewModel.selectedRepo.emote.name)
+                                    .font(.custom("Uni Sans", size: 20))
+                                if let author = viewModel.selectedRepo.emote.author {
+                                    Text("By \(author)")
+                                        .font(.footnote)
+                                        .foregroundColor(.secondary)
+                                }
                             }
-                            .foregroundColor(self.hovered.image == "square.and.arrow.up.fill" && self.hovered.hover == true  ? Color(.white) : Color(red: 0.35, green: 0.40, blue: 0.95))
-                            .padding(10)
-                            .background(self.hovered.image == "square.and.arrow.up.fill" && self.hovered.hover == true ? Color(red: 0.35, green: 0.40, blue: 0.95) : Color(red: 0.21, green: 0.22, blue: 0.25))
-                            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-                            .animation(.spring(), value: self.hovered.hover)
-                            .shadow(radius: 5)
-                        }
-                        .buttonStyle(.plain)
-                        .onHover { isHovered in
-                            self.hovered = Hovered(image: "square.and.arrow.up.fill", hover: isHovered)
-                        }
-
-                        Button {
-                            viewModel.removeFromUserDefaults(url: viewModel.selectedRepo.url)
-                            viewModel.deselectRepo()
-                        } label: {
-                            HStack {
-                                Image(systemName: "minus.circle.fill")
-                                Text("Remove")
-                            }
-                            .foregroundColor(self.hovered.image == "minus.circle.fill" && self.hovered.hover == true ? Color(.white) : Color(red: 0.93, green: 0.26, blue: 0.27))
-                            .padding(10)
-                            .background(self.hovered.image == "minus.circle.fill" && self.hovered.hover == true ? Color(red: 0.93, green: 0.26, blue: 0.27) : Color(red: 0.21, green: 0.22, blue: 0.25))
-                            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-                            .animation(.spring(), value: self.hovered.hover)
-                            .shadow(radius: 5)
-                        }
-                        .buttonStyle(.plain)
-                        .onHover { isHovered in
-                            self.hovered = Hovered(image: "minus.circle.fill", hover: isHovered)
+                            Spacer()
+                            Text("\(viewModel.selectedRepo.emote.emotes.count) emotes")
+                                .font(.footnote)
+                                .foregroundColor(.secondary)
                         }
                     }
+                    .buttonStyle(.plain)
                 }
                 .frame(minWidth: 0, maxWidth: .infinity)
                 .padding(20)
-                .background(Color(red: 0.13, green: 0.13, blue: 0.15).opacity(0.6))
+                .background(Color.theme.appBGTertiaryColor.opacity(0.6))
                 .cornerRadius(20)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1)
-                )
+                .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
                 
-                VStack {
-                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 50))]) {
-                        ForEach (viewModel.selectedRepo.emote.emotes, id: \.name) {
-                            emote in
-                            EmoteView(url: viewModel.selectedRepo.url, path: viewModel.selectedRepo.emote.path, emote: emote, viewModel: viewModel)
+                if viewModel.selectedRepo.favouriteEmotes != nil && !viewModel.selectedRepo.favouriteEmotes!.isEmpty {
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Image(systemName: "star")
+                            Text("Favourite Emotes")
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                        .font(.headline)
+                        
+                        Spacer()
+                        
+                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 35))]) {
+                            ForEach (viewModel.selectedRepo.favouriteEmotes!, id: \.self) {
+                                emote in
+                                EmoteView(url: nil, path: nil, emote: nil, viewModel: viewModel, favouriteEmote: emote)
+                                    .contextMenu {
+                                        let viewModel: ContentViewModel = viewModel
+                                        
+                                        Divider()
+                                        
+                                        Button {
+                                            viewModel.showToast = true
+                                            pasteboard.clearContents()
+                                            pasteboard.setString(String(emote), forType: NSPasteboard.PasteboardType.string)
+                                            viewModel.addToFrequentlyUsedEmotes(frequentEmote: emote)
+                                        } label: {
+                                            Label("Copy", image: "doc.on.doc")
+                                        }
+                                        
+                                        if #available(macOS 12.0, *) {
+                                            Button(role: .destructive) {
+                                                viewModel.removeFromFavouriteEmotes(repo: viewModel.selectedRepo.url, favouriteEmote: emote)
+                                            } label: {
+                                                Label("Remove from Favourites", image: "star")
+                                            }
+                                        } else {
+                                            Button {
+                                                viewModel.removeFromFavouriteEmotes(repo: viewModel.selectedRepo.url, favouriteEmote: emote)
+                                            } label: {
+                                                Label("Remove from Favourites", image: "star")
+                                            }
+                                        }
+                                    }
+                            }
                         }
                     }
+                    .frame(minWidth: 0, maxWidth: .infinity)
                     .padding(20)
-                    .background(Color(red: 0.13, green: 0.13, blue: 0.15).opacity(0.6))
+                    .background(Color.theme.appBGSecondaryColor.opacity(0.6))
                     .cornerRadius(20)
                     .overlay(
                         RoundedRectangle(cornerRadius: 20)
                             .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1)
-                    )
+                        )
+                }
+                
+                VStack {
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 35))]) {
+                        ForEach (viewModel.selectedRepo.emote.emotes, id: \.name) {
+                            emote in
+                            EmoteView(url: viewModel.selectedRepo.url, path: viewModel.selectedRepo.emote.path, emote: emote, viewModel: viewModel, favouriteEmote: nil)
+                                .contextMenu {
+                                    let pasteboard = NSPasteboard.general
+                                    let url: String = viewModel.selectedRepo.url
+                                    let path: String = viewModel.selectedRepo.emote.path
+                                    let emote: EmoteElement = emote
+                                    let viewModel: ContentViewModel = viewModel
+                                    
+                                    Text("\(emote.name)")
+                                    
+                                    Divider()
+                                    
+                                    Button {
+                                        viewModel.showToast = true
+                                        pasteboard.clearContents()
+                                        pasteboard.setString(String("\(url)\(path == "" ? "" : "\(path)/")\(emote.name).\(emote.type)"), forType: NSPasteboard.PasteboardType.string)
+                                        viewModel.addToFrequentlyUsedEmotes(frequentEmote: "\(url)\(path == "" ? "" : "\(path)/")\(emote.name).\(emote.type)")
+                                    } label: {
+                                        Label("Copy", image: "doc.on.doc")
+                                    }
+                                    
+                                    if #available(macOS 12.0, *) {
+                                        Button(role: viewModel.selectedRepo.favouriteEmotes != nil && viewModel.selectedRepo.favouriteEmotes!.count > 0 && viewModel.selectedRepo.favouriteEmotes!.contains(where: { emoteURL in
+                                            emoteURL == "\(url)\(path == "" ? "" : "\(path)/")\(emote.name).\(emote.type)"
+                                        }) ? .destructive : .none) {
+                                            if viewModel.selectedRepo.favouriteEmotes != nil && viewModel.selectedRepo.favouriteEmotes!.count > 0 && viewModel.selectedRepo.favouriteEmotes!.contains(where: { emoteURL in
+                                                emoteURL == "\(url)\(path == "" ? "" : "\(path)/")\(emote.name).\(emote.type)"
+                                            }) {
+                                                viewModel.removeFromFavouriteEmotes(repo: url, favouriteEmote: "\(url)\(path == "" ? "" : "\(path)/")\(emote.name).\(emote.type)")
+                                            } else {
+                                                viewModel.addToFavouriteEmotes(repo: url, favouriteEmote: "\(url)\(path == "" ? "" : "\(path)/")\(emote.name).\(emote.type)")
+                                            }
+                                        } label: {
+                                            Label(viewModel.selectedRepo.favouriteEmotes != nil && viewModel.selectedRepo.favouriteEmotes!.count > 0 && viewModel.selectedRepo.favouriteEmotes!.contains(where: { emoteURL in
+                                                emoteURL == "\(url)\(path == "" ? "" : "\(path)/")\(emote.name).\(emote.type)"
+                                            }) ? "Remove from Favourites" : "Add to Favourites", image: "star")
+                                        }
+                                    } else {
+                                        Button {
+                                            if viewModel.selectedRepo.favouriteEmotes != nil && viewModel.selectedRepo.favouriteEmotes!.count > 0 && viewModel.selectedRepo.favouriteEmotes!.contains(where: { emoteURL in
+                                                emoteURL == "\(url)\(path == "" ? "" : "\(path)/")\(emote.name).\(emote.type)"
+                                            }) {
+                                                viewModel.removeFromFavouriteEmotes(repo: url, favouriteEmote: "\(url)\(path == "" ? "" : "\(path)/")\(emote.name).\(emote.type)")
+                                            } else {
+                                                viewModel.addToFavouriteEmotes(repo: url, favouriteEmote: "\(url)\(path == "" ? "" : "\(path)/")\(emote.name).\(emote.type)")
+                                            }
+                                        } label: {
+                                            Label(viewModel.selectedRepo.favouriteEmotes != nil && viewModel.selectedRepo.favouriteEmotes!.count > 0 && viewModel.selectedRepo.favouriteEmotes!.contains(where: { emoteURL in
+                                                emoteURL == "\(url)\(path == "" ? "" : "\(path)/")\(emote.name).\(emote.type)"
+                                            }) ? "Remove from Favourites" : "Add to Favourites", image: "star")
+                                        }
+                                    }
+                                }
+                        }
+                    }
+                    .padding(20)
+                    .background(Color.theme.appBGSecondaryColor.opacity(0.6))
+                    .cornerRadius(20)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1)
+                        )
                 }
                 .padding(.bottom)
                 
             }
-            .padding(.top)
             .padding(.trailing, 40)
             .padding(.leading, 10)
             
         } else {
             ScrollView(showsIndicators: false) {
                 HomeView(viewModel: viewModel)
-                    .padding(.top)
                     .padding(.trailing, 40)
                     .padding(.leading, 10)
                     

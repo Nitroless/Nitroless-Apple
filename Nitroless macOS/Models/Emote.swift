@@ -10,11 +10,13 @@ import Foundation
 struct Repo: Codable {
     var active: Bool
     let url: String
+    var favouriteEmotes: [String]?
     let emote: Emote
 }
 
 struct Emote: Codable {
     let name, icon, path: String
+    let author: String?
     let emotes: [EmoteElement]
 }
 

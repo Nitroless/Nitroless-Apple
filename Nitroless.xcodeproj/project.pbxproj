@@ -45,6 +45,8 @@
 		E619D9B628F356BE006BD8B4 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = E619D9B528F356BE006BD8B4 /* Array.swift */; };
 		E619D9B828F3572E006BD8B4 /* EmotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E619D9B728F3572E006BD8B4 /* EmotesView.swift */; };
 		E619D9D528F3BC36006BD8B4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E619D9D428F3BC36006BD8B4 /* HomeView.swift */; };
+		E62D10A52919821C00678687 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A2A29100E060030EFA3 /* Color.swift */; };
+		E62D10A629198AC200678687 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A2A29100E060030EFA3 /* Color.swift */; };
 		E69E3A2829100D800030EFA3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A2729100D800030EFA3 /* HomeView.swift */; };
 		E69E3A2B29100E060030EFA3 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A2A29100E060030EFA3 /* Color.swift */; };
 		E69E3A30291010B80030EFA3 /* UniSans.otf in Resources */ = {isa = PBXBuildFile; fileRef = E619D9CE28F3BA2D006BD8B4 /* UniSans.otf */; };
@@ -325,6 +327,7 @@
 		AA431D7A28EEEBB90066EBC4 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				E69E3A2929100DF30030EFA3 /* Extensions */,
 				E619D9CD28F3BA20006BD8B4 /* Fonts */,
 				AAD5D80928EEC7D900FF08DA /* Assets.xcassets */,
 				AA9F08A128E58BA60098040D /* Utilities */,
@@ -358,7 +361,6 @@
 			isa = PBXGroup;
 			children = (
 				E69E3A34291025B70030EFA3 /* ViewModel */,
-				E69E3A2929100DF30030EFA3 /* Extensions */,
 				AA6250B928E9141500C7030E /* Info.plist */,
 				AA6250B828E911C100C7030E /* Nitroless.entitlements */,
 				AA9F089328E58B450098040D /* NitrolessApp.swift */,
@@ -705,6 +707,7 @@
 				E619D9B628F356BE006BD8B4 /* Array.swift in Sources */,
 				571A788D28F340FE0089A0B1 /* AppDelegate.swift in Sources */,
 				571A78B328F341BE0089A0B1 /* Hovered.swift in Sources */,
+				E62D10A52919821C00678687 /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -714,6 +717,7 @@
 			files = (
 				E6E161EB2915A165001E1698 /* BottomBarItemView.swift in Sources */,
 				E6E161EE2915A7F9001E1698 /* MainView.swift in Sources */,
+				E62D10A629198AC200678687 /* Color.swift in Sources */,
 				AA431D7628EEEBB00066EBC4 /* RepositoryManager.swift in Sources */,
 				5783B54928ECBA9000CFF460 /* KeyboardViewController.swift in Sources */,
 				5783B55228ECCDDA00CFF460 /* KeyboardView.swift in Sources */,

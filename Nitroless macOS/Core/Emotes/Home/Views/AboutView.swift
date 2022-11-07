@@ -25,11 +25,12 @@ struct AboutView: View {
         }
         .frame(minWidth: 0, maxWidth: .infinity)
         .padding(20)
-        .background(Color(red: 0.13, green: 0.13, blue: 0.15).opacity(0.6))
+        .background(Color.theme.appBGSecondaryColor.opacity(0.6))
         .cornerRadius(20)
         .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
+                .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1)
+            )
         
         VStack {
             HStack {
@@ -78,11 +79,12 @@ struct AboutView: View {
         }
         .frame(minWidth: 0, maxWidth: .infinity)
         .padding(20)
-        .background(Color(red: 0.13, green: 0.13, blue: 0.15).opacity(0.6))
+        .background(Color.theme.appBGSecondaryColor.opacity(0.6))
         .cornerRadius(20)
         .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
+                .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1)
+            )
         
         VStack {
             VStack {
@@ -97,6 +99,9 @@ struct AboutView: View {
                     HStack(alignment: .top) {
                         WebImage(url: URL(string: "https://github.com/TheAlphaStream.png"))
                             .resizable()
+                            .placeholder {
+                                ProgressView()
+                            }
                             .frame(width: 64, height: 64)
                             .clipShape(RoundedRectangle(cornerRadius: 99, style: .continuous))
                         VStack {
@@ -166,6 +171,9 @@ struct AboutView: View {
                     HStack(alignment: .top) {
                         WebImage(url: URL(string: "https://github.com/paraskcd1315.png"))
                             .resizable()
+                            .placeholder {
+                                ProgressView()
+                            }
                             .frame(width: 64, height: 64)
                             .clipShape(RoundedRectangle(cornerRadius: 99, style: .continuous))
                         
@@ -236,6 +244,9 @@ struct AboutView: View {
                     HStack(alignment: .top) {
                         WebImage(url: URL(string: "https://github.com/llsc12.png"))
                             .resizable()
+                            .placeholder {
+                                ProgressView()
+                            }
                             .frame(width: 64, height: 64)
                             .clipShape(RoundedRectangle(cornerRadius: 99, style: .continuous))
                         
@@ -306,6 +317,9 @@ struct AboutView: View {
                     HStack(alignment: .top) {
                         WebImage(url: URL(string: "https://github.com/Superbro9.png"))
                             .resizable()
+                            .placeholder {
+                                ProgressView()
+                            }
                             .frame(width: 64, height: 64)
                             .clipShape(RoundedRectangle(cornerRadius: 99, style: .continuous))
                         VStack {
@@ -359,6 +373,9 @@ struct AboutView: View {
                     HStack(alignment: .top) {
                         WebImage(url: URL(string: "https://github.com/LillieH001.png"))
                             .resizable()
+                            .placeholder {
+                                ProgressView()
+                            }
                             .frame(width: 64, height: 64)
                             .clipShape(RoundedRectangle(cornerRadius: 99, style: .continuous))
                         VStack {
@@ -425,11 +442,12 @@ struct AboutView: View {
             }
             .frame(minWidth: 0, maxWidth: .infinity)
             .padding(20)
-            .background(Color(red: 0.13, green: 0.13, blue: 0.15).opacity(0.6))
+            .background(Color.theme.appBGSecondaryColor.opacity(0.6))
             .cornerRadius(20)
             .overlay(
                 RoundedRectangle(cornerRadius: 20)
-                    .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
+                    .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1)
+                )
         }
         .padding(.bottom)
     }

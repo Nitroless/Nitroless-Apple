@@ -10,8 +10,10 @@ import AppKit
 import AlertToast
 
 struct ContentView: View {
+    let pasteboard = NSPasteboard.general
     @StateObject var viewModel = ContentViewModel()
     @State var isShown = true
+    @State var hovered = Hovered(image: "", hover: false)
     
     var body: some View {
         ZStack(alignment: .leading) {
@@ -22,7 +24,131 @@ struct ContentView: View {
                 HStack {
                     Text("")
                         .frame(width: 80)
-                    EmotesView(viewModel: viewModel)
+                    VStack {
+                        VStack {
+                            Image("banner")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 200)
+                            if !viewModel.selectedRepo.active {
+                                HStack(alignment: .center) {
+                                    Button {
+                                        viewModel.makeAllReposInactive()
+                                    } label: {
+                                        VStack {
+                                            Text("Home")
+                                        }
+                                        .frame(width: 64)
+                                        .foregroundColor(Color(.white))
+                                        .padding(10)
+                                        .background((self.hovered.image == "Home" && self.hovered.hover == true) || viewModel.isHomeActive == true ? Color.theme.appPrimaryColor : Color.theme.appBGColor)
+                                        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                                        .animation(.spring(), value: self.hovered.hover && viewModel.isHomeActive == false)
+                                        .shadow(radius: 5)
+                                    }
+                                    .buttonStyle(.plain)
+                                    .onHover { isHovered in
+                                        self.hovered = Hovered(image: "Home", hover: isHovered)
+                                    }
+                                    
+                                    Button {
+                                        viewModel.makeAboutActive()
+                                    } label: {
+                                        VStack {
+                                            Text("About")
+                                        }
+                                        .frame(width: 64)
+                                        .foregroundColor(Color(.white))
+                                        .padding(10)
+                                        .background((self.hovered.image == "About" && self.hovered.hover == true) || viewModel.isAboutActive == true ? Color.theme.appPrimaryColor : Color.theme.appBGColor)
+                                        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                                        .animation(.spring(), value: self.hovered.hover && viewModel.isAboutActive == false)
+                                        .shadow(radius: 5)
+                                    }
+                                    .buttonStyle(.plain)
+                                    .onHover { isHovered in
+                                        self.hovered = Hovered(image: "About", hover: isHovered)
+                                    }
+                                    
+                                    Button {
+                                        viewModel.askBeforeExiting()
+                                    } label: {
+                                        VStack {
+                                            Text("Quit App")
+                                        }
+                                        .frame(width: 64)
+                                        .foregroundColor(Color(.white))
+                                        .padding(10)
+                                        .background(self.hovered.image == "Quit" && self.hovered.hover == true ? Color.theme.appDangerColor : Color.theme.appBGColor)
+                                        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                                        .animation(.spring(), value: self.hovered.hover)
+                                        .shadow(radius: 5)
+                                    }
+                                    .buttonStyle(.plain)
+                                    .onHover { isHovered in
+                                        self.hovered = Hovered(image: "Quit", hover: isHovered)
+                                    }
+                                }
+                            } else {
+                                HStack {
+                                    Button {
+                                        viewModel.showToast = true
+                                        pasteboard.clearContents()
+                                        pasteboard.setString(String("Check out this awesome Repo \(viewModel.selectedRepo.emote.name) - \(viewModel.selectedRepo.url)"), forType: NSPasteboard.PasteboardType.string)
+                                    } label: {
+                                        HStack {
+                                            Image(systemName: "square.and.arrow.up.fill")
+                                            Text("Share")
+                                        }
+                                        .foregroundColor(Color(.white))
+                                        .padding(10)
+                                        .background(self.hovered.image == "square.and.arrow.up.fill" && self.hovered.hover == true ? Color.theme.appPrimaryColor : Color.theme.appBGColor)
+                                        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                                        .animation(.spring(), value: self.hovered.hover)
+                                        .shadow(radius: 5)
+                                    }
+                                    .buttonStyle(.plain)
+                                    .onHover { isHovered in
+                                        self.hovered = Hovered(image: "square.and.arrow.up.fill", hover: isHovered)
+                                    }
+
+                                    Button {
+                                        viewModel.removeFromUserDefaults(url: viewModel.selectedRepo.url)
+                                        viewModel.deselectRepo()
+                                        viewModel.makeAllReposInactive()
+                                    } label: {
+                                        HStack {
+                                            Image(systemName: "minus.circle.fill")
+                                            Text("Remove")
+                                        }
+                                        .foregroundColor(Color(.white))
+                                        .padding(10)
+                                        .background(self.hovered.image == "minus.circle.fill" && self.hovered.hover == true ? Color.theme.appDangerColor : Color.theme.appBGColor)
+                                        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                                        .animation(.spring(), value: self.hovered.hover)
+                                        .shadow(radius: 5)
+                                    }
+                                    .buttonStyle(.plain)
+                                    .onHover { isHovered in
+                                        self.hovered = Hovered(image: "minus.circle.fill", hover: isHovered)
+                                    }
+                                }
+                            }
+                            
+                        }
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .padding(20)
+                        .background(Color.theme.appBGTertiaryColor.opacity(0.6))
+                        .cornerRadius(20)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
+                        .padding(.top)
+                        .padding(.trailing, 40)
+                        .padding(.leading, 10)
+                        
+                        EmotesView(viewModel: viewModel)
+                    }
                 }
                 .zIndex(-1)
                 
@@ -33,8 +159,10 @@ struct ContentView: View {
                     
                     ScrollView(showsIndicators: false) {
                         VStack {
-                            Text("Nitroless")
-                                .font(.custom("Uni Sans", size: 32))
+                            Image("banner")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 200)
                         }
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .padding(20)
@@ -50,7 +178,7 @@ struct ContentView: View {
                         }
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .padding(20)
-                        .background(Color(red: 0.13, green: 0.13, blue: 0.15).opacity(0.6))
+                        .background(Color.theme.appBGTertiaryColor.opacity(0.6))
                         .cornerRadius(20)
                         .overlay(
                             RoundedRectangle(cornerRadius: 20)

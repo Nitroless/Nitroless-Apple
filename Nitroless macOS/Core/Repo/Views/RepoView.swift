@@ -39,7 +39,6 @@ struct RepoView: View {
                                 }
                             }
                         }
-                        .shadow(radius: 5)
                 }
                 HStack {
                     TriangleShape()
@@ -90,7 +89,11 @@ struct RepoView: View {
                             
                             WebImage(url: URL(string: "\(repo.url)/\(repo.emote.icon)"))
                                 .resizable()
+                                .placeholder {
+                                    ProgressView()
+                                }
                                 .frame(width: 48, height: 48)
+                                .background(Color.theme.appBGColor.opacity(0.6))
                                 .clipShape(RoundedRectangle(cornerRadius: (self.hovered.image == "\(repo.url)/\(repo.emote.icon)" && self.hovered.hover == true) || (repo.active == true) ? 8 : 99, style: .continuous))
                                 .animation(.spring(), value: self.hovered.hover && !repo.active)
                                 .onHover { isHovered in
@@ -103,7 +106,6 @@ struct RepoView: View {
                                         }
                                     }
                                 }
-                                .shadow(radius: 5)
                         }
                         .onHover { isHovered in
                             self.hovered = Hovered(image: "\(repo.url)/\(repo.emote.icon)", hover: isHovered)
@@ -117,7 +119,7 @@ struct RepoView: View {
                         }
                         .onTapGesture {
                             viewModel.makeRepoActive(url: repo.url)
-                            viewModel.selectRepo(selectedRepo: Repo(active: true, url: repo.url, emote: repo.emote))
+                            viewModel.selectRepo(selectedRepo: Repo(active: true, url: repo.url, favouriteEmotes: repo.favouriteEmotes, emote: repo.emote))
                         }
                         
                         HStack {
@@ -166,7 +168,6 @@ struct RepoView: View {
                             }
                         }
                     }
-                    .shadow(radius: 5)
             }
             .padding(.horizontal)
             .onHover { isHovered in
