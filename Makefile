@@ -7,7 +7,7 @@ SDK = iphoneos
 
 build:
 	echo "Building $(TARGET) for $(SDK)..."
-	xcodebuild -project $(PROJECT) -target $(TARGET) iOS -configuration $(CONFIGURATION) -sdk $(SDK) CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO clean build
+	xcodebuild -project $(PROJECT) -target "$(TARGET) iOS" -configuration $(CONFIGURATION) -sdk $(SDK) CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO clean build
 
 package:
 	rm -rf Payload
