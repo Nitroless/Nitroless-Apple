@@ -41,6 +41,7 @@
 		AA9F08A728E58D490098040D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F08A628E58D490098040D /* Constants.swift */; };
 		AA9F08AA28E5A6360098040D /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = AA9F08A928E5A6360098040D /* SDWebImageSwiftUI */; };
 		AA9F08AC28E5A8360098040D /* RepoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F08AB28E5A8360098040D /* RepoView.swift */; };
+		AAA537A3291A6B6200ED4A2A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F08A628E58D490098040D /* Constants.swift */; };
 		AAD030A228EB155E0040718F /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = AAD030A128EB155E0040718F /* AlertToast */; };
 		E619D9B628F356BE006BD8B4 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = E619D9B528F356BE006BD8B4 /* Array.swift */; };
 		E619D9B828F3572E006BD8B4 /* EmotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E619D9B728F3572E006BD8B4 /* EmotesView.swift */; };
@@ -57,7 +58,6 @@
 		E69E3A402910589C0030EFA3 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A3F2910589C0030EFA3 /* SidebarView.swift */; };
 		E69E3A452912D05C0030EFA3 /* SidebarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A442912D05C0030EFA3 /* SidebarItemView.swift */; };
 		E69E3A4D291457660030EFA3 /* FavouriteEmotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A4C291457660030EFA3 /* FavouriteEmotesView.swift */; };
-		E69E3A50291540310030EFA3 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A4F291540310030EFA3 /* Color.swift */; };
 		E69E3A53291546A70030EFA3 /* BottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A52291546A70030EFA3 /* BottomBarView.swift */; };
 		E6A1D17D28FF0940004DDFD4 /* TriangleShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1D17C28FF0940004DDFD4 /* TriangleShape.swift */; };
 		E6ADBB7B28F4634700754936 /* HomeChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADBB7A28F4634700754936 /* HomeChildView.swift */; };
@@ -144,7 +144,6 @@
 		E69E3A3F2910589C0030EFA3 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		E69E3A442912D05C0030EFA3 /* SidebarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItemView.swift; sourceTree = "<group>"; };
 		E69E3A4C291457660030EFA3 /* FavouriteEmotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteEmotesView.swift; sourceTree = "<group>"; };
-		E69E3A4F291540310030EFA3 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		E69E3A52291546A70030EFA3 /* BottomBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarView.swift; sourceTree = "<group>"; };
 		E69E3A5429156D3E0030EFA3 /* Keyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Keyboard.entitlements; sourceTree = "<group>"; };
 		E6A1D17C28FF0940004DDFD4 /* TriangleShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleShape.swift; sourceTree = "<group>"; };
@@ -310,7 +309,6 @@
 				E6E161EC2915A7D9001E1698 /* Main */,
 				E69E3A5429156D3E0030EFA3 /* Keyboard.entitlements */,
 				E69E3A512915468F0030EFA3 /* BottomBar */,
-				E69E3A4E291540180030EFA3 /* Extensions */,
 				5783B55128ECCDDA00CFF460 /* KeyboardView.swift */,
 				5783B54A28ECBA9000CFF460 /* Info.plist */,
 			);
@@ -477,14 +475,6 @@
 				E69E3A4C291457660030EFA3 /* FavouriteEmotesView.swift */,
 			);
 			path = FavouriteEmotes;
-			sourceTree = "<group>";
-		};
-		E69E3A4E291540180030EFA3 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				E69E3A4F291540310030EFA3 /* Color.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		E69E3A512915468F0030EFA3 /* BottomBar */ = {
@@ -691,6 +681,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6ADBB7D28F4635E00754936 /* AboutView.swift in Sources */,
+				AAA537A3291A6B6200ED4A2A /* Constants.swift in Sources */,
 				571A78B428F341BE0089A0B1 /* Emote.swift in Sources */,
 				E619D9D528F3BC36006BD8B4 /* HomeView.swift in Sources */,
 				571A78B728F341BE0089A0B1 /* EventMonitor.swift in Sources */,
@@ -722,7 +713,6 @@
 				5783B54928ECBA9000CFF460 /* KeyboardViewController.swift in Sources */,
 				5783B55228ECCDDA00CFF460 /* KeyboardView.swift in Sources */,
 				E69E3A53291546A70030EFA3 /* BottomBarView.swift in Sources */,
-				E69E3A50291540310030EFA3 /* Color.swift in Sources */,
 				E6E161F12915B57D001E1698 /* RepoView.swift in Sources */,
 				E6E161F329162295001E1698 /* FavouritesView.swift in Sources */,
 				AA431D7728EEEBB00066EBC4 /* Constants.swift in Sources */,
