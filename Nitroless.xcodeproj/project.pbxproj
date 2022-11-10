@@ -32,7 +32,6 @@
 		57A34C4928F2331A00383807 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD5D80928EEC7D900FF08DA /* Assets.xcassets */; };
 		57A34C4A28F2331F00383807 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD5D80928EEC7D900FF08DA /* Assets.xcassets */; };
 		AA431D7628EEEBB00066EBC4 /* RepositoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F08A428E58C020098040D /* RepositoryManager.swift */; };
-		AA431D7728EEEBB00066EBC4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F08A628E58D490098040D /* Constants.swift */; };
 		AA6250BC28EB047200C7030E /* SDWebImageWebPCoder in Frameworks */ = {isa = PBXBuildFile; productRef = AA6250BB28EB047200C7030E /* SDWebImageWebPCoder */; };
 		AA67BDB628F7FE7C001A37BF /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = AA67BDB528F7FE7C001A37BF /* AlertToast */; };
 		AA67DCAE291CFCDF006C65BD /* KeyboardSim.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA67DCAD291CFCDF006C65BD /* KeyboardSim.swift */; };
@@ -41,10 +40,8 @@
 		AA9F089428E58B450098040D /* NitrolessApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F089328E58B450098040D /* NitrolessApp.swift */; };
 		AA9F089628E58B450098040D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F089528E58B450098040D /* ContentView.swift */; };
 		AA9F08A528E58C020098040D /* RepositoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F08A428E58C020098040D /* RepositoryManager.swift */; };
-		AA9F08A728E58D490098040D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F08A628E58D490098040D /* Constants.swift */; };
 		AA9F08AA28E5A6360098040D /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = AA9F08A928E5A6360098040D /* SDWebImageSwiftUI */; };
 		AA9F08AC28E5A8360098040D /* RepoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F08AB28E5A8360098040D /* RepoView.swift */; };
-		AAA537A3291A6B6200ED4A2A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F08A628E58D490098040D /* Constants.swift */; };
 		AAD030A228EB155E0040718F /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = AAD030A128EB155E0040718F /* AlertToast */; };
 		E619D9B628F356BE006BD8B4 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = E619D9B528F356BE006BD8B4 /* Array.swift */; };
 		E619D9B828F3572E006BD8B4 /* EmotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E619D9B728F3572E006BD8B4 /* EmotesView.swift */; };
@@ -134,7 +131,6 @@
 		AA9F089328E58B450098040D /* NitrolessApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NitrolessApp.swift; sourceTree = "<group>"; };
 		AA9F089528E58B450098040D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AA9F08A428E58C020098040D /* RepositoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryManager.swift; sourceTree = "<group>"; };
-		AA9F08A628E58D490098040D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AA9F08AB28E5A8360098040D /* RepoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoView.swift; sourceTree = "<group>"; };
 		AAD5D80928EEC7D900FF08DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E619D9B528F356BE006BD8B4 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
@@ -375,7 +371,6 @@
 		AA9F08A128E58BA60098040D /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				AA9F08A628E58D490098040D /* Constants.swift */,
 				AA9F08A428E58C020098040D /* RepositoryManager.swift */,
 				AA9A9D0E291D1D3A0038D5AF /* StorageManager.swift */,
 			);
@@ -680,7 +675,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6ADBB7D28F4635E00754936 /* AboutView.swift in Sources */,
-				AAA537A3291A6B6200ED4A2A /* Constants.swift in Sources */,
 				571A78B428F341BE0089A0B1 /* Emote.swift in Sources */,
 				E619D9D528F3BC36006BD8B4 /* HomeView.swift in Sources */,
 				571A78B728F341BE0089A0B1 /* EventMonitor.swift in Sources */,
@@ -715,7 +709,6 @@
 				E69E3A53291546A70030EFA3 /* BottomBarView.swift in Sources */,
 				E6E161F12915B57D001E1698 /* RepoView.swift in Sources */,
 				E6E161F329162295001E1698 /* FavouritesView.swift in Sources */,
-				AA431D7728EEEBB00066EBC4 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -734,7 +727,6 @@
 				AA9F089628E58B450098040D /* ContentView.swift in Sources */,
 				E69E3A402910589C0030EFA3 /* SidebarView.swift in Sources */,
 				AA9F089428E58B450098040D /* NitrolessApp.swift in Sources */,
-				AA9F08A728E58D490098040D /* Constants.swift in Sources */,
 				E69E3A4D291457660030EFA3 /* FavouriteEmotesView.swift in Sources */,
 				AA9F08AC28E5A8360098040D /* RepoView.swift in Sources */,
 				E69E3A3A291028420030EFA3 /* FrequentUsedView.swift in Sources */,

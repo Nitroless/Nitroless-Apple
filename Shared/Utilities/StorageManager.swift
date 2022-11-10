@@ -14,7 +14,9 @@ class StorageManager: ObservableObject {
     var fileLocation: URL = {
         let home = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.llsc12.Nitroless")!
         let docs = home.appending(path: "Documents")
-        return docs.appending(path: "storage").appendingPathExtension("object") // add storage.object file
+        let storageObjectLocation = docs.appending(path: "storage").appendingPathExtension("object") // add storage.object file
+        print(storageObjectLocation)
+        return storageObjectLocation
     }()
     
     let encoder = JSONEncoder()
