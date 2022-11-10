@@ -33,12 +33,12 @@ struct FileLocations {
 
 var DefaultReposUrl = URL(string: "https://nitroless.app/default.json")!
 
-extension URL {
-    func appending(componentThing: String) {
-        let a = componentThing
-        let str = self.absoluteString
-        let urlcomp = self.host
-        
-    }
-}
+//extension URL {
+//    func appending(componentThing: String) {
+//        let a = componentThing
+//        let str = self.absoluteString
+//        let urlcomp = self.host
+//        
+//    }
+//}
 

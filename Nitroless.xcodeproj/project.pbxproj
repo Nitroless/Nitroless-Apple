@@ -35,6 +35,9 @@
 		AA431D7728EEEBB00066EBC4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F08A628E58D490098040D /* Constants.swift */; };
 		AA6250BC28EB047200C7030E /* SDWebImageWebPCoder in Frameworks */ = {isa = PBXBuildFile; productRef = AA6250BB28EB047200C7030E /* SDWebImageWebPCoder */; };
 		AA67BDB628F7FE7C001A37BF /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = AA67BDB528F7FE7C001A37BF /* AlertToast */; };
+		AA67DCAE291CFCDF006C65BD /* KeyboardSim.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA67DCAD291CFCDF006C65BD /* KeyboardSim.swift */; };
+		AA9A9D0F291D1D3A0038D5AF /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9A9D0E291D1D3A0038D5AF /* StorageManager.swift */; };
+		AA9A9D11291D3EAC0038D5AF /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9A9D0E291D1D3A0038D5AF /* StorageManager.swift */; };
 		AA9F089428E58B450098040D /* NitrolessApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F089328E58B450098040D /* NitrolessApp.swift */; };
 		AA9F089628E58B450098040D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F089528E58B450098040D /* ContentView.swift */; };
 		AA9F08A528E58C020098040D /* RepositoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F08A428E58C020098040D /* RepositoryManager.swift */; };
@@ -125,6 +128,8 @@
 		5783B55128ECCDDA00CFF460 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		AA6250B828E911C100C7030E /* Nitroless.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nitroless.entitlements; sourceTree = "<group>"; };
 		AA6250B928E9141500C7030E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		AA67DCAD291CFCDF006C65BD /* KeyboardSim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSim.swift; sourceTree = "<group>"; };
+		AA9A9D0E291D1D3A0038D5AF /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		AA9F089028E58B450098040D /* Nitroless.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nitroless.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA9F089328E58B450098040D /* NitrolessApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NitrolessApp.swift; sourceTree = "<group>"; };
 		AA9F089528E58B450098040D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -363,6 +368,7 @@
 				AA6250B828E911C100C7030E /* Nitroless.entitlements */,
 				AA9F089328E58B450098040D /* NitrolessApp.swift */,
 				5721D6BF28F1E56400148391 /* Views */,
+				AA67DCAD291CFCDF006C65BD /* KeyboardSim.swift */,
 			);
 			path = "Nitroless iOS";
 			sourceTree = "<group>";
@@ -372,6 +378,7 @@
 			children = (
 				AA9F08A628E58D490098040D /* Constants.swift */,
 				AA9F08A428E58C020098040D /* RepositoryManager.swift */,
+				AA9A9D0E291D1D3A0038D5AF /* StorageManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -708,6 +715,7 @@
 			files = (
 				E6E161EB2915A165001E1698 /* BottomBarItemView.swift in Sources */,
 				E6E161EE2915A7F9001E1698 /* MainView.swift in Sources */,
+				AA9A9D11291D3EAC0038D5AF /* StorageManager.swift in Sources */,
 				E62D10A629198AC200678687 /* Color.swift in Sources */,
 				AA431D7628EEEBB00066EBC4 /* RepositoryManager.swift in Sources */,
 				5783B54928ECBA9000CFF460 /* KeyboardViewController.swift in Sources */,
@@ -729,6 +737,7 @@
 				E69E3A3D291028590030EFA3 /* AboutView.swift in Sources */,
 				E69E3A2B29100E060030EFA3 /* Color.swift in Sources */,
 				AA9F08A528E58C020098040D /* RepositoryManager.swift in Sources */,
+				AA67DCAE291CFCDF006C65BD /* KeyboardSim.swift in Sources */,
 				5721D6C428F1E78D00148391 /* DefaultRepoCell.swift in Sources */,
 				AA9F089628E58B450098040D /* ContentView.swift in Sources */,
 				E69E3A402910589C0030EFA3 /* SidebarView.swift in Sources */,
@@ -737,6 +746,7 @@
 				E69E3A4D291457660030EFA3 /* FavouriteEmotesView.swift in Sources */,
 				AA9F08AC28E5A8360098040D /* RepoView.swift in Sources */,
 				E69E3A3A291028420030EFA3 /* FrequentUsedView.swift in Sources */,
+				AA9A9D0F291D1D3A0038D5AF /* StorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

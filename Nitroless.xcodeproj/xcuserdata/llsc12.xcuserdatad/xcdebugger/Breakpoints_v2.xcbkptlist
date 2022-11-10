@@ -14,9 +14,25 @@
             filePath = "Shared/Utilities/RepositoryManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "hasRepositories()"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "selectHome()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ED2E32C0-2BC7-4DA5-8FEE-80432420856F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared/Utilities/RepositoryManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "addToFavourites(repo:emote:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
