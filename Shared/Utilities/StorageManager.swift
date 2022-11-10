@@ -12,7 +12,9 @@ class StorageManager: ObservableObject {
     static let shared = StorageManager()
     
     var fileLocation: URL = {
-        URL.documentsDirectory.appending(path: "storage").appendingPathExtension("object")
+        let home = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.llsc12.Nitroless")!
+        let docs = home.appending(path: "Documents")
+        return docs.appending(path: "storage").appendingPathExtension("object") // add storage.object file
     }()
     
     let encoder = JSONEncoder()

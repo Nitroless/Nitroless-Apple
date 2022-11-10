@@ -310,11 +310,11 @@
 			isa = PBXGroup;
 			children = (
 				5783B54828ECBA9000CFF460 /* KeyboardViewController.swift */,
+				5783B55128ECCDDA00CFF460 /* KeyboardView.swift */,
 				E6E161EF2915B563001E1698 /* RepoView */,
 				E6E161EC2915A7D9001E1698 /* Main */,
 				E69E3A5429156D3E0030EFA3 /* Keyboard.entitlements */,
 				E69E3A512915468F0030EFA3 /* BottomBar */,
-				5783B55128ECCDDA00CFF460 /* KeyboardView.swift */,
 				5783B54A28ECBA9000CFF460 /* Info.plist */,
 			);
 			path = Keyboard;
@@ -363,7 +363,6 @@
 		AA9F089228E58B450098040D /* Nitroless iOS */ = {
 			isa = PBXGroup;
 			children = (
-				E69E3A34291025B70030EFA3 /* ViewModel */,
 				AA6250B928E9141500C7030E /* Info.plist */,
 				AA6250B828E911C100C7030E /* Nitroless.entitlements */,
 				AA9F089328E58B450098040D /* NitrolessApp.swift */,
@@ -434,13 +433,6 @@
 				E69E3A2A29100E060030EFA3 /* Color.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		E69E3A34291025B70030EFA3 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		E69E3A382910281E0030EFA3 /* FrequentUsed */ = {

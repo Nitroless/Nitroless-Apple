@@ -7,32 +7,80 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1759C239-D063-4608-90D1-3CE63A99DE71"
+            uuid = "1BE85D46-4297-41A4-82FF-FE8A85BD2291"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shared/Utilities/RepositoryManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "selectHome()"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "addToFavourites(repo:emote:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1BE85D46-4297-41A4-82FF-FE8A85BD2291 - 95e287eb170a1a0b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Nitroless.RepoManager.addToFavourites(repo: Swift.String, emote: Swift.String) -&gt; ()"
+                  moduleName = "Nitroless"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/llsc12/Documents/GitHub/Nitroless-Apple/Shared/Utilities/RepositoryManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "495">
+               </Location>
+               <Location
+                  uuid = "1BE85D46-4297-41A4-82FF-FE8A85BD2291 - 95e287eb170a1a0b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Nitroless.RepoManager.addToFavourites(repo: Swift.String, emote: Swift.String) -&gt; ()"
+                  moduleName = "Nitroless"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/llsc12/Documents/GitHub/Nitroless-Apple/Shared/Utilities/RepositoryManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "3451">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9BF10599-A92F-418C-8E4F-95AD8FE699B7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared/Utilities/RepositoryManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "addToFavourites(repo:emote:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "ED2E32C0-2BC7-4DA5-8FEE-80432420856F"
+            uuid = "A5302BFC-F9C3-4590-B19A-4AFA6E5AE723"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shared/Utilities/RepositoryManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
-            landmarkName = "addToFavourites(repo:emote:)"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
+            landmarkName = "loadFavouriteEmotes()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
