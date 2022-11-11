@@ -35,6 +35,8 @@
 		AA6250BC28EB047200C7030E /* SDWebImageWebPCoder in Frameworks */ = {isa = PBXBuildFile; productRef = AA6250BB28EB047200C7030E /* SDWebImageWebPCoder */; };
 		AA67BDB628F7FE7C001A37BF /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = AA67BDB528F7FE7C001A37BF /* AlertToast */; };
 		AA67DCAE291CFCDF006C65BD /* KeyboardSim.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA67DCAD291CFCDF006C65BD /* KeyboardSim.swift */; };
+		AA943B25291E63EE008C6792 /* FileMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA943B24291E63EE008C6792 /* FileMonitor.swift */; };
+		AA943B26291E63EE008C6792 /* FileMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA943B24291E63EE008C6792 /* FileMonitor.swift */; };
 		AA9A9D0F291D1D3A0038D5AF /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9A9D0E291D1D3A0038D5AF /* StorageManager.swift */; };
 		AA9A9D11291D3EAC0038D5AF /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9A9D0E291D1D3A0038D5AF /* StorageManager.swift */; };
 		AA9F089428E58B450098040D /* NitrolessApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F089328E58B450098040D /* NitrolessApp.swift */; };
@@ -42,6 +44,8 @@
 		AA9F08A528E58C020098040D /* RepositoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F08A428E58C020098040D /* RepositoryManager.swift */; };
 		AA9F08AA28E5A6360098040D /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = AA9F08A928E5A6360098040D /* SDWebImageSwiftUI */; };
 		AA9F08AC28E5A8360098040D /* RepoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9F08AB28E5A8360098040D /* RepoView.swift */; };
+		AAB13249291DBA6E00B53FBB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB13248291DBA6E00B53FBB /* Constants.swift */; };
+		AAB1324A291DBA6E00B53FBB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB13248291DBA6E00B53FBB /* Constants.swift */; };
 		AAD030A228EB155E0040718F /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = AAD030A128EB155E0040718F /* AlertToast */; };
 		E619D9B628F356BE006BD8B4 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = E619D9B528F356BE006BD8B4 /* Array.swift */; };
 		E619D9B828F3572E006BD8B4 /* EmotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E619D9B728F3572E006BD8B4 /* EmotesView.swift */; };
@@ -126,12 +130,14 @@
 		AA6250B828E911C100C7030E /* Nitroless.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nitroless.entitlements; sourceTree = "<group>"; };
 		AA6250B928E9141500C7030E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AA67DCAD291CFCDF006C65BD /* KeyboardSim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSim.swift; sourceTree = "<group>"; };
+		AA943B24291E63EE008C6792 /* FileMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileMonitor.swift; sourceTree = "<group>"; };
 		AA9A9D0E291D1D3A0038D5AF /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		AA9F089028E58B450098040D /* Nitroless.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nitroless.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA9F089328E58B450098040D /* NitrolessApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NitrolessApp.swift; sourceTree = "<group>"; };
 		AA9F089528E58B450098040D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AA9F08A428E58C020098040D /* RepositoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryManager.swift; sourceTree = "<group>"; };
 		AA9F08AB28E5A8360098040D /* RepoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoView.swift; sourceTree = "<group>"; };
+		AAB13248291DBA6E00B53FBB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AAD5D80928EEC7D900FF08DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E619D9B528F356BE006BD8B4 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		E619D9B728F3572E006BD8B4 /* EmotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotesView.swift; sourceTree = "<group>"; };
@@ -334,6 +340,15 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
+		AA943B23291E63DC008C6792 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				AA9A9D0E291D1D3A0038D5AF /* StorageManager.swift */,
+				AA943B24291E63EE008C6792 /* FileMonitor.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		AA9F088728E58B450098040D = {
 			isa = PBXGroup;
 			children = (
@@ -372,7 +387,8 @@
 			isa = PBXGroup;
 			children = (
 				AA9F08A428E58C020098040D /* RepositoryManager.swift */,
-				AA9A9D0E291D1D3A0038D5AF /* StorageManager.swift */,
+				AA943B23291E63DC008C6792 /* Storage */,
+				AAB13248291DBA6E00B53FBB /* Constants.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -700,12 +716,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6E161EB2915A165001E1698 /* BottomBarItemView.swift in Sources */,
+				AAB1324A291DBA6E00B53FBB /* Constants.swift in Sources */,
 				E6E161EE2915A7F9001E1698 /* MainView.swift in Sources */,
 				AA9A9D11291D3EAC0038D5AF /* StorageManager.swift in Sources */,
 				E62D10A629198AC200678687 /* Color.swift in Sources */,
 				AA431D7628EEEBB00066EBC4 /* RepositoryManager.swift in Sources */,
 				5783B54928ECBA9000CFF460 /* KeyboardViewController.swift in Sources */,
 				5783B55228ECCDDA00CFF460 /* KeyboardView.swift in Sources */,
+				AA943B26291E63EE008C6792 /* FileMonitor.swift in Sources */,
 				E69E3A53291546A70030EFA3 /* BottomBarView.swift in Sources */,
 				E6E161F12915B57D001E1698 /* RepoView.swift in Sources */,
 				E6E161F329162295001E1698 /* FavouritesView.swift in Sources */,
@@ -723,9 +741,11 @@
 				E69E3A2B29100E060030EFA3 /* Color.swift in Sources */,
 				AA9F08A528E58C020098040D /* RepositoryManager.swift in Sources */,
 				AA67DCAE291CFCDF006C65BD /* KeyboardSim.swift in Sources */,
+				AAB13249291DBA6E00B53FBB /* Constants.swift in Sources */,
 				5721D6C428F1E78D00148391 /* DefaultRepoCell.swift in Sources */,
 				AA9F089628E58B450098040D /* ContentView.swift in Sources */,
 				E69E3A402910589C0030EFA3 /* SidebarView.swift in Sources */,
+				AA943B25291E63EE008C6792 /* FileMonitor.swift in Sources */,
 				AA9F089428E58B450098040D /* NitrolessApp.swift in Sources */,
 				E69E3A4D291457660030EFA3 /* FavouriteEmotesView.swift in Sources */,
 				AA9F08AC28E5A8360098040D /* RepoView.swift in Sources */,
