@@ -16,14 +16,10 @@ struct MainView: View {
         GridItem(.adaptive(minimum: 45))
     ]
     
-    @State var text = ""
     
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack {
-                
-                TextField("egg", text: $text)
-                
                 if repoMan.favouriteEmotes.count > 0 {
                     VStack {
                         HStack {

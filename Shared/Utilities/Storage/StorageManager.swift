@@ -66,6 +66,7 @@ class StorageManager: ObservableObject {
     }
     
     static private func reloadObjectFromLocalStorage(_ self: StorageManager) {
+        self.objectWillChange.send()
         self.s = StorageManager.getObjectFromLocalStorage(self.decoder, self.fileLocation, encoder: self.encoder)
     }
     
