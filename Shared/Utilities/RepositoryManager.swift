@@ -17,6 +17,11 @@ class RepoManager: ObservableObject {
     @Published var selectedEmote: String?
     
     init() {
+        if let directory = self.fileManager.containerURL(forSecurityApplicationGroupIdentifier: "group.llsc12.Nitroless") {
+            let newDirectory = directory.appendingPathComponent("Documents")
+            try? fileManager.createDirectory(at: newDirectory, withIntermediateDirectories: false, attributes: nil)
+        }
+        
         self.repos = []
         self.frequentlyUsed = []
         self.favouriteEmotes = []
@@ -34,38 +39,119 @@ class RepoManager: ObservableObject {
     }
     
     public func hasRepositories() -> Bool {
-        let repositories = StorageManager.shared.s.repos
+        let file = FileLocations.repoList
+        
+        let fileExists = fileManager.fileExists(atPath: file.path)
+        
+        if !fileExists {
+            try? "".write(to: file, atomically: true, encoding: String.Encoding.utf8)
+        }
+        
+        let repoString = (try? String(contentsOf: file, encoding: .utf8))
+        
+        guard let repoString = repoString else { return false }
+        var repositories = repoString.components(separatedBy: "\n")
+        
+        if let e = repositories.first {
+            if e.isEmpty {
+                repositories = Array(repositories.dropFirst())
+            }
+        }
+        
         return !repositories.isEmpty
     }
     
     public func removeFromFavourite(repo: String, emote: String) {
-        guard let repoUrl = URL(string: repo) else { return }
-        guard let emoteUrl = URL(string: emote) else { return }
-        let hostname = repoUrl.host
-        let faveDict = StorageManager.shared.s.favouriteEmotesPerRepo
+        var rep = repo
+        let removeFromURL: Set<Character> = [".", "/"]
+        if rep.prefix(8) == "https://" {
+            rep.removeFirst(8)
+        }
+        rep.removeAll(where: {removeFromURL.contains($0)})
         
-        if var repoFaves = faveDict[hostname!] {
-            repoFaves = repoFaves.filter({ url in
-                url != emoteUrl
-            })
+        let file = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "group.llsc12.Nitroless")!.appendingPathComponent("Documents").appending(path: rep).appendingPathExtension("nitroless")
+        
+        let favouritesFile = FileLocations.favouriteEmotes
+        
+        if fileManager.fileExists(atPath: file.path) {
+            let emoteString = (try? String(contentsOf: file, encoding: .utf8))
             
-            StorageManager.shared.s.favouriteEmotesPerRepo[hostname!] = repoFaves
+            guard let emoteString = emoteString else { return }
+            
+            var emotes = emoteString.components(separatedBy: "\n")
+            
+            if let e = emotes.first {
+                if e.isEmpty {
+                    emotes = Array(emotes.dropFirst())
+                }
+            }
+            
+            emotes = emotes.filter { str in
+                str != emote
+            }
+            
+            let final = emotes.joined(separator: "\n")
+            try? final.write(to: file, atomically: true, encoding: String.Encoding.utf8)
+            
+            DispatchQueue.main.async {
+                self.repos = []
+                self.loadRepos()
+            }
         }
         
-        StorageManager.shared.s.frequentEmotes.removeAll(where: { url in
-            url == emoteUrl
-        })
+        if fileManager.fileExists(atPath: favouritesFile.path) {
+            let emoteString = (try? String(contentsOf: favouritesFile, encoding: .utf8))
+            
+            guard let emoteString = emoteString else { return }
+            
+            var emotes = emoteString.components(separatedBy: "\n")
+            
+            if let e = emotes.first {
+                if e.isEmpty {
+                    emotes = Array(emotes.dropFirst())
+                }
+            }
+            
+            emotes = emotes.filter { str in
+                str != emote
+            }
+            
+            let final = emotes.joined(separator: "\n")
+            try? final.write(to: favouritesFile, atomically: true, encoding: String.Encoding.utf8)
+            
+            DispatchQueue.main.async {
+                self.favouriteEmotes = []
+                self.loadFavouriteEmotes()
+            }
+        }
     }
     
     public func removeRepo(repo: URL) {
+        let file = FileLocations.repoList
         
-        var repositories = StorageManager.shared.s.repos
+        let fileExists = fileManager.fileExists(atPath: file.path)
         
-        repositories = repositories.filter { loopedRepo in
-            loopedRepo != repo
+        if !fileExists {
+            try? "".write(to: file, atomically: true, encoding: String.Encoding.utf8)
         }
         
-        StorageManager.shared.s.repos = repositories
+        let repoString = (try? String(contentsOf: file, encoding: .utf8))
+        
+        guard let repoString = repoString else { return }
+        var repositories = repoString.components(separatedBy: "\n")
+        
+        if let e = repositories.first {
+            if e.isEmpty {
+                repositories = Array(repositories.dropFirst())
+            }
+        }
+        
+        repositories = repositories.filter { str in
+            URL(string: str)! != repo
+        }
+        
+        let final = repositories.joined(separator: "\n")
+        try? final.write(to: file, atomically: true, encoding: String.Encoding.utf8)
         
         DispatchQueue.main.async {
             self.repos = []
@@ -74,36 +160,87 @@ class RepoManager: ObservableObject {
     }
     
     public func addToFavourites(repo: String, emote: String) -> Void {
-        guard let repoUrl = URL(string: repo) else { return }
+        var rep = repo
+        let removeFromURL: Set<Character> = [".", "/"]
+        if rep.prefix(8) == "https://" {
+            rep.removeFirst(8)
+        }
+        rep.removeAll(where: {removeFromURL.contains($0)})
+        
         guard let emoteURL = URL(string: emote) else {
             print("[AddToFavourites] Adding \"\(emote)\" failed, invalid URL")
             return
         }
-        let hostname = repoUrl.host
         
-        var repoFaves = StorageManager.shared.s.favouriteEmotesPerRepo[hostname!] ?? []
-        var faves = StorageManager.shared.s.favouriteEmotes
+        let file = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "group.llsc12.Nitroless")!.appendingPathComponent("Documents").appending(path: rep).appendingPathExtension("nitroless")
         
-        repoFaves.removeAll { url in
-            url == emoteURL
+        let favouritesFile = FileLocations.favouriteEmotes
+        
+        if !fileManager.fileExists(atPath: file.path) {
+            try? "".write(to: file, atomically: true, encoding: String.Encoding.utf8)
         }
-        repoFaves.insert(emoteURL, at: 0)
         
-        faves.removeAll { url in
-            url == emoteURL
+        if !fileManager.fileExists(atPath: favouritesFile.path) {
+            try? "".write(to: favouritesFile, atomically: true, encoding: String.Encoding.utf8)
         }
-        faves.insert(emoteURL, at: 0)
+
+        let favEmotesString: String = (try? String(contentsOf: file, encoding: .utf8)) ?? ""
+        var favouriteEmotes = favEmotesString.components(separatedBy: "\n")
         
-        StorageManager.shared.s.favouriteEmotes = faves
-        StorageManager.shared.s.favouriteEmotesPerRepo[hostname!] = repoFaves
-        
-        DispatchQueue.main.async {
-            self.repos = []
-            self.favouriteEmotes = []
-            self.loadRepos()
-            self.loadFavouriteEmotes()
+        if let e = favouriteEmotes.first {
+            if e.isEmpty {
+                favouriteEmotes = Array(favouriteEmotes.dropFirst())
+            }
         }
+        
+        //Check if emote already exists
+        for fe in favouriteEmotes {
+            if emote == fe {
+                let index = favouriteEmotes.firstIndex(of: fe)!
+                favouriteEmotes.remove(at: index)
+            }
+        }
+        
+        favouriteEmotes.insert(emoteURL.absoluteString, at: 0)
+        
+        let final = favouriteEmotes.joined(separator: "\n")
+        
+        let favEmotesFileString: String = (try? String(contentsOf: favouritesFile, encoding: .utf8)) ?? ""
+        var favouriteFileEmotes = favEmotesFileString.components(separatedBy: "\n")
+        
+        if let e = favouriteFileEmotes.first {
+            if e.isEmpty {
+                favouriteFileEmotes = Array(favouriteFileEmotes.dropFirst())
+            }
+        }
+        
+        //Check if emote already exists
+        for fe in favouriteFileEmotes {
+            if emote == fe {
+                let index = favouriteFileEmotes.firstIndex(of: fe)!
+                favouriteFileEmotes.remove(at: index)
+            }
+        }
+        
+        favouriteFileEmotes.insert(emoteURL.absoluteString, at: 0)
+        
+        let finalFavFile = favouriteFileEmotes.joined(separator: "\n")
+        
+        do {
+            try final.write(to: file, atomically: true, encoding: String.Encoding.utf8)
+            try finalFavFile.write(to: favouritesFile, atomically: true, encoding: String.Encoding.utf8)
             
+            DispatchQueue.main.async {
+                self.repos = []
+                self.favouriteEmotes = []
+                self.loadRepos()
+                self.loadFavouriteEmotes()
+            }
+            return
+        } catch {
+            print("[AddToFavourites] Adding \"\(emote)\" failed, couldn't save to \(rep).nitroless file - \(String(describing: error))")
+            return
+        }
     }
     
     public func addToFrequentlyUsed(emote: String) -> Void {
@@ -112,19 +249,46 @@ class RepoManager: ObservableObject {
             return
         }
         
-        var freq = StorageManager.shared.s.frequentEmotes
-        freq.removeAll { url in
-            url == emoteURL
+        let file = FileLocations.frequentEmotes
+        if !fileManager.fileExists(atPath: file.path) {
+            try? "".write(to: file, atomically: true, encoding: String.Encoding.utf8)
         }
         
-        freq.insert(emoteURL, at: 0)
+        let emotesString: String = (try? String(contentsOf: file, encoding: .utf8)) ?? ""
+        var emotes = emotesString.components(separatedBy: "\n")
+        
+        if let e = emotes.first {
+            if e.isEmpty {
+                emotes = Array(emotes.dropFirst())
+            }
+        }
+        
+        //Check if emote already exists
+        for em in emotes {
+            if emote == em {
+                let index = emotes.firstIndex(of: em)!
+                emotes.remove(at: index)
+            }
+        }
+        
+        emotes.insert(emoteURL.absoluteString, at: 0)
         
         //Check if frequently used emotes is above 50
-        freq = Array(freq.prefix(50))
-    
-        StorageManager.shared.s.frequentEmotes = freq
+        if emotes.count > 50 {
+            emotes.removeLast()
+        }
         
-        loadFrequentEmotes()
+        let final = emotes.joined(separator: "\n")
+        
+        do {
+            try final.write(to: file, atomically: true, encoding: String.Encoding.utf8)
+            
+            loadFrequentEmotes()
+            return
+        } catch {
+            print("[AddToFrequentlyUsed] Adding \"\(emote)\" failed, couldn't save to frequentEmotes file")
+            return
+        }
     }
     
     public func addRepo(repo: String) -> Bool {
@@ -134,57 +298,84 @@ class RepoManager: ObservableObject {
             return false
         }
         
-        StorageManager.shared.s.repos.append(repoUrl)
+        let file = FileLocations.repoList
+        
+        let fileExists = fileManager.fileExists(atPath: file.path)
+        
+        if !fileExists {
+            try? "".write(to: file, atomically: true, encoding: String.Encoding.utf8)
+        }
+        
+        let repoString: String = (try? String(contentsOf: file, encoding: .utf8)) ?? ""
+        
+        var repositories = repoString.components(separatedBy: "\n")
+        
+        if let e = repositories.first {
+            if e.isEmpty {
+                repositories = Array(repositories.dropFirst())
+            }
+        }
+        
+        repositories.append(repoUrl.absoluteString)
         
         // get data and add to repo list
         let url = repoUrl
         let index = url.appending(path: "index.json")
         let req = URLRequest(url: index)
         
+        let final = repositories.joined(separator: "\n")
         
-        URLSession.shared.dataTask(with: req) { [self] data, res, err in
+        do {
+            try final.write(to: file, atomically: true, encoding: String.Encoding.utf8)
             
-            guard err == nil && "\((res as! HTTPURLResponse).statusCode)".hasPrefix("20") else {
-                let repo = Repo(url: url, repoData: nil, favouriteEmotes: nil)
-                DispatchQueue.main.async {
-                    self.repos.append(repo)
-                    self.reorderRepos()
+            URLSession.shared.dataTask(with: req) { [self] data, res, err in
+                
+                guard err == nil && "\((res as! HTTPURLResponse).statusCode)".hasPrefix("20") else {
+                    let repo = Repo(url: url, repoData: nil, favouriteEmotes: nil)
+                    DispatchQueue.main.async {
+                        self.repos.append(repo)
+                        self.reorderRepos()
+                    }
+                    return
                 }
-                return
+                
+                guard let data = data else {
+                    let repo = Repo(url: url, repoData: nil, favouriteEmotes: nil)
+                    DispatchQueue.main.async {
+                        self.repos.append(repo)
+                        self.reorderRepos()
+                    }
+                    return
+                }
+                
+                do {
+                    let json = try JSONDecoder().decode(NitrolessRepo.self, from: data)
+                    
+                    let final = Repo(url: url, repoData: json, favouriteEmotes: nil)
+                    
+                    DispatchQueue.main.async {
+                        self.repos.append(final)
+                        self.reorderRepos()
+                    }
+                } catch {
+                    print(error)
+                    
+                    let repo = Repo(url: url, repoData: nil, favouriteEmotes: nil)
+                    DispatchQueue.main.async {
+                        self.repos.append(repo)
+                        self.reorderRepos()
+                    }
+                    return
+                }
             }
+            .resume()
             
-            guard let data = data else {
-                let repo = Repo(url: url, repoData: nil, favouriteEmotes: nil)
-                DispatchQueue.main.async {
-                    self.repos.append(repo)
-                    self.reorderRepos()
-                }
-                return
-            }
+            return true
+        } catch {
+            print("[AddRepo] Adding \"\(repo)\" failed, couldn't save to repos file - \(String(describing: error))")
             
-            do {
-                let json = try JSONDecoder().decode(NitrolessRepo.self, from: data)
-                
-                let final = Repo(url: url, repoData: json, favouriteEmotes: nil)
-                
-                DispatchQueue.main.async {
-                    self.repos.append(final)
-                    self.reorderRepos()
-                }
-            } catch {
-                print(error)
-                
-                let repo = Repo(url: url, repoData: nil, favouriteEmotes: nil)
-                DispatchQueue.main.async {
-                    self.repos.append(repo)
-                    self.reorderRepos()
-                }
-                return
-            }
+            return false
         }
-        .resume()
-            
-        return true
     }
     
     public func reorderRepos() {
@@ -198,27 +389,109 @@ class RepoManager: ObservableObject {
     }
     
     private func loadFavouriteEmotes() {
+        self.favouriteEmotes = []
+        let file = FileLocations.favouriteEmotes
         
-        var emotes = StorageManager.shared.s.favouriteEmotes
+        if !fileManager.fileExists(atPath: file.path) {
+            try? "".write(to: file, atomically: true, encoding: String.Encoding.utf8)
+        }
+        
+        let emotesString = (try? String(contentsOf: file, encoding: .utf8))
+        
+        guard let emotesString = emotesString else { return }
+        var emotes = emotesString.components(separatedBy: "\n")
+        
+        if let e = emotes.first {
+            if e.isEmpty {
+                emotes = Array(emotes.dropFirst())
+            }
+        }
         
         for emote in emotes {
-            self.favouriteEmotes.append(emote)
+            let url = URL(string: emote)!
+            self.favouriteEmotes.append(url)
         }
     }
     
     private func loadFrequentEmotes() {
         self.frequentlyUsed = []
-        self.frequentlyUsed = StorageManager.shared.s.frequentEmotes
+        let file = FileLocations.frequentEmotes
+        if !fileManager.fileExists(atPath: file.path) {
+            try? "".write(to: file, atomically: true, encoding: String.Encoding.utf8)
+        }
+        
+        let emotesString = (try? String(contentsOf: file, encoding: .utf8))
+        
+        guard let emotesString = emotesString else { return }
+        var emotes = emotesString.components(separatedBy: "\n")
+        
+        if let e = emotes.first {
+            if e.isEmpty {
+                emotes = Array(emotes.dropFirst())
+            }
+        }
+        
+        for emote in emotes {
+            let url = URL(string: emote)!
+            self.frequentlyUsed.append(url)
+        }
     }
     
     private func loadRepos() {
+
+        let file = FileLocations.repoList
         
-        let repositories = StorageManager.shared.s.repos
+        let fileExists = fileManager.fileExists(atPath: file.path)
+        
+        if !fileExists {
+            try? "".write(to: file, atomically: true, encoding: String.Encoding.utf8)
+        }
+        
+        let repoString = (try? String(contentsOf: file, encoding: .utf8))
+        
+        guard let repoString = repoString else { return }
+        var repositories = repoString.components(separatedBy: "\n")
+        
+        if let e = repositories.first {
+            if e.isEmpty {
+                repositories = Array(repositories.dropFirst())
+            }
+        }
                 
         for repository in repositories {
-            let url = repository
+            let url = URL(string: repository)!
             let index = url.appending(path: "index.json")
             let req = URLRequest(url: index)
+            var favouriteEmotes: [URL]?
+            
+            var rep = url.absoluteString
+            let removeFromURL: Set<Character> = [".", "/"]
+            if rep.prefix(8) == "https://" {
+                rep.removeFirst(8)
+            } else {
+                rep.removeFirst(7)
+            }
+            rep.removeAll(where: {removeFromURL.contains($0)})
+            
+            let favEmotesFile = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "group.llsc12.Nitroless")!.appendingPathComponent("Documents").appending(path: rep).appendingPathExtension("nitroless")
+            
+            if fileManager.fileExists(atPath: favEmotesFile.path) {
+                favouriteEmotes = []
+                let favEmotesString: String = (try? String(contentsOf: favEmotesFile, encoding: .utf8)) ?? ""
+                
+                var favEmotes = favEmotesString.components(separatedBy: "\n")
+                
+                if let e = favEmotes.first {
+                    if e.isEmpty {
+                        favEmotes = Array(favEmotes.dropFirst())
+                    }
+                }
+                
+                for favEmote in favEmotes {
+                    let url = URL(string: favEmote)
+                    favouriteEmotes?.append(url!)
+                }
+            }
             
             URLSession.shared.dataTask(with: req) { [self] data, res, err in
                 

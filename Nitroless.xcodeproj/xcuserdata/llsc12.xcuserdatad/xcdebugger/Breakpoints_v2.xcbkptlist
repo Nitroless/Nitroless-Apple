@@ -16,7 +16,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "77"
             endingLineNumber = "77"
-            landmarkName = "addToFavourites(repo:emote:)"
+            landmarkName = "removeFromFavourite(repo:emote:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -64,7 +64,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "101"
             endingLineNumber = "101"
-            landmarkName = "addToFavourites(repo:emote:)"
+            landmarkName = "removeFromFavourite(repo:emote:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

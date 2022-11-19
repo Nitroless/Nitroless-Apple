@@ -25,7 +25,7 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             ZStack(alignment: .leading) {
-                SidebarView(showDefaultReposMenu: { toggleShowDefaultReposMenu() }, showAddPrompt: { toggleShowAddPrompt() }, closeSidebar: { closeSidebar() })
+                SidebarView(showDefaultReposMenu: { toggleShowDefaultReposMenu() }, showAddPrompt: { toggleShowAddPrompt() }, closeSidebar: { sidebarOpened = false })
                 ScrollView {
                     if repoMan.selectedRepo == nil {
                         HomeView(toastShown: $toastShown)
@@ -53,10 +53,10 @@ struct ContentView: View {
                         .onEnded({ value in
                             if value.translation.width > 0 {
                                 if value.translation.width > 5 {
-                                    openSidebar()
+                                    sidebarOpened = true
                                 }
                             } else {
-                                closeSidebar()
+                                sidebarOpened = false
                             }
                         })
                 )
@@ -64,30 +64,11 @@ struct ContentView: View {
                 .toolbar {
                     ToolbarItemGroup(placement: .principal) {
                         HStack {
-                            Button {
-                                if self.offset == 0 {
-                                    openSidebar()
-                                } else if self.offset == 72 {
-                                    closeSidebar()
+                            MenuButton(state: $sidebarOpened, sizeDivide: 1.5)
+                                .offset(x: 6)
+                                .onChange(of: sidebarOpened) { _ in
+                                    self.offset = sidebarOpened ? 72 : 0
                                 }
-                            } label: {
-                                if !self.sidebarOpened {
-                                    VStack(spacing: 4) {
-                                        RoundedRectangle(cornerRadius: 5)
-                                            .frame(width: 20, height: 2)
-                                        RoundedRectangle(cornerRadius: 5)
-                                            .frame(width: 20, height: 2)
-                                        RoundedRectangle(cornerRadius: 5)
-                                            .frame(width: 20, height: 2)
-                                    }
-                                } else {
-                                    Image(systemName: "arrow.left")
-                                        .frame(width: 20)
-                                }
-                            }
-                            .buttonStyle(.plain)
-                            .offset(x: 8)
-                            .animation(.spring().speed(1.5), value: self.sidebarOpened)
                             
                             Spacer()
                             
@@ -168,16 +149,6 @@ struct ContentView: View {
         }
     }
     
-    func closeSidebar() {
-        self.offset = 0
-        self.sidebarOpened = false
-    }
-    
-    func openSidebar() {
-        self.offset = 72
-        self.sidebarOpened = true
-    }
-    
     func toggleShowDefaultReposMenu() {
         self.showDefaultReposMenu.toggle()
     }
@@ -224,6 +195,40 @@ struct banner: View {
         }
     }
 }
+
+struct MenuButton: View {
+    @Binding var state: Bool
+    var sizeDivide: CGFloat = 1
+    
+    var body: some View {
+        Button {
+            state.toggle()
+        } label: {
+            VStack(spacing: 8 / sizeDivide) {
+                rect()
+                    .rotationEffect(!state ? .degrees(0) : .degrees(45))
+                    .offset(y: state ? 13 / sizeDivide : 0)
+                rect()
+                    .frame(width: state ? 20 / sizeDivide : 40 / sizeDivide)
+                    .opacity(state ? 0 : 1)
+                rect()
+                    .rotationEffect(!state ? .degrees(0) : .degrees(-45))
+                    .offset(y: state ? -13 / sizeDivide : 0)
+            }
+            .animation(.spring(), value: state)
+        }
+        .buttonStyle(.plain)
+    }
+    
+    @ViewBuilder
+    func rect() -> some View {
+        Rectangle()
+            .frame(height: 5 / sizeDivide)
+            .frame(maxWidth: 40 / sizeDivide)
+            .cornerRadius(5 / sizeDivide)
+    }
+}
+
 
 struct test_Previews: PreviewProvider {
     static var previews: some View {
