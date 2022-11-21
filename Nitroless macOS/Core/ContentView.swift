@@ -10,6 +10,7 @@ import AppKit
 import AlertToast
 
 struct ContentView: View {
+    @Environment (\.colorScheme) var cs
     let pasteboard = NSPasteboard.general
     @StateObject var viewModel = ContentViewModel()
     @State var isShown = true
@@ -26,10 +27,11 @@ struct ContentView: View {
                         .frame(width: 80)
                     VStack {
                         VStack {
-                            Image("banner")
+                            Image(cs == .dark ? "banner" : "bannerDark")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 200)
+                            
                             if !viewModel.selectedRepo.active {
                                 HStack(alignment: .center) {
                                     Button {
@@ -39,7 +41,7 @@ struct ContentView: View {
                                             Text("Home")
                                         }
                                         .frame(width: 64)
-                                        .foregroundColor(Color(.white))
+                                        .foregroundColor((self.hovered.image == "Home" && self.hovered.hover == true) || viewModel.isHomeActive == true ? Color.white : Color.theme.textColor)
                                         .padding(10)
                                         .background((self.hovered.image == "Home" && self.hovered.hover == true) || viewModel.isHomeActive == true ? Color.theme.appPrimaryColor : Color.theme.appBGColor)
                                         .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
@@ -58,7 +60,7 @@ struct ContentView: View {
                                             Text("About")
                                         }
                                         .frame(width: 64)
-                                        .foregroundColor(Color(.white))
+                                        .foregroundColor((self.hovered.image == "About" && self.hovered.hover == true) || viewModel.isAboutActive == true ? Color.white : Color.theme.textColor)
                                         .padding(10)
                                         .background((self.hovered.image == "About" && self.hovered.hover == true) || viewModel.isAboutActive == true ? Color.theme.appPrimaryColor : Color.theme.appBGColor)
                                         .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
@@ -77,7 +79,7 @@ struct ContentView: View {
                                             Text("Quit App")
                                         }
                                         .frame(width: 64)
-                                        .foregroundColor(Color(.white))
+                                        .foregroundColor(self.hovered.image == "Quit" && self.hovered.hover == true ? Color.white : Color.theme.textColor)
                                         .padding(10)
                                         .background(self.hovered.image == "Quit" && self.hovered.hover == true ? Color.theme.appDangerColor : Color.theme.appBGColor)
                                         .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
@@ -100,7 +102,8 @@ struct ContentView: View {
                                             Image(systemName: "square.and.arrow.up.fill")
                                             Text("Share")
                                         }
-                                        .foregroundColor(Color(.white))
+                                        .frame(width: 100)
+                                        .foregroundColor(self.hovered.image == "square.and.arrow.up.fill" && self.hovered.hover == true ? Color.white : Color.theme.textColor)
                                         .padding(10)
                                         .background(self.hovered.image == "square.and.arrow.up.fill" && self.hovered.hover == true ? Color.theme.appPrimaryColor : Color.theme.appBGColor)
                                         .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
@@ -121,7 +124,8 @@ struct ContentView: View {
                                             Image(systemName: "minus.circle.fill")
                                             Text("Remove")
                                         }
-                                        .foregroundColor(Color(.white))
+                                        .frame(width: 100)
+                                        .foregroundColor(self.hovered.image == "minus.circle.fill" && self.hovered.hover == true ? Color.white : Color.theme.textColor)
                                         .padding(10)
                                         .background(self.hovered.image == "minus.circle.fill" && self.hovered.hover == true ? Color.theme.appDangerColor : Color.theme.appBGColor)
                                         .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))

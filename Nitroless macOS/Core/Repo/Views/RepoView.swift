@@ -19,7 +19,7 @@ struct RepoView: View {
             ZStack {
                 HStack{
                     Rectangle()
-                        .fill(.white)
+                        .fill(Color.theme.textColor)
                         .frame(width: 3, height: (viewModel.isHomeActive == true) || (self.hovered.image == "Icon" && self.hovered.hover == true) ? 32 : (viewModel.isHomeActive == false) && (self.hovered.image == "Icon" && self.hovered.hover == true) ? 8 : 0 )
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                         .animation(.spring(), value: self.hovered.hover && !viewModel.isHomeActive)
@@ -54,6 +54,7 @@ struct RepoView: View {
                 .opacity(self.hovered.image == "Icon" && self.hovered.hover == true ? 1 : 0)
                 .offset(x: 50)
                 .animation(.spring(), value: self.hovered.hover)
+                .foregroundColor(Color.white)
             }
             .frame(width: 150)
             .padding([.top, .leading, .trailing])
@@ -82,7 +83,7 @@ struct RepoView: View {
                     ZStack {
                         HStack {
                             Rectangle()
-                                .fill(.white)
+                                .fill(Color.theme.textColor)
                                 .frame(width: 3, height: (self.hovered.image == "\(repo.url)/\(repo.emote.icon)" && self.hovered.hover == true) || (repo.active == true) ? 32 : (self.hovered.image == "\(repo.url)/\(repo.emote.icon)" && self.hovered.hover == true) && (repo.active == false) ? 8 : 0)
                                 .clipShape(RoundedRectangle(cornerRadius: 12))
                                 .animation(.spring(), value: self.hovered.hover && !repo.active)
@@ -136,6 +137,7 @@ struct RepoView: View {
                         .opacity(self.hovered.image == "\(repo.url)/\(repo.emote.icon)" && self.hovered.hover == true ? 1 : 0)
                         .offset(x: 50)
                         .animation(.spring(), value: self.hovered.hover)
+                        .foregroundColor(Color.white)
                     }
                     
                 }
