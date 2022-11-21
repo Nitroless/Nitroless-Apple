@@ -22,7 +22,7 @@ struct SidebarView: View {
             VStack {
                 HStack {
                     Rectangle()
-                        .fill(.white)
+                        .fill(Color.theme.textColor)
                         .frame(width: 3, height: repoMan.selectedRepo == nil ? 32 : 0 )
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                         .offset(x: -7)
@@ -86,6 +86,7 @@ struct SidebarView: View {
                     Image(systemName: "globe")
                         .resizable()
                         .frame(width: 28, height: 28)
+                        .foregroundColor(Color.white)
                 }
                 .buttonStyle(.plain)
                 .frame(width: 48, height: 48)
@@ -100,6 +101,7 @@ struct SidebarView: View {
                     Image(systemName: "plus.circle")
                         .resizable()
                         .frame(width: 28, height: 28)
+                        .foregroundColor(Color.white)
                 }
                 .buttonStyle(.plain)
                 .frame(width: 48, height: 48)

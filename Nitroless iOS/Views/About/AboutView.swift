@@ -37,9 +37,11 @@ struct AboutView: View {
                     } label: {
                         HStack {
                             Image("GithubIcon")
+                                .renderingMode(.template)
                                 .resizable()
                                 .frame(width: 24, height: 24)
-                                .colorInvert()
+                                .foregroundColor(Color.theme.textColor)
+                                
                             Text("Github")
                         }
                         
@@ -63,9 +65,11 @@ struct AboutView: View {
                     } label: {
                         HStack {
                             Image("TwitterIcon")
+                                .renderingMode(.template)
                                 .resizable()
                                 .frame(width: 24, height: 24)
-                                .colorInvert()
+                                .foregroundColor(Color.theme.textColor)
+                            
                             Text("Twitter")
                         }
                     }
@@ -123,9 +127,10 @@ struct AboutView: View {
                                 } label: {
                                     HStack {
                                         Image("GithubIcon")
+                                            .renderingMode(.template)
                                             .resizable()
-                                            .frame(width: 18, height: 18)
-                                            .colorInvert()
+                                            .frame(width: 24, height: 24)
+                                            .foregroundColor(Color.theme.textColor)
                                         
                                         Text("TheAlphaStream")
                                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -139,9 +144,10 @@ struct AboutView: View {
                                 } label: {
                                     HStack {
                                         Image("TwitterIcon")
+                                            .renderingMode(.template)
                                             .resizable()
-                                            .frame(width: 18, height: 18)
-                                            .colorInvert()
+                                            .frame(width: 24, height: 24)
+                                            .foregroundColor(Color.theme.textColor)
                                         
                                         Text("@Kutarin_")
                                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -190,9 +196,10 @@ struct AboutView: View {
                                 } label: {
                                     HStack {
                                         Image("GithubIcon")
+                                            .renderingMode(.template)
                                             .resizable()
-                                            .frame(width: 18, height: 18)
-                                            .colorInvert()
+                                            .frame(width: 24, height: 24)
+                                            .foregroundColor(Color.theme.textColor)
                                         
                                         Text("paraskcd1315")
                                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -206,9 +213,10 @@ struct AboutView: View {
                                 } label: {
                                     HStack {
                                         Image("TwitterIcon")
+                                            .renderingMode(.template)
                                             .resizable()
-                                            .frame(width: 18, height: 18)
-                                            .colorInvert()
+                                            .frame(width: 24, height: 24)
+                                            .foregroundColor(Color.theme.textColor)
                                         
                                         Text("@ParasKCD")
                                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -257,9 +265,10 @@ struct AboutView: View {
                                 } label: {
                                     HStack {
                                         Image("GithubIcon")
+                                            .renderingMode(.template)
                                             .resizable()
-                                            .frame(width: 18, height: 18)
-                                            .colorInvert()
+                                            .frame(width: 24, height: 24)
+                                            .foregroundColor(Color.theme.textColor)
                                         
                                         Text("llsc12")
                                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -273,9 +282,10 @@ struct AboutView: View {
                                 } label: {
                                     HStack {
                                         Image("TwitterIcon")
+                                            .renderingMode(.template)
                                             .resizable()
-                                            .frame(width: 18, height: 18)
-                                            .colorInvert()
+                                            .frame(width: 24, height: 24)
+                                            .foregroundColor(Color.theme.textColor)
                                         
                                         Text("@llsc121")
                                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -308,9 +318,10 @@ struct AboutView: View {
                                 } label: {
                                     HStack {
                                         Image("GithubIcon")
+                                            .renderingMode(.template)
                                             .resizable()
-                                            .frame(width: 18, height: 18)
-                                            .colorInvert()
+                                            .frame(width: 24, height: 24)
+                                            .foregroundColor(Color.theme.textColor)
                                         
                                         Text("Superbro9")
                                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -324,9 +335,10 @@ struct AboutView: View {
                                 } label: {
                                     HStack {
                                         Image("TwitterIcon")
+                                            .renderingMode(.template)
                                             .resizable()
-                                            .frame(width: 18, height: 18)
-                                            .colorInvert()
+                                            .frame(width: 24, height: 24)
+                                            .foregroundColor(Color.theme.textColor)
                                         
                                         Text("@suuperbro")
                                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -339,71 +351,6 @@ struct AboutView: View {
                         }
                     }
                     .padding(.bottom)
-                    
-                    VStack {
-                        HStack(alignment: .top) {
-                            WebImage(url: URL(string: "https://github.com/LillieH001.png"))
-                                .resizable()
-                                .frame(width: 64, height: 64)
-                                .clipShape(RoundedRectangle(cornerRadius: 99, style: .continuous))
-                            VStack {
-                                Text("Lillie")
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .font(.headline)
-                                
-                                Text("Windows Developer")
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                
-                                Button {
-                                    UIApplication.shared.open(URL(string: "https://lillieh001.github.io/")!)
-                                } label: {
-                                    HStack {
-                                        Image(systemName: "link")
-                                            .resizable()
-                                            .frame(width: 18, height: 18)
-                                        
-                                        Text("Portfolio")
-                                            .frame(maxWidth: .infinity, alignment: .leading)
-                                    }
-                                    .font(.subheadline)
-                                }
-                                .buttonStyle(.plain)
-                                
-                                Button {
-                                    UIApplication.shared.open(URL(string: "https://github.com/LillieH001/")!)
-                                } label: {
-                                    HStack {
-                                        Image("GithubIcon")
-                                            .resizable()
-                                            .frame(width: 18, height: 18)
-                                            .colorInvert()
-                                        
-                                        Text("LillieH001")
-                                            .frame(maxWidth: .infinity, alignment: .leading)
-                                    }
-                                    .font(.subheadline)
-                                }
-                                .buttonStyle(.plain)
-                                
-                                Button {
-                                    UIApplication.shared.open(URL(string: "https://twitter.com/LillieWeeb/")!)
-                                } label: {
-                                    HStack {
-                                        Image("TwitterIcon")
-                                            .resizable()
-                                            .frame(width: 18, height: 18)
-                                            .colorInvert()
-                                        
-                                        Text("@LillieWeeb")
-                                            .frame(maxWidth: .infinity, alignment: .leading)
-                                    }
-                                    .font(.subheadline)
-                                }
-                                .buttonStyle(.plain)
-                            }
-                            .padding(.leading)
-                        }
-                    }
                 }
                 .frame(minWidth: 0, maxWidth: .infinity)
                 .padding(20)

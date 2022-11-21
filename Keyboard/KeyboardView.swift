@@ -244,7 +244,7 @@ struct kbSwitch: UIViewRepresentable {
         button.sizeToFit()
         button.translatesAutoresizingMaskIntoConstraints = false
         
-        let textColor: UIColor = .white
+        let textColor: UIColor = UIColor(Color.theme.textColor)
         button.tintColor = textColor
         return button
     }

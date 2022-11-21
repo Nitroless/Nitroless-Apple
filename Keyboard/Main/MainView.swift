@@ -73,7 +73,7 @@ struct MainView: View {
             }
         }
         .frame(height: 260)
-        
+        .foregroundColor(Color.theme.textColor)
     }
     
     @ViewBuilder

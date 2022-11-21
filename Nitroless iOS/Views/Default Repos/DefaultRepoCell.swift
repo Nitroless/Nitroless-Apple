@@ -65,12 +65,12 @@ struct DefaultRepoCell: View {
                             if let author = repoData.author {
                                 Text("By \(author)")
                                     .font(.footnote)
-                                    .foregroundColor(.secondary)
+                                    .opacity(0.6)
                             }
                             
                             Text("\(repoData.emotes.count) emote\(repoData.emotes.count == 1 ? "" : "s")")
                                 .font(.caption2)
-                                .foregroundColor(.secondary)
+                                .opacity(0.6)
                         }
                     } else {
                         VStack(alignment: .leading) {

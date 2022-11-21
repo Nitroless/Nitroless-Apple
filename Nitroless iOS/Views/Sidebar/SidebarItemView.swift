@@ -19,7 +19,7 @@ struct SidebarItemView: View {
     var body: some View {
         HStack {
             Rectangle()
-                .fill(.white)
+                .fill(Color.theme.textColor)
                 .frame(width: 3, height: selectedRepo == nil ? 0 : selectedRepo?.repo.url == repo.url ? 32 : 0 )
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .offset(x: -7)

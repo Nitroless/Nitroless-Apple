@@ -19,4 +19,5 @@ struct ColorTheme {
     let appSuccessColor = Color("AppSuccessColor")
     let appDangerColor = Color("AppDangerColor")
     let appWarningColor = Color("AppWarningColor")
+    let textColor = Color("TextColor")
 }

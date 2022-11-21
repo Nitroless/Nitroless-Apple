@@ -47,6 +47,7 @@ struct AddDefaultRepos: View {
             if let defaultRepos = defaultRepos {
                 ForEach(defaultRepos, id: \.self) { url in
                     DefaultRepoCell(url: url)
+                        .foregroundColor(Color.white)
                 }
             } else {
                 ProgressView()
@@ -61,7 +62,7 @@ struct AddDefaultRepos: View {
                     Image(systemName: "xmark.circle")
                         .resizable()
                         .frame(width: 24, height: 24)
-                        .foregroundColor(Color(.white))
+                        .foregroundColor(Color.theme.textColor)
                         .padding(10)
                         .background(Color.theme.appBGColor)
                         .clipShape(Capsule())

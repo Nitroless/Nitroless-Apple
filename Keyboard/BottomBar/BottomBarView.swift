@@ -74,6 +74,7 @@ struct BottomBarView: View {
                 Image(systemName: "delete.left")
                     .resizable()
                     .frame(width: 25, height: 20)
+                    .foregroundColor(Color.theme.textColor)
             }
             .buttonStyle(.plain)
             .padding([.top, .horizontal], 5)

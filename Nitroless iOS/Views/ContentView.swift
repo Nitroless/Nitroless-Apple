@@ -33,6 +33,7 @@ struct ContentView: View {
                         RepoView(toastShown: $toastShown, repo: repoMan.selectedRepo!.repo)
                     }
                 }
+                .foregroundColor(Color.theme.textColor)
                 .navigationBarTitleDisplayMode(.inline)
                 .background(Color.theme.appBGColor)
                 .offset(x: offset)
@@ -183,10 +184,9 @@ struct banner: View {
     var body: some View {
         HStack {
             if cs == .light {
-                Image("banner")
+                Image("bannerDark")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .colorInvert()
             } else {
                 Image("banner")
                     .resizable()
@@ -223,15 +223,9 @@ struct MenuButton: View {
     @ViewBuilder
     func rect() -> some View {
         Rectangle()
+            .fill(Color.theme.textColor)
             .frame(height: 5 / sizeDivide)
             .frame(maxWidth: 40 / sizeDivide)
             .cornerRadius(5 / sizeDivide)
-    }
-}
-
-
-struct test_Previews: PreviewProvider {
-    static var previews: some View {
-        banner()
     }
 }
