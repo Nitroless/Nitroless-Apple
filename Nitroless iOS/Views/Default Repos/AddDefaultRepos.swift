@@ -55,7 +55,7 @@ struct AddDefaultRepos: View {
                 ProgressView()
             }
         }
-        .background(idiom == .pad ? Color.clear : Color.theme.appBGTertiaryColor)
+        .background(idiom == .pad && !UIApplication.shared.isSplitOrSlideOver ? Color.clear : Color.theme.appBGTertiaryColor)
         .safeAreaInset(edge: .top) {
             HStack {
                 Button {

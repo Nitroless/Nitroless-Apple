@@ -30,7 +30,7 @@ struct AboutView: View {
             .cornerRadius(20)
             .overlay(
                 RoundedRectangle(cornerRadius: 20)
-                    .strokeBorder(Color.theme.textColor.opacity(0.2), lineWidth: 1))
+                    .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
             
             VStack {
                 HStack {
@@ -84,7 +84,7 @@ struct AboutView: View {
             .cornerRadius(20)
             .overlay(
                 RoundedRectangle(cornerRadius: 20)
-                    .strokeBorder(Color.theme.textColor.opacity(0.2), lineWidth: 1))
+                    .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
             
             VStack {
                 VStack {
@@ -360,15 +360,15 @@ struct AboutView: View {
                 .cornerRadius(20)
                 .overlay(
                     RoundedRectangle(cornerRadius: 20)
-                        .strokeBorder(Color.theme.textColor.opacity(0.2), lineWidth: 1))
+                        .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
             }
             .padding(.bottom)
         }
         .padding(10)
-        .padding(.trailing, idiom == .pad ? 40 : 0)
-        .padding(.leading, idiom == .pad ? 25 : 0)
+        .padding(.trailing, idiom == .pad && !UIApplication.shared.isSplitOrSlideOver ? 40 : 0)
+        .padding(.leading, idiom == .pad && !UIApplication.shared.isSplitOrSlideOver ? 25 : 0)
         .background(Color.theme.appBGColor)
-        .navigationTitle(idiom == .pad ? "" : "About")
+        .navigationTitle(idiom == .pad && !UIApplication.shared.isSplitOrSlideOver ? "" : "About")
         .toolbarBackground(Color.theme.appBGTertiaryColor, for: .navigationBar)
     }
 }

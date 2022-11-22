@@ -22,7 +22,7 @@ struct HomeView: View {
         }
         .frame(minWidth: 0, maxWidth: .infinity)
         .padding(10)
-        .padding(.trailing, idiom == .pad ? 40 : 0)
-        .padding(.leading, idiom == .pad ? 25 : 0)
+        .padding(.trailing, idiom == .pad && !UIApplication.shared.isSplitOrSlideOver ? 40 : 0)
+        .padding(.leading, idiom == .pad && !UIApplication.shared.isSplitOrSlideOver ? 25 : 0)
     }
 }

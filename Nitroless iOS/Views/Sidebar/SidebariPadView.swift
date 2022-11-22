@@ -125,7 +125,7 @@ struct SidebariPadView: View {
             .cornerRadius(20)
             .overlay(
                 RoundedRectangle(cornerRadius: 20)
-                    .strokeBorder(Color.theme.textColor.opacity(0.2), lineWidth: 1))
+                    .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
             .padding(.leading, 30)
     }
 }

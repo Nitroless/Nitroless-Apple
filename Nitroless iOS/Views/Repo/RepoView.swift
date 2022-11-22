@@ -45,13 +45,13 @@ struct RepoView: View {
                 .cornerRadius(20)
                 .overlay(
                     RoundedRectangle(cornerRadius: 20)
-                        .strokeBorder(Color.theme.textColor.opacity(0.2), lineWidth: 1))
+                        .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
             }
         }
         .frame(minWidth: 0, maxWidth: .infinity)
         .padding(10)
-        .padding(.trailing, idiom == .pad ? 40 : 0)
-        .padding(.leading, idiom == .pad ? 25 : 0)
+        .padding(.trailing, idiom == .pad && !UIApplication.shared.isSplitOrSlideOver ? 40 : 0)
+        .padding(.leading, idiom == .pad && !UIApplication.shared.isSplitOrSlideOver ? 25 : 0)
 //        .searchable(text: $searchText, placement: .navigationBarDrawer, prompt: Text("Search Repository"))
     }
     
@@ -87,7 +87,7 @@ struct RepoView: View {
         .frame(minWidth: 0, maxWidth: .infinity)
         .background(Color.theme.appBGTertiaryColor)
         .clipShape(Capsule())
-        .overlay(Capsule().strokeBorder(Color.theme.textColor.opacity(0.2), lineWidth: 1))
+        .overlay(Capsule().strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
     }
     
     @ViewBuilder
@@ -121,7 +121,7 @@ struct RepoView: View {
         .cornerRadius(20)
         .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .strokeBorder(Color.theme.textColor.opacity(0.2), lineWidth: 1))
+                .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
     }
     
     @ViewBuilder

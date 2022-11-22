@@ -54,7 +54,7 @@ struct HomeChildView: View {
                 .cornerRadius(20)
                 .overlay(
                     RoundedRectangle(cornerRadius: 20)
-                        .strokeBorder(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1)
+                        .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1)
                     )
             }
             
@@ -101,7 +101,7 @@ struct HomeChildView: View {
             .cornerRadius(20)
             .overlay(
                 RoundedRectangle(cornerRadius: 20)
-                    .strokeBorder(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1)
+                    .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1)
                 )
         }
         .padding(.bottom)
