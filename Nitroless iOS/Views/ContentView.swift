@@ -12,6 +12,7 @@ import AlertToast
 
 struct ContentView: View {
     @EnvironmentObject var repoMan: RepoManager
+    @StateObject var headerViewModel: HeaderViewModel = HeaderViewModel()
     @State var urlToAdd: String = ""
     @State var showAddPrompt = false
     @State var urlInvalidError = false
@@ -21,8 +22,95 @@ struct ContentView: View {
     @State var showDeletePrompt = false
     @State private var offset: CGFloat = 0
     @State private var sidebarOpened: Bool = false
+    private var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
+    private var isPortrait : Bool { UIDevice.current.orientation.isPortrait }
     
     var body: some View {
+        if idiom == .pad {
+            ipadOSView()
+        } else {
+            iOSView()
+        }
+    }
+    
+    func toggleShowDefaultReposMenu() {
+        self.showDefaultReposMenu.toggle()
+    }
+    
+    func toggleShowAddPrompt() {
+        self.showAddPrompt.toggle()
+    }
+    
+    func handleUrl(_ url: URL) {
+        var str = url.absoluteString
+        str = str.replacingOccurrences(of: "nitroless://", with: "https://nitroless.github.io/")
+        let comp = URLComponents(string: str)!
+        let path = comp.path.dropFirst()
+        
+        switch path {
+        case "add-repository":
+            guard let urlparam = comp.queryItems?.filter({ item in item.name == "url"}).first else { return }
+            guard let param = urlparam.value else { return }
+            
+            urlToAdd = param
+            showAddPrompt = true
+        default:
+            return;
+        }
+    }
+    
+    func ipadOSView() -> some View {
+        NavigationStack {
+            HStack {
+                SidebariPadView(showAddPrompt: { toggleShowAddPrompt() })
+                VStack {
+                    HeaderiPadView()
+                        .environmentObject(headerViewModel)
+                    ScrollView {
+                        if repoMan.selectedRepo == nil {
+                            if headerViewModel.isAboutActive {
+                                AboutView()
+                            } else {
+                                HomeView(toastShown: $toastShown)
+                            }
+                        } else {
+                            RepoView(toastShown: $toastShown, repo: repoMan.selectedRepo!.repo)
+                        }
+                    }
+                }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.theme.appBGColor)
+        }
+        .background(Color.theme.appBGColor)
+        .alert("Add Repository", isPresented: $showAddPrompt) {
+            TextField("Repository URL", text: $urlToAdd)
+
+            Button("Add", role: .none) {
+                if let url = URL(string: urlToAdd) {
+                    if repoMan.addRepo(repo: url.absoluteString) {} else {
+                        urlInvalidError = true
+                    }
+                } else {
+                    urlInvalidError = true
+                }
+
+                urlToAdd = ""
+            }
+
+            Button("Cancel", role: .cancel) {urlToAdd = ""}
+        } message: {
+            Text("Please enter the URL of a Nitroless Repository")
+        }
+        .alert("Invalid URL", isPresented: $urlInvalidError) {
+            Button("Dismiss", role: .cancel) {}
+        } message: {
+            Text("Please check the URL and try again.")
+        }
+        .onOpenURL(perform: handleUrl)
+    }
+    
+    func iOSView() -> some View {
         NavigationStack {
             ZStack(alignment: .leading) {
                 SidebarView(showDefaultReposMenu: { toggleShowDefaultReposMenu() }, showAddPrompt: { toggleShowAddPrompt() }, closeSidebar: { sidebarOpened = false })
@@ -147,32 +235,6 @@ struct ContentView: View {
         }
         .toast(isPresenting: $toastShown) {
             AlertToast(displayMode: .hud, type: .systemImage("checkmark", Color.theme.appSuccessColor), title: "Copied!", style: AlertToast.AlertStyle.style(backgroundColor: Color.theme.appBGTertiaryColor, titleColor: .white))
-        }
-    }
-    
-    func toggleShowDefaultReposMenu() {
-        self.showDefaultReposMenu.toggle()
-    }
-    
-    func toggleShowAddPrompt() {
-        self.showAddPrompt.toggle()
-    }
-    
-    func handleUrl(_ url: URL) {
-        var str = url.absoluteString
-        str = str.replacingOccurrences(of: "nitroless://", with: "https://nitroless.github.io/")
-        let comp = URLComponents(string: str)!
-        let path = comp.path.dropFirst()
-        
-        switch path {
-        case "add-repository":
-            guard let urlparam = comp.queryItems?.filter({ item in item.name == "url"}).first else { return }
-            guard let param = urlparam.value else { return }
-            
-            urlToAdd = param
-            showAddPrompt = true
-        default:
-            return;
         }
     }
 }

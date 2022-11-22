@@ -15,6 +15,8 @@ struct AddDefaultRepos: View {
     
     @EnvironmentObject var repoMan: RepoManager
     
+    private var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
+    
     var body: some View {
         page
     }
@@ -53,7 +55,7 @@ struct AddDefaultRepos: View {
                 ProgressView()
             }
         }
-        .background(Color.theme.appBGTertiaryColor)
+        .background(idiom == .pad ? Color.clear : Color.theme.appBGTertiaryColor)
         .safeAreaInset(edge: .top) {
             HStack {
                 Button {

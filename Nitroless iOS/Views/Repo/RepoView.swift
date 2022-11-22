@@ -25,6 +25,8 @@ struct RepoView: View {
     @State var urlToDelete: URL? = nil
     @State var showDeletePrompt = false
     
+    private var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -43,12 +45,14 @@ struct RepoView: View {
                 .cornerRadius(20)
                 .overlay(
                     RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
+                        .strokeBorder(Color.theme.textColor.opacity(0.2), lineWidth: 1))
             }
         }
         .frame(minWidth: 0, maxWidth: .infinity)
         .padding(10)
-        .searchable(text: $searchText, placement: .navigationBarDrawer, prompt: Text("Search Repository"))
+        .padding(.trailing, idiom == .pad ? 40 : 0)
+        .padding(.leading, idiom == .pad ? 25 : 0)
+//        .searchable(text: $searchText, placement: .navigationBarDrawer, prompt: Text("Search Repository"))
     }
     
     @ViewBuilder
@@ -83,7 +87,7 @@ struct RepoView: View {
         .frame(minWidth: 0, maxWidth: .infinity)
         .background(Color.theme.appBGTertiaryColor)
         .clipShape(Capsule())
-        .overlay(Capsule().stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
+        .overlay(Capsule().strokeBorder(Color.theme.textColor.opacity(0.2), lineWidth: 1))
     }
     
     @ViewBuilder
@@ -117,7 +121,7 @@ struct RepoView: View {
         .cornerRadius(20)
         .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
+                .strokeBorder(Color.theme.textColor.opacity(0.2), lineWidth: 1))
     }
     
     @ViewBuilder

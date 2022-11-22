@@ -146,7 +146,7 @@ struct ContentView: View {
                         .cornerRadius(20)
                         .overlay(
                             RoundedRectangle(cornerRadius: 20)
-                                .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
+                                .strokeBorder(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
                         .padding(.top)
                         .padding(.trailing, 40)
                         .padding(.leading, 10)
@@ -174,7 +174,7 @@ struct ContentView: View {
                         .cornerRadius(20)
                         .overlay(
                             RoundedRectangle(cornerRadius: 20)
-                                .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
+                                .strokeBorder(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
                         
                         VStack {
                             Text("Nitroless got inactive\nClick to Reactivate")
@@ -186,7 +186,7 @@ struct ContentView: View {
                         .cornerRadius(20)
                         .overlay(
                             RoundedRectangle(cornerRadius: 20)
-                                .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
+                                .strokeBorder(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
                     }
                     .padding(.top)
                     .padding(.trailing, 40)

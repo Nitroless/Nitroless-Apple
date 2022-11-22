@@ -9,6 +9,8 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct AboutView: View {
+    private var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -28,7 +30,7 @@ struct AboutView: View {
             .cornerRadius(20)
             .overlay(
                 RoundedRectangle(cornerRadius: 20)
-                    .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
+                    .strokeBorder(Color.theme.textColor.opacity(0.2), lineWidth: 1))
             
             VStack {
                 HStack {
@@ -82,7 +84,7 @@ struct AboutView: View {
             .cornerRadius(20)
             .overlay(
                 RoundedRectangle(cornerRadius: 20)
-                    .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
+                    .strokeBorder(Color.theme.textColor.opacity(0.2), lineWidth: 1))
             
             VStack {
                 VStack {
@@ -358,13 +360,15 @@ struct AboutView: View {
                 .cornerRadius(20)
                 .overlay(
                     RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
+                        .strokeBorder(Color.theme.textColor.opacity(0.2), lineWidth: 1))
             }
             .padding(.bottom)
         }
-        .padding([.leading, .trailing], 10)
+        .padding(10)
+        .padding(.trailing, idiom == .pad ? 40 : 0)
+        .padding(.leading, idiom == .pad ? 25 : 0)
         .background(Color.theme.appBGColor)
-        .navigationTitle("About")
+        .navigationTitle(idiom == .pad ? "" : "About")
         .toolbarBackground(Color.theme.appBGTertiaryColor, for: .navigationBar)
     }
 }

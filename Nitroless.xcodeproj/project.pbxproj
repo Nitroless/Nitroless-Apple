@@ -48,6 +48,10 @@
 		E619D9D528F3BC36006BD8B4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E619D9D428F3BC36006BD8B4 /* HomeView.swift */; };
 		E62D10A52919821C00678687 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A2A29100E060030EFA3 /* Color.swift */; };
 		E62D10A629198AC200678687 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A2A29100E060030EFA3 /* Color.swift */; };
+		E68F2350292C17B200D67C1E /* SidebariPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68F234F292C17B200D67C1E /* SidebariPadView.swift */; };
+		E68F2353292C3D6700D67C1E /* HeaderiPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68F2352292C3D6700D67C1E /* HeaderiPadView.swift */; };
+		E68F2355292C42C400D67C1E /* HeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68F2354292C42C400D67C1E /* HeaderViewModel.swift */; };
+		E68F2358292C442B00D67C1E /* Hovered.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68F2357292C442B00D67C1E /* Hovered.swift */; };
 		E69E3A2829100D800030EFA3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A2729100D800030EFA3 /* HomeView.swift */; };
 		E69E3A2B29100E060030EFA3 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A2A29100E060030EFA3 /* Color.swift */; };
 		E69E3A30291010B80030EFA3 /* UniSans.otf in Resources */ = {isa = PBXBuildFile; fileRef = E619D9CE28F3BA2D006BD8B4 /* UniSans.otf */; };
@@ -138,6 +142,10 @@
 		E619D9CE28F3BA2D006BD8B4 /* UniSans.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = UniSans.otf; sourceTree = "<group>"; };
 		E619D9CF28F3BA69006BD8B4 /* Nitroless-macOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Nitroless-macOS-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E619D9D428F3BC36006BD8B4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E68F234F292C17B200D67C1E /* SidebariPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebariPadView.swift; sourceTree = "<group>"; };
+		E68F2352292C3D6700D67C1E /* HeaderiPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderiPadView.swift; sourceTree = "<group>"; };
+		E68F2354292C42C400D67C1E /* HeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewModel.swift; sourceTree = "<group>"; };
+		E68F2357292C442B00D67C1E /* Hovered.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hovered.swift; sourceTree = "<group>"; };
 		E69E3A2729100D800030EFA3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E69E3A2A29100E060030EFA3 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		E69E3A39291028420030EFA3 /* FrequentUsedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentUsedView.swift; sourceTree = "<group>"; };
@@ -283,6 +291,7 @@
 		5721D6BF28F1E56400148391 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E68F2351292C3D4700D67C1E /* Header */,
 				E69E3A3B2910284B0030EFA3 /* About */,
 				AA9F089528E58B450098040D /* ContentView.swift */,
 				E69E3A2629100D5F0030EFA3 /* Home */,
@@ -359,6 +368,7 @@
 		AA9F089228E58B450098040D /* Nitroless iOS */ = {
 			isa = PBXGroup;
 			children = (
+				E68F2356292C441800D67C1E /* Models */,
 				AA6250B928E9141500C7030E /* Info.plist */,
 				AA6250B828E911C100C7030E /* Nitroless.entitlements */,
 				AA9F089328E58B450098040D /* NitrolessApp.swift */,
@@ -412,6 +422,23 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		E68F2351292C3D4700D67C1E /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				E68F2352292C3D6700D67C1E /* HeaderiPadView.swift */,
+				E68F2354292C42C400D67C1E /* HeaderViewModel.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		E68F2356292C441800D67C1E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E68F2357292C442B00D67C1E /* Hovered.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		E69E3A2629100D5F0030EFA3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -451,6 +478,7 @@
 			children = (
 				E69E3A3F2910589C0030EFA3 /* SidebarView.swift */,
 				E69E3A442912D05C0030EFA3 /* SidebarItemView.swift */,
+				E68F234F292C17B200D67C1E /* SidebariPadView.swift */,
 			);
 			path = Sidebar;
 			sourceTree = "<group>";
@@ -716,9 +744,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E68F2353292C3D6700D67C1E /* HeaderiPadView.swift in Sources */,
 				E69E3A2829100D800030EFA3 /* HomeView.swift in Sources */,
 				5721D6C228F1E5A000148391 /* AddDefaultRepos.swift in Sources */,
 				E69E3A452912D05C0030EFA3 /* SidebarItemView.swift in Sources */,
+				E68F2350292C17B200D67C1E /* SidebariPadView.swift in Sources */,
+				E68F2355292C42C400D67C1E /* HeaderViewModel.swift in Sources */,
+				E68F2358292C442B00D67C1E /* Hovered.swift in Sources */,
 				E69E3A3D291028590030EFA3 /* AboutView.swift in Sources */,
 				E69E3A2B29100E060030EFA3 /* Color.swift in Sources */,
 				AA67DCAE291CFCDF006C65BD /* KeyboardSim.swift in Sources */,
@@ -1011,7 +1043,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1025,7 +1057,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1048,7 +1080,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1062,7 +1094,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

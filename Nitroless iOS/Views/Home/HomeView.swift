@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var repoMan: RepoManager
+    private var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
     
     @Binding var toastShown: Bool
     
@@ -21,5 +22,7 @@ struct HomeView: View {
         }
         .frame(minWidth: 0, maxWidth: .infinity)
         .padding(10)
+        .padding(.trailing, idiom == .pad ? 40 : 0)
+        .padding(.leading, idiom == .pad ? 25 : 0)
     }
 }

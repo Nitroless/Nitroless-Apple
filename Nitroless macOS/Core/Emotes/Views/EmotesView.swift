@@ -53,7 +53,7 @@ struct EmotesView: View {
                 .padding(20)
                 .background(Color.theme.appBGTertiaryColor.opacity(0.6))
                 .cornerRadius(20)
-                .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
+                .overlay(RoundedRectangle(cornerRadius: 20).strokeBorder(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
                 
                 if viewModel.selectedRepo.favouriteEmotes != nil && !viewModel.selectedRepo.favouriteEmotes!.isEmpty {
                     VStack(alignment: .leading) {
@@ -107,7 +107,7 @@ struct EmotesView: View {
                     .cornerRadius(20)
                     .overlay(
                         RoundedRectangle(cornerRadius: 20)
-                            .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1)
+                            .strokeBorder(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1)
                         )
                 }
                 
@@ -175,7 +175,7 @@ struct EmotesView: View {
                     .cornerRadius(20)
                     .overlay(
                         RoundedRectangle(cornerRadius: 20)
-                            .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1)
+                            .strokeBorder(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1)
                         )
                 }
                 .padding(.bottom)

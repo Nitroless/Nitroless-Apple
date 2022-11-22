@@ -41,7 +41,7 @@ struct FrequentUsedView: View {
         .cornerRadius(20)
         .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .stroke(Color(red: 0.29, green: 0.30, blue: 0.33).opacity(0.4), lineWidth: 1))
+                .strokeBorder(Color.theme.textColor.opacity(0.3), lineWidth: 1))
     }
     
     @ViewBuilder

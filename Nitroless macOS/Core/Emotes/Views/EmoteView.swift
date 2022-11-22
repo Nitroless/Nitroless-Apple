@@ -21,7 +21,7 @@ struct EmoteView: View {
             Button {
                 viewModel.showToast = true
                 pasteboard.clearContents()
-                pasteboard.setString(String("\(url)\(path == "" ? "" : "\(path ?? "")/")\(emote!.name).\(emote!.type)"), forType: NSPasteboard.PasteboardType.string)
+                pasteboard.setString(String("\(url!)\(path == "" ? "" : "\(path ?? "")/")\(emote!.name).\(emote!.type)"), forType: NSPasteboard.PasteboardType.string)
                 viewModel.addToFrequentlyUsedEmotes(frequentEmote: "\(url ?? "")\(path == "" ? "" : "\(path ?? "")/")\(emote!.name).\(emote!.type)")
             } label: {
                 WebImage(url: URL(string: "\(url ?? "")\(path == "" ? "" : "\(path ?? "")/")\(emote!.name).\(emote!.type)"))

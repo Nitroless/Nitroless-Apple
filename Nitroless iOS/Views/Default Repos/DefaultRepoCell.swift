@@ -10,7 +10,6 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct DefaultRepoCell: View {
-    
     @Environment(\.colorScheme) var cs
     @EnvironmentObject var repoMan: RepoManager
     
@@ -117,6 +116,7 @@ struct DefaultRepoCell: View {
         .frame(height: 80)
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .padding(.horizontal)
+        .padding(.bottom, 10)
         .shadow(radius: 4)
         .task {
             let reposUrls: [URL] = repoMan.repos.compactMap { repo in return repo.url }

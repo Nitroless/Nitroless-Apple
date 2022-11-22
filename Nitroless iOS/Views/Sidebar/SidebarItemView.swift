@@ -10,6 +10,7 @@ import SDWebImageSwiftUI
 import SDWebImageWebPCoder
 
 struct SidebarItemView: View {
+    private var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
     var repo: Repo
     var removeRepo: () -> Void
     var selectRepo: () -> Void
@@ -22,7 +23,7 @@ struct SidebarItemView: View {
                 .fill(Color.theme.textColor)
                 .frame(width: 3, height: selectedRepo == nil ? 0 : selectedRepo?.repo.url == repo.url ? 32 : 0 )
                 .clipShape(RoundedRectangle(cornerRadius: 12))
-                .offset(x: -7)
+                .offset(x: idiom == .pad ? -5 : -7)
                 .opacity(selectedRepo == nil ? 0 : selectedRepo?.repo.url == repo.url ? 1 : 0)
             
             Button {
@@ -67,7 +68,7 @@ struct SidebarItemView: View {
                     Text("Cancel")
                 }
             }
-            .offset(x: -8)
+            .offset(x: idiom == .pad ? -6 :-8)
         }
         .animation(.spring(), value: self.selectedRepo != nil && selectedRepo?.repo.url == repo.url)
     }
