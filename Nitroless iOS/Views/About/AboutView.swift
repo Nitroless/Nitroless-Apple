@@ -364,7 +364,8 @@ struct AboutView: View {
             }
             .padding(.bottom)
         }
-        .padding(10)
+        .padding(.horizontal, 10)
+        .padding(.top, idiom == .pad && !UIApplication.shared.isSplitOrSlideOver ? 10 : 0)
         .padding(.trailing, idiom == .pad && !UIApplication.shared.isSplitOrSlideOver ? 40 : 0)
         .padding(.leading, idiom == .pad && !UIApplication.shared.isSplitOrSlideOver ? 25 : 0)
         .background(Color.theme.appBGColor)
