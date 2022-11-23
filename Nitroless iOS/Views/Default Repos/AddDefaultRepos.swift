@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 
 struct AddDefaultRepos: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    
     @Binding var isShown: Bool
     
     @Environment(\.colorScheme) var colorScheme
@@ -55,7 +57,7 @@ struct AddDefaultRepos: View {
                 ProgressView()
             }
         }
-        .background(idiom == .pad && !UIApplication.shared.isSplitOrSlideOver ? Color.clear : Color.theme.appBGTertiaryColor)
+        .background(idiom == .pad && horizontalSizeClass == .regular ? Color.clear : Color.theme.appBGTertiaryColor)
         .safeAreaInset(edge: .top) {
             HStack {
                 Button {

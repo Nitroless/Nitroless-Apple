@@ -13,6 +13,7 @@ import SDWebImageWebPCoder
 import QuickLook
 
 struct RepoView: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @EnvironmentObject var repoMan: RepoManager
     
     @Binding var toastShown: Bool
@@ -50,8 +51,8 @@ struct RepoView: View {
         }
         .frame(minWidth: 0, maxWidth: .infinity)
         .padding(10)
-        .padding(.trailing, idiom == .pad && !UIApplication.shared.isSplitOrSlideOver ? 40 : 0)
-        .padding(.leading, idiom == .pad && !UIApplication.shared.isSplitOrSlideOver ? 25 : 0)
+        .padding(.trailing, idiom == .pad && horizontalSizeClass == .regular ? 40 : 0)
+        .padding(.leading, idiom == .pad && horizontalSizeClass == .regular ? 25 : 0)
 //        .searchable(text: $searchText, placement: .navigationBarDrawer, prompt: Text("Search Repository"))
     }
     

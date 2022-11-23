@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @EnvironmentObject var repoMan: RepoManager
     private var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
     
@@ -22,7 +23,7 @@ struct HomeView: View {
         }
         .frame(minWidth: 0, maxWidth: .infinity)
         .padding(10)
-        .padding(.trailing, idiom == .pad && !UIApplication.shared.isSplitOrSlideOver ? 40 : 0)
-        .padding(.leading, idiom == .pad && !UIApplication.shared.isSplitOrSlideOver ? 25 : 0)
+        .padding(.trailing, idiom == .pad && horizontalSizeClass == .regular ? 40 : 0)
+        .padding(.leading, idiom == .pad && horizontalSizeClass == .regular ? 25 : 0)
     }
 }

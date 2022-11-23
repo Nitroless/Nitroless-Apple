@@ -11,7 +11,7 @@ import SDWebImageWebPCoder
 import AlertToast
 
 struct ContentView: View {
-    
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @EnvironmentObject var repoMan: RepoManager
     @StateObject var headerViewModel: HeaderViewModel = HeaderViewModel()
     @State var urlToAdd: String = ""
@@ -26,9 +26,8 @@ struct ContentView: View {
     private var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
     private var isPortrait : Bool { UIDevice.current.orientation.isPortrait }
     
-    
     var body: some View {
-        if idiom == .pad && !UIApplication.shared.isSplitOrSlideOver {
+        if idiom == .pad && horizontalSizeClass == .regular {
             ipadOSView()
         } else {
             iOSView()

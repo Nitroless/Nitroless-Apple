@@ -10,6 +10,7 @@ import SDWebImageSwiftUI
 
 struct AboutView: View {
     private var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     
     var body: some View {
         ScrollView {
@@ -365,11 +366,11 @@ struct AboutView: View {
             .padding(.bottom)
         }
         .padding(.horizontal, 10)
-        .padding(.top, idiom == .pad && !UIApplication.shared.isSplitOrSlideOver ? 10 : 0)
-        .padding(.trailing, idiom == .pad && !UIApplication.shared.isSplitOrSlideOver ? 40 : 0)
-        .padding(.leading, idiom == .pad && !UIApplication.shared.isSplitOrSlideOver ? 25 : 0)
+        .padding(.top, idiom == .pad && horizontalSizeClass == .regular ? 10 : 0)
+        .padding(.trailing, idiom == .pad && horizontalSizeClass == .regular ? 40 : 0)
+        .padding(.leading, idiom == .pad && horizontalSizeClass == .regular ? 25 : 0)
         .background(Color.theme.appBGColor)
-        .navigationTitle(idiom == .pad && !UIApplication.shared.isSplitOrSlideOver ? "" : "About")
+        .navigationTitle(idiom == .pad && horizontalSizeClass == .regular ? "" : "About")
         .toolbarBackground(Color.theme.appBGTertiaryColor, for: .navigationBar)
     }
 }

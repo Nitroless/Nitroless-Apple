@@ -66,7 +66,6 @@
 		E6A1D17D28FF0940004DDFD4 /* TriangleShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1D17C28FF0940004DDFD4 /* TriangleShape.swift */; };
 		E6ADBB7B28F4634700754936 /* HomeChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADBB7A28F4634700754936 /* HomeChildView.swift */; };
 		E6ADBB7D28F4635E00754936 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ADBB7C28F4635E00754936 /* AboutView.swift */; };
-		E6E1184A292D7B5F00DD9A54 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E11849292D7B5F00DD9A54 /* UIApplication.swift */; };
 		E6E161EB2915A165001E1698 /* BottomBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E161EA2915A165001E1698 /* BottomBarItemView.swift */; };
 		E6E161EE2915A7F9001E1698 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E161ED2915A7F9001E1698 /* MainView.swift */; };
 		E6E161F12915B57D001E1698 /* RepoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E161F02915B57D001E1698 /* RepoView.swift */; };
@@ -159,7 +158,6 @@
 		E6A1D17C28FF0940004DDFD4 /* TriangleShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleShape.swift; sourceTree = "<group>"; };
 		E6ADBB7A28F4634700754936 /* HomeChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeChildView.swift; sourceTree = "<group>"; };
 		E6ADBB7C28F4635E00754936 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
-		E6E11849292D7B5F00DD9A54 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		E6E161EA2915A165001E1698 /* BottomBarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarItemView.swift; sourceTree = "<group>"; };
 		E6E161ED2915A7F9001E1698 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		E6E161F02915B57D001E1698 /* RepoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoView.swift; sourceTree = "<group>"; };
@@ -370,7 +368,6 @@
 		AA9F089228E58B450098040D /* Nitroless iOS */ = {
 			isa = PBXGroup;
 			children = (
-				E6E11848292D7B4E00DD9A54 /* Extension */,
 				E68F2356292C441800D67C1E /* Models */,
 				AA6250B928E9141500C7030E /* Info.plist */,
 				AA6250B828E911C100C7030E /* Nitroless.entitlements */,
@@ -509,14 +506,6 @@
 				E6E161EA2915A165001E1698 /* BottomBarItemView.swift */,
 			);
 			path = BottomBar;
-			sourceTree = "<group>";
-		};
-		E6E11848292D7B4E00DD9A54 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				E6E11849292D7B5F00DD9A54 /* UIApplication.swift */,
-			);
-			path = Extension;
 			sourceTree = "<group>";
 		};
 		E6E161EC2915A7D9001E1698 /* Main */ = {
@@ -763,7 +752,6 @@
 				E68F2355292C42C400D67C1E /* HeaderViewModel.swift in Sources */,
 				E68F2358292C442B00D67C1E /* Hovered.swift in Sources */,
 				E69E3A3D291028590030EFA3 /* AboutView.swift in Sources */,
-				E6E1184A292D7B5F00DD9A54 /* UIApplication.swift in Sources */,
 				E69E3A2B29100E060030EFA3 /* Color.swift in Sources */,
 				AA67DCAE291CFCDF006C65BD /* KeyboardSim.swift in Sources */,
 				5721D6C428F1E78D00148391 /* DefaultRepoCell.swift in Sources */,
