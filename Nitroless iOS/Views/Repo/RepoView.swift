@@ -113,7 +113,7 @@ struct RepoView: View {
             LazyVGrid(columns: columns) {
                 ForEach(0..<repoMan.selectedRepo!.repo.favouriteEmotes!.count, id: \.self) { i in
                     let emote = repoMan.selectedRepo!.repo.favouriteEmotes![i]
-                    EmoteCell(favouriteFlag: true, emoteURL: emote, toastShown: $toastShown, ql: $previewUrl, repoMan: repoMan)
+                    EmoteCell(favouriteFlag: true, repo: repo, emoteURL: emote, toastShown: $toastShown, ql: $previewUrl, repoMan: repoMan)
                 }
             }
         }
@@ -182,7 +182,10 @@ struct EmoteCell: View {
                 }
                 
                 Button(role: .destructive) {
-                    repoMan.removeFromFavourite(repo: repo!.url.absoluteString, emote: emoteURL!.absoluteString)
+                    if repo != nil {
+                        repoMan.removeFromFavourite(repo: repo!.url.absoluteString, emote: emoteURL!.absoluteString)
+                    }
+                    
                 } label: {
                     Label("Unfavourite", systemImage: "star.fill")
                 }
