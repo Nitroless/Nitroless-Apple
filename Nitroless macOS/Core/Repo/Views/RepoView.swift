@@ -40,21 +40,6 @@ struct RepoView: View {
                             }
                         }
                 }
-                HStack {
-                    TriangleShape()
-                        .fill(.black)
-                        .frame(width: 20, height: 15)
-                        .offset(y: 15)
-                        .rotationEffect(.degrees(-90))
-                    
-                    Text("Home")
-                        .padding(10)
-                        .background(RoundedRectangle(cornerRadius: 8).fill(.black))
-                }
-                .opacity(self.hovered.image == "Icon" && self.hovered.hover == true ? 1 : 0)
-                .offset(x: 50)
-                .animation(.spring(), value: self.hovered.hover)
-                .foregroundColor(Color.white)
             }
             .frame(width: 150)
             .padding([.top, .leading, .trailing])
@@ -122,24 +107,7 @@ struct RepoView: View {
                             viewModel.makeRepoActive(url: repo.url)
                             viewModel.selectRepo(selectedRepo: Repo(active: true, url: repo.url, favouriteEmotes: repo.favouriteEmotes, emote: repo.emote))
                         }
-                        
-                        HStack {
-                            TriangleShape()
-                                .fill(.black)
-                                .frame(width: 20, height: 15)
-                                .offset(y: 15)
-                                .rotationEffect(.degrees(-90))
-                            
-                            Text(repo.emote.name.prefix(5))
-                                .padding(10)
-                                .background(RoundedRectangle(cornerRadius: 8).fill(.black))
-                        }
-                        .opacity(self.hovered.image == "\(repo.url)/\(repo.emote.icon)" && self.hovered.hover == true ? 1 : 0)
-                        .offset(x: 50)
-                        .animation(.spring(), value: self.hovered.hover)
-                        .foregroundColor(Color.white)
                     }
-                    
                 }
             }
             .padding(.horizontal)
@@ -191,7 +159,7 @@ struct RepoView: View {
                 handleUrl(url)
             }
         }
-        .frame(width: 64)
+        .offset(x: -60)
     }
     
     func handleUrl(_ url: URL) {

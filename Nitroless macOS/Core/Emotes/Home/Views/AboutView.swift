@@ -20,7 +20,7 @@ struct AboutView: View {
             }
             .font(.title)
             
-            Text("Nitroless is a small project made by students to help people without Nitro be able to use the community's Emotes to be used in discord. Nitroless is entirely community based requiring the community to make repositories where they can insert their own emotes and share them back to the community. The community uses this service by clicking/tapping on the image and it gets copied in their system's clipboard, allowing them to paste the Emote URL in Discord for the people to see.")
+            Text("Nitroless is a small open-sourced project made by students to let those without Nitro use custom emojis on Discord. Nitroless is entirely community driven as users are able to create and host repositories that store static and animated emojis. These repositories can be shared and added across all platforms that Nitroless supports, much like how you join Discord servers. You can start using Nitroless through the app located on your menu bar by clicking on an emoji and pasting in chat. Happy chatting!")
                 .padding(.top, 0.2)
         }
         .frame(minWidth: 0, maxWidth: .infinity)
@@ -32,7 +32,14 @@ struct AboutView: View {
                 .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1)
             )
         
-        VStack {
+        VStack(alignment: .leading) {
+            HStack {
+                Image(systemName: "link")
+                Text("Links")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            .font(.title)
+            
             HStack {
                 Button {
                     delegate.popMenubarView()
@@ -41,14 +48,18 @@ struct AboutView: View {
                     HStack {
                         Image("GithubIcon")
                             .resizable()
-                            .frame(width: 32, height: 32)
+                            .frame(width: 25, height: 25)
                             .colorInvert()
                         Text("Github")
+                            .padding(.leading, 10)
+                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                     }
-                    
                 }
-                .padding(.trailing)
+                .padding(.leading, 20)
                 .buttonStyle(.plain)
+                
+            }
+            HStack {
                 Button {
                     delegate.popMenubarView()
                     NSWorkspace.shared.open(URL(string: "https://nitroless.github.io/")!)
@@ -56,12 +67,35 @@ struct AboutView: View {
                     HStack {
                         Image(systemName: "link")
                             .resizable()
-                            .frame(width: 32, height: 32)
+                            .frame(width: 25, height: 25)
                         Text("Website")
+                            .padding(.leading, 10)
+                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                     }
                 }
-                .padding(.trailing)
+                .padding(.leading, 20)
                 .buttonStyle(.plain)
+            }
+            HStack {
+                Button {
+                    delegate.popMenubarView()
+                    NSWorkspace.shared.open(URL(string: "https://discord.gg/dTPJ88fcm3")!)
+                } label: {
+                    HStack {
+                        Image("DiscordIcon")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 25)
+                            .colorInvert()
+                        Text("Discord")
+                            .padding(.leading, 10)
+                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                    }
+                }
+                .padding(.leading, 20)
+                .buttonStyle(.plain)
+            }
+            HStack {
                 Button {
                     delegate.popMenubarView()
                     NSWorkspace.shared.open(URL(string: "https://twitter.com/nitroless_")!)
@@ -69,13 +103,17 @@ struct AboutView: View {
                     HStack {
                         Image("TwitterIcon")
                             .resizable()
-                            .frame(width: 32, height: 32)
+                            .frame(width: 25, height: 25)
                             .colorInvert()
                         Text("Twitter")
+                            .padding(.leading, 10)
+                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                     }
                 }
+                .padding(.leading, 20)
                 .buttonStyle(.plain)
             }
+
         }
         .frame(minWidth: 0, maxWidth: .infinity)
         .padding(20)
@@ -182,7 +220,7 @@ struct AboutView: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .font(.headline)
                             
-                            Text("macOS and Web Developer")
+                            Text("macOS, iOS, Android and Web Developer")
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             
                             Button {
@@ -368,77 +406,6 @@ struct AboutView: View {
                     }
                 }
                 .padding(.bottom)
-                
-                VStack {
-                    HStack(alignment: .top) {
-                        WebImage(url: URL(string: "https://github.com/LillieH001.png"))
-                            .resizable()
-                            .placeholder {
-                                ProgressView()
-                            }
-                            .frame(width: 64, height: 64)
-                            .clipShape(RoundedRectangle(cornerRadius: 99, style: .continuous))
-                        VStack {
-                            Text("Lillie")
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .font(.headline)
-                            
-                            Text("Windows Developer")
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            
-                            Button {
-                                delegate.popMenubarView()
-                                NSWorkspace.shared.open(URL(string: "https://lillieh001.github.io/")!)
-                            } label: {
-                                HStack {
-                                    Image(systemName: "link")
-                                        .resizable()
-                                        .frame(width: 18, height: 18)
-                                    
-                                    Text("Portfolio")
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                }
-                                .font(.subheadline)
-                            }
-                            .buttonStyle(.plain)
-                            
-                            Button {
-                                delegate.popMenubarView()
-                                NSWorkspace.shared.open(URL(string: "https://github.com/LillieH001/")!)
-                            } label: {
-                                HStack {
-                                    Image("GithubIcon")
-                                        .resizable()
-                                        .frame(width: 18, height: 18)
-                                        .colorInvert()
-                                    
-                                    Text("LillieH001")
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                }
-                                .font(.subheadline)
-                            }
-                            .buttonStyle(.plain)
-                            
-                            Button {
-                                delegate.popMenubarView()
-                                NSWorkspace.shared.open(URL(string: "https://twitter.com/LillieWeeb/")!)
-                            } label: {
-                                HStack {
-                                    Image("TwitterIcon")
-                                        .resizable()
-                                        .frame(width: 18, height: 18)
-                                        .colorInvert()
-                                    
-                                    Text("@LillieWeeb")
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                }
-                                .font(.subheadline)
-                            }
-                            .buttonStyle(.plain)
-                        }
-                        .padding(.leading)
-                    }
-                }
             }
             .frame(minWidth: 0, maxWidth: .infinity)
             .padding(20)
