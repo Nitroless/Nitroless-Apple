@@ -54,6 +54,7 @@ struct EmotesView: View {
                 .background(Color.theme.appBGTertiaryColor.opacity(0.6))
                 .cornerRadius(20)
                 .overlay(RoundedRectangle(cornerRadius: 20).strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
+                .shadow(radius: 10, x: -2, y: 7)
                 
                 if viewModel.selectedRepo.favouriteEmotes != nil && !viewModel.selectedRepo.favouriteEmotes!.isEmpty {
                     VStack(alignment: .leading) {

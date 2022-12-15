@@ -48,7 +48,7 @@ struct DefaultRepoCell: View {
                         WebImage(url: imgurl)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .clipShape(RoundedRectangle(cornerRadius: 15))
+                            .clipShape(Capsule())
                             .padding(10)
                     } else {
                         Image(systemName: "questionmark.app.dashed")
@@ -112,9 +112,10 @@ struct DefaultRepoCell: View {
                 .frame(height: 80)
             }
         }
+        .padding(.horizontal, 5)
         .frame(maxWidth: .infinity)
         .frame(height: 80)
-        .clipShape(RoundedRectangle(cornerRadius: 20))
+        .clipShape(Capsule())
         .padding(.horizontal)
         .padding(.bottom, 10)
         .shadow(radius: 4)

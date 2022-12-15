@@ -47,6 +47,10 @@ struct RepoView: View {
                 .overlay(
                     RoundedRectangle(cornerRadius: 20)
                         .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
+                .padding(.top, 10)
+                .padding(.bottom, 30)
+                .padding(.horizontal, 15)
+                .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
             }
         }
         .frame(minWidth: 0, maxWidth: .infinity)
@@ -70,9 +74,11 @@ struct RepoView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(maxWidth: 60)
                     .clipShape(Circle())
+                
                 VStack(alignment: .leading) {
                     Text(repo.repoData!.name)
-                        .font(.custom("Uni Sans", size: 24))
+                        .font(.headline)
+                    
                     if let author = repo.repoData!.author {
                         Text("By \(author)")
                             .font(.footnote)
@@ -81,6 +87,7 @@ struct RepoView: View {
                 }
                 Spacer()
                 Text("\(repo.repoData!.emotes.count) emotes")
+                    .font(.footnote)
                     .foregroundColor(.secondary)
             }
         }
@@ -89,6 +96,9 @@ struct RepoView: View {
         .background(Color.theme.appBGTertiaryColor)
         .clipShape(Capsule())
         .overlay(Capsule().strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
+        .padding(.top, 10)
+        .padding(.horizontal, 15)
+        .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
     }
     
     @ViewBuilder
@@ -123,6 +133,9 @@ struct RepoView: View {
         .overlay(
             RoundedRectangle(cornerRadius: 20)
                 .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
+        .padding(.top, 10)
+        .padding(.horizontal, 15)
+        .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
     }
     
     @ViewBuilder

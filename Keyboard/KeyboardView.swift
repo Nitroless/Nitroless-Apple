@@ -146,6 +146,7 @@ struct AskForAccess: View {
                     .overlay(
                         RoundedRectangle(cornerRadius: 20)
                             .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
+                    .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
                     
                     Button {
                         toSecondPage()
@@ -180,6 +181,7 @@ struct AskForAccess: View {
                     .overlay(
                         RoundedRectangle(cornerRadius: 20)
                             .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
+                    .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
                     
                     Button {
                         toFirstPage()

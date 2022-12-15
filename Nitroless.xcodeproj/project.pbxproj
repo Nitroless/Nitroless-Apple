@@ -48,6 +48,7 @@
 		E619D9D528F3BC36006BD8B4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E619D9D428F3BC36006BD8B4 /* HomeView.swift */; };
 		E62D10A52919821C00678687 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A2A29100E060030EFA3 /* Color.swift */; };
 		E62D10A629198AC200678687 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A2A29100E060030EFA3 /* Color.swift */; };
+		E65775AE294AC0B0004ACEEB /* KeyboardSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65775AD294AC0B0004ACEEB /* KeyboardSettingsView.swift */; };
 		E68F2350292C17B200D67C1E /* SidebariPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68F234F292C17B200D67C1E /* SidebariPadView.swift */; };
 		E68F2353292C3D6700D67C1E /* HeaderiPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68F2352292C3D6700D67C1E /* HeaderiPadView.swift */; };
 		E68F2355292C42C400D67C1E /* HeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68F2354292C42C400D67C1E /* HeaderViewModel.swift */; };
@@ -142,6 +143,7 @@
 		E619D9CE28F3BA2D006BD8B4 /* UniSans.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = UniSans.otf; sourceTree = "<group>"; };
 		E619D9CF28F3BA69006BD8B4 /* Nitroless-macOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Nitroless-macOS-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E619D9D428F3BC36006BD8B4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E65775AD294AC0B0004ACEEB /* KeyboardSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSettingsView.swift; sourceTree = "<group>"; };
 		E68F234F292C17B200D67C1E /* SidebariPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebariPadView.swift; sourceTree = "<group>"; };
 		E68F2352292C3D6700D67C1E /* HeaderiPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderiPadView.swift; sourceTree = "<group>"; };
 		E68F2354292C42C400D67C1E /* HeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewModel.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 		5721D6BF28F1E56400148391 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E65775AC294AC08F004ACEEB /* Keyboard Settings */,
 				E68F2351292C3D4700D67C1E /* Header */,
 				E69E3A3B2910284B0030EFA3 /* About */,
 				AA9F089528E58B450098040D /* ContentView.swift */,
@@ -420,6 +423,14 @@
 				E6ADBB7C28F4635E00754936 /* AboutView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E65775AC294AC08F004ACEEB /* Keyboard Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E65775AD294AC0B0004ACEEB /* KeyboardSettingsView.swift */,
+			);
+			path = "Keyboard Settings";
 			sourceTree = "<group>";
 		};
 		E68F2351292C3D4700D67C1E /* Header */ = {
@@ -754,6 +765,7 @@
 				E69E3A3D291028590030EFA3 /* AboutView.swift in Sources */,
 				E69E3A2B29100E060030EFA3 /* Color.swift in Sources */,
 				AA67DCAE291CFCDF006C65BD /* KeyboardSim.swift in Sources */,
+				E65775AE294AC0B0004ACEEB /* KeyboardSettingsView.swift in Sources */,
 				5721D6C428F1E78D00148391 /* DefaultRepoCell.swift in Sources */,
 				AA9F089628E58B450098040D /* ContentView.swift in Sources */,
 				E69E3A402910589C0030EFA3 /* SidebarView.swift in Sources */,

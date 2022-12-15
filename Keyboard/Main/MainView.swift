@@ -42,6 +42,7 @@ struct MainView: View {
                         RoundedRectangle(cornerRadius: 20)
                             .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
                     .padding([.top, .horizontal], 10)
+                    .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
                 }
                 
                 VStack {
@@ -69,7 +70,9 @@ struct MainView: View {
                 .overlay(
                     RoundedRectangle(cornerRadius: 20)
                         .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
-                .padding(10)
+                .padding([.top, .horizontal], 10)
+                .padding(.bottom, 20)
+                .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
             }
         }
         .frame(height: 260)

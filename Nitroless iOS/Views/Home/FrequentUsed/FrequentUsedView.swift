@@ -33,7 +33,7 @@ struct FrequentUsedView: View {
                 Text("Start using Nitroless to show your frequently used emotes here.")
                     .frame(maxWidth: .infinity)
             } else {
-                main.quickLookPreview($previewUrl)
+                main.quickLookPreview($previewUrl).padding(.top, 20)
             }
         }
         .padding(20)
@@ -42,6 +42,9 @@ struct FrequentUsedView: View {
         .overlay(
             RoundedRectangle(cornerRadius: 20)
                 .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
+        .padding(.top, 10)
+        .padding(.horizontal, 15)
+        .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
     }
     
     @ViewBuilder

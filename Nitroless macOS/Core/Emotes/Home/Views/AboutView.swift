@@ -20,7 +20,7 @@ struct AboutView: View {
             }
             .font(.title)
             
-            Text("Nitroless is a small open-sourced project made by students to let those without Nitro use custom emojis on Discord. Nitroless is entirely community driven as users are able to create and host repositories that store static and animated emojis. These repositories can be shared and added across all platforms that Nitroless supports, much like how you join Discord servers. You can start using Nitroless through the app located on your menu bar by clicking on an emoji and pasting in chat. Happy chatting!")
+            Text("Nitroless is a small open-sourced project made by students to let those without Nitro use custom emojis on Discord. Nitroless is entirely community driven as users are able to create and host repositories that store static and animated emojis. These repositories can be shared and added across all platforms that Nitroless supports, much like how you join Discord servers. You can start using Nitroless either through the app by tapping on an emoji and pasting in chat, or through the keyboard for a seamless experience on Discord. Happy chatting!")
                 .padding(.top, 0.2)
         }
         .frame(minWidth: 0, maxWidth: .infinity)
@@ -47,9 +47,10 @@ struct AboutView: View {
                 } label: {
                     HStack {
                         Image("GithubIcon")
+                            .renderingMode(.template)
                             .resizable()
                             .frame(width: 25, height: 25)
-                            .colorInvert()
+                            .foregroundColor(Color.theme.textColor)
                         Text("Github")
                             .padding(.leading, 10)
                             .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
@@ -83,10 +84,10 @@ struct AboutView: View {
                 } label: {
                     HStack {
                         Image("DiscordIcon")
+                            .renderingMode(.template)
                             .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 25)
-                            .colorInvert()
+                            .frame(width: 25, height: 25)
+                            .foregroundColor(Color.theme.textColor)
                         Text("Discord")
                             .padding(.leading, 10)
                             .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
@@ -102,9 +103,10 @@ struct AboutView: View {
                 } label: {
                     HStack {
                         Image("TwitterIcon")
+                            .renderingMode(.template)
                             .resizable()
                             .frame(width: 25, height: 25)
-                            .colorInvert()
+                            .foregroundColor(Color.theme.textColor)
                         Text("Twitter")
                             .padding(.leading, 10)
                             .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)

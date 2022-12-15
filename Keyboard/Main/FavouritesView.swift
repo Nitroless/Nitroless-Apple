@@ -65,5 +65,6 @@ struct FavouritesView: View {
             RoundedRectangle(cornerRadius: 20)
                 .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
         .padding([.top, .horizontal], 10)
+        .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
     }
 }

@@ -164,23 +164,33 @@ struct ContentView: View {
                             
                             banner()
                                 .padding(.vertical, 5)
-                                .offset(x: repoMan.selectedRepo == nil ? 2 : 19)
+                                .offset(x: repoMan.selectedRepo == nil ? 4 : 6)
                             
                             Spacer()
                             
                             if repoMan.selectedRepo == nil {
-                                NavigationLink {
-                                    AboutView()
-                                } label: {
-                                    Image(systemName: "info.circle")
-                                        .foregroundColor(Color.theme.appPrimaryColor)
+                                HStack {
+                                    NavigationLink {
+                                        AboutView()
+                                    } label: {
+                                        Image(systemName: "info.circle.fill")
+                                            .foregroundColor(Color.theme.textColor)
+                                    }
+                                    .buttonStyle(.plain)
+                                    NavigationLink {
+                                        KeyboardSettingsView()
+                                    } label: {
+                                        Image(systemName: "gearshape.fill")
+                                            .foregroundColor(Color.theme.textColor)
+                                    }
+                                    .buttonStyle(.plain)
                                 }
-                                .buttonStyle(.plain)
+                                
                             } else {
                                 HStack {
                                     ShareLink(item: repoMan.selectedRepo!.repo.url, subject: Text(repoMan.selectedRepo!.repo.repoData!.name), message: Text("Check out this Awesome Repo")) {
-                                        Image(systemName: "square.and.arrow.up.circle")
-                                            .foregroundColor(Color.theme.appPrimaryColor)
+                                        Image(systemName: "square.and.arrow.up.fill")
+                                            .foregroundColor(Color.theme.textColor)
                                     }
                                     .buttonStyle(.plain)
                                     
@@ -188,8 +198,8 @@ struct ContentView: View {
                                         urlToDelete = repoMan.selectedRepo!.repo.url
                                         showDeletePrompt = true
                                     } label: {
-                                        Image(systemName: "trash.circle")
-                                            .foregroundColor(Color.theme.appDangerColor)
+                                        Image(systemName: "trash.fill")
+                                            .foregroundColor(Color.theme.textColor)
                                     }
                                     .buttonStyle(.plain)
                                 }
