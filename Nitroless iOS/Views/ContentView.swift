@@ -69,8 +69,10 @@ struct ContentView: View {
                         .environmentObject(headerViewModel)
                     ScrollView {
                         if repoMan.selectedRepo == nil {
-                            if headerViewModel.isAboutActive {
+                            if headerViewModel.isAboutActive && !headerViewModel.isKeyboardSettingsActive {
                                 AboutView()
+                            } else if !headerViewModel.isAboutActive && headerViewModel.isKeyboardSettingsActive {
+                                KeyboardSettingsView()
                             } else {
                                 HomeView(toastShown: $toastShown)
                             }

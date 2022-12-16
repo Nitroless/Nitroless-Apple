@@ -25,16 +25,17 @@ struct HeaderiPadView: View {
                 HStack {
                     Button {
                         viewModel.isAboutActive = false
+                        viewModel.isKeyboardSettingsActive = false
                     } label: {
                         VStack {
                             Text("Home")
                         }
                         .frame(width: 100)
-                        .foregroundColor((viewModel.hovered.image == "Home" && viewModel.hovered.hover == true) || viewModel.isAboutActive == false ? Color.white : Color.theme.textColor)
+                        .foregroundColor((viewModel.hovered.image == "Home" && viewModel.hovered.hover == true) || viewModel.isAboutActive == false && viewModel.isKeyboardSettingsActive == false ? Color.white : Color.theme.textColor)
                         .padding(10)
-                        .background((viewModel.hovered.image == "Home" && viewModel.hovered.hover == true) || viewModel.isAboutActive == false ? Color.theme.appPrimaryColor : Color.theme.appBGColor)
+                        .background((viewModel.hovered.image == "Home" && viewModel.hovered.hover == true) || viewModel.isAboutActive == false && viewModel.isKeyboardSettingsActive == false ? Color.theme.appPrimaryColor : Color.theme.appBGColor)
                         .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-                        .animation(.spring(), value: viewModel.hovered.hover && viewModel.isAboutActive == false)
+                        .animation(.spring(), value: viewModel.hovered.hover && viewModel.isAboutActive == false && viewModel.isKeyboardSettingsActive == false)
                         .shadow(radius: 5)
                     }
                     .buttonStyle(.plain)
@@ -44,14 +45,15 @@ struct HeaderiPadView: View {
                     
                     Button {
                         viewModel.isAboutActive = true
+                        viewModel.isKeyboardSettingsActive = false
                     } label: {
                         VStack {
                             Text("About")
                         }
                         .frame(width: 100)
-                        .foregroundColor((viewModel.hovered.image == "About" && viewModel.hovered.hover == true) || viewModel.isAboutActive == true ? Color.white : Color.theme.textColor)
+                        .foregroundColor((viewModel.hovered.image == "About" && viewModel.hovered.hover == true) || viewModel.isAboutActive == true && viewModel.isKeyboardSettingsActive == false ? Color.white : Color.theme.textColor)
                         .padding(10)
-                        .background((viewModel.hovered.image == "About" && viewModel.hovered.hover == true) || viewModel.isAboutActive == true ? Color.theme.appPrimaryColor : Color.theme.appBGColor)
+                        .background((viewModel.hovered.image == "About" && viewModel.hovered.hover == true) || viewModel.isAboutActive == true && viewModel.isKeyboardSettingsActive == false ? Color.theme.appPrimaryColor : Color.theme.appBGColor)
                         .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
                         .animation(.spring(), value: viewModel.hovered.hover && viewModel.isAboutActive == false)
                         .shadow(radius: 5)
@@ -59,6 +61,26 @@ struct HeaderiPadView: View {
                     .buttonStyle(.plain)
                     .onHover { isHovered in
                         viewModel.hovered = Hovered(image: "About", hover: isHovered)
+                    }
+                    
+                    Button {
+                        viewModel.isAboutActive = false
+                        viewModel.isKeyboardSettingsActive = true
+                    } label: {
+                        VStack {
+                            Text("Settings")
+                        }
+                        .frame(width: 100)
+                        .foregroundColor((viewModel.hovered.image == "Settings" && viewModel.hovered.hover == true) || viewModel.isAboutActive == false && viewModel.isKeyboardSettingsActive == true ? Color.white : Color.theme.textColor)
+                        .padding(10)
+                        .background((viewModel.hovered.image == "Settings" && viewModel.hovered.hover == true) || viewModel.isAboutActive == false && viewModel.isKeyboardSettingsActive == true ? Color.theme.appPrimaryColor : Color.theme.appBGColor)
+                        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                        .animation(.spring(), value: viewModel.hovered.hover && viewModel.isAboutActive == false)
+                        .shadow(radius: 5)
+                    }
+                    .buttonStyle(.plain)
+                    .onHover { isHovered in
+                        viewModel.hovered = Hovered(image: "Settings", hover: isHovered)
                     }
                 }
             } else {

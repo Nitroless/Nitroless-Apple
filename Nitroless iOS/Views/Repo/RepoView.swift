@@ -57,7 +57,7 @@ struct RepoView: View {
         .padding(10)
         .padding(.trailing, idiom == .pad && horizontalSizeClass == .regular ? 40 : 0)
         .padding(.leading, idiom == .pad && horizontalSizeClass == .regular ? 25 : 0)
-        .searchable(text: $searchText, placement: .navigationBarDrawer, prompt: Text("Search Repository"))
+//        .searchable(text: $searchText, placement: .navigationBarDrawer, prompt: Text("Search Repository"))
     }
     
     @ViewBuilder

@@ -9,5 +9,6 @@ import Foundation
 
 class HeaderViewModel: ObservableObject {
     @Published var isAboutActive = false
+    @Published var isKeyboardSettingsActive = false
     @Published var hovered = Hovered(image: "", hover: false)
 }
