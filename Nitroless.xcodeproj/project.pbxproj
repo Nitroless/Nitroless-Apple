@@ -49,6 +49,7 @@
 		E62D10A52919821C00678687 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A2A29100E060030EFA3 /* Color.swift */; };
 		E62D10A629198AC200678687 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A2A29100E060030EFA3 /* Color.swift */; };
 		E65775AE294AC0B0004ACEEB /* KeyboardSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65775AD294AC0B0004ACEEB /* KeyboardSettingsView.swift */; };
+		E6861ED0294D1743005F6745 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6861ECF294D1743005F6745 /* Binding.swift */; };
 		E68F2350292C17B200D67C1E /* SidebariPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68F234F292C17B200D67C1E /* SidebariPadView.swift */; };
 		E68F2353292C3D6700D67C1E /* HeaderiPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68F2352292C3D6700D67C1E /* HeaderiPadView.swift */; };
 		E68F2355292C42C400D67C1E /* HeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68F2354292C42C400D67C1E /* HeaderViewModel.swift */; };
@@ -144,6 +145,7 @@
 		E619D9CF28F3BA69006BD8B4 /* Nitroless-macOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Nitroless-macOS-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E619D9D428F3BC36006BD8B4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E65775AD294AC0B0004ACEEB /* KeyboardSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSettingsView.swift; sourceTree = "<group>"; };
+		E6861ECF294D1743005F6745 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
 		E68F234F292C17B200D67C1E /* SidebariPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebariPadView.swift; sourceTree = "<group>"; };
 		E68F2352292C3D6700D67C1E /* HeaderiPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderiPadView.swift; sourceTree = "<group>"; };
 		E68F2354292C42C400D67C1E /* HeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewModel.swift; sourceTree = "<group>"; };
@@ -371,6 +373,7 @@
 		AA9F089228E58B450098040D /* Nitroless iOS */ = {
 			isa = PBXGroup;
 			children = (
+				E6861ECE294D172F005F6745 /* Extension */,
 				E68F2356292C441800D67C1E /* Models */,
 				AA6250B928E9141500C7030E /* Info.plist */,
 				AA6250B828E911C100C7030E /* Nitroless.entitlements */,
@@ -431,6 +434,14 @@
 				E65775AD294AC0B0004ACEEB /* KeyboardSettingsView.swift */,
 			);
 			path = "Keyboard Settings";
+			sourceTree = "<group>";
+		};
+		E6861ECE294D172F005F6745 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E6861ECF294D1743005F6745 /* Binding.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		E68F2351292C3D4700D67C1E /* Header */ = {
@@ -765,6 +776,7 @@
 				E69E3A3D291028590030EFA3 /* AboutView.swift in Sources */,
 				E69E3A2B29100E060030EFA3 /* Color.swift in Sources */,
 				AA67DCAE291CFCDF006C65BD /* KeyboardSim.swift in Sources */,
+				E6861ED0294D1743005F6745 /* Binding.swift in Sources */,
 				E65775AE294AC0B0004ACEEB /* KeyboardSettingsView.swift in Sources */,
 				5721D6C428F1E78D00148391 /* DefaultRepoCell.swift in Sources */,
 				AA9F089628E58B450098040D /* ContentView.swift in Sources */,

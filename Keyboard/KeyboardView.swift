@@ -19,20 +19,57 @@ struct KeyboardView: View {
     
     @StateObject var repoMan: RepoManager = RepoManager()
     
+    @AppStorage("darkTheme", store: UserDefaults(suiteName: "group.llsc12.Nitroless")) private var darkTheme = false
+    @AppStorage("systemTheme", store: UserDefaults(suiteName: "group.llsc12.Nitroless")) private var systemTheme = true
+    
     var body: some View {
-        VStack {
-            if vc.hasFullAccess {
-                if repoMan.hasRepositories() {
-                    kb
+        if systemTheme {
+            VStack {
+                if vc.hasFullAccess {
+                    if repoMan.hasRepositories() {
+                        kb
+                    } else {
+                        AddReposPrompt(vc: vc)
+                    }
                 } else {
-                    AddReposPrompt(vc: vc)
+                    AskForAccess(vc: vc)
                 }
+            }
+            .frame(maxWidth: .infinity, maxHeight: 360)
+            .background(Color.theme.appBGColor)
+        } else {
+            if darkTheme {
+                VStack {
+                    if vc.hasFullAccess {
+                        if repoMan.hasRepositories() {
+                            kb
+                        } else {
+                            AddReposPrompt(vc: vc)
+                        }
+                    } else {
+                        AskForAccess(vc: vc)
+                    }
+                }
+                .frame(maxWidth: .infinity, maxHeight: 360)
+                .background(Color.theme.appBGColor)
+                .colorScheme(.dark)
             } else {
-                AskForAccess(vc: vc)
+                VStack {
+                    if vc.hasFullAccess {
+                        if repoMan.hasRepositories() {
+                            kb
+                        } else {
+                            AddReposPrompt(vc: vc)
+                        }
+                    } else {
+                        AskForAccess(vc: vc)
+                    }
+                }
+                .frame(maxWidth: .infinity, maxHeight: 360)
+                .background(Color.theme.appBGColor)
+                .colorScheme(.light)
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: 360)
-        .background(Color.theme.appBGColor)
     }
     
     @ViewBuilder

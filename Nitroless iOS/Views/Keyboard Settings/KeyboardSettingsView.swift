@@ -11,12 +11,11 @@ struct KeyboardSettingsView: View {
     private var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     
-    @State private var hideFavouriteEmotes = false
-    @State private var hideFrequentlyUsedEmotes = false
-    @State private var hideRepoDrawer = false
-    @State private var lightTheme = true
-    @State private var darkTheme = false
-    @State private var systemTheme = true
+    @AppStorage("hideFavouriteEmotes", store: UserDefaults(suiteName: "group.llsc12.Nitroless")) private var hideFavouriteEmotes = false
+    @AppStorage("hideFrequentlyUsedEmotes", store: UserDefaults(suiteName: "group.llsc12.Nitroless")) private var hideFrequentlyUsedEmotes = false
+    @AppStorage("hideRepoDrawer", store: UserDefaults(suiteName: "group.llsc12.Nitroless")) private var hideRepoDrawer = false
+    @AppStorage("darkTheme", store: UserDefaults(suiteName: "group.llsc12.Nitroless")) private var darkTheme = false
+    @AppStorage("systemTheme", store: UserDefaults(suiteName: "group.llsc12.Nitroless")) private var systemTheme = true
     @State private var testKeyboard = ""
     
     var body: some View {
@@ -88,6 +87,20 @@ struct KeyboardSettingsView: View {
             .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
             
             VStack {
+                TextField("Test Keyboard", text: $testKeyboard)
+            }
+            .frame(minWidth: 0, maxWidth: .infinity)
+            .padding(20)
+            .background(Color.theme.appBGSecondaryColor)
+            .cornerRadius(20)
+            .overlay(
+                RoundedRectangle(cornerRadius: 20)
+                    .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
+            .padding(.top, 10)
+            .padding(.horizontal, 15)
+            .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
+            
+            VStack {
                 HStack {
                     Image(systemName: "gearshape.fill")
                     Text("Hide")
@@ -120,7 +133,7 @@ struct KeyboardSettingsView: View {
                 }
                 .font(.headline)
                 if !systemTheme {
-                    Toggle("Use Light Theme", isOn: $lightTheme)
+                    Toggle("Use Light Theme", isOn: $darkTheme.not)
                         .toggleStyle(SwitchToggleStyle(tint: Color.theme.appPrimaryColor))
                     Toggle("Use Dark Theme", isOn: $darkTheme)
                         .toggleStyle(SwitchToggleStyle(tint: Color.theme.appPrimaryColor))
@@ -137,20 +150,7 @@ struct KeyboardSettingsView: View {
                     .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
             .padding(.top, 10)
             .padding(.horizontal, 15)
-            .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
-            
-            VStack {
-                TextField("Test Keyboard", text: $testKeyboard)
-            }
-            .frame(minWidth: 0, maxWidth: .infinity)
-            .padding(20)
-            .background(Color.theme.appBGSecondaryColor)
-            .cornerRadius(20)
-            .overlay(
-                RoundedRectangle(cornerRadius: 20)
-                    .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
-            .padding(.top, 10)
-            .padding(.horizontal, 15)
+            .padding(.bottom, 30)
             .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
         }
         .padding(.horizontal, 10)

@@ -11,6 +11,7 @@ struct BottomBarView: View {
     @EnvironmentObject var repoMan: RepoManager
     @EnvironmentObject var kbv: KeyboardViewController
     var showGlobe: Bool
+    @AppStorage("hideRepoDrawer", store: UserDefaults(suiteName: "group.llsc12.Nitroless")) private var hideRepoDrawer = false
     
     var body: some View {
         HStack {
@@ -44,20 +45,24 @@ struct BottomBarView: View {
                 .frame(height: 40)
                 .offset(y: 4)
         
-            HStack {
-                if repoMan.repos.isEmpty {
-                    ProgressView()
-                } else {
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        LazyHStack {
-                            ForEach(repoMan.repos, id: \.url) { repo in
-                                if repo.repoData != nil {
-                                    BottomBarItemView(repo: repo, selectRepo: { repoMan.selectRepo(selectedRepo: SelectedRepo(active: true, repo: repo))}, selectedRepo: repoMan.selectedRepo)
+            if !hideRepoDrawer {
+                HStack {
+                    if repoMan.repos.isEmpty {
+                        ProgressView()
+                    } else {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            LazyHStack {
+                                ForEach(repoMan.repos, id: \.url) { repo in
+                                    if repo.repoData != nil {
+                                        BottomBarItemView(repo: repo, selectRepo: { repoMan.selectRepo(selectedRepo: SelectedRepo(active: true, repo: repo))}, selectedRepo: repoMan.selectedRepo)
+                                    }
                                 }
                             }
                         }
                     }
                 }
+            } else {
+                Rectangle().fill(Color.clear)
             }
             
             Divider()
