@@ -22,7 +22,7 @@ struct AboutView: View {
                 }
                 .font(.headline)
                 
-                Text("Nitroless is a small project made by students to help people without Nitro be able to use the community's Emotes to be used in discord. Nitroless is entirely community based requiring the community to make repositories where they can insert their own emotes and share them back to the community. The community uses this service by clicking/tapping on the image and it gets copied in their system's clipboard, allowing them to paste the Emote URL in Discord for the people to see.")
+                Text("Nitroless is a small open-sourced project made by students to let those without Nitro use custom emojis on Discord. Nitroless is entirely community driven as users are able to create and host repositories that store static and animated emojis. These repositories can be shared and added across all platforms that Nitroless supports, much like how you join Discord servers. You can start using Nitroless either through the app by tapping on an emoji and pasting in chat, or through the keyboard for a seamless experience on Discord. Happy chatting!")
                     .padding(.top, 0.2)
             }
             .frame(minWidth: 0, maxWidth: .infinity)
