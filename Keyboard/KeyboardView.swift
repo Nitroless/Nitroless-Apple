@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import SDWebImageSwiftUI
+import AlertToast
 
 struct KeyboardView: View {
     var vc: KeyboardViewController
@@ -18,6 +19,7 @@ struct KeyboardView: View {
     }
     
     @StateObject var repoMan: RepoManager = RepoManager()
+    @State var toastShown = false
     
     @AppStorage("darkTheme", store: UserDefaults(suiteName: "group.llsc12.Nitroless")) private var darkTheme = false
     @AppStorage("systemTheme", store: UserDefaults(suiteName: "group.llsc12.Nitroless")) private var systemTheme = true
@@ -37,6 +39,9 @@ struct KeyboardView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: 360)
             .background(Color.theme.appBGColor)
+            .toast(isPresenting: $toastShown, duration: 0.4, tapToDismiss: true) {
+                AlertToast(type: .systemImage("checkmark", Color.theme.appSuccessColor), title: "Copied!", style: AlertToast.AlertStyle.style(backgroundColor: Color.theme.appBGTertiaryColor, titleColor: .white))
+            }
         } else {
             if darkTheme {
                 VStack {
@@ -76,9 +81,9 @@ struct KeyboardView: View {
     var kb: some View {
         VStack {
             if repoMan.selectedRepo == nil {
-                MainView()
+                MainView(toastShown: $toastShown)
             } else {
-                RepoView()
+                RepoView(toastShown: $toastShown)
             }
             BottomBarView(showGlobe: showGlobe)
         }

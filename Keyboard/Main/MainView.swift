@@ -14,11 +14,13 @@ struct MainView: View {
     
     @AppStorage("hideFavouriteEmotes", store: UserDefaults(suiteName: "group.llsc12.Nitroless")) private var hideFavouriteEmotes = false
     @AppStorage("hideFrequentlyUsedEmotes", store: UserDefaults(suiteName: "group.llsc12.Nitroless")) private var hideFrequentlyUsedEmotes = false
+    @AppStorage("useEmotesAsStickers", store: UserDefaults(suiteName: "group.llsc12.Nitroless")) private var useEmotesAsStickers = false
     
     let column = [
         GridItem(.adaptive(minimum: 45))
     ]
     
+    @Binding var toastShown: Bool
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -86,6 +88,7 @@ struct MainView: View {
         .foregroundColor(Color.theme.textColor)
     }
     
+    
     @ViewBuilder
     var favouritesGrid: some View {
         LazyVGrid(columns: column) {
@@ -95,7 +98,28 @@ struct MainView: View {
                 let emote = emotes[i]
                 
                 Button {
-                    kbv.textDocumentProxy.insertText(emote.absoluteString)
+                    if useEmotesAsStickers {
+                        let imageUrlString = emote.absoluteString
+                        let imageCache: SDImageCache = SDImageCache.shared
+                        let filepath = URL(filePath: imageCache.diskCache.cachePath(forKey: imageUrlString)!)
+                        if let data = try? Data(contentsOf: filepath) {
+                            if imageUrlString.suffix(3) == "gif" {
+                                DispatchQueue.main.async {
+                                    UIPasteboard.general.setData(data, forPasteboardType: "com.compuserve.gif")
+                                    toastShown = true
+                                }
+                            } else {
+                                if let image = UIImage(data: data) {
+                                    DispatchQueue.main.async {
+                                        UIPasteboard.general.image = image
+                                        toastShown = true
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        kbv.textDocumentProxy.insertText(emote.absoluteString)
+                    }
                     repoMan.selectedEmote = emote.absoluteString
                     repoMan.addToFrequentlyUsed(emote: emote.absoluteString)
                     repoMan.reloadFrequentlyUsed()
@@ -123,7 +147,27 @@ struct MainView: View {
                 let emote = emotes[i]
                 
                 Button {
-                    kbv.textDocumentProxy.insertText(emote.absoluteString)
+                    if useEmotesAsStickers {
+                        let imageUrlString = emote.absoluteString
+                        let imageCache: SDImageCache = SDImageCache.shared
+                        let filepath = URL(filePath: imageCache.diskCache.cachePath(forKey: imageUrlString)!)
+                        if let data = try? Data(contentsOf: filepath) {
+                            if imageUrlString.suffix(3) == "gif" {
+                                DispatchQueue.main.async {
+                                    UIPasteboard.general.setData(data, forPasteboardType: "com.compuserve.gif")
+                                }
+                            } else {
+                                if let image = UIImage(data: data) {
+                                    DispatchQueue.main.async {
+                                        UIPasteboard.general.image = image
+                                    }
+                                }
+                            }
+                        }
+                        toastShown = true
+                    } else {
+                        kbv.textDocumentProxy.insertText(emote.absoluteString)
+                    }
                     repoMan.selectedEmote = emote.absoluteString
                     repoMan.addToFrequentlyUsed(emote: emote.absoluteString)
                     repoMan.reloadFrequentlyUsed()

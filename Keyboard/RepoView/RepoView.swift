@@ -11,10 +11,13 @@ import SDWebImageSwiftUI
 struct RepoView: View {
     @EnvironmentObject var kbv: KeyboardViewController
     @EnvironmentObject var repoMan: RepoManager
+    @AppStorage("useEmotesAsStickers", store: UserDefaults(suiteName: "group.llsc12.Nitroless")) private var useEmotesAsStickers = false
     
     let columns = [
         GridItem(.adaptive(minimum: 45))
     ]
+    
+    @Binding var toastShown: Bool
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -76,7 +79,27 @@ struct RepoView: View {
                     .appendingPathExtension(emote.type)
                 
                 Button {
-                    kbv.textDocumentProxy.insertText(imgUrl.absoluteString)
+                    if useEmotesAsStickers {
+                        let imageUrlString = imgUrl.absoluteString
+                        let imageCache: SDImageCache = SDImageCache.shared
+                        let filepath = URL(filePath: imageCache.diskCache.cachePath(forKey: imageUrlString)!)
+                        if let data = try? Data(contentsOf: filepath) {
+                            if imageUrlString.suffix(3) == "gif" {
+                                DispatchQueue.main.async {
+                                    UIPasteboard.general.setData(data, forPasteboardType: "com.compuserve.gif")
+                                }
+                            } else {
+                                if let image = UIImage(data: data) {
+                                    DispatchQueue.main.async {
+                                        UIPasteboard.general.image = image
+                                    }
+                                }
+                            }
+                        }
+                        toastShown = true
+                    } else {
+                        kbv.textDocumentProxy.insertText(imgUrl.absoluteString)
+                    }
                     repoMan.selectedEmote = imgUrl.absoluteString
                     repoMan.addToFrequentlyUsed(emote: imgUrl.absoluteString)
                     repoMan.reloadFrequentlyUsed()

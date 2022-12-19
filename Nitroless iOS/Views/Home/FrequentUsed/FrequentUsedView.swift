@@ -84,7 +84,22 @@ struct FrequentUsedView: View {
                 }
                 .contextMenu {
                     Button {
-                        UIPasteboard.general.url = emote
+                        let imageUrlString = emote.absoluteString
+                        let imageCache: SDImageCache = SDImageCache.shared
+                        let filepath = URL(filePath: imageCache.diskCache.cachePath(forKey: imageUrlString)!)
+                        if let data = try? Data(contentsOf: filepath) {
+                            if imageUrlString.suffix(3) == "gif" {
+                                DispatchQueue.main.async {
+                                    UIPasteboard.general.setData(data, forPasteboardType: "com.compuserve.gif")
+                                }
+                            } else {
+                                if let image = UIImage(data: data) {
+                                    DispatchQueue.main.async {
+                                        UIPasteboard.general.image = image
+                                    }
+                                }
+                            }
+                        }
                         toastShown = true
                         repoMan.addToFrequentlyUsed(emote: emote.absoluteString)
                         repoMan.reloadFrequentlyUsed()

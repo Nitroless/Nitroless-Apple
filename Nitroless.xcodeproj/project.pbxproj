@@ -49,6 +49,7 @@
 		E62D10A52919821C00678687 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A2A29100E060030EFA3 /* Color.swift */; };
 		E62D10A629198AC200678687 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A2A29100E060030EFA3 /* Color.swift */; };
 		E65775AE294AC0B0004ACEEB /* KeyboardSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65775AD294AC0B0004ACEEB /* KeyboardSettingsView.swift */; };
+		E67DFD6E294FE3F20088E4D2 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = E67DFD6D294FE3F20088E4D2 /* AlertToast */; };
 		E6861ED0294D1743005F6745 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6861ECF294D1743005F6745 /* Binding.swift */; };
 		E68F2350292C17B200D67C1E /* SidebariPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68F234F292C17B200D67C1E /* SidebariPadView.swift */; };
 		E68F2353292C3D6700D67C1E /* HeaderiPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68F2352292C3D6700D67C1E /* HeaderiPadView.swift */; };
@@ -185,6 +186,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E67DFD6E294FE3F20088E4D2 /* AlertToast in Frameworks */,
 				571A78C228F3440D0089A0B1 /* SDWebImageWebPCoder in Frameworks */,
 				5783B55428ECD8B300CFF460 /* SDWebImageSwiftUI in Frameworks */,
 			);
@@ -591,6 +593,7 @@
 			packageProductDependencies = (
 				5783B55328ECD8B300CFF460 /* SDWebImageSwiftUI */,
 				571A78C128F3440D0089A0B1 /* SDWebImageWebPCoder */,
+				E67DFD6D294FE3F20088E4D2 /* AlertToast */,
 			);
 			productName = Keyboard;
 			productReference = 5783B54628ECBA9000CFF460 /* Keyboard.appex */;
@@ -1074,7 +1077,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.llsc12.Nitroless;
 				PRODUCT_NAME = Nitroless;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1112,7 +1115,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.llsc12.Nitroless;
 				PRODUCT_NAME = Nitroless;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1242,6 +1245,11 @@
 			productName = SDWebImageSwiftUI;
 		};
 		AAD030A128EB155E0040718F /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AAD030A028EB155D0040718F /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
+		};
+		E67DFD6D294FE3F20088E4D2 /* AlertToast */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AAD030A028EB155D0040718F /* XCRemoteSwiftPackageReference "AlertToast" */;
 			productName = AlertToast;

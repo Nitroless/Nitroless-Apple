@@ -187,7 +187,22 @@ struct EmoteCell: View {
             }
             .contextMenu {
                 Button {
-                    UIPasteboard.general.url = emoteURL
+                    let imageUrlString = emoteURL!.absoluteString
+                    let imageCache: SDImageCache = SDImageCache.shared
+                    let filepath = URL(filePath: imageCache.diskCache.cachePath(forKey: imageUrlString)!)
+                    if let data = try? Data(contentsOf: filepath) {
+                        if imageUrlString.suffix(3) == "gif" {
+                            DispatchQueue.main.async {
+                                UIPasteboard.general.setData(data, forPasteboardType: "com.compuserve.gif")
+                            }
+                        } else {
+                            if let image = UIImage(data: data) {
+                                DispatchQueue.main.async {
+                                    UIPasteboard.general.image = image
+                                }
+                            }
+                        }
+                    }
                     toastShown = true
                     repoMan.addToFrequentlyUsed(emote: emoteURL!.absoluteString)
                 } label: {
@@ -220,7 +235,22 @@ struct EmoteCell: View {
                 .appendingPathExtension(emote!.type)
             
             Button {
-                UIPasteboard.general.url = imgUrl
+                let imageUrlString = imgUrl.absoluteString
+                let imageCache: SDImageCache = SDImageCache.shared
+                let filepath = URL(filePath: imageCache.diskCache.cachePath(forKey: imageUrlString)!)
+                if let data = try? Data(contentsOf: filepath) {
+                    if imageUrlString.suffix(3) == "gif" {
+                        DispatchQueue.main.async {
+                            UIPasteboard.general.setData(data, forPasteboardType: "com.compuserve.gif")
+                        }
+                    } else {
+                        if let image = UIImage(data: data) {
+                            DispatchQueue.main.async {
+                                UIPasteboard.general.image = image
+                            }
+                        }
+                    }
+                }
                 toastShown = true
                 repoMan.addToFrequentlyUsed(emote: imgUrl.absoluteString)
             } label: {
@@ -242,7 +272,22 @@ struct EmoteCell: View {
                 Divider()
                 
                 Button {
-                    UIPasteboard.general.url = imgUrl
+                    let imageUrlString = imgUrl.absoluteString
+                    let imageCache: SDImageCache = SDImageCache.shared
+                    let filepath = URL(filePath: imageCache.diskCache.cachePath(forKey: imageUrlString)!)
+                    if let data = try? Data(contentsOf: filepath) {
+                        if imageUrlString.suffix(3) == "gif" {
+                            DispatchQueue.main.async {
+                                UIPasteboard.general.setData(data, forPasteboardType: "com.compuserve.gif")
+                            }
+                        } else {
+                            if let image = UIImage(data: data) {
+                                DispatchQueue.main.async {
+                                    UIPasteboard.general.image = image
+                                }
+                            }
+                        }
+                    }
                     toastShown = true
                     repoMan.addToFrequentlyUsed(emote: imgUrl.absoluteString)
                 } label: {

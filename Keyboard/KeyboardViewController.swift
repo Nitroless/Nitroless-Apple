@@ -26,7 +26,7 @@ class KeyboardViewController: UIInputViewController, ObservableObject {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         view.addSubview(suiView)
         NSLayoutConstraint.activate([
             suiView.topAnchor.constraint(equalTo: view.topAnchor),
