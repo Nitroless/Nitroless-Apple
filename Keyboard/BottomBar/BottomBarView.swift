@@ -32,7 +32,7 @@ struct BottomBarView: View {
                         .shadow(radius: 5)
                 }
                 Rectangle()
-                    .fill(.white)
+                    .fill(Color.theme.textColor)
                     .frame(width: repoMan.selectedRepo == nil ? 28 : 0, height: 3)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
                     .offset(y: 1)

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		571A788D28F340FE0089A0B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A788C28F340FE0089A0B1 /* AppDelegate.swift */; };
 		571A789428F340FF0089A0B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 571A789228F340FF0089A0B1 /* Main.storyboard */; };
-		571A789928F341290089A0B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD5D80928EEC7D900FF08DA /* Assets.xcassets */; };
 		571A78AE28F341BE0089A0B1 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A789E28F341BD0089A0B1 /* ContentViewModel.swift */; };
 		571A78AF28F341BE0089A0B1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A789F28F341BD0089A0B1 /* ContentView.swift */; };
 		571A78B228F341BE0089A0B1 /* RepoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571A78A528F341BD0089A0B1 /* RepoView.swift */; };
@@ -29,8 +28,6 @@
 		5783B54D28ECBA9000CFF460 /* Keyboard.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5783B54628ECBA9000CFF460 /* Keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5783B55228ECCDDA00CFF460 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5783B55128ECCDDA00CFF460 /* KeyboardView.swift */; };
 		5783B55428ECD8B300CFF460 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5783B55328ECD8B300CFF460 /* SDWebImageSwiftUI */; };
-		57A34C4928F2331A00383807 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD5D80928EEC7D900FF08DA /* Assets.xcassets */; };
-		57A34C4A28F2331F00383807 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD5D80928EEC7D900FF08DA /* Assets.xcassets */; };
 		AA6250BC28EB047200C7030E /* SDWebImageWebPCoder in Frameworks */ = {isa = PBXBuildFile; productRef = AA6250BB28EB047200C7030E /* SDWebImageWebPCoder */; };
 		AA67BDB628F7FE7C001A37BF /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = AA67BDB528F7FE7C001A37BF /* AlertToast */; };
 		AA67DCAE291CFCDF006C65BD /* KeyboardSim.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA67DCAD291CFCDF006C65BD /* KeyboardSim.swift */; };
@@ -50,6 +47,26 @@
 		E62D10A629198AC200678687 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A2A29100E060030EFA3 /* Color.swift */; };
 		E65775AE294AC0B0004ACEEB /* KeyboardSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65775AD294AC0B0004ACEEB /* KeyboardSettingsView.swift */; };
 		E67DFD6E294FE3F20088E4D2 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = E67DFD6D294FE3F20088E4D2 /* AlertToast */; };
+		E67DFD822950B57F0088E4D2 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E67DFD812950B57F0088E4D2 /* Messages.framework */; };
+		E67DFD852950B57F0088E4D2 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67DFD842950B57F0088E4D2 /* MessagesViewController.swift */; };
+		E67DFD8E2950B57F0088E4D2 /* Stickers.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E67DFD802950B57E0088E4D2 /* Stickers.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E67DFD932950C0140088E4D2 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67DFD922950C0140088E4D2 /* MessagesView.swift */; };
+		E67DFD972950C4EF0088E4D2 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E67DFD962950C4EF0088E4D2 /* MainInterface.storyboard */; };
+		E67DFD9A2950C9E40088E4D2 /* RepositoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA9A7972929453B003B926E /* RepositoryManager.swift */; };
+		E67DFD9B2950CA7C0088E4D2 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A2A29100E060030EFA3 /* Color.swift */; };
+		E67DFD9D2950CB760088E4D2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA9A7962929453B003B926E /* Constants.swift */; };
+		E67DFD9F2950CE6F0088E4D2 /* ExpandedMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67DFD9E2950CE6F0088E4D2 /* ExpandedMessagesView.swift */; };
+		E67DFDA12950D58B0088E4D2 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E67DFDA02950D58B0088E4D2 /* SDWebImageSwiftUI */; };
+		E67DFDA32950D58B0088E4D2 /* SDWebImageWebPCoder in Frameworks */ = {isa = PBXBuildFile; productRef = E67DFDA22950D58B0088E4D2 /* SDWebImageWebPCoder */; };
+		E67DFDAE2950D8E20088E4D2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67DFDAD2950D8E20088E4D2 /* MainView.swift */; };
+		E67DFDB12950D9090088E4D2 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67DFDB02950D9090088E4D2 /* ContainerView.swift */; };
+		E67DFDB42950DD2E0088E4D2 /* BottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67DFDB32950DD2E0088E4D2 /* BottomBarView.swift */; };
+		E67DFDB52950DD4A0088E4D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD5D80928EEC7D900FF08DA /* Assets.xcassets */; };
+		E67DFDB62950DE010088E4D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD5D80928EEC7D900FF08DA /* Assets.xcassets */; };
+		E67DFDB72950DE020088E4D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD5D80928EEC7D900FF08DA /* Assets.xcassets */; };
+		E67DFDB82950DE020088E4D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD5D80928EEC7D900FF08DA /* Assets.xcassets */; };
+		E67DFDBA2950E61A0088E4D2 /* FrequentlyUsedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67DFDB92950E61A0088E4D2 /* FrequentlyUsedView.swift */; };
+		E67DFDBC2950EE9C0088E4D2 /* EmoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67DFDBB2950EE9C0088E4D2 /* EmoteView.swift */; };
 		E6861ED0294D1743005F6745 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6861ECF294D1743005F6745 /* Binding.swift */; };
 		E68F2350292C17B200D67C1E /* SidebariPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68F234F292C17B200D67C1E /* SidebariPadView.swift */; };
 		E68F2353292C3D6700D67C1E /* HeaderiPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68F2352292C3D6700D67C1E /* HeaderiPadView.swift */; };
@@ -84,6 +101,13 @@
 			remoteGlobalIDString = 5783B54528ECBA9000CFF460;
 			remoteInfo = Keyboard;
 		};
+		E67DFD8C2950B57F0088E4D2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA9F088828E58B450098040D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E67DFD7F2950B57E0088E4D2;
+			remoteInfo = Stickers;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -93,6 +117,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				E67DFD8E2950B57F0088E4D2 /* Stickers.appex in Embed Foundation Extensions */,
 				5783B54D28ECBA9000CFF460 /* Keyboard.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
@@ -146,6 +171,19 @@
 		E619D9CF28F3BA69006BD8B4 /* Nitroless-macOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Nitroless-macOS-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E619D9D428F3BC36006BD8B4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E65775AD294AC0B0004ACEEB /* KeyboardSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSettingsView.swift; sourceTree = "<group>"; };
+		E67DFD802950B57E0088E4D2 /* Stickers.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Stickers.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E67DFD812950B57F0088E4D2 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
+		E67DFD842950B57F0088E4D2 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		E67DFD8B2950B57F0088E4D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E67DFD922950C0140088E4D2 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
+		E67DFD962950C4EF0088E4D2 /* MainInterface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		E67DFD9C2950CABC0088E4D2 /* Stickers.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stickers.entitlements; sourceTree = "<group>"; };
+		E67DFD9E2950CE6F0088E4D2 /* ExpandedMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedMessagesView.swift; sourceTree = "<group>"; };
+		E67DFDAD2950D8E20088E4D2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		E67DFDB02950D9090088E4D2 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
+		E67DFDB32950DD2E0088E4D2 /* BottomBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarView.swift; sourceTree = "<group>"; };
+		E67DFDB92950E61A0088E4D2 /* FrequentlyUsedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentlyUsedView.swift; sourceTree = "<group>"; };
+		E67DFDBB2950EE9C0088E4D2 /* EmoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmoteView.swift; sourceTree = "<group>"; };
 		E6861ECF294D1743005F6745 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
 		E68F234F292C17B200D67C1E /* SidebariPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebariPadView.swift; sourceTree = "<group>"; };
 		E68F2352292C3D6700D67C1E /* HeaderiPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderiPadView.swift; sourceTree = "<group>"; };
@@ -199,6 +237,16 @@
 				AAD030A228EB155E0040718F /* AlertToast in Frameworks */,
 				AA6250BC28EB047200C7030E /* SDWebImageWebPCoder in Frameworks */,
 				AA9F08AA28E5A6360098040D /* SDWebImageSwiftUI in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E67DFD7D2950B57E0088E4D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E67DFDA12950D58B0088E4D2 /* SDWebImageSwiftUI in Frameworks */,
+				E67DFD822950B57F0088E4D2 /* Messages.framework in Frameworks */,
+				E67DFDA32950D58B0088E4D2 /* SDWebImageWebPCoder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +383,7 @@
 		57F906E228EB3C8D001640BB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E67DFD812950B57F0088E4D2 /* Messages.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -357,6 +406,7 @@
 				5783B54728ECBA9000CFF460 /* Keyboard */,
 				AA9F089228E58B450098040D /* Nitroless iOS */,
 				571A788B28F340FE0089A0B1 /* Nitroless macOS */,
+				E67DFD832950B57F0088E4D2 /* Stickers */,
 				AA9F089128E58B450098040D /* Products */,
 				57F906E228EB3C8D001640BB /* Frameworks */,
 			);
@@ -368,6 +418,7 @@
 				AA9F089028E58B450098040D /* Nitroless.app */,
 				5783B54628ECBA9000CFF460 /* Keyboard.appex */,
 				571A788A28F340FE0089A0B1 /* Nitroless.app */,
+				E67DFD802950B57E0088E4D2 /* Stickers.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -436,6 +487,88 @@
 				E65775AD294AC0B0004ACEEB /* KeyboardSettingsView.swift */,
 			);
 			path = "Keyboard Settings";
+			sourceTree = "<group>";
+		};
+		E67DFD832950B57F0088E4D2 /* Stickers */ = {
+			isa = PBXGroup;
+			children = (
+				E67DFDAF2950D8F90088E4D2 /* Components */,
+				E67DFDA72950D8770088E4D2 /* Expanded */,
+				E67DFDA62950D86D0088E4D2 /* Compact */,
+				E67DFD9C2950CABC0088E4D2 /* Stickers.entitlements */,
+				E67DFD962950C4EF0088E4D2 /* MainInterface.storyboard */,
+				E67DFD842950B57F0088E4D2 /* MessagesViewController.swift */,
+				E67DFD8B2950B57F0088E4D2 /* Info.plist */,
+				E67DFD922950C0140088E4D2 /* MessagesView.swift */,
+				E67DFD9E2950CE6F0088E4D2 /* ExpandedMessagesView.swift */,
+			);
+			path = Stickers;
+			sourceTree = "<group>";
+		};
+		E67DFDA62950D86D0088E4D2 /* Compact */ = {
+			isa = PBXGroup;
+			children = (
+				E67DFDB22950DC470088E4D2 /* BottomBar */,
+				E67DFDA92950D89B0088E4D2 /* Repo */,
+				E67DFDA82950D88F0088E4D2 /* Main */,
+			);
+			path = Compact;
+			sourceTree = "<group>";
+		};
+		E67DFDA72950D8770088E4D2 /* Expanded */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Expanded;
+			sourceTree = "<group>";
+		};
+		E67DFDA82950D88F0088E4D2 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E67DFDAB2950D8B70088E4D2 /* FrequentlyUsed */,
+				E67DFDAA2950D8AE0088E4D2 /* Favourites */,
+				E67DFDAD2950D8E20088E4D2 /* MainView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		E67DFDA92950D89B0088E4D2 /* Repo */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repo;
+			sourceTree = "<group>";
+		};
+		E67DFDAA2950D8AE0088E4D2 /* Favourites */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Favourites;
+			sourceTree = "<group>";
+		};
+		E67DFDAB2950D8B70088E4D2 /* FrequentlyUsed */ = {
+			isa = PBXGroup;
+			children = (
+				E67DFDB92950E61A0088E4D2 /* FrequentlyUsedView.swift */,
+			);
+			path = FrequentlyUsed;
+			sourceTree = "<group>";
+		};
+		E67DFDAF2950D8F90088E4D2 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E67DFDB02950D9090088E4D2 /* ContainerView.swift */,
+				E67DFDBB2950EE9C0088E4D2 /* EmoteView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		E67DFDB22950DC470088E4D2 /* BottomBar */ = {
+			isa = PBXGroup;
+			children = (
+				E67DFDB32950DD2E0088E4D2 /* BottomBarView.swift */,
+			);
+			path = BottomBar;
 			sourceTree = "<group>";
 		};
 		E6861ECE294D172F005F6745 /* Extension */ = {
@@ -612,6 +745,7 @@
 			);
 			dependencies = (
 				5783B54C28ECBA9000CFF460 /* PBXTargetDependency */,
+				E67DFD8D2950B57F0088E4D2 /* PBXTargetDependency */,
 			);
 			name = "Nitroless iOS";
 			packageProductDependencies = (
@@ -623,6 +757,27 @@
 			productReference = AA9F089028E58B450098040D /* Nitroless.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E67DFD7F2950B57E0088E4D2 /* Stickers */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E67DFD912950B57F0088E4D2 /* Build configuration list for PBXNativeTarget "Stickers" */;
+			buildPhases = (
+				E67DFD7C2950B57E0088E4D2 /* Sources */,
+				E67DFD7D2950B57E0088E4D2 /* Frameworks */,
+				E67DFD7E2950B57E0088E4D2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Stickers;
+			packageProductDependencies = (
+				E67DFDA02950D58B0088E4D2 /* SDWebImageSwiftUI */,
+				E67DFDA22950D58B0088E4D2 /* SDWebImageWebPCoder */,
+			);
+			productName = Stickers;
+			productReference = E67DFD802950B57E0088E4D2 /* Stickers.appex */;
+			productType = "com.apple.product-type.app-extension.messages";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -630,7 +785,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1410;
+				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					571A788928F340FE0089A0B1 = {
@@ -641,6 +796,9 @@
 					};
 					AA9F088F28E58B450098040D = {
 						CreatedOnToolsVersion = 14.1;
+					};
+					E67DFD7F2950B57E0088E4D2 = {
+						CreatedOnToolsVersion = 14.2;
 					};
 				};
 			};
@@ -666,6 +824,7 @@
 				AA9F088F28E58B450098040D /* Nitroless iOS */,
 				5783B54528ECBA9000CFF460 /* Keyboard */,
 				571A788928F340FE0089A0B1 /* Nitroless macOS */,
+				E67DFD7F2950B57E0088E4D2 /* Stickers */,
 			);
 		};
 /* End PBXProject section */
@@ -675,7 +834,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				571A789928F341290089A0B1 /* Assets.xcassets in Resources */,
+				E67DFDB82950DE020088E4D2 /* Assets.xcassets in Resources */,
 				571A789428F340FF0089A0B1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -684,7 +843,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57A34C4A28F2331F00383807 /* Assets.xcassets in Resources */,
+				E67DFDB72950DE020088E4D2 /* Assets.xcassets in Resources */,
 				E69E3A30291010B80030EFA3 /* UniSans.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -693,8 +852,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57A34C4928F2331A00383807 /* Assets.xcassets in Resources */,
+				E67DFDB62950DE010088E4D2 /* Assets.xcassets in Resources */,
 				E69E3A31291010B90030EFA3 /* UniSans.otf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E67DFD7E2950B57E0088E4D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E67DFDB52950DD4A0088E4D2 /* Assets.xcassets in Resources */,
+				E67DFD972950C4EF0088E4D2 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -793,6 +961,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E67DFD7C2950B57E0088E4D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E67DFDB42950DD2E0088E4D2 /* BottomBarView.swift in Sources */,
+				E67DFDBC2950EE9C0088E4D2 /* EmoteView.swift in Sources */,
+				E67DFD9D2950CB760088E4D2 /* Constants.swift in Sources */,
+				E67DFDBA2950E61A0088E4D2 /* FrequentlyUsedView.swift in Sources */,
+				E67DFDAE2950D8E20088E4D2 /* MainView.swift in Sources */,
+				E67DFD9A2950C9E40088E4D2 /* RepositoryManager.swift in Sources */,
+				E67DFD9B2950CA7C0088E4D2 /* Color.swift in Sources */,
+				E67DFDB12950D9090088E4D2 /* ContainerView.swift in Sources */,
+				E67DFD932950C0140088E4D2 /* MessagesView.swift in Sources */,
+				E67DFD852950B57F0088E4D2 /* MessagesViewController.swift in Sources */,
+				E67DFD9F2950CE6F0088E4D2 /* ExpandedMessagesView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -800,6 +986,11 @@
 			isa = PBXTargetDependency;
 			target = 5783B54528ECBA9000CFF460 /* Keyboard */;
 			targetProxy = 5783B54B28ECBA9000CFF460 /* PBXContainerItemProxy */;
+		};
+		E67DFD8D2950B57F0088E4D2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E67DFD7F2950B57E0088E4D2 /* Stickers */;
+			targetProxy = E67DFD8C2950B57F0088E4D2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1127,6 +1318,62 @@
 			};
 			name = Release;
 		};
+		E67DFD8F2950B57F0088E4D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_ENTITLEMENTS = Stickers/Stickers.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 566RT33SA2;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Stickers/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Nitroless;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.llsc12.Nitroless.Stickers;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E67DFD902950B57F0088E4D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_ENTITLEMENTS = Stickers/Stickers.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 566RT33SA2;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Stickers/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Nitroless;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.llsc12.Nitroless.Stickers;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1162,6 +1409,15 @@
 			buildConfigurations = (
 				AA9F089F28E58B470098040D /* Debug */,
 				AA9F08A028E58B470098040D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E67DFD912950B57F0088E4D2 /* Build configuration list for PBXNativeTarget "Stickers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E67DFD8F2950B57F0088E4D2 /* Debug */,
+				E67DFD902950B57F0088E4D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1253,6 +1509,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AAD030A028EB155D0040718F /* XCRemoteSwiftPackageReference "AlertToast" */;
 			productName = AlertToast;
+		};
+		E67DFDA02950D58B0088E4D2 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA9F08A828E5A6360098040D /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+		E67DFDA22950D58B0088E4D2 /* SDWebImageWebPCoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA6250BA28EB047200C7030E /* XCRemoteSwiftPackageReference "SDWebImageWebPCoder" */;
+			productName = SDWebImageWebPCoder;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

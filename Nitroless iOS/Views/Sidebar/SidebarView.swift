@@ -49,7 +49,6 @@ struct SidebarView: View {
                         .offset(x: -2)
                 }
                 
-                
                 ForEach(repoMan.repos, id: \.url) { repo in
                     if repo.repoData != nil {
                         SidebarItemView(repo: repo, removeRepo: { urlToDelete = repo.url
