@@ -55,6 +55,8 @@ struct ContentView: View {
             
             urlToAdd = param
             showAddPrompt = true
+        case "open-community-repos":
+            showDefaultReposMenu = true
         default:
             return;
         }

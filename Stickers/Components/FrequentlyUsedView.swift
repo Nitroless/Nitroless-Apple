@@ -26,10 +26,11 @@ struct FrequentlyUsedView: View {
                     
                     ForEach(0..<emotes.count, id: \.self) { i in
                         let emote = emotes[i]
-                        EmoteView(emote: emote)
+                        EmoteView(emoteURL: emote)
                     }
                 }
             }
         }
+        .padding(.bottom, 20)
     }
 }

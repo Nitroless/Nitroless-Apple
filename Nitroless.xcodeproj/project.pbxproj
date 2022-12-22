@@ -55,7 +55,6 @@
 		E67DFD9A2950C9E40088E4D2 /* RepositoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA9A7972929453B003B926E /* RepositoryManager.swift */; };
 		E67DFD9B2950CA7C0088E4D2 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A2A29100E060030EFA3 /* Color.swift */; };
 		E67DFD9D2950CB760088E4D2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA9A7962929453B003B926E /* Constants.swift */; };
-		E67DFD9F2950CE6F0088E4D2 /* ExpandedMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67DFD9E2950CE6F0088E4D2 /* ExpandedMessagesView.swift */; };
 		E67DFDA12950D58B0088E4D2 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E67DFDA02950D58B0088E4D2 /* SDWebImageSwiftUI */; };
 		E67DFDA32950D58B0088E4D2 /* SDWebImageWebPCoder in Frameworks */ = {isa = PBXBuildFile; productRef = E67DFDA22950D58B0088E4D2 /* SDWebImageWebPCoder */; };
 		E67DFDAE2950D8E20088E4D2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67DFDAD2950D8E20088E4D2 /* MainView.swift */; };
@@ -67,6 +66,12 @@
 		E67DFDB82950DE020088E4D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD5D80928EEC7D900FF08DA /* Assets.xcassets */; };
 		E67DFDBA2950E61A0088E4D2 /* FrequentlyUsedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67DFDB92950E61A0088E4D2 /* FrequentlyUsedView.swift */; };
 		E67DFDBC2950EE9C0088E4D2 /* EmoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67DFDBB2950EE9C0088E4D2 /* EmoteView.swift */; };
+		E67DFDC52954C25A0088E4D2 /* BottomBarElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67DFDC42954C25A0088E4D2 /* BottomBarElementView.swift */; };
+		E67DFDC72954D52F0088E4D2 /* RepoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67DFDC62954D52F0088E4D2 /* RepoView.swift */; };
+		E67DFDC92954DA5E0088E4D2 /* FavouriteEmotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67DFDC82954DA5E0088E4D2 /* FavouriteEmotesView.swift */; };
+		E67DFDCC2954DB0A0088E4D2 /* RepoEmotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67DFDCB2954DB0A0088E4D2 /* RepoEmotesView.swift */; };
+		E67DFDCF2954DB740088E4D2 /* RepoFavouriteEmotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67DFDCE2954DB740088E4D2 /* RepoFavouriteEmotesView.swift */; };
+		E67DFDD32954EF120088E4D2 /* AddReposPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67DFDD22954EF120088E4D2 /* AddReposPromptView.swift */; };
 		E6861ED0294D1743005F6745 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6861ECF294D1743005F6745 /* Binding.swift */; };
 		E68F2350292C17B200D67C1E /* SidebariPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68F234F292C17B200D67C1E /* SidebariPadView.swift */; };
 		E68F2353292C3D6700D67C1E /* HeaderiPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68F2352292C3D6700D67C1E /* HeaderiPadView.swift */; };
@@ -178,12 +183,17 @@
 		E67DFD922950C0140088E4D2 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 		E67DFD962950C4EF0088E4D2 /* MainInterface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		E67DFD9C2950CABC0088E4D2 /* Stickers.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stickers.entitlements; sourceTree = "<group>"; };
-		E67DFD9E2950CE6F0088E4D2 /* ExpandedMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedMessagesView.swift; sourceTree = "<group>"; };
 		E67DFDAD2950D8E20088E4D2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		E67DFDB02950D9090088E4D2 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		E67DFDB32950DD2E0088E4D2 /* BottomBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarView.swift; sourceTree = "<group>"; };
 		E67DFDB92950E61A0088E4D2 /* FrequentlyUsedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentlyUsedView.swift; sourceTree = "<group>"; };
 		E67DFDBB2950EE9C0088E4D2 /* EmoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmoteView.swift; sourceTree = "<group>"; };
+		E67DFDC42954C25A0088E4D2 /* BottomBarElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarElementView.swift; sourceTree = "<group>"; };
+		E67DFDC62954D52F0088E4D2 /* RepoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoView.swift; sourceTree = "<group>"; };
+		E67DFDC82954DA5E0088E4D2 /* FavouriteEmotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteEmotesView.swift; sourceTree = "<group>"; };
+		E67DFDCB2954DB0A0088E4D2 /* RepoEmotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoEmotesView.swift; sourceTree = "<group>"; };
+		E67DFDCE2954DB740088E4D2 /* RepoFavouriteEmotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoFavouriteEmotesView.swift; sourceTree = "<group>"; };
+		E67DFDD22954EF120088E4D2 /* AddReposPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReposPromptView.swift; sourceTree = "<group>"; };
 		E6861ECF294D1743005F6745 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
 		E68F234F292C17B200D67C1E /* SidebariPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebariPadView.swift; sourceTree = "<group>"; };
 		E68F2352292C3D6700D67C1E /* HeaderiPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderiPadView.swift; sourceTree = "<group>"; };
@@ -492,41 +502,23 @@
 		E67DFD832950B57F0088E4D2 /* Stickers */ = {
 			isa = PBXGroup;
 			children = (
+				E67DFDD02954EEF60088E4D2 /* AddReposPrompt */,
+				E67DFDB22950DC470088E4D2 /* BottomBar */,
+				E67DFDA92950D89B0088E4D2 /* Repo */,
+				E67DFDA82950D88F0088E4D2 /* Main */,
 				E67DFDAF2950D8F90088E4D2 /* Components */,
-				E67DFDA72950D8770088E4D2 /* Expanded */,
-				E67DFDA62950D86D0088E4D2 /* Compact */,
 				E67DFD9C2950CABC0088E4D2 /* Stickers.entitlements */,
 				E67DFD962950C4EF0088E4D2 /* MainInterface.storyboard */,
 				E67DFD842950B57F0088E4D2 /* MessagesViewController.swift */,
 				E67DFD8B2950B57F0088E4D2 /* Info.plist */,
 				E67DFD922950C0140088E4D2 /* MessagesView.swift */,
-				E67DFD9E2950CE6F0088E4D2 /* ExpandedMessagesView.swift */,
 			);
 			path = Stickers;
-			sourceTree = "<group>";
-		};
-		E67DFDA62950D86D0088E4D2 /* Compact */ = {
-			isa = PBXGroup;
-			children = (
-				E67DFDB22950DC470088E4D2 /* BottomBar */,
-				E67DFDA92950D89B0088E4D2 /* Repo */,
-				E67DFDA82950D88F0088E4D2 /* Main */,
-			);
-			path = Compact;
-			sourceTree = "<group>";
-		};
-		E67DFDA72950D8770088E4D2 /* Expanded */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Expanded;
 			sourceTree = "<group>";
 		};
 		E67DFDA82950D88F0088E4D2 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				E67DFDAB2950D8B70088E4D2 /* FrequentlyUsed */,
-				E67DFDAA2950D8AE0088E4D2 /* Favourites */,
 				E67DFDAD2950D8E20088E4D2 /* MainView.swift */,
 			);
 			path = Main;
@@ -535,28 +527,18 @@
 		E67DFDA92950D89B0088E4D2 /* Repo */ = {
 			isa = PBXGroup;
 			children = (
+				E67DFDC62954D52F0088E4D2 /* RepoView.swift */,
 			);
 			path = Repo;
-			sourceTree = "<group>";
-		};
-		E67DFDAA2950D8AE0088E4D2 /* Favourites */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Favourites;
-			sourceTree = "<group>";
-		};
-		E67DFDAB2950D8B70088E4D2 /* FrequentlyUsed */ = {
-			isa = PBXGroup;
-			children = (
-				E67DFDB92950E61A0088E4D2 /* FrequentlyUsedView.swift */,
-			);
-			path = FrequentlyUsed;
 			sourceTree = "<group>";
 		};
 		E67DFDAF2950D8F90088E4D2 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				E67DFDCE2954DB740088E4D2 /* RepoFavouriteEmotesView.swift */,
+				E67DFDCB2954DB0A0088E4D2 /* RepoEmotesView.swift */,
+				E67DFDB92950E61A0088E4D2 /* FrequentlyUsedView.swift */,
+				E67DFDC82954DA5E0088E4D2 /* FavouriteEmotesView.swift */,
 				E67DFDB02950D9090088E4D2 /* ContainerView.swift */,
 				E67DFDBB2950EE9C0088E4D2 /* EmoteView.swift */,
 			);
@@ -567,8 +549,17 @@
 			isa = PBXGroup;
 			children = (
 				E67DFDB32950DD2E0088E4D2 /* BottomBarView.swift */,
+				E67DFDC42954C25A0088E4D2 /* BottomBarElementView.swift */,
 			);
 			path = BottomBar;
+			sourceTree = "<group>";
+		};
+		E67DFDD02954EEF60088E4D2 /* AddReposPrompt */ = {
+			isa = PBXGroup;
+			children = (
+				E67DFDD22954EF120088E4D2 /* AddReposPromptView.swift */,
+			);
+			path = AddReposPrompt;
 			sourceTree = "<group>";
 		};
 		E6861ECE294D172F005F6745 /* Extension */ = {
@@ -966,16 +957,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				E67DFDB42950DD2E0088E4D2 /* BottomBarView.swift in Sources */,
+				E67DFDC72954D52F0088E4D2 /* RepoView.swift in Sources */,
 				E67DFDBC2950EE9C0088E4D2 /* EmoteView.swift in Sources */,
 				E67DFD9D2950CB760088E4D2 /* Constants.swift in Sources */,
 				E67DFDBA2950E61A0088E4D2 /* FrequentlyUsedView.swift in Sources */,
+				E67DFDCC2954DB0A0088E4D2 /* RepoEmotesView.swift in Sources */,
+				E67DFDC92954DA5E0088E4D2 /* FavouriteEmotesView.swift in Sources */,
+				E67DFDD32954EF120088E4D2 /* AddReposPromptView.swift in Sources */,
 				E67DFDAE2950D8E20088E4D2 /* MainView.swift in Sources */,
 				E67DFD9A2950C9E40088E4D2 /* RepositoryManager.swift in Sources */,
 				E67DFD9B2950CA7C0088E4D2 /* Color.swift in Sources */,
 				E67DFDB12950D9090088E4D2 /* ContainerView.swift in Sources */,
+				E67DFDCF2954DB740088E4D2 /* RepoFavouriteEmotesView.swift in Sources */,
+				E67DFDC52954C25A0088E4D2 /* BottomBarElementView.swift in Sources */,
 				E67DFD932950C0140088E4D2 /* MessagesView.swift in Sources */,
 				E67DFD852950B57F0088E4D2 /* MessagesViewController.swift in Sources */,
-				E67DFD9F2950CE6F0088E4D2 /* ExpandedMessagesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1330,7 +1326,7 @@
 				INFOPLIST_FILE = Stickers/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Nitroless;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1358,7 +1354,7 @@
 				INFOPLIST_FILE = Stickers/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Nitroless;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -31,6 +31,7 @@ struct BottomBarView: View {
             }
             .padding(.horizontal, 5)
             .padding(.leading, 10)
+            .animation(.spring(), value: repoMan.selectedRepo == nil)
             
             Divider()
                 .frame(height: 40)
@@ -40,7 +41,20 @@ struct BottomBarView: View {
                 ProgressView()
             } else {
                 ScrollView(.horizontal, showsIndicators: false) {
-                    
+                    LazyHStack {
+                        ForEach(repoMan.repos, id: \.url) {
+                            repo in
+                            if repo.repoData != nil {
+                                BottomBarElementView(
+                                    buttonAction: {
+                                        repoMan.selectRepo(selectedRepo: SelectedRepo(active: true, repo: repo))
+                                    },
+                                    webImage: repo.url.appending(path: repo.repoData!.icon),
+                                    repo: repo
+                                )
+                            }
+                        }
+                    }
                 }
             }
             
@@ -50,7 +64,30 @@ struct BottomBarView: View {
             
             VStack {
                 Button {
-                    openParentApp()
+                    openCommunityRepos()
+                } label: {
+                    Image(systemName: "globe")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .foregroundColor(Color.white)
+                }
+                .buttonStyle(.plain)
+                .frame(width: 28, height: 28)
+                .background(Color.theme.appPrimaryColor)
+                .clipShape(Circle())
+                .shadow(radius: 5)
+                
+                Rectangle()
+                    .fill(.clear)
+                    .frame(width: 28, height: 3)
+                    .offset(y: 1)
+                    .opacity(0)
+            }
+            .padding(.horizontal, 5)
+            
+            VStack {
+                Button {
+                    addRepository()
                 } label: {
                     Image(systemName: "plus.circle")
                         .resizable()
@@ -72,10 +109,16 @@ struct BottomBarView: View {
             .padding(.horizontal, 5)
             .padding(.trailing, 10)
         }
+        .frame(height: 50)
     }
     
-    func openParentApp() {
-        let url = URL(string: "nitroless://")!
+    func openCommunityRepos() {
+        let url = URL(string: "nitroless://open-community-repos")!
+        openURL(url: url as NSURL)
+    }
+    
+    func addRepository() {
+        let url = URL(string: "nitroless://add-repository?url=")!
         openURL(url: url as NSURL)
     }
     

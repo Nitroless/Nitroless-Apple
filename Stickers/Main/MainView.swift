@@ -14,10 +14,11 @@ struct MainView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack {
+                FavouriteEmotesView()
                 FrequentlyUsedView()
             }
         }
-        .frame(height: 200)
+        .frame(maxHeight: .infinity)
         .padding(10)
     }
 }

@@ -8,9 +8,10 @@
 import UIKit
 import Messages
 import SwiftUI
+import os
+import SDWebImage
 
 class MessagesViewController: MSMessagesAppViewController, ObservableObject {
-    
     private lazy var suiView: UIView = {
         let messageView = MessagesView(vc: self)
         
@@ -19,16 +20,36 @@ class MessagesViewController: MSMessagesAppViewController, ObservableObject {
         return view
     }()
     
-    private lazy var expandedSuiView: UIView = {
-        let expandedMessageView = ExpandedMessagesView(vc: self)
-        let view = UIHostingController(rootView: expandedMessageView).view!
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+    }
+
+    func submitMessage(emote: URL) {
+        let imageURLString = emote.absoluteString
+        let imageCache: SDImageCache = SDImageCache.shared
+        let filePath = URL(filePath: imageCache.diskCache.cachePath(forKey: imageURLString)!)
+        
+        guard let conversation = activeConversation else {
+            os_log("submitMessage(): guard on conversation falied!", log: .default, type: .debug)
+            return
+        }
+        
+        conversation.insertAttachment(filePath, withAlternateFilename: "filePath") {
+            error in
+            if let error = error {
+                os_log("submitMessage(): initial insert error: %@", log: .default, type: .debug, error.localizedDescription)
+            } else {
+                os_log("submitMessage(): initial insert success!", log: .default, type: .debug)
+            }
+        }
+    }
+    
+    override func willBecomeActive(with conversation: MSConversation) {
+        // Called when the extension is about to move from the inactive to active state.
+        // This will happen when the extension is about to present UI.
+        
+        // Use this method to configure the extension and restore previously stored state.
         view.addSubview(suiView)
         NSLayoutConstraint.activate([
             suiView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -36,15 +57,6 @@ class MessagesViewController: MSMessagesAppViewController, ObservableObject {
             suiView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             suiView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
-    }
-    
-    // MARK: - Conversation Handling
-    
-    override func willBecomeActive(with conversation: MSConversation) {
-        // Called when the extension is about to move from the inactive to active state.
-        // This will happen when the extension is about to present UI.
-        
-        // Use this method to configure the extension and restore previously stored state.
     }
     
     override func didResignActive(with conversation: MSConversation) {
@@ -78,23 +90,23 @@ class MessagesViewController: MSMessagesAppViewController, ObservableObject {
         // Called before the extension transitions to a new presentation style.
     
         // Use this method to prepare for the change in presentation style.
-        if presentationStyle == .compact {
-            view.addSubview(suiView)
-            NSLayoutConstraint.activate([
-                suiView.topAnchor.constraint(equalTo: view.topAnchor),
-                suiView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-                suiView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                suiView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-            ])
-        } else {
-            view.addSubview(expandedSuiView)
-            NSLayoutConstraint.activate([
-                expandedSuiView.topAnchor.constraint(equalTo: view.topAnchor),
-                expandedSuiView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-                expandedSuiView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                expandedSuiView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-            ])
-        }
+//        if presentationStyle == .compact {
+//            view.addSubview(suiView)
+//            NSLayoutConstraint.activate([
+//                suiView.topAnchor.constraint(equalTo: view.topAnchor),
+//                suiView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+//                suiView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//                suiView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+//            ])
+//        } else {
+//            view.addSubview(expandedSuiView)
+//            NSLayoutConstraint.activate([
+//                expandedSuiView.topAnchor.constraint(equalTo: view.topAnchor),
+//                expandedSuiView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+//                expandedSuiView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//                expandedSuiView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+//            ])
+//        }
     }
     
     override func didTransition(to presentationStyle: MSMessagesAppPresentationStyle) {
