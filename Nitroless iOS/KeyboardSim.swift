@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-
-
 struct KeyboardSim: View {
     
     @State var text = "cock"
@@ -56,10 +54,4 @@ struct KeyboardSim: View {
 enum KeyboardCurrentMenuPages: String, CaseIterable {
     case emotes = "Emotes"
     case stickers = "Stickers"
-}
-
-struct KeyboardSim_Previews: PreviewProvider {
-    static var previews: some View {
-        KeyboardSim()
-    }
 }

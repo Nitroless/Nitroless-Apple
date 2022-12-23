@@ -45,6 +45,21 @@
 		E619D9D528F3BC36006BD8B4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E619D9D428F3BC36006BD8B4 /* HomeView.swift */; };
 		E62D10A52919821C00678687 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A2A29100E060030EFA3 /* Color.swift */; };
 		E62D10A629198AC200678687 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E3A2A29100E060030EFA3 /* Color.swift */; };
+		E650D85229560BA8005B1262 /* StickerPack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650D85129560BA8005B1262 /* StickerPack.swift */; };
+		E650D85429560C85005B1262 /* Limits.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650D85329560C85005B1262 /* Limits.swift */; };
+		E650D85629560CA2005B1262 /* StickerPackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650D85529560CA2005B1262 /* StickerPackManager.swift */; };
+		E650D85829560CC5005B1262 /* Sticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650D85729560CC5005B1262 /* Sticker.swift */; };
+		E650D85A29560CEB005B1262 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650D85929560CEB005B1262 /* ImageData.swift */; };
+		E650D85C29560D10005B1262 /* Interoperability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650D85B29560D10005B1262 /* Interoperability.swift */; };
+		E650D85E29560D48005B1262 /* WebPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650D85D29560D48005B1262 /* WebPManager.swift */; };
+		E650D86229560DCF005B1262 /* YYAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E650D86129560DCF005B1262 /* YYAnimatedImageView.m */; };
+		E650D86529560E36005B1262 /* YYFrameImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E650D86429560E36005B1262 /* YYFrameImage.m */; };
+		E650D86829560EA1005B1262 /* YYImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E650D86729560EA1005B1262 /* YYImage.m */; };
+		E650D86B29560EF7005B1262 /* YYImageCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = E650D86A29560EF7005B1262 /* YYImageCoder.m */; };
+		E650D86E29560F57005B1262 /* YYSpriteSheetImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E650D86D29560F57005B1262 /* YYSpriteSheetImage.m */; };
+		E650D8722956120D005B1262 /* WebP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E650D870295611D9005B1262 /* WebP.framework */; };
+		E650D8772956165F005B1262 /* RepoPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650D8762956165F005B1262 /* RepoPages.swift */; };
+		E650D87929562041005B1262 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = E650D87829562041005B1262 /* Introspect */; };
 		E65775AE294AC0B0004ACEEB /* KeyboardSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65775AD294AC0B0004ACEEB /* KeyboardSettingsView.swift */; };
 		E67DFD6E294FE3F20088E4D2 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = E67DFD6D294FE3F20088E4D2 /* AlertToast */; };
 		E67DFD822950B57F0088E4D2 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E67DFD812950B57F0088E4D2 /* Messages.framework */; };
@@ -175,6 +190,27 @@
 		E619D9CE28F3BA2D006BD8B4 /* UniSans.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = UniSans.otf; sourceTree = "<group>"; };
 		E619D9CF28F3BA69006BD8B4 /* Nitroless-macOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Nitroless-macOS-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E619D9D428F3BC36006BD8B4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E650D85129560BA8005B1262 /* StickerPack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerPack.swift; sourceTree = "<group>"; };
+		E650D85329560C85005B1262 /* Limits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Limits.swift; sourceTree = "<group>"; };
+		E650D85529560CA2005B1262 /* StickerPackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerPackManager.swift; sourceTree = "<group>"; };
+		E650D85729560CC5005B1262 /* Sticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sticker.swift; sourceTree = "<group>"; };
+		E650D85929560CEB005B1262 /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
+		E650D85B29560D10005B1262 /* Interoperability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interoperability.swift; sourceTree = "<group>"; };
+		E650D85D29560D48005B1262 /* WebPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPManager.swift; sourceTree = "<group>"; };
+		E650D85F29560D91005B1262 /* YYAnimatedImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YYAnimatedImageView.h; sourceTree = "<group>"; };
+		E650D86029560DCF005B1262 /* Nitroless iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Nitroless iOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		E650D86129560DCF005B1262 /* YYAnimatedImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YYAnimatedImageView.m; sourceTree = "<group>"; };
+		E650D86329560E07005B1262 /* YYFrameImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YYFrameImage.h; sourceTree = "<group>"; };
+		E650D86429560E36005B1262 /* YYFrameImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YYFrameImage.m; sourceTree = "<group>"; };
+		E650D86629560E6E005B1262 /* YYImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YYImage.h; sourceTree = "<group>"; };
+		E650D86729560EA1005B1262 /* YYImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YYImage.m; sourceTree = "<group>"; };
+		E650D86929560ED7005B1262 /* YYImageCoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YYImageCoder.h; sourceTree = "<group>"; };
+		E650D86A29560EF7005B1262 /* YYImageCoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YYImageCoder.m; sourceTree = "<group>"; };
+		E650D86C29560F26005B1262 /* YYSpriteSheetImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YYSpriteSheetImage.h; sourceTree = "<group>"; };
+		E650D86D29560F57005B1262 /* YYSpriteSheetImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YYSpriteSheetImage.m; sourceTree = "<group>"; };
+		E650D86F2956104E005B1262 /* LICENCE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENCE; sourceTree = "<group>"; };
+		E650D870295611D9005B1262 /* WebP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebP.framework; sourceTree = "<group>"; };
+		E650D8762956165F005B1262 /* RepoPages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoPages.swift; sourceTree = "<group>"; };
 		E65775AD294AC0B0004ACEEB /* KeyboardSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSettingsView.swift; sourceTree = "<group>"; };
 		E67DFD802950B57E0088E4D2 /* Stickers.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Stickers.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E67DFD812950B57F0088E4D2 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
@@ -244,7 +280,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E650D8722956120D005B1262 /* WebP.framework in Frameworks */,
 				AAD030A228EB155E0040718F /* AlertToast in Frameworks */,
+				E650D87929562041005B1262 /* Introspect in Frameworks */,
 				AA6250BC28EB047200C7030E /* SDWebImageWebPCoder in Frameworks */,
 				AA9F08AA28E5A6360098040D /* SDWebImageSwiftUI in Frameworks */,
 			);
@@ -393,6 +431,7 @@
 		57F906E228EB3C8D001640BB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E650D870295611D9005B1262 /* WebP.framework */,
 				E67DFD812950B57F0088E4D2 /* Messages.framework */,
 			);
 			name = Frameworks;
@@ -436,6 +475,8 @@
 		AA9F089228E58B450098040D /* Nitroless iOS */ = {
 			isa = PBXGroup;
 			children = (
+				E650D87529561643005B1262 /* Enums */,
+				E650D85029560B7E005B1262 /* WhatsApp Stuff */,
 				E6861ECE294D172F005F6745 /* Extension */,
 				E68F2356292C441800D67C1E /* Models */,
 				AA6250B928E9141500C7030E /* Info.plist */,
@@ -489,6 +530,40 @@
 				E6ADBB7C28F4635E00754936 /* AboutView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E650D85029560B7E005B1262 /* WhatsApp Stuff */ = {
+			isa = PBXGroup;
+			children = (
+				E650D85129560BA8005B1262 /* StickerPack.swift */,
+				E650D85329560C85005B1262 /* Limits.swift */,
+				E650D85529560CA2005B1262 /* StickerPackManager.swift */,
+				E650D85729560CC5005B1262 /* Sticker.swift */,
+				E650D85929560CEB005B1262 /* ImageData.swift */,
+				E650D85B29560D10005B1262 /* Interoperability.swift */,
+				E650D85D29560D48005B1262 /* WebPManager.swift */,
+				E650D85F29560D91005B1262 /* YYAnimatedImageView.h */,
+				E650D86129560DCF005B1262 /* YYAnimatedImageView.m */,
+				E650D86029560DCF005B1262 /* Nitroless iOS-Bridging-Header.h */,
+				E650D86329560E07005B1262 /* YYFrameImage.h */,
+				E650D86429560E36005B1262 /* YYFrameImage.m */,
+				E650D86629560E6E005B1262 /* YYImage.h */,
+				E650D86729560EA1005B1262 /* YYImage.m */,
+				E650D86929560ED7005B1262 /* YYImageCoder.h */,
+				E650D86A29560EF7005B1262 /* YYImageCoder.m */,
+				E650D86C29560F26005B1262 /* YYSpriteSheetImage.h */,
+				E650D86D29560F57005B1262 /* YYSpriteSheetImage.m */,
+				E650D86F2956104E005B1262 /* LICENCE */,
+			);
+			path = "WhatsApp Stuff";
+			sourceTree = "<group>";
+		};
+		E650D87529561643005B1262 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				E650D8762956165F005B1262 /* RepoPages.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 		E65775AC294AC08F004ACEEB /* Keyboard Settings */ = {
@@ -743,6 +818,7 @@
 				AA9F08A928E5A6360098040D /* SDWebImageSwiftUI */,
 				AA6250BB28EB047200C7030E /* SDWebImageWebPCoder */,
 				AAD030A128EB155E0040718F /* AlertToast */,
+				E650D87829562041005B1262 /* Introspect */,
 			);
 			productName = Nitroless;
 			productReference = AA9F089028E58B450098040D /* Nitroless.app */;
@@ -787,6 +863,7 @@
 					};
 					AA9F088F28E58B450098040D = {
 						CreatedOnToolsVersion = 14.1;
+						LastSwiftMigration = 1420;
 					};
 					E67DFD7F2950B57E0088E4D2 = {
 						CreatedOnToolsVersion = 14.2;
@@ -930,23 +1007,36 @@
 			files = (
 				E68F2353292C3D6700D67C1E /* HeaderiPadView.swift in Sources */,
 				E69E3A2829100D800030EFA3 /* HomeView.swift in Sources */,
+				E650D85229560BA8005B1262 /* StickerPack.swift in Sources */,
 				5721D6C228F1E5A000148391 /* AddDefaultRepos.swift in Sources */,
+				E650D85429560C85005B1262 /* Limits.swift in Sources */,
 				E69E3A452912D05C0030EFA3 /* SidebarItemView.swift in Sources */,
 				E68F2350292C17B200D67C1E /* SidebariPadView.swift in Sources */,
 				E68F2355292C42C400D67C1E /* HeaderViewModel.swift in Sources */,
 				E68F2358292C442B00D67C1E /* Hovered.swift in Sources */,
 				E69E3A3D291028590030EFA3 /* AboutView.swift in Sources */,
+				E650D85C29560D10005B1262 /* Interoperability.swift in Sources */,
+				E650D86B29560EF7005B1262 /* YYImageCoder.m in Sources */,
+				E650D85629560CA2005B1262 /* StickerPackManager.swift in Sources */,
 				E69E3A2B29100E060030EFA3 /* Color.swift in Sources */,
+				E650D8772956165F005B1262 /* RepoPages.swift in Sources */,
+				E650D86829560EA1005B1262 /* YYImage.m in Sources */,
 				AA67DCAE291CFCDF006C65BD /* KeyboardSim.swift in Sources */,
 				E6861ED0294D1743005F6745 /* Binding.swift in Sources */,
 				E65775AE294AC0B0004ACEEB /* KeyboardSettingsView.swift in Sources */,
+				E650D85A29560CEB005B1262 /* ImageData.swift in Sources */,
 				5721D6C428F1E78D00148391 /* DefaultRepoCell.swift in Sources */,
 				AA9F089628E58B450098040D /* ContentView.swift in Sources */,
 				E69E3A402910589C0030EFA3 /* SidebarView.swift in Sources */,
 				AAA9A7992929453B003B926E /* RepositoryManager.swift in Sources */,
+				E650D86529560E36005B1262 /* YYFrameImage.m in Sources */,
+				E650D85E29560D48005B1262 /* WebPManager.swift in Sources */,
+				E650D86229560DCF005B1262 /* YYAnimatedImageView.m in Sources */,
+				E650D85829560CC5005B1262 /* Sticker.swift in Sources */,
 				AA9F089428E58B450098040D /* NitrolessApp.swift in Sources */,
 				E69E3A4D291457660030EFA3 /* FavouriteEmotesView.swift in Sources */,
 				AAA9A7982929453B003B926E /* Constants.swift in Sources */,
+				E650D86E29560F57005B1262 /* YYSpriteSheetImage.m in Sources */,
 				AA9F08AC28E5A8360098040D /* RepoView.swift in Sources */,
 				E69E3A3A291028420030EFA3 /* FrequentUsedView.swift in Sources */,
 			);
@@ -1244,11 +1334,17 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Nitroless iOS/Nitroless.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 566RT33SA2;
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_ARCHS = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Nitroless iOS/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Nitroless;
@@ -1265,12 +1361,15 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.2;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.llsc12.Nitroless;
 				PRODUCT_NAME = Nitroless;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Nitroless iOS/WhatsApp Stuff/Nitroless iOS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1282,11 +1381,17 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Nitroless iOS/Nitroless.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 566RT33SA2;
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_ARCHS = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Nitroless iOS/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Nitroless;
@@ -1309,6 +1414,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Nitroless iOS/WhatsApp Stuff/Nitroless iOS-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1500,6 +1606,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AAD030A028EB155D0040718F /* XCRemoteSwiftPackageReference "AlertToast" */;
 			productName = AlertToast;
+		};
+		E650D87829562041005B1262 /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 571A78C328F344550089A0B1 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
 		};
 		E67DFD6D294FE3F20088E4D2 /* AlertToast */ = {
 			isa = XCSwiftPackageProductDependency;

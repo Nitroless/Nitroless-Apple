@@ -575,9 +575,10 @@ struct SelectedRepo {
 // MARK: - NitrolessRepo
 struct NitrolessRepo: Codable {
     let icon: String
-    let author: String?
+    let author, stickerPath: String?
     let name, path: String
     let emotes: [NitrolessEmote]
+    let stickers: [NitrolessSticker]?
 }
 
 // MARK: - NitrolessEmote
@@ -585,3 +586,7 @@ struct NitrolessEmote: Codable {
     let name, type: String
 }
 
+// MARK: - NitrolessSticker
+struct NitrolessSticker: Codable {
+    let name, type: String
+}

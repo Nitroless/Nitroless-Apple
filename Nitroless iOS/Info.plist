@@ -15,6 +15,10 @@
 			</array>
 		</dict>
 	</array>
+	<key>LSApplicationQueriesScheme</key>
+	<array>
+		<string>whatsapp</string>
+	</array>
 	<key>UIAppFonts</key>
 	<array>
 		<string>UniSans.otf</string>

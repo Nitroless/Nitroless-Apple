@@ -28,18 +28,45 @@ struct RepoView: View {
     
     private var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
     
+    @State var repoMenu: RepoPages = .emotes
+    
     var body: some View {
         ScrollView {
             VStack {
                 info
+                
+                if repoMan.selectedRepo != nil && repoMan.selectedRepo!.repo.repoData != nil && repoMan.selectedRepo!.repo.repoData!.stickers != nil && repoMan.selectedRepo!.repo.repoData!.stickers!.count > 0 {
+                    HStack {
+                        Picker("RepoPages", selection: $repoMenu) {
+                            ForEach(0..<RepoPages.allCases.count, id: \.self) {
+                                i in
+                                let type = RepoPages.allCases[i]
+                                Text(type.rawValue).tag(type)
+                            }
+                        }
+                        .pickerStyle(.segmented)
+                        .padding()
+                    }
+                    .padding(20)
+                    .background(Color.theme.appBGSecondaryColor)
+                    .clipShape(Capsule())
+                    .overlay(Capsule().strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
+                    .padding(.top, 10)
+                    .padding(.horizontal, 15)
+                    .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
+                }
                 
                 if repoMan.selectedRepo != nil && repoMan.selectedRepo!.repo.favouriteEmotes != nil && repoMan.selectedRepo!.repo.favouriteEmotes!.count > 0 {
                     favouriteEmotesMain.quickLookPreview($previewUrl)
                 }
                 
                 LazyVStack {
-                    main
-                        .quickLookPreview($previewUrl)
+                    if repoMenu == .emotes {
+                        main
+                            .quickLookPreview($previewUrl)
+                    } else {
+                        stickerMain
+                    }
                 }
                 .padding(20)
                 .background(Color.theme.appBGSecondaryColor)
@@ -106,8 +133,17 @@ struct RepoView: View {
         emotePalette
     }
     
+    @ViewBuilder
+    var stickerMain: some View {
+        stickerPalette
+    }
+    
     let columns = [
         GridItem(.adaptive(minimum: 50))
+    ]
+    
+    let stickerColumns = [
+        GridItem(.adaptive(minimum: 128))
     ]
     
     @ViewBuilder
@@ -150,6 +186,57 @@ struct RepoView: View {
                 let emote = filtered[i]
                 
                 EmoteCell(favouriteFlag: false, repo: repo, emote: emote, toastShown: $toastShown, ql: $previewUrl, repoMan: repoMan)
+            }
+        }
+    }
+    
+    @ViewBuilder
+    var stickerPalette: some View {
+        LazyVGrid(columns: stickerColumns) {
+            let stickers = repo.repoData!.stickers
+            if stickers != nil {
+                let filtered = stickers!.filter { sticker in
+                    sticker.name.lowercased().contains(searchText.lowercased()) || searchText.isEmpty
+                }
+                
+                ForEach(0..<filtered.count, id: \.self) { i in
+                    let sticker = filtered[i]
+                    StickerCell(repo: repo, sticker: sticker, repoMan: repoMan, toastShown: $toastShown, ql: $previewUrl)
+                }
+            }
+        }
+    }
+}
+
+struct StickerCell: View {
+    var repo: Repo?
+    var sticker: NitrolessSticker?
+    var repoMan: RepoManager
+    @Binding var toastShown: Bool
+    @Binding var ql: URL?
+    
+    var body: some View {
+        if repo != nil && repo?.repoData != nil && repo?.repoData?.stickerPath != nil {
+            let size: CGFloat = 128
+            let imgUrl = repo!.url
+                .appending(path: repo!.repoData!.stickerPath!)
+                .appending(path: sticker!.name)
+                .appendingPathExtension(sticker!.type)
+            
+            Button {
+                UIPasteboard.general.url = imgUrl
+                toastShown = true
+            } label: {
+                VStack {
+                    WebImage(url: imgUrl)
+                        .resizable()
+                        .placeholder {
+                            ProgressView()
+                        }
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: size, height: size)
+                        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                }
             }
         }
     }
@@ -325,3 +412,4 @@ struct EmoteCell: View {
         }
     }
 }
+
