@@ -31,60 +31,117 @@ struct RepoView: View {
     @State var repoMenu: RepoPages = .emotes
     
     var body: some View {
-        ScrollView {
-            VStack {
-                info
-                
-                if repoMan.selectedRepo != nil && repoMan.selectedRepo!.repo.repoData != nil && repoMan.selectedRepo!.repo.repoData!.stickers != nil && repoMan.selectedRepo!.repo.repoData!.stickers!.count > 0 {
+        
+        if idiom == .pad && horizontalSizeClass == .regular {
+            ScrollView {
+                VStack {
+                    info
+                    
                     HStack {
-                        Picker("RepoPages", selection: $repoMenu) {
-                            ForEach(0..<RepoPages.allCases.count, id: \.self) {
-                                i in
-                                let type = RepoPages.allCases[i]
-                                Text(type.rawValue).tag(type)
-                            }
-                        }
-                        .pickerStyle(.segmented)
-                        .padding()
+                        TextField("Search Repository...", text: $searchText)
+                            .padding()
                     }
-                    .padding(20)
+                    .padding(5)
                     .background(Color.theme.appBGSecondaryColor)
                     .clipShape(Capsule())
                     .overlay(Capsule().strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
                     .padding(.top, 10)
                     .padding(.horizontal, 15)
                     .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
-                }
-                
-                if repoMan.selectedRepo != nil && repoMan.selectedRepo!.repo.favouriteEmotes != nil && repoMan.selectedRepo!.repo.favouriteEmotes!.count > 0 {
-                    favouriteEmotesMain.quickLookPreview($previewUrl)
-                }
-                
-                LazyVStack {
-                    if repoMenu == .emotes {
-                        main
-                            .quickLookPreview($previewUrl)
-                    } else {
-                        stickerMain
+                    
+                    if repoMan.selectedRepo != nil && repoMan.selectedRepo!.repo.favouriteEmotes != nil && repoMan.selectedRepo!.repo.favouriteEmotes!.count > 0 {
+                        favouriteEmotesMain.quickLookPreview($previewUrl)
                     }
+                    
+                    LazyVStack {
+                        if repoMan.selectedRepo != nil && repoMan.selectedRepo!.repo.repoData != nil && repoMan.selectedRepo!.repo.repoData!.stickers != nil && repoMan.selectedRepo!.repo.repoData!.stickers!.count > 0 {
+                            Picker("RepoPages", selection: $repoMenu) {
+                                ForEach(0..<RepoPages.allCases.count, id: \.self) {
+                                    i in
+                                    let type = RepoPages.allCases[i]
+                                    Text(type.rawValue).tag(type)
+                                }
+                            }
+                            .clipShape(Capsule())
+                            .overlay(Capsule().strokeBorder(Color.theme.appBGSecondaryColor, lineWidth: 3))
+                            .pickerStyle(.segmented)
+                            .padding(.horizontal, 50)
+                            .padding(.bottom, 20)
+                        }
+                        
+                        if repoMenu == .emotes {
+                            main
+                                .quickLookPreview($previewUrl)
+                        } else {
+                            stickerMain
+                        }
+                    }
+                    .padding(20)
+                    .background(Color.theme.appBGSecondaryColor)
+                    .cornerRadius(20)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
+                    .padding(.top, 10)
+                    .padding(.bottom, 30)
+                    .padding(.horizontal, 15)
+                    .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
                 }
-                .padding(20)
-                .background(Color.theme.appBGSecondaryColor)
-                .cornerRadius(20)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 20)
-                        .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
-                .padding(.top, 10)
-                .padding(.bottom, 30)
-                .padding(.horizontal, 15)
-                .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
             }
+            .frame(minWidth: 0, maxWidth: .infinity)
+            .padding(10)
+            .padding(.trailing, idiom == .pad && horizontalSizeClass == .regular ? 40 : 0)
+            .padding(.leading, idiom == .pad && horizontalSizeClass == .regular ? 25 : 0)
+        } else {
+            ScrollView {
+                VStack {
+                    info
+                    
+                    if repoMan.selectedRepo != nil && repoMan.selectedRepo!.repo.favouriteEmotes != nil && repoMan.selectedRepo!.repo.favouriteEmotes!.count > 0 {
+                        favouriteEmotesMain.quickLookPreview($previewUrl)
+                    }
+                    
+                    LazyVStack {
+                        if repoMan.selectedRepo != nil && repoMan.selectedRepo!.repo.repoData != nil && repoMan.selectedRepo!.repo.repoData!.stickers != nil && repoMan.selectedRepo!.repo.repoData!.stickers!.count > 0 {
+                            Picker("RepoPages", selection: $repoMenu) {
+                                ForEach(0..<RepoPages.allCases.count, id: \.self) {
+                                    i in
+                                    let type = RepoPages.allCases[i]
+                                    Text(type.rawValue).tag(type)
+                                }
+                            }
+                            .clipShape(Capsule())
+                            .overlay(Capsule().strokeBorder(Color.theme.appBGSecondaryColor, lineWidth: 3))
+                            .pickerStyle(.segmented)
+                            .padding(.horizontal, 50)
+                            .padding(.bottom, 20)
+                        }
+                        
+                        if repoMenu == .emotes {
+                            main
+                                .quickLookPreview($previewUrl)
+                        } else {
+                            stickerMain
+                        }
+                    }
+                    .padding(20)
+                    .background(Color.theme.appBGSecondaryColor)
+                    .cornerRadius(20)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
+                    .padding(.top, 10)
+                    .padding(.bottom, 30)
+                    .padding(.horizontal, 15)
+                    .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
+                }
+            }
+            .frame(minWidth: 0, maxWidth: .infinity)
+            .padding(10)
+            .padding(.trailing, idiom == .pad && horizontalSizeClass == .regular ? 40 : 0)
+            .padding(.leading, idiom == .pad && horizontalSizeClass == .regular ? 25 : 0)
+            .searchable(text: $searchText, placement: .navigationBarDrawer, prompt: Text("Search Repository..."))
         }
-        .frame(minWidth: 0, maxWidth: .infinity)
-        .padding(10)
-        .padding(.trailing, idiom == .pad && horizontalSizeClass == .regular ? 40 : 0)
-        .padding(.leading, idiom == .pad && horizontalSizeClass == .regular ? 25 : 0)
-//        .searchable(text: $searchText, placement: .navigationBarDrawer, prompt: Text("Search Repository"))
     }
     
     @ViewBuilder
@@ -113,9 +170,17 @@ struct RepoView: View {
                     }
                 }
                 Spacer()
-                Text("\(repo.repoData!.emotes.count) emotes")
-                    .font(.footnote)
-                    .foregroundColor(.secondary)
+                if repoMenu == .emotes {
+                    Text("\(repo.repoData!.emotes.count) emotes")
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+                } else {
+                    if repo.repoData!.stickers != nil {
+                        Text("\(repo.repoData!.stickers!.count) stickers")
+                            .font(.footnote)
+                            .foregroundColor(.secondary)
+                    }
+                }
             }
         }
         .padding()
@@ -143,7 +208,7 @@ struct RepoView: View {
     ]
     
     let stickerColumns = [
-        GridItem(.adaptive(minimum: 128))
+        GridItem(.adaptive(minimum: 72))
     ]
     
     @ViewBuilder
@@ -217,7 +282,7 @@ struct StickerCell: View {
     
     var body: some View {
         if repo != nil && repo?.repoData != nil && repo?.repoData?.stickerPath != nil {
-            let size: CGFloat = 128
+            let size: CGFloat = 72
             let imgUrl = repo!.url
                 .appending(path: repo!.repoData!.stickerPath!)
                 .appending(path: sticker!.name)

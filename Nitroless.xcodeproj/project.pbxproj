@@ -57,7 +57,6 @@
 		E650D86829560EA1005B1262 /* YYImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E650D86729560EA1005B1262 /* YYImage.m */; };
 		E650D86B29560EF7005B1262 /* YYImageCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = E650D86A29560EF7005B1262 /* YYImageCoder.m */; };
 		E650D86E29560F57005B1262 /* YYSpriteSheetImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E650D86D29560F57005B1262 /* YYSpriteSheetImage.m */; };
-		E650D8722956120D005B1262 /* WebP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E650D870295611D9005B1262 /* WebP.framework */; };
 		E650D8772956165F005B1262 /* RepoPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650D8762956165F005B1262 /* RepoPages.swift */; };
 		E650D87929562041005B1262 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = E650D87829562041005B1262 /* Introspect */; };
 		E65775AE294AC0B0004ACEEB /* KeyboardSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65775AD294AC0B0004ACEEB /* KeyboardSettingsView.swift */; };
@@ -280,7 +279,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E650D8722956120D005B1262 /* WebP.framework in Frameworks */,
 				AAD030A228EB155E0040718F /* AlertToast in Frameworks */,
 				E650D87929562041005B1262 /* Introspect in Frameworks */,
 				AA6250BC28EB047200C7030E /* SDWebImageWebPCoder in Frameworks */,

@@ -22,6 +22,20 @@ struct FileLocations {
         let final = URL(fileURLWithPath: str)
         return final
     }()
+    static var frequentStickers: URL = {
+        let root = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.llsc12.Nitroless")!
+        var str = root.absoluteString + "Documents/frequentStickers.nitroless"
+        str = String(str.dropFirst(7))
+        let final = URL(fileURLWithPath: str)
+        return final
+    }()
+    static var favouriteStickers: URL = {
+        let root = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.llsc12.Nitroless")!
+        var str = root.absoluteString + "Documents/favouriteStickers.nitroless"
+        str = String(str.dropFirst(7))
+        let final = URL(fileURLWithPath: str)
+        return final
+    }()
     static var favouriteEmotes: URL = {
         let root = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.llsc12.Nitroless")!
         var str = root.absoluteString + "Documents/favouriteEmotes.nitroless"
