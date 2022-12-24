@@ -48,9 +48,12 @@ struct RepoView: View {
                     .padding(.top, 10)
                     .padding(.horizontal, 15)
                     .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
-                    
+
                     if repoMan.selectedRepo != nil && repoMan.selectedRepo!.repo.favouriteEmotes != nil && repoMan.selectedRepo!.repo.favouriteEmotes!.count > 0 {
                         favouriteEmotesMain.quickLookPreview($previewUrl)
+                    }
+                    if repoMan.selectedRepo != nil && repoMan.selectedRepo!.repo.favouriteStickers != nil && repoMan.selectedRepo!.repo.favouriteStickers!.count > 0 {
+                        favouriteStickersMain.quickLookPreview($previewUrl)
                     }
                     
                     LazyVStack {
@@ -101,6 +104,10 @@ struct RepoView: View {
                         favouriteEmotesMain.quickLookPreview($previewUrl)
                     }
                     
+                    if repoMan.selectedRepo != nil && repoMan.selectedRepo!.repo.favouriteStickers != nil && repoMan.selectedRepo!.repo.favouriteStickers!.count > 0 {
+                        favouriteStickersMain.quickLookPreview($previewUrl)
+                    }
+                    
                     LazyVStack {
                         if repoMan.selectedRepo != nil && repoMan.selectedRepo!.repo.repoData != nil && repoMan.selectedRepo!.repo.repoData!.stickers != nil && repoMan.selectedRepo!.repo.repoData!.stickers!.count > 0 {
                             Picker("RepoPages", selection: $repoMenu) {
@@ -122,6 +129,7 @@ struct RepoView: View {
                                 .quickLookPreview($previewUrl)
                         } else {
                             stickerMain
+                                .quickLookPreview($previewUrl)
                         }
                     }
                     .padding(20)
@@ -212,6 +220,34 @@ struct RepoView: View {
     ]
     
     @ViewBuilder
+    var favouriteStickersMain: some View {
+        VStack {
+            HStack {
+                Image(systemName: "star")
+                Text("Favourite Stickers")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            .font(.headline)
+            
+            LazyVGrid(columns: stickerColumns) {
+                ForEach(0..<repoMan.selectedRepo!.repo.favouriteStickers!.count, id: \.self) { i in
+                    let sticker = repoMan.selectedRepo!.repo.favouriteStickers![i]
+                    StickerCell(favouriteFlag: true, stickerURL: sticker, repoMan: repoMan, toastShown: $toastShown, ql: $previewUrl)
+                }
+            }
+        }
+        .padding(20)
+        .background(Color.theme.appBGSecondaryColor)
+        .cornerRadius(20)
+        .overlay(
+            RoundedRectangle(cornerRadius: 20)
+                .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
+        .padding(.top, 10)
+        .padding(.horizontal, 15)
+        .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
+    }
+    
+    @ViewBuilder
     var favouriteEmotesMain: some View {
         VStack {
             HStack {
@@ -266,7 +302,7 @@ struct RepoView: View {
                 
                 ForEach(0..<filtered.count, id: \.self) { i in
                     let sticker = filtered[i]
-                    StickerCell(repo: repo, sticker: sticker, repoMan: repoMan, toastShown: $toastShown, ql: $previewUrl)
+                    StickerCell(favouriteFlag: false, repo: repo, sticker: sticker, repoMan: repoMan, toastShown: $toastShown, ql: $previewUrl)
                 }
             }
         }
@@ -274,33 +310,138 @@ struct RepoView: View {
 }
 
 struct StickerCell: View {
+    var favouriteFlag: Bool
     var repo: Repo?
     var sticker: NitrolessSticker?
+    var stickerURL: URL?
     var repoMan: RepoManager
     @Binding var toastShown: Bool
     @Binding var ql: URL?
     
     var body: some View {
-        if repo != nil && repo?.repoData != nil && repo?.repoData?.stickerPath != nil {
-            let size: CGFloat = 72
-            let imgUrl = repo!.url
-                .appending(path: repo!.repoData!.stickerPath!)
-                .appending(path: sticker!.name)
-                .appendingPathExtension(sticker!.type)
-            
-            Button {
-                UIPasteboard.general.url = imgUrl
-                toastShown = true
-            } label: {
-                VStack {
-                    WebImage(url: imgUrl)
-                        .resizable()
-                        .placeholder {
-                            ProgressView()
+        let size: CGFloat = 72
+        
+        if favouriteFlag {
+            if stickerURL != nil {
+                Button {
+                    UIPasteboard.general.url = stickerURL
+                    toastShown = true
+                    repoMan.addToFrequentlyUsedStickers(sticker: stickerURL!.absoluteString)
+                } label: {
+                    VStack {
+                        WebImage(url: stickerURL)
+                            .resizable()
+                            .placeholder{ ProgressView() }
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: size, height: size)
+                            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                    }
+                }
+                .contextMenu {
+                    Button {
+                        let imageUrlString = stickerURL!.absoluteString
+                        let imageCache: SDImageCache = SDImageCache.shared
+                        let filepath = URL(filePath: imageCache.diskCache.cachePath(forKey: imageUrlString)!)
+                        if let data = try? Data(contentsOf: filepath) {
+                            if let image = UIImage(data: data) {
+                                DispatchQueue.main.async {
+                                    UIPasteboard.general.image = image
+                                }
+                            }
                         }
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: size, height: size)
-                        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                        toastShown = true
+                        repoMan.addToFrequentlyUsedStickers(sticker: stickerURL!.absoluteString)
+                    } label: {
+                        Label("Copy", systemImage: "doc.on.clipboard")
+                    }
+                    Button(role: .destructive) {
+                        if repo != nil && stickerURL != nil {
+                            repoMan.removeStickerFromFavourites(repo: repo!.url.absoluteString, sticker: stickerURL!.absoluteString)
+                        }
+                    } label: {
+                        Label("Unfavourite", systemImage: "star.fill")
+                    }
+                    Button {
+                        let imageUrlString = stickerURL!.absoluteString
+                        let imageCache: SDImageCache = SDImageCache.shared
+                        let filepath = URL(filePath: imageCache.diskCache.cachePath(forKey: imageUrlString)!)
+                        
+                        ql = filepath
+                    } label: {
+                        Label("Quick Look", systemImage: "magnifyingglass")
+                    }
+                }
+            }
+        } else {
+            if repo != nil && repo?.repoData != nil && repo?.repoData?.stickerPath != nil && sticker != nil {
+                let imgUrl = repo!.url
+                    .appending(path: repo!.repoData!.stickerPath!)
+                    .appending(path: sticker!.name)
+                    .appendingPathExtension(sticker!.type)
+                
+                Button {
+                    UIPasteboard.general.url = imgUrl
+                    toastShown = true
+                    repoMan.addToFrequentlyUsedStickers(sticker: imgUrl.absoluteString)
+                } label: {
+                    VStack {
+                        WebImage(url: imgUrl)
+                            .resizable()
+                            .placeholder { ProgressView() }
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: size, height: size)
+                            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                    }
+                }
+                .contextMenu {
+                    Text(sticker!.name)
+                    
+                    Divider()
+                    
+                    Button {
+                        let imageUrlString = imgUrl.absoluteString
+                        let imageCache: SDImageCache = SDImageCache.shared
+                        let filepath = URL(filePath: imageCache.diskCache.cachePath(forKey: imageUrlString)!)
+                        if let data = try? Data(contentsOf: filepath) {
+                            if let image = UIImage(data: data) {
+                                DispatchQueue.main.async {
+                                    UIPasteboard.general.image = image
+                                }
+                            }
+                        }
+                        toastShown = true
+                        repoMan.addToFrequentlyUsedStickers(sticker: imgUrl.absoluteString)
+                    } label: {
+                        Label("Copy", systemImage: "doc.on.clipboard")
+                    }
+                    
+                    Button(role: repo!.favouriteStickers != nil && repo!.favouriteStickers!.count > 0 && repo!.favouriteStickers!.contains(where: { url in
+                        url == imgUrl
+                    }) ? .destructive : .none) {
+                        if repo!.favouriteStickers != nil && repo!.favouriteStickers!.count > 0 && repo!.favouriteStickers!.contains(where: { url in
+                            url == imgUrl
+                        }) {
+                            repoMan.removeStickerFromFavourites(repo: repo!.url.absoluteString, sticker: imgUrl.absoluteString)
+                        } else {
+                            repoMan.addToFavouriteStickers(repo: repo!.url.absoluteString, sticker: imgUrl.absoluteString)
+                        }
+                    } label: {
+                        Label(repo!.favouriteStickers != nil && repo!.favouriteStickers!.count > 0 && repo!.favouriteStickers!.contains(where: { url in
+                            url == imgUrl
+                        }) ? "Unfavourite" : "Favourite", systemImage: repo!.favouriteStickers != nil && repo!.favouriteStickers!.count > 0 && repo!.favouriteStickers!.contains(where: { url in
+                            url == imgUrl
+                        }) ? "star.fill" : "star")
+                    }
+                    
+                    Button {
+                        let imageUrlString = imgUrl.absoluteString
+                        let imageCache: SDImageCache = SDImageCache.shared
+                        let filepath = URL(filePath: imageCache.diskCache.cachePath(forKey: imageUrlString)!)
+                        
+                        ql = filepath
+                    } label: {
+                        Label("Quick Look", systemImage: "magnifyingglass")
+                    }
                 }
             }
         }
@@ -387,22 +528,7 @@ struct EmoteCell: View {
                 .appendingPathExtension(emote!.type)
             
             Button {
-                let imageUrlString = imgUrl.absoluteString
-                let imageCache: SDImageCache = SDImageCache.shared
-                let filepath = URL(filePath: imageCache.diskCache.cachePath(forKey: imageUrlString)!)
-                if let data = try? Data(contentsOf: filepath) {
-                    if imageUrlString.suffix(3) == "gif" {
-                        DispatchQueue.main.async {
-                            UIPasteboard.general.setData(data, forPasteboardType: "com.compuserve.gif")
-                        }
-                    } else {
-                        if let image = UIImage(data: data) {
-                            DispatchQueue.main.async {
-                                UIPasteboard.general.image = image
-                            }
-                        }
-                    }
-                }
+                UIPasteboard.general.url = emoteURL
                 toastShown = true
                 repoMan.addToFrequentlyUsed(emote: imgUrl.absoluteString)
             } label: {
