@@ -837,6 +837,10 @@ class RepoManager: ObservableObject {
     public func reloadFrequentlyUsed() {
         loadFrequentEmotes()
     }
+    
+    public func reloadFrequentlyUsedStickers() {
+        loadFrequentStickers()
+    }
 }
 
 struct Repo {
