@@ -17,7 +17,10 @@ struct HomeView: View {
     var body: some View {
         VStack {
             if repoMan.favouriteEmotes.count > 0 {
-                FavouriteEmotesView(emotes: repoMan.favouriteEmotes, toastShown: $toastShown)
+                FavouriteEmotesView(emotes: repoMan.favouriteEmotes, toastShown: $toastShown, stickerFlag: false)
+            }
+            if repoMan.favouriteStickers.count > 0 {
+                FavouriteEmotesView(emotes: repoMan.favouriteStickers, toastShown: $toastShown, stickerFlag: true)
             }
             FrequentUsedView(toastShown: $toastShown)
         }

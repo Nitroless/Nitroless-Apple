@@ -19,11 +19,13 @@ struct FavouriteEmotesView: View {
     
     @Binding var toastShown: Bool
     
+    let stickerFlag: Bool
+    
     var body: some View {
         VStack {
             HStack {
                 Image(systemName: "star")
-                Text("Favourite Emotes")
+                Text(stickerFlag ? "Favourite Stickers" : "Favourite Emotes")
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             .font(.headline)
@@ -52,9 +54,13 @@ struct FavouriteEmotesView: View {
         GridItem(.adaptive(minimum: 50))
     ]
     
+    let stickerColumns = [
+        GridItem(.adaptive(minimum: 72))
+    ]
+    
     @ViewBuilder
     var emotePalette: some View {
-        LazyVGrid(columns: columns, spacing: 20) {
+        LazyVGrid(columns: stickerFlag ? stickerColumns : columns, spacing: stickerFlag ? 0 : 20) {
             let emotes = emotes
             
             ForEach(0..<emotes.count, id: \.self) { i in
@@ -63,10 +69,16 @@ struct FavouriteEmotesView: View {
                 Button {
                     UIPasteboard.general.url = emote
                     toastShown = true
-                    repoMan.addToFrequentlyUsed(emote: emote.absoluteString)
-                    repoMan.reloadFrequentlyUsed()
+                    
+                    if stickerFlag {
+                        repoMan.addToFrequentlyUsedStickers(sticker: emote.absoluteString)
+                        repoMan.reloadFrequentlyUsedStickers()
+                    } else {
+                        repoMan.addToFrequentlyUsed(emote: emote.absoluteString)
+                        repoMan.reloadFrequentlyUsed()
+                    }
                 } label: {
-                    let size: CGFloat = 50
+                    let size: CGFloat = stickerFlag ? 72 : 50
                     VStack {
                         WebImage(url: emote)
                             .resizable()
@@ -98,8 +110,14 @@ struct FavouriteEmotesView: View {
                         }
 
                         toastShown = true
-                        repoMan.addToFrequentlyUsed(emote: emote.absoluteString)
-                        repoMan.reloadFrequentlyUsed()
+                        
+                        if stickerFlag {
+                            repoMan.addToFrequentlyUsedStickers(sticker: emote.absoluteString)
+                            repoMan.reloadFrequentlyUsedStickers()
+                        } else {
+                            repoMan.addToFrequentlyUsed(emote: emote.absoluteString)
+                            repoMan.reloadFrequentlyUsed()
+                        }
                     } label: {
                         Label("Copy", systemImage: "doc.on.clipboard")
                     }
