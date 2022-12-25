@@ -23,7 +23,7 @@ struct FavouritesView: View {
                     Text("Favourite Emotes")
                         .frame(maxWidth: .infinity, alignment: .leading)
                 } else {
-                    Text("\(repo.repoData!.name)'s Favourite Emotes")
+                    Text("Favourite Stickers")
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
             }
@@ -33,7 +33,7 @@ struct FavouritesView: View {
             
             LazyVStack {
                 LazyVGrid(columns: column) {
-                    let emotes = repo.favouriteEmotes
+                    let emotes = flag ? repo.favouriteEmotes : repo.favouriteStickers
                     
                     ForEach(0..<emotes!.count, id: \.self) { i in
                         let emote = emotes![i]
@@ -44,7 +44,7 @@ struct FavouritesView: View {
                             repoMan.addToFrequentlyUsed(emote: emote.absoluteString)
                             repoMan.reloadFrequentlyUsed()
                         } label: {
-                            let size: CGFloat = 40
+                            let size: CGFloat = flag ? 40 : 65
                             WebImage(url: emote)
                                 .resizable()
                                 .placeholder {

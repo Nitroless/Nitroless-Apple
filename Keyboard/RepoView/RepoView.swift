@@ -17,6 +17,10 @@ struct RepoView: View {
         GridItem(.adaptive(minimum: 45))
     ]
     
+    let stickerColumns = [
+        GridItem(.adaptive(minimum: 65))
+    ]
+    
     @Binding var toastShown: Bool
     
     var repoMenu: RepoPages
@@ -24,8 +28,14 @@ struct RepoView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack {
-                if repoMan.selectedRepo != nil && repoMan.selectedRepo!.repo.favouriteEmotes != nil && repoMan.selectedRepo!.repo.favouriteEmotes!.count > 0 {
-                    FavouritesView(repo: repoMan.selectedRepo!.repo, column: columns, flag: true)
+                if repoMenu == .emotes {
+                    if repoMan.selectedRepo != nil && repoMan.selectedRepo!.repo.favouriteEmotes != nil && repoMan.selectedRepo!.repo.favouriteEmotes!.count > 0 {
+                        FavouritesView(repo: repoMan.selectedRepo!.repo, column: columns, flag: true)
+                    }
+                } else {
+                    if repoMan.selectedRepo != nil && repoMan.selectedRepo!.repo.favouriteStickers != nil && repoMan.selectedRepo!.repo.favouriteStickers!.count > 0 {
+                        FavouritesView(repo: repoMan.selectedRepo!.repo, column: stickerColumns, flag: false)
+                    }
                 }
                 
                 VStack {
@@ -48,7 +58,13 @@ struct RepoView: View {
                         Spacer()
                         
                         LazyVStack {
-                            emotesGrid
+                            if repoMan.selectedRepo!.repo.repoData != nil {
+                                if repoMenu == .emotes {
+                                    emotesGrid
+                                } else {
+                                    stickersGrid
+                                }
+                            }
                         }
                     }
                 }
@@ -65,6 +81,58 @@ struct RepoView: View {
         }
         .frame(height: 240)
         .foregroundColor(Color.theme.textColor)
+    }
+    
+    @ViewBuilder
+    var stickersGrid: some View {
+        LazyVGrid(columns: stickerColumns) {
+            let stickers = repoMan.selectedRepo!.repo.repoData!.stickers
+            
+            if stickers != nil {
+                ForEach(0..<stickers!.count, id: \.self) { i in
+                    let sticker = stickers![i]
+                    
+                    let imgUrl = repoMan.selectedRepo!.repo.url
+                        .appending(path: repoMan.selectedRepo!.repo.repoData!.stickerPath!)
+                        .appending(path: sticker.name)
+                        .appendingPathExtension(sticker.type)
+                    
+                    Button {
+                        let imageUrlString = imgUrl.absoluteString
+                        let imageCache: SDImageCache = SDImageCache.shared
+                        let filepath = URL(filePath: imageCache.diskCache.cachePath(forKey: imageUrlString)!)
+                        if let data = try? Data(contentsOf: filepath) {
+                            if imageUrlString.suffix(3) == "gif" {
+                                DispatchQueue.main.async {
+                                    UIPasteboard.general.setData(data, forPasteboardType: "com.compuserve.gif")
+                                }
+                            } else {
+                                if let image = UIImage(data: data) {
+                                    DispatchQueue.main.async {
+                                        UIPasteboard.general.image = image
+                                        toastShown = true
+                                    }
+                                }
+                            }
+                        }
+                        repoMan.selectedEmote = imgUrl.absoluteString
+                        repoMan.addToFrequentlyUsed(emote: imgUrl.absoluteString)
+                        repoMan.reloadFrequentlyUsed()
+                    } label: {
+                        let size: CGFloat = 65
+                        WebImage(url: imgUrl)
+                            .resizable()
+                            .placeholder {
+                                ProgressView()
+                            }
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: size, height: size)
+                            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                    }
+                }
+            }
+            
+        }
     }
     
     @ViewBuilder
