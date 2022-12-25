@@ -11,6 +11,7 @@ struct BottomBarView: View {
     @EnvironmentObject var repoMan: RepoManager
     @EnvironmentObject var kbv: KeyboardViewController
     var showGlobe: Bool
+    var repoMenu: RepoPages
     @AppStorage("hideRepoDrawer", store: UserDefaults(suiteName: "group.llsc12.Nitroless")) private var hideRepoDrawer = false
     
     var body: some View {
@@ -47,14 +48,27 @@ struct BottomBarView: View {
         
             if !hideRepoDrawer {
                 HStack {
+                    
                     if repoMan.repos.isEmpty {
                         ProgressView()
                     } else {
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            LazyHStack {
-                                ForEach(repoMan.repos, id: \.url) { repo in
-                                    if repo.repoData != nil {
-                                        BottomBarItemView(repo: repo, selectRepo: { repoMan.selectRepo(selectedRepo: SelectedRepo(active: true, repo: repo))}, selectedRepo: repoMan.selectedRepo)
+                        if repoMenu == .emotes {
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                LazyHStack {
+                                    ForEach(repoMan.repos, id: \.url) { repo in
+                                        if repo.repoData != nil {
+                                            BottomBarItemView(repo: repo, selectRepo: { repoMan.selectRepo(selectedRepo: SelectedRepo(active: true, repo: repo))}, selectedRepo: repoMan.selectedRepo)
+                                        }
+                                    }
+                                }
+                            }
+                        } else {
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                LazyHStack {
+                                    ForEach(repoMan.repos, id: \.url) { repo in
+                                        if repo.repoData != nil && repo.repoData!.stickers != nil &&  repo.repoData!.stickers!.count > 0 {
+                                            BottomBarItemView(repo: repo, selectRepo: { repoMan.selectRepo(selectedRepo: SelectedRepo(active: true, repo: repo))}, selectedRepo: repoMan.selectedRepo)
+                                        }
                                     }
                                 }
                             }

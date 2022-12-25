@@ -29,4 +29,5 @@ struct HomeView: View {
         .padding(.trailing, idiom == .pad && horizontalSizeClass == .regular ? 40 : 0)
         .padding(.leading, idiom == .pad && horizontalSizeClass == .regular ? 25 : 0)
     }
+
 }

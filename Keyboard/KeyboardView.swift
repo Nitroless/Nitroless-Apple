@@ -24,6 +24,14 @@ struct KeyboardView: View {
     @AppStorage("darkTheme", store: UserDefaults(suiteName: "group.llsc12.Nitroless")) private var darkTheme = false
     @AppStorage("systemTheme", store: UserDefaults(suiteName: "group.llsc12.Nitroless")) private var systemTheme = true
     
+    init(vc: KeyboardViewController) {
+        self.vc = vc
+        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.theme.appPrimaryColor)
+        UISegmentedControl.appearance().backgroundColor = UIColor(Color.theme.appBGTertiaryColor)
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(Color.theme.appPrimaryColor)], for: .normal)
+    }
+    
     var body: some View {
         if systemTheme {
             VStack {
@@ -77,15 +85,30 @@ struct KeyboardView: View {
         }
     }
     
+    @State var repoMenu: RepoPages = .emotes
+    
     @ViewBuilder
     var kb: some View {
         VStack {
-            if repoMan.selectedRepo == nil {
-                MainView(toastShown: $toastShown)
-            } else {
-                RepoView(toastShown: $toastShown)
+            Picker("RepoPages", selection: $repoMenu) {
+                ForEach(0..<RepoPages.allCases.count, id: \.self) {
+                    i in
+                    let type = RepoPages.allCases[i]
+                    Text(type.rawValue).tag(type)
+                }
             }
-            BottomBarView(showGlobe: showGlobe)
+            .clipShape(Capsule())
+            .overlay(Capsule().strokeBorder(Color.theme.appBGSecondaryColor, lineWidth: 3))
+            .pickerStyle(.segmented)
+            .padding(.horizontal, 50)
+            .padding(.top, 10)
+            
+            if repoMan.selectedRepo == nil {
+                MainView(toastShown: $toastShown, repoMenu: repoMenu)
+            } else {
+                RepoView(toastShown: $toastShown, repoMenu: repoMenu)
+            }
+            BottomBarView(showGlobe: showGlobe, repoMenu: repoMenu)
         }
         .environmentObject(repoMan)
         .environmentObject(vc)
@@ -107,14 +130,16 @@ struct AddReposPrompt: View {
         VStack {
             ScrollView {
                 Text("You have no repositories available, please add some in the app.")
-                    .padding(.bottom, 20)
+                    .padding(20)
+                    .background(Color.theme.appBGSecondaryColor)
+                    .cornerRadius(20)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
+                    .padding(.vertical, 10)
             }
-            .padding([.top, .leading, .trailing], 20)
-            .background(Color.theme.appBGSecondaryColor)
-            .cornerRadius(20)
-            .overlay(
-                RoundedRectangle(cornerRadius: 20)
-                    .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
+            .padding(.bottom, 10)
+            
             
             Button {
                 openParentApp()
@@ -127,7 +152,7 @@ struct AddReposPrompt: View {
                     .shadow(radius: 5)
             }
             .buttonStyle(.plain)
-            .padding(.bottom, 5)
+            .padding(.bottom, 20)
         }
         .overlay(alignment: .bottomLeading, content: {
             if vc.needsInputModeSwitchKey {
@@ -179,9 +204,7 @@ struct AskForAccess: View {
         HStack {
             if show1 {
                 VStack {
-                    ScrollView {
-                        Text("Heya! To use the Nitroless Keyboard you will require to give it Full Keyboard Access.\nSettings > General > Keyboards > Keyboard - Nitroless > Allow Full Access")
-                    }
+                    Text("Heya! To use the Nitroless Keyboard you will require to give it Full Keyboard Access.\nSettings > General > Keyboards > Keyboard - Nitroless > Allow Full Access")
                     .padding(20)
                     .background(Color.theme.appBGSecondaryColor)
                     .cornerRadius(20)
@@ -189,6 +212,7 @@ struct AskForAccess: View {
                         RoundedRectangle(cornerRadius: 20)
                             .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
                     .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
+                    .padding(20)
                     
                     Button {
                         toSecondPage()
@@ -201,7 +225,7 @@ struct AskForAccess: View {
                             .shadow(radius: 5)
                     }
                     .buttonStyle(.plain)
-                    .padding(.bottom, 5)
+                    .padding(.bottom, 20)
                 }
                 .overlay(alignment: .bottomLeading, content: {
                     if vc.needsInputModeSwitchKey {
@@ -215,15 +239,19 @@ struct AskForAccess: View {
             if show2 {
                 VStack {
                     ScrollView {
-                        Text("Full Access allows the Keyboard to access the internet so we can load the repos and emotes. Nothing else happens! Feel free to check our Open-Source GitHub Repo.")
+                        VStack {
+                            Text("Full Access allows the Keyboard to access the internet so we can show you all the Emotes. No Data is collected, transmitted or sold. Nitroless uses no third-party analytics or advertising frameworks. Nitroless logs no information on you has no interest in doing such.")
+                        }
+                        .padding(20)
+                        .background(Color.theme.appBGSecondaryColor)
+                        .cornerRadius(20)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
+                        .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
+                        .padding(20)
                     }
-                    .padding(20)
-                    .background(Color.theme.appBGSecondaryColor)
-                    .cornerRadius(20)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
-                    .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
+                    
                     
                     Button {
                         toFirstPage()
@@ -236,7 +264,8 @@ struct AskForAccess: View {
                             .shadow(radius: 5)
                     }
                     .buttonStyle(.plain)
-                    .padding(.bottom, 5)
+                    .padding(.top, 10)
+                    .padding(.bottom, 20)
                 }
                 .overlay(alignment: .bottomLeading, content: {
                     if vc.needsInputModeSwitchKey {

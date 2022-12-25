@@ -22,6 +22,8 @@ struct MainView: View {
     
     @Binding var toastShown: Bool
     
+    var repoMenu: RepoPages
+    
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack {
@@ -84,7 +86,7 @@ struct MainView: View {
                 }
             }
         }
-        .frame(height: 260)
+        .frame(height: 240)
         .foregroundColor(Color.theme.textColor)
     }
     

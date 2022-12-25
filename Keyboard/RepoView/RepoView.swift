@@ -19,6 +19,8 @@ struct RepoView: View {
     
     @Binding var toastShown: Bool
     
+    var repoMenu: RepoPages
+    
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack {
@@ -61,7 +63,7 @@ struct RepoView: View {
                 .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
             }
         }
-        .frame(height: 260)
+        .frame(height: 240)
         .foregroundColor(Color.theme.textColor)
     }
     

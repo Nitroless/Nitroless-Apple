@@ -31,7 +31,6 @@ struct RepoView: View {
     @State var repoMenu: RepoPages = .emotes
     
     var body: some View {
-        
         if idiom == .pad && horizontalSizeClass == .regular {
             ScrollView {
                 VStack {
