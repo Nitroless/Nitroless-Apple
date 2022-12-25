@@ -61,6 +61,9 @@
 		E650D87929562041005B1262 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = E650D87829562041005B1262 /* Introspect */; };
 		E650D880295787A1005B1262 /* RepoPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650D8762956165F005B1262 /* RepoPages.swift */; };
 		E650D881295787A2005B1262 /* RepoPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650D8762956165F005B1262 /* RepoPages.swift */; };
+		E650D8852958D4B2005B1262 /* StickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650D8842958D4B2005B1262 /* StickerView.swift */; };
+		E650D8872958D748005B1262 /* RepoFavouriteStickersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650D8862958D748005B1262 /* RepoFavouriteStickersView.swift */; };
+		E650D8892958D75C005B1262 /* RepoStickersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650D8882958D75C005B1262 /* RepoStickersView.swift */; };
 		E65775AE294AC0B0004ACEEB /* KeyboardSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65775AD294AC0B0004ACEEB /* KeyboardSettingsView.swift */; };
 		E67DFD6E294FE3F20088E4D2 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = E67DFD6D294FE3F20088E4D2 /* AlertToast */; };
 		E67DFD822950B57F0088E4D2 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E67DFD812950B57F0088E4D2 /* Messages.framework */; };
@@ -212,6 +215,9 @@
 		E650D86F2956104E005B1262 /* LICENCE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENCE; sourceTree = "<group>"; };
 		E650D870295611D9005B1262 /* WebP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebP.framework; sourceTree = "<group>"; };
 		E650D8762956165F005B1262 /* RepoPages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoPages.swift; sourceTree = "<group>"; };
+		E650D8842958D4B2005B1262 /* StickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerView.swift; sourceTree = "<group>"; };
+		E650D8862958D748005B1262 /* RepoFavouriteStickersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoFavouriteStickersView.swift; sourceTree = "<group>"; };
+		E650D8882958D75C005B1262 /* RepoStickersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoStickersView.swift; sourceTree = "<group>"; };
 		E65775AD294AC0B0004ACEEB /* KeyboardSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSettingsView.swift; sourceTree = "<group>"; };
 		E67DFD802950B57E0088E4D2 /* Stickers.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Stickers.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E67DFD812950B57F0088E4D2 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
@@ -616,6 +622,9 @@
 				E67DFDC82954DA5E0088E4D2 /* FavouriteEmotesView.swift */,
 				E67DFDB02950D9090088E4D2 /* ContainerView.swift */,
 				E67DFDBB2950EE9C0088E4D2 /* EmoteView.swift */,
+				E650D8842958D4B2005B1262 /* StickerView.swift */,
+				E650D8862958D748005B1262 /* RepoFavouriteStickersView.swift */,
+				E650D8882958D75C005B1262 /* RepoStickersView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1047,6 +1056,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E650D8852958D4B2005B1262 /* StickerView.swift in Sources */,
 				E67DFDB42950DD2E0088E4D2 /* BottomBarView.swift in Sources */,
 				E67DFDC72954D52F0088E4D2 /* RepoView.swift in Sources */,
 				E67DFDBC2950EE9C0088E4D2 /* EmoteView.swift in Sources */,
@@ -1056,9 +1066,11 @@
 				E67DFDC92954DA5E0088E4D2 /* FavouriteEmotesView.swift in Sources */,
 				E67DFDD32954EF120088E4D2 /* AddReposPromptView.swift in Sources */,
 				E67DFDAE2950D8E20088E4D2 /* MainView.swift in Sources */,
+				E650D8892958D75C005B1262 /* RepoStickersView.swift in Sources */,
 				E67DFD9A2950C9E40088E4D2 /* RepositoryManager.swift in Sources */,
 				E67DFD9B2950CA7C0088E4D2 /* Color.swift in Sources */,
 				E67DFDB12950D9090088E4D2 /* ContainerView.swift in Sources */,
+				E650D8872958D748005B1262 /* RepoFavouriteStickersView.swift in Sources */,
 				E67DFDCF2954DB740088E4D2 /* RepoFavouriteEmotesView.swift in Sources */,
 				E67DFDC52954C25A0088E4D2 /* BottomBarElementView.swift in Sources */,
 				E650D881295787A2005B1262 /* RepoPages.swift in Sources */,

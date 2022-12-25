@@ -11,11 +11,13 @@ struct MainView: View {
     @EnvironmentObject var mvc: MessagesViewController
     @EnvironmentObject var repoMan: RepoManager
     
+    var repoMenu: RepoPages
+    
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack {
-                FavouriteEmotesView()
-                FrequentlyUsedView()
+                FavouriteEmotesView(repoMenu: repoMenu)
+                FrequentlyUsedView(repoMenu: repoMenu)
             }
         }
         .frame(maxHeight: .infinity)

@@ -11,6 +11,8 @@ struct BottomBarView: View {
     @EnvironmentObject var mvc: MessagesViewController
     @EnvironmentObject var repoMan: RepoManager
     
+    var repoMenu: RepoPages
+    
     var body: some View {
         HStack {
             VStack {
@@ -40,18 +42,37 @@ struct BottomBarView: View {
             if repoMan.repos.isEmpty {
                 ProgressView()
             } else {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHStack {
-                        ForEach(repoMan.repos, id: \.url) {
-                            repo in
-                            if repo.repoData != nil {
-                                BottomBarElementView(
-                                    buttonAction: {
-                                        repoMan.selectRepo(selectedRepo: SelectedRepo(active: true, repo: repo))
-                                    },
-                                    webImage: repo.url.appending(path: repo.repoData!.icon),
-                                    repo: repo
-                                )
+                if repoMenu == .emotes {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        LazyHStack {
+                            ForEach(repoMan.repos, id: \.url) {
+                                repo in
+                                if repo.repoData != nil {
+                                    BottomBarElementView(
+                                        buttonAction: {
+                                            repoMan.selectRepo(selectedRepo: SelectedRepo(active: true, repo: repo))
+                                        },
+                                        webImage: repo.url.appending(path: repo.repoData!.icon),
+                                        repo: repo
+                                    )
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        LazyHStack {
+                            ForEach(repoMan.repos, id: \.url) {
+                                repo in
+                                if repo.repoData != nil && repo.repoData!.stickers != nil &&  repo.repoData!.stickers!.count > 0 {
+                                    BottomBarElementView(
+                                        buttonAction: {
+                                            repoMan.selectRepo(selectedRepo: SelectedRepo(active: true, repo: repo))
+                                        },
+                                        webImage: repo.url.appending(path: repo.repoData!.icon),
+                                        repo: repo
+                                    )
+                                }
                             }
                         }
                     }
