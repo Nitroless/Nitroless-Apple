@@ -20,6 +20,10 @@ struct MainView: View {
         GridItem(.adaptive(minimum: 45))
     ]
     
+    let stickerColumn = [
+        GridItem(.adaptive(minimum: 65))
+    ]
+    
     @Binding var toastShown: Bool
     
     var repoMenu: RepoPages
@@ -28,19 +32,78 @@ struct MainView: View {
         ScrollView(showsIndicators: false) {
             VStack {
                 if !hideFavouriteEmotes {
-                    if repoMan.favouriteEmotes.count > 0 {
+                    if repoMenu == .emotes {
+                        if repoMan.favouriteEmotes.count > 0 {
+                            VStack {
+                                HStack {
+                                    Image(systemName: "star")
+                                    Text("Favourite Emotes")
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                }
+                                .font(.headline)
+                                
+                                Spacer()
+                                
+                                LazyVStack {
+                                    favouritesGrid
+                                }
+                            }
+                            .padding(20)
+                            .background(Color.theme.appBGSecondaryColor)
+                            .cornerRadius(20)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
+                            .padding([.top, .horizontal], 10)
+                            .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
+                        }
+                    } else {
+                        if repoMan.favouriteStickers.count > 0 {
+                            VStack {
+                                HStack {
+                                    Image(systemName: "star")
+                                    Text("Favourite Stickers")
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                }
+                                .font(.headline)
+                                
+                                Spacer()
+                                
+                                LazyVStack {
+                                    favouriteStickersGrid
+                                }
+                            }
+                            .padding(20)
+                            .background(Color.theme.appBGSecondaryColor)
+                            .cornerRadius(20)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
+                            .padding([.top, .horizontal], 10)
+                            .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
+                        }
+                    }
+                }
+                
+                if !hideFrequentlyUsedEmotes {
+                    if repoMenu == .emotes {
                         VStack {
                             HStack {
-                                Image(systemName: "star")
-                                Text("Favourite Emotes")
+                                Image(systemName: "clock.arrow.circlepath")
+                                Text("Frequently used")
                                     .frame(maxWidth: .infinity, alignment: .leading)
                             }
                             .font(.headline)
                             
                             Spacer()
                             
-                            LazyVStack {
-                                favouritesGrid
+                            if repoMan.frequentlyUsed.count == 0 {
+                                Text("Start using Nitroless to show your frequently used emotes here.")
+                                    .frame(maxWidth: .infinity)
+                            } else {
+                                LazyVStack {
+                                    emotesGrid
+                                }
                             }
                         }
                         .padding(20)
@@ -50,39 +113,38 @@ struct MainView: View {
                             RoundedRectangle(cornerRadius: 20)
                                 .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
                         .padding([.top, .horizontal], 10)
+                        .padding(.bottom, 20)
                         .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
-                    }
-                }
-                
-                if !hideFrequentlyUsedEmotes {
-                    VStack {
-                        HStack {
-                            Image(systemName: "clock.arrow.circlepath")
-                            Text("Frequently used emotes")
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                        }
-                        .font(.headline)
-                        
-                        Spacer()
-                        
-                        if repoMan.frequentlyUsed.count == 0 {
-                            Text("Start using Nitroless to show your frequently used emotes here.")
-                                .frame(maxWidth: .infinity)
-                        } else {
-                            LazyVStack {
-                                emotesGrid
+                    } else {
+                        VStack {
+                            HStack {
+                                Image(systemName: "clock.arrow.circlepath")
+                                Text("Frequently used")
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                            .font(.headline)
+                            
+                            Spacer()
+                            
+                            if repoMan.frequentlyUsedStickers.count == 0 {
+                                Text("Start using Nitroless to show your frequently used stickers here.")
+                                    .frame(maxWidth: .infinity)
+                            } else {
+                                LazyVStack {
+                                    stickerGrid
+                                }
                             }
                         }
+                        .padding(20)
+                        .background(Color.theme.appBGSecondaryColor)
+                        .cornerRadius(20)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
+                        .padding([.top, .horizontal], 10)
+                        .padding(.bottom, 20)
+                        .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
                     }
-                    .padding(20)
-                    .background(Color.theme.appBGSecondaryColor)
-                    .cornerRadius(20)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
-                    .padding([.top, .horizontal], 10)
-                    .padding(.bottom, 20)
-                    .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
                 }
             }
         }
@@ -90,6 +152,43 @@ struct MainView: View {
         .foregroundColor(Color.theme.textColor)
     }
     
+    @ViewBuilder
+    var favouriteStickersGrid: some View {
+        LazyVGrid(columns: stickerColumn) {
+            let stickers = repoMan.favouriteStickers
+            
+            ForEach(0..<stickers.count, id: \.self) { i in
+                let sticker = stickers[i]
+                
+                Button {
+                    let imageUrlString = sticker.absoluteString
+                    let imageCache: SDImageCache = SDImageCache.shared
+                    let filepath = URL(filePath: imageCache.diskCache.cachePath(forKey: imageUrlString)!)
+                    if let data = try? Data(contentsOf: filepath) {
+                        if let image = UIImage(data: data) {
+                            DispatchQueue.main.async {
+                                UIPasteboard.general.image = image
+                                toastShown = true
+                            }
+                        }
+                    }
+                    repoMan.selectedEmote = sticker.absoluteString
+                    repoMan.addToFrequentlyUsedStickers(sticker: sticker.absoluteString)
+                    repoMan.reloadFrequentlyUsedStickers()
+                } label: {
+                    let size: CGFloat = 65
+                    WebImage(url: sticker)
+                        .resizable()
+                        .placeholder {
+                            ProgressView()
+                        }
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: size, height: size)
+                        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                }
+            }
+        }
+    }
     
     @ViewBuilder
     var favouritesGrid: some View {
@@ -128,6 +227,44 @@ struct MainView: View {
                 } label: {
                     let size: CGFloat = 40
                     WebImage(url: emote)
+                        .resizable()
+                        .placeholder {
+                            ProgressView()
+                        }
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: size, height: size)
+                        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                }
+            }
+        }
+    }
+    
+    @ViewBuilder
+    var stickerGrid: some View {
+        LazyVGrid(columns: stickerColumn) {
+            let stickers = repoMan.frequentlyUsedStickers
+            
+            ForEach(0..<stickers.count, id: \.self) { i in
+                let sticker = stickers[i]
+                
+                Button {
+                    let imageUrlString = sticker.absoluteString
+                    let imageCache: SDImageCache = SDImageCache.shared
+                    let filepath = URL(filePath: imageCache.diskCache.cachePath(forKey: imageUrlString)!)
+                    if let data = try? Data(contentsOf: filepath) {
+                        if let image = UIImage(data: data) {
+                            DispatchQueue.main.async {
+                                UIPasteboard.general.image = image
+                                toastShown = true
+                            }
+                        }
+                    }
+                    repoMan.selectedEmote = sticker.absoluteString
+                    repoMan.addToFrequentlyUsedStickers(sticker: sticker.absoluteString)
+                    repoMan.reloadFrequentlyUsedStickers()
+                } label: {
+                    let size: CGFloat = 65
+                    WebImage(url: sticker)
                         .resizable()
                         .placeholder {
                             ProgressView()

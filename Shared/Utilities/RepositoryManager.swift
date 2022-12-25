@@ -68,6 +68,16 @@ class RepoManager: ObservableObject {
         return !repositories.isEmpty
     }
     
+    public func hasStickers() -> Bool {
+        for repo in repos {
+            if repo.repoData != nil && repo.repoData!.stickers != nil && repo.repoData!.stickers!.count > 0 {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
     public func removeFromFavourite(repo: String, emote: String) {
         var rep = repo
         let removeFromURL: Set<Character> = [".", "/"]

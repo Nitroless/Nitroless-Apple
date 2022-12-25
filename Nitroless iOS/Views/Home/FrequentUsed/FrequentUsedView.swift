@@ -100,7 +100,16 @@ struct FrequentUsedView: View {
                 let sticker  = stickers[i]
                 
                 Button {
-                    UIPasteboard.general.url = sticker
+                    let imageUrlString = sticker.absoluteString
+                    let imageCache: SDImageCache = SDImageCache.shared
+                    let filepath = URL(filePath: imageCache.diskCache.cachePath(forKey: imageUrlString)!)
+                    if let data = try? Data(contentsOf: filepath) {
+                        if let image = UIImage(data: data) {
+                            DispatchQueue.main.async {
+                                UIPasteboard.general.image = image
+                            }
+                        }
+                    }
                     toastShown = true
                     repoMan.addToFrequentlyUsedStickers(sticker: sticker.absoluteString)
                     repoMan.reloadFrequentlyUsedStickers()

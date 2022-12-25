@@ -24,6 +24,8 @@ struct KeyboardView: View {
     @AppStorage("darkTheme", store: UserDefaults(suiteName: "group.llsc12.Nitroless")) private var darkTheme = false
     @AppStorage("systemTheme", store: UserDefaults(suiteName: "group.llsc12.Nitroless")) private var systemTheme = true
     
+    @State var repoMenu: RepoPages = .emotes
+    
     init(vc: KeyboardViewController) {
         self.vc = vc
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.theme.appPrimaryColor)
@@ -85,23 +87,23 @@ struct KeyboardView: View {
         }
     }
     
-    @State var repoMenu: RepoPages = .emotes
-    
     @ViewBuilder
     var kb: some View {
         VStack {
-            Picker("RepoPages", selection: $repoMenu) {
-                ForEach(0..<RepoPages.allCases.count, id: \.self) {
-                    i in
-                    let type = RepoPages.allCases[i]
-                    Text(type.rawValue).tag(type)
+            if repoMan.hasStickers() {
+                Picker("RepoPages", selection: $repoMenu) {
+                    ForEach(0..<RepoPages.allCases.count, id: \.self) {
+                        i in
+                        let type = RepoPages.allCases[i]
+                        Text(type.rawValue).tag(type)
+                    }
                 }
+                .clipShape(Capsule())
+                .overlay(Capsule().strokeBorder(Color.theme.appBGSecondaryColor, lineWidth: 3))
+                .pickerStyle(.segmented)
+                .padding(.horizontal, 50)
+                .padding(.top, 10)
             }
-            .clipShape(Capsule())
-            .overlay(Capsule().strokeBorder(Color.theme.appBGSecondaryColor, lineWidth: 3))
-            .pickerStyle(.segmented)
-            .padding(.horizontal, 50)
-            .padding(.top, 10)
             
             if repoMan.selectedRepo == nil {
                 MainView(toastShown: $toastShown, repoMenu: repoMenu)
