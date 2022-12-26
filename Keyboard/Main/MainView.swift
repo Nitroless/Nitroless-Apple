@@ -26,11 +26,26 @@ struct MainView: View {
     
     @Binding var toastShown: Bool
     
-    var repoMenu: RepoPages
+    @Binding var repoMenu: RepoPages
     
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack {
+                if repoMan.hasStickers() {
+                    Picker("RepoPages", selection: $repoMenu) {
+                        ForEach(0..<RepoPages.allCases.count, id: \.self) {
+                            i in
+                            let type = RepoPages.allCases[i]
+                            Text(type.rawValue).tag(type)
+                        }
+                    }
+                    .clipShape(Capsule())
+                    .overlay(Capsule().strokeBorder(Color.theme.appBGSecondaryColor, lineWidth: 3))
+                    .pickerStyle(.segmented)
+                    .padding(.horizontal, 50)
+                    .padding(.top, 10)
+                }
+                
                 if !hideFavouriteEmotes {
                     if repoMenu == .emotes {
                         if repoMan.favouriteEmotes.count > 0 {
@@ -148,7 +163,7 @@ struct MainView: View {
                 }
             }
         }
-        .frame(height: 240)
+        .frame(height: 270)
         .foregroundColor(Color.theme.textColor)
     }
     

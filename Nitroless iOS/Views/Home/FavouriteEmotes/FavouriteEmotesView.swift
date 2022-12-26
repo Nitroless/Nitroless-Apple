@@ -60,7 +60,7 @@ struct FavouriteEmotesView: View {
     
     @ViewBuilder
     var emotePalette: some View {
-        LazyVGrid(columns: stickerFlag ? stickerColumns : columns, spacing: stickerFlag ? 0 : 20) {
+        LazyVGrid(columns: stickerFlag ? stickerColumns : columns, spacing: stickerFlag ? 10 : 20) {
             let emotes = emotes
             
             ForEach(0..<emotes.count, id: \.self) { i in

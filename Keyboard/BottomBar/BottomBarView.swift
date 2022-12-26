@@ -57,7 +57,12 @@ struct BottomBarView: View {
                                 LazyHStack {
                                     ForEach(repoMan.repos, id: \.url) { repo in
                                         if repo.repoData != nil {
-                                            BottomBarItemView(repo: repo, selectRepo: { repoMan.selectRepo(selectedRepo: SelectedRepo(active: true, repo: repo))}, selectedRepo: repoMan.selectedRepo)
+                                            BottomBarItemView(
+                                                repo: repo,
+                                                selectRepo: {
+                                                    repoMan.selectRepo(selectedRepo: SelectedRepo(active: true, repo: repo))
+                                                },
+                                                selectedRepo: repoMan.selectedRepo)
                                         }
                                     }
                                 }
@@ -67,7 +72,8 @@ struct BottomBarView: View {
                                 LazyHStack {
                                     ForEach(repoMan.repos, id: \.url) { repo in
                                         if repo.repoData != nil && repo.repoData!.stickers != nil &&  repo.repoData!.stickers!.count > 0 {
-                                            BottomBarItemView(repo: repo, selectRepo: { repoMan.selectRepo(selectedRepo: SelectedRepo(active: true, repo: repo))}, selectedRepo: repoMan.selectedRepo)
+                                            BottomBarItemView(
+                                                repo: repo, selectRepo: { repoMan.selectRepo(selectedRepo: SelectedRepo(active: true, repo: repo))}, selectedRepo: repoMan.selectedRepo)
                                         }
                                     }
                                 }

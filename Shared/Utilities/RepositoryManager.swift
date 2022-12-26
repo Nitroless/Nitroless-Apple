@@ -78,6 +78,14 @@ class RepoManager: ObservableObject {
         return false
     }
     
+    public func hasRepoStickers(repo: Repo?) -> Bool {
+        if repo != nil && repo!.repoData != nil && repo!.repoData!.stickers != nil && repo!.repoData!.stickers!.count > 0 {
+            return true
+        }
+        
+        return false
+    }
+    
     public func removeFromFavourite(repo: String, emote: String) {
         var rep = repo
         let removeFromURL: Set<Character> = [".", "/"]
@@ -805,7 +813,11 @@ class RepoManager: ObservableObject {
                 do {
                     let json = try JSONDecoder().decode(NitrolessRepo.self, from: data)
                     
+                    print(json)
+                    
                     let final = Repo(url: url, repoData: json, favouriteEmotes: favouriteEmotes, favouriteStickers: favouriteStickers)
+                    
+                    
                     
                     DispatchQueue.main.async {
                         self.repos.append(final)

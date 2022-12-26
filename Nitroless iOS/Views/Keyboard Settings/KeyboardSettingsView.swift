@@ -17,6 +17,7 @@ struct KeyboardSettingsView: View {
     @AppStorage("hideRepoDrawer", store: UserDefaults(suiteName: "group.llsc12.Nitroless")) private var hideRepoDrawer = false
     @AppStorage("darkTheme", store: UserDefaults(suiteName: "group.llsc12.Nitroless")) private var darkTheme = false
     @AppStorage("systemTheme", store: UserDefaults(suiteName: "group.llsc12.Nitroless")) private var systemTheme = true
+    @AppStorage("openAsStickers", store: UserDefaults(suiteName: "group.llsc12.Nitroless")) private var openAsStickers = false
     
     @State private var testKeyboard = ""
     
@@ -90,6 +91,28 @@ struct KeyboardSettingsView: View {
             
             VStack {
                 TextField("Test Keyboard", text: $testKeyboard)
+            }
+            .frame(minWidth: 0, maxWidth: .infinity)
+            .padding(20)
+            .background(Color.theme.appBGSecondaryColor)
+            .cornerRadius(20)
+            .overlay(
+                RoundedRectangle(cornerRadius: 20)
+                    .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
+            .padding(.top, 10)
+            .padding(.horizontal, 15)
+            .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
+            
+            //MARK: Not Working (TODO)
+            
+            VStack {
+                Toggle("Open Keyboard with Stickers", isOn: $openAsStickers)
+                    .toggleStyle(SwitchToggleStyle(tint: Color.theme.appPrimaryColor))
+                    .padding(.bottom, 10)
+
+                Text("This forces keyboard to start with Stickers Tab opened instead of the default Emotes")
+                    .padding(.bottom, 10)
+
             }
             .frame(minWidth: 0, maxWidth: .infinity)
             .padding(20)

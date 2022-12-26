@@ -28,7 +28,7 @@ struct RepoView: View {
     
     private var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
     
-    @State var repoMenu: RepoPages = .emotes
+   @Binding var repoMenu: RepoPages
     
     var body: some View {
         if idiom == .pad && horizontalSizeClass == .regular {
@@ -231,6 +231,7 @@ struct RepoView: View {
             LazyVGrid(columns: stickerColumns) {
                 ForEach(0..<repoMan.selectedRepo!.repo.favouriteStickers!.count, id: \.self) { i in
                     let sticker = repoMan.selectedRepo!.repo.favouriteStickers![i]
+                   
                     StickerCell(favouriteFlag: true, stickerURL: sticker, repoMan: repoMan, toastShown: $toastShown, ql: $previewUrl)
                 }
             }
@@ -377,6 +378,8 @@ struct StickerCell: View {
                     .appending(path: repo!.repoData!.stickerPath!)
                     .appending(path: sticker!.name)
                     .appendingPathExtension(sticker!.type)
+                
+                
                 
                 Button {
                     UIPasteboard.general.url = imgUrl

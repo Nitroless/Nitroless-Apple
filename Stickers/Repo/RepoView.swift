@@ -11,7 +11,7 @@ struct RepoView: View {
     @EnvironmentObject var mvc: MessagesViewController
     @EnvironmentObject var repoMan: RepoManager
     
-    var repoMenu: RepoPages
+    @Binding var repoMenu: RepoPages
     
     let columns = [
         GridItem(.adaptive(minimum: 45))
@@ -23,6 +23,20 @@ struct RepoView: View {
     
     var body: some View {
         ScrollView(showsIndicators: false) {
+            if repoMan.hasRepoStickers(repo: repoMan.selectedRepo?.repo)  {
+                Picker("RepoPages", selection: $repoMenu) {
+                    ForEach(0..<RepoPages.allCases.count, id: \.self) {
+                        i in
+                        let type = RepoPages.allCases[i]
+                        Text(type.rawValue).tag(type)
+                    }
+                }
+                .clipShape(Capsule())
+                .overlay(Capsule().strokeBorder(Color.theme.appBGSecondaryColor, lineWidth: 3))
+                .pickerStyle(.segmented)
+                .padding(.horizontal, 50)
+                .padding(.vertical, 10)
+            }
             if repoMan.selectedRepo != nil {
                 if repoMenu == .emotes {
                     if repoMan.selectedRepo!.repo.favouriteEmotes != nil && repoMan.selectedRepo!.repo.favouriteEmotes!.count > 0 {

@@ -12,6 +12,7 @@ struct SidebarView: View {
     var showDefaultReposMenu: () -> Void
     var showAddPrompt: () -> Void
     var closeSidebar: () -> Void
+    var resetRepoMenu: () -> Void
     
     @State var urlToDelete: URL? = nil
     @State var showDeletePrompt = false
@@ -29,6 +30,7 @@ struct SidebarView: View {
                         .opacity(repoMan.selectedRepo == nil ? 1 : 0)
                     
                     Button {
+                        resetRepoMenu()
                         repoMan.selectHome()
                         closeSidebar()
                     } label: {
@@ -51,9 +53,21 @@ struct SidebarView: View {
                 
                 ForEach(repoMan.repos, id: \.url) { repo in
                     if repo.repoData != nil {
-                        SidebarItemView(repo: repo, removeRepo: { urlToDelete = repo.url
-                            showDeletePrompt = true
-                        }, selectRepo: { repoMan.selectRepo(selectedRepo: SelectedRepo(active: true, repo: repo)) },  closeSidebar: { self.closeSidebar() }, selectedRepo: repoMan.selectedRepo)
+                        SidebarItemView(
+                            repo: repo,
+                            removeRepo: {
+                                urlToDelete = repo.url
+                                showDeletePrompt = true
+                            },
+                            selectRepo: {
+                                repoMan.selectRepo(selectedRepo: SelectedRepo(active: true, repo: repo))
+                                resetRepoMenu()
+                            },
+                            closeSidebar: {
+                                self.closeSidebar()
+                            },
+                            selectedRepo: repoMan.selectedRepo
+                        )
                     } else {
                         Button {
                             urlToDelete = repo.url

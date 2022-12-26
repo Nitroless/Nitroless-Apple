@@ -25,6 +25,7 @@ struct ContentView: View {
     @State private var sidebarOpened: Bool = false
     private var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
     private var isPortrait : Bool { UIDevice.current.orientation.isPortrait }
+    @State var repoMenu: RepoPages = .emotes
     
     var body: some View {
         if idiom == .pad && horizontalSizeClass == .regular {
@@ -79,7 +80,7 @@ struct ContentView: View {
                                 HomeView(toastShown: $toastShown)
                             }
                         } else {
-                            RepoView(toastShown: $toastShown, repo: repoMan.selectedRepo!.repo)
+                            RepoView(toastShown: $toastShown, repo: repoMan.selectedRepo!.repo, repoMenu: $repoMenu)
                         }
                     }
                 }
@@ -118,12 +119,12 @@ struct ContentView: View {
     func iOSView() -> some View {
         NavigationStack {
             ZStack(alignment: .leading) {
-                SidebarView(showDefaultReposMenu: { toggleShowDefaultReposMenu() }, showAddPrompt: { toggleShowAddPrompt() }, closeSidebar: { sidebarOpened = false })
+                SidebarView(showDefaultReposMenu: { toggleShowDefaultReposMenu() }, showAddPrompt: { toggleShowAddPrompt() }, closeSidebar: { sidebarOpened = false }, resetRepoMenu: { repoMenu = .emotes })
                 ScrollView {
                     if repoMan.selectedRepo == nil {
                         HomeView(toastShown: $toastShown)
                     } else {
-                        RepoView(toastShown: $toastShown, repo: repoMan.selectedRepo!.repo)
+                        RepoView(toastShown: $toastShown, repo: repoMan.selectedRepo!.repo, repoMenu: $repoMenu)
                     }
                 }
                 .foregroundColor(Color.theme.textColor)
