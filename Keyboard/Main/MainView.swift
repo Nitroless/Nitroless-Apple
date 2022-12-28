@@ -47,71 +47,20 @@ struct MainView: View {
                 }
                 
                 if !hideFavouriteEmotes {
-                    if repoMenu == .emotes {
-                        if repoMan.favouriteEmotes.count > 0 {
-                            VStack {
-                                HStack {
-                                    Image(systemName: "star")
-                                    Text("Favourite Emotes")
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                }
-                                .font(.headline)
-                                
-                                Spacer()
-                                
-                                LazyVStack {
-                                    favouritesGrid
-                                }
+                    ContainerView(icon: "star", title: repoMenu == .emotes ? "Favourite Emotes" : "Favourite Stickers") {
+                        LazyVStack {
+                            if repoMenu == .emotes {
+                                favouritesGrid
+                            } else {
+                                favouriteStickersGrid
                             }
-                            .padding(20)
-                            .background(Color.theme.appBGSecondaryColor)
-                            .cornerRadius(20)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
-                            .padding([.top, .horizontal], 10)
-                            .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
-                        }
-                    } else {
-                        if repoMan.favouriteStickers.count > 0 {
-                            VStack {
-                                HStack {
-                                    Image(systemName: "star")
-                                    Text("Favourite Stickers")
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                }
-                                .font(.headline)
-                                
-                                Spacer()
-                                
-                                LazyVStack {
-                                    favouriteStickersGrid
-                                }
-                            }
-                            .padding(20)
-                            .background(Color.theme.appBGSecondaryColor)
-                            .cornerRadius(20)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
-                            .padding([.top, .horizontal], 10)
-                            .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
                         }
                     }
                 }
                 
                 if !hideFrequentlyUsedEmotes {
-                    if repoMenu == .emotes {
-                        VStack {
-                            HStack {
-                                Image(systemName: "clock.arrow.circlepath")
-                                Text("Frequently used")
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                            }
-                            .font(.headline)
-                            
-                            Spacer()
-                            
+                    ContainerView(icon: "clock.arrow.circlepath", title: "Frequently used") {
+                        if repoMenu == .emotes {
                             if repoMan.frequentlyUsed.count == 0 {
                                 Text("Start using Nitroless to show your frequently used emotes here.")
                                     .frame(maxWidth: .infinity)
@@ -120,27 +69,7 @@ struct MainView: View {
                                     emotesGrid
                                 }
                             }
-                        }
-                        .padding(20)
-                        .background(Color.theme.appBGSecondaryColor)
-                        .cornerRadius(20)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 20)
-                                .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
-                        .padding([.top, .horizontal], 10)
-                        .padding(.bottom, 20)
-                        .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
-                    } else {
-                        VStack {
-                            HStack {
-                                Image(systemName: "clock.arrow.circlepath")
-                                Text("Frequently used")
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                            }
-                            .font(.headline)
-                            
-                            Spacer()
-                            
+                        } else {
                             if repoMan.frequentlyUsedStickers.count == 0 {
                                 Text("Start using Nitroless to show your frequently used stickers here.")
                                     .frame(maxWidth: .infinity)
@@ -150,15 +79,6 @@ struct MainView: View {
                                 }
                             }
                         }
-                        .padding(20)
-                        .background(Color.theme.appBGSecondaryColor)
-                        .cornerRadius(20)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 20)
-                                .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
-                        .padding([.top, .horizontal], 10)
-                        .padding(.bottom, 20)
-                        .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
                     }
                 }
             }

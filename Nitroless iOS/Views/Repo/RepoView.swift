@@ -36,17 +36,10 @@ struct RepoView: View {
                 VStack {
                     info
                     
-                    HStack {
+                    ContainerView {
                         TextField("Search Repository...", text: $searchText)
                             .padding()
                     }
-                    .padding(5)
-                    .background(Color.theme.appBGSecondaryColor)
-                    .clipShape(Capsule())
-                    .overlay(Capsule().strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
-                    .padding(.top, 10)
-                    .padding(.horizontal, 15)
-                    .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
 
                     if repoMan.selectedRepo != nil && repoMan.selectedRepo!.repo.favouriteEmotes != nil && repoMan.selectedRepo!.repo.favouriteEmotes!.count > 0 {
                         favouriteEmotesMain.quickLookPreview($previewUrl)
@@ -55,39 +48,31 @@ struct RepoView: View {
                         favouriteStickersMain.quickLookPreview($previewUrl)
                     }
                     
-                    LazyVStack {
-                        if repoMan.selectedRepo != nil && repoMan.selectedRepo!.repo.repoData != nil && repoMan.selectedRepo!.repo.repoData!.stickers != nil && repoMan.selectedRepo!.repo.repoData!.stickers!.count > 0 {
-                            Picker("RepoPages", selection: $repoMenu) {
-                                ForEach(0..<RepoPages.allCases.count, id: \.self) {
-                                    i in
-                                    let type = RepoPages.allCases[i]
-                                    Text(type.rawValue).tag(type)
+                    ContainerView {
+                        LazyVStack {
+                            if repoMan.selectedRepo != nil && repoMan.selectedRepo!.repo.repoData != nil && repoMan.selectedRepo!.repo.repoData!.stickers != nil && repoMan.selectedRepo!.repo.repoData!.stickers!.count > 0 {
+                                Picker("RepoPages", selection: $repoMenu) {
+                                    ForEach(0..<RepoPages.allCases.count, id: \.self) {
+                                        i in
+                                        let type = RepoPages.allCases[i]
+                                        Text(type.rawValue).tag(type)
+                                    }
                                 }
+                                .clipShape(Capsule())
+                                .overlay(Capsule().strokeBorder(Color.theme.appBGSecondaryColor, lineWidth: 3))
+                                .pickerStyle(.segmented)
+                                .padding(.horizontal, 50)
+                                .padding(.bottom, 20)
                             }
-                            .clipShape(Capsule())
-                            .overlay(Capsule().strokeBorder(Color.theme.appBGSecondaryColor, lineWidth: 3))
-                            .pickerStyle(.segmented)
-                            .padding(.horizontal, 50)
-                            .padding(.bottom, 20)
-                        }
-                        
-                        if repoMenu == .emotes {
-                            main
-                                .quickLookPreview($previewUrl)
-                        } else {
-                            stickerMain
+                            
+                            if repoMenu == .emotes {
+                                main
+                                    .quickLookPreview($previewUrl)
+                            } else {
+                                stickerMain
+                            }
                         }
                     }
-                    .padding(20)
-                    .background(Color.theme.appBGSecondaryColor)
-                    .cornerRadius(20)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
-                    .padding(.top, 10)
-                    .padding(.bottom, 30)
-                    .padding(.horizontal, 15)
-                    .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
                 }
             }
             .frame(minWidth: 0, maxWidth: .infinity)
@@ -107,40 +92,32 @@ struct RepoView: View {
                         favouriteStickersMain.quickLookPreview($previewUrl)
                     }
                     
-                    LazyVStack {
-                        if repoMan.selectedRepo != nil && repoMan.selectedRepo!.repo.repoData != nil && repoMan.selectedRepo!.repo.repoData!.stickers != nil && repoMan.selectedRepo!.repo.repoData!.stickers!.count > 0 {
-                            Picker("RepoPages", selection: $repoMenu) {
-                                ForEach(0..<RepoPages.allCases.count, id: \.self) {
-                                    i in
-                                    let type = RepoPages.allCases[i]
-                                    Text(type.rawValue).tag(type)
+                    ContainerView {
+                        LazyVStack {
+                            if repoMan.selectedRepo != nil && repoMan.selectedRepo!.repo.repoData != nil && repoMan.selectedRepo!.repo.repoData!.stickers != nil && repoMan.selectedRepo!.repo.repoData!.stickers!.count > 0 {
+                                Picker("RepoPages", selection: $repoMenu) {
+                                    ForEach(0..<RepoPages.allCases.count, id: \.self) {
+                                        i in
+                                        let type = RepoPages.allCases[i]
+                                        Text(type.rawValue).tag(type)
+                                    }
                                 }
+                                .clipShape(Capsule())
+                                .overlay(Capsule().strokeBorder(Color.theme.appBGSecondaryColor, lineWidth: 3))
+                                .pickerStyle(.segmented)
+                                .padding(.horizontal, 50)
+                                .padding(.bottom, 20)
                             }
-                            .clipShape(Capsule())
-                            .overlay(Capsule().strokeBorder(Color.theme.appBGSecondaryColor, lineWidth: 3))
-                            .pickerStyle(.segmented)
-                            .padding(.horizontal, 50)
-                            .padding(.bottom, 20)
-                        }
-                        
-                        if repoMenu == .emotes {
-                            main
-                                .quickLookPreview($previewUrl)
-                        } else {
-                            stickerMain
-                                .quickLookPreview($previewUrl)
+                            
+                            if repoMenu == .emotes {
+                                main
+                                    .quickLookPreview($previewUrl)
+                            } else {
+                                stickerMain
+                                    .quickLookPreview($previewUrl)
+                            }
                         }
                     }
-                    .padding(20)
-                    .background(Color.theme.appBGSecondaryColor)
-                    .cornerRadius(20)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
-                    .padding(.top, 10)
-                    .padding(.bottom, 30)
-                    .padding(.horizontal, 15)
-                    .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
                 }
             }
             .frame(minWidth: 0, maxWidth: .infinity)
@@ -153,7 +130,7 @@ struct RepoView: View {
     
     @ViewBuilder
     var info: some View {
-        VStack {
+        ContainerPillView {
             HStack {
                 let url = repo.url
                 let imgUrl = url.appending(path: repo.repoData!.icon)
@@ -190,14 +167,6 @@ struct RepoView: View {
                 }
             }
         }
-        .padding()
-        .frame(minWidth: 0, maxWidth: .infinity)
-        .background(Color.theme.appBGTertiaryColor)
-        .clipShape(Capsule())
-        .overlay(Capsule().strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
-        .padding(.top, 10)
-        .padding(.horizontal, 15)
-        .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
     }
     
     @ViewBuilder
@@ -220,14 +189,7 @@ struct RepoView: View {
     
     @ViewBuilder
     var favouriteStickersMain: some View {
-        VStack {
-            HStack {
-                Image(systemName: "star")
-                Text("Favourite Stickers")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-            }
-            .font(.headline)
-            
+        ContainerView(icon: "star", title: "Favourite Stickers") {
             LazyVGrid(columns: stickerColumns) {
                 ForEach(0..<repoMan.selectedRepo!.repo.favouriteStickers!.count, id: \.self) { i in
                     let sticker = repoMan.selectedRepo!.repo.favouriteStickers![i]
@@ -236,27 +198,11 @@ struct RepoView: View {
                 }
             }
         }
-        .padding(20)
-        .background(Color.theme.appBGSecondaryColor)
-        .cornerRadius(20)
-        .overlay(
-            RoundedRectangle(cornerRadius: 20)
-                .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
-        .padding(.top, 10)
-        .padding(.horizontal, 15)
-        .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
     }
     
     @ViewBuilder
     var favouriteEmotesMain: some View {
-        VStack {
-            HStack {
-                Image(systemName: "star")
-                Text("Favourite Emotes")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-            }
-            .font(.headline)
-            
+        ContainerView(icon: "star", title: "Favourite Emotes"){
             LazyVGrid(columns: columns) {
                 ForEach(0..<repoMan.selectedRepo!.repo.favouriteEmotes!.count, id: \.self) { i in
                     let emote = repoMan.selectedRepo!.repo.favouriteEmotes![i]
@@ -264,15 +210,6 @@ struct RepoView: View {
                 }
             }
         }
-        .padding(20)
-        .background(Color.theme.appBGSecondaryColor)
-        .cornerRadius(20)
-        .overlay(
-            RoundedRectangle(cornerRadius: 20)
-                .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
-        .padding(.top, 10)
-        .padding(.horizontal, 15)
-        .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
     }
     
     @ViewBuilder
@@ -324,9 +261,19 @@ struct StickerCell: View {
         if favouriteFlag {
             if stickerURL != nil {
                 Button {
-                    UIPasteboard.general.url = stickerURL
+                    let imageUrlString = stickerURL!.absoluteString
+                    let imageCache: SDImageCache = SDImageCache.shared
+                    let filepath = URL(filePath: imageCache.diskCache.cachePath(forKey: imageUrlString)!)
+                    if let data = try? Data(contentsOf: filepath) {
+                        if let image = UIImage(data: data) {
+                            DispatchQueue.main.async {
+                                UIPasteboard.general.image = image
+                            }
+                        }
+                    }
                     toastShown = true
                     repoMan.addToFrequentlyUsedStickers(sticker: stickerURL!.absoluteString)
+                    repoMan.reloadFrequentlyUsedStickers()
                 } label: {
                     VStack {
                         WebImage(url: stickerURL)
@@ -378,13 +325,20 @@ struct StickerCell: View {
                     .appending(path: repo!.repoData!.stickerPath!)
                     .appending(path: sticker!.name)
                     .appendingPathExtension(sticker!.type)
-                
-                
-                
                 Button {
-                    UIPasteboard.general.url = imgUrl
+                    let imageUrlString = imgUrl.absoluteString
+                    let imageCache: SDImageCache = SDImageCache.shared
+                    let filepath = URL(filePath: imageCache.diskCache.cachePath(forKey: imageUrlString)!)
+                    if let data = try? Data(contentsOf: filepath) {
+                        if let image = UIImage(data: data) {
+                            DispatchQueue.main.async {
+                                UIPasteboard.general.image = image
+                            }
+                        }
+                    }
                     toastShown = true
                     repoMan.addToFrequentlyUsedStickers(sticker: imgUrl.absoluteString)
+                    repoMan.reloadFrequentlyUsedStickers()
                 } label: {
                     VStack {
                         WebImage(url: imgUrl)
@@ -413,6 +367,7 @@ struct StickerCell: View {
                         }
                         toastShown = true
                         repoMan.addToFrequentlyUsedStickers(sticker: imgUrl.absoluteString)
+                        repoMan.reloadFrequentlyUsedStickers()
                     } label: {
                         Label("Copy", systemImage: "doc.on.clipboard")
                     }

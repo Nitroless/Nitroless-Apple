@@ -45,33 +45,16 @@ struct RepoView: View {
                 
                 if repoMenu == .emotes {
                     if repoMan.selectedRepo != nil && repoMan.selectedRepo!.repo.favouriteEmotes != nil && repoMan.selectedRepo!.repo.favouriteEmotes!.count > 0 {
-                        FavouritesView(repo: repoMan.selectedRepo!.repo, column: columns, flag: true)
+                        FavouritesView(repo: repoMan.selectedRepo!.repo, column: columns, flag: true, toastShown: $toastShown)
                     }
                 } else {
                     if repoMan.selectedRepo != nil && repoMan.selectedRepo!.repo.favouriteStickers != nil && repoMan.selectedRepo!.repo.favouriteStickers!.count > 0 {
-                        FavouritesView(repo: repoMan.selectedRepo!.repo, column: stickerColumns, flag: false)
+                        FavouritesView(repo: repoMan.selectedRepo!.repo, column: stickerColumns, flag: false, toastShown: $toastShown)
                     }
                 }
                 
-                VStack {
-                    if repoMan.selectedRepo != nil {
-                        HStack {
-                            let imgUrl = repoMan.selectedRepo!.repo.url.appending(path: repoMan.selectedRepo!.repo.repoData!.icon)
-                            WebImage(url: imgUrl)
-                                .resizable()
-                                .placeholder {
-                                    ProgressView()
-                                }
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 20, height: 20)
-                                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-                            Text(repoMan.selectedRepo!.repo.repoData!.name)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                        }
-                        .font(.headline)
-                        
-                        Spacer()
-                        
+                if repoMan.selectedRepo != nil {
+                    ContainerView(webImage: repoMan.selectedRepo!.repo.url.appending(path: repoMan.selectedRepo!.repo.repoData!.icon), title: repoMan.selectedRepo!.repo.repoData!.name) {
                         LazyVStack {
                             if repoMan.selectedRepo!.repo.repoData != nil {
                                 if repoMenu == .emotes {
@@ -83,15 +66,6 @@ struct RepoView: View {
                         }
                     }
                 }
-                .padding(20)
-                .background(Color.theme.appBGSecondaryColor)
-                .cornerRadius(20)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 20)
-                        .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
-                .padding([.top, .horizontal], 10)
-                .padding(.bottom, 20)
-                .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
             }
         }
         .frame(height: 270)
@@ -117,16 +91,10 @@ struct RepoView: View {
                         let imageCache: SDImageCache = SDImageCache.shared
                         let filepath = URL(filePath: imageCache.diskCache.cachePath(forKey: imageUrlString)!)
                         if let data = try? Data(contentsOf: filepath) {
-                            if imageUrlString.suffix(3) == "gif" {
+                            if let image = UIImage(data: data) {
                                 DispatchQueue.main.async {
-                                    UIPasteboard.general.setData(data, forPasteboardType: "com.compuserve.gif")
-                                }
-                            } else {
-                                if let image = UIImage(data: data) {
-                                    DispatchQueue.main.async {
-                                        UIPasteboard.general.image = image
-                                        toastShown = true
-                                    }
+                                    UIPasteboard.general.image = image
+                                    toastShown = true
                                 }
                             }
                         }

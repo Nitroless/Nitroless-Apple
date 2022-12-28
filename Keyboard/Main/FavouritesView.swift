@@ -14,6 +14,8 @@ struct FavouritesView: View {
     @EnvironmentObject var kbv: KeyboardViewController
     var column: [GridItem]
     var flag: Bool
+    @AppStorage("useEmotesAsStickers", store: UserDefaults(suiteName: "group.llsc12.Nitroless")) private var useEmotesAsStickers = false
+    @Binding var toastShown: Bool
     
     var body: some View {
         VStack {
@@ -39,10 +41,27 @@ struct FavouritesView: View {
                         let emote = emotes![i]
                         
                         Button {
-                            kbv.textDocumentProxy.insertText(emote.absoluteString)
-                            repoMan.selectedEmote = emote.absoluteString
-                            repoMan.addToFrequentlyUsed(emote: emote.absoluteString)
-                            repoMan.reloadFrequentlyUsed()
+                            if !flag || useEmotesAsStickers {
+                                let imageUrlString = emote.absoluteString
+                                let imageCache: SDImageCache = SDImageCache.shared
+                                let filepath = URL(filePath: imageCache.diskCache.cachePath(forKey: imageUrlString)!)
+                                if let data = try? Data(contentsOf: filepath) {
+                                    if let image = UIImage(data: data) {
+                                        DispatchQueue.main.async {
+                                            UIPasteboard.general.image = image
+                                            toastShown = true
+                                        }
+                                    }
+                                }
+                                repoMan.selectedEmote = emote.absoluteString
+                                repoMan.addToFrequentlyUsedStickers(sticker: emote.absoluteString)
+                                repoMan.reloadFrequentlyUsedStickers()
+                            } else {
+                                kbv.textDocumentProxy.insertText(emote.absoluteString)
+                                repoMan.selectedEmote = emote.absoluteString
+                                repoMan.addToFrequentlyUsed(emote: emote.absoluteString)
+                                repoMan.reloadFrequentlyUsed()
+                            }
                         } label: {
                             let size: CGFloat = flag ? 40 : 65
                             WebImage(url: emote)

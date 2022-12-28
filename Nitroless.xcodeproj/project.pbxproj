@@ -64,6 +64,11 @@
 		E650D8852958D4B2005B1262 /* StickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650D8842958D4B2005B1262 /* StickerView.swift */; };
 		E650D8872958D748005B1262 /* RepoFavouriteStickersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650D8862958D748005B1262 /* RepoFavouriteStickersView.swift */; };
 		E650D8892958D75C005B1262 /* RepoStickersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650D8882958D75C005B1262 /* RepoStickersView.swift */; };
+		E650D88B295C8126005B1262 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67DFDB02950D9090088E4D2 /* ContainerView.swift */; };
+		E650D88C295C8128005B1262 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67DFDB02950D9090088E4D2 /* ContainerView.swift */; };
+		E650D88E295C84BB005B1262 /* ContainerPillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650D88D295C84BB005B1262 /* ContainerPillView.swift */; };
+		E650D88F295C84BB005B1262 /* ContainerPillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650D88D295C84BB005B1262 /* ContainerPillView.swift */; };
+		E650D890295C84BB005B1262 /* ContainerPillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650D88D295C84BB005B1262 /* ContainerPillView.swift */; };
 		E65775AE294AC0B0004ACEEB /* KeyboardSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65775AD294AC0B0004ACEEB /* KeyboardSettingsView.swift */; };
 		E67DFD6E294FE3F20088E4D2 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = E67DFD6D294FE3F20088E4D2 /* AlertToast */; };
 		E67DFD822950B57F0088E4D2 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E67DFD812950B57F0088E4D2 /* Messages.framework */; };
@@ -218,6 +223,7 @@
 		E650D8842958D4B2005B1262 /* StickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerView.swift; sourceTree = "<group>"; };
 		E650D8862958D748005B1262 /* RepoFavouriteStickersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoFavouriteStickersView.swift; sourceTree = "<group>"; };
 		E650D8882958D75C005B1262 /* RepoStickersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoStickersView.swift; sourceTree = "<group>"; };
+		E650D88D295C84BB005B1262 /* ContainerPillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerPillView.swift; sourceTree = "<group>"; };
 		E65775AD294AC0B0004ACEEB /* KeyboardSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSettingsView.swift; sourceTree = "<group>"; };
 		E67DFD802950B57E0088E4D2 /* Stickers.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Stickers.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E67DFD812950B57F0088E4D2 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
@@ -446,6 +452,7 @@
 		AA431D7A28EEEBB90066EBC4 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				E650D88A295C80F7005B1262 /* Components */,
 				E650D87529561643005B1262 /* Enums */,
 				E69E3A2929100DF30030EFA3 /* Extensions */,
 				E619D9CD28F3BA20006BD8B4 /* Fonts */,
@@ -572,6 +579,15 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
+		E650D88A295C80F7005B1262 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E67DFDB02950D9090088E4D2 /* ContainerView.swift */,
+				E650D88D295C84BB005B1262 /* ContainerPillView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		E65775AC294AC08F004ACEEB /* Keyboard Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -620,7 +636,6 @@
 				E67DFDCB2954DB0A0088E4D2 /* RepoEmotesView.swift */,
 				E67DFDB92950E61A0088E4D2 /* FrequentlyUsedView.swift */,
 				E67DFDC82954DA5E0088E4D2 /* FavouriteEmotesView.swift */,
-				E67DFDB02950D9090088E4D2 /* ContainerView.swift */,
 				E67DFDBB2950EE9C0088E4D2 /* EmoteView.swift */,
 				E650D8842958D4B2005B1262 /* StickerView.swift */,
 				E650D8862958D748005B1262 /* RepoFavouriteStickersView.swift */,
@@ -998,6 +1013,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAA9A79A2929455C003B926E /* RepositoryManager.swift in Sources */,
+				E650D88F295C84BB005B1262 /* ContainerPillView.swift in Sources */,
 				E6E161EB2915A165001E1698 /* BottomBarItemView.swift in Sources */,
 				E6E161EE2915A7F9001E1698 /* MainView.swift in Sources */,
 				E650D880295787A1005B1262 /* RepoPages.swift in Sources */,
@@ -1005,6 +1021,7 @@
 				5783B54928ECBA9000CFF460 /* KeyboardViewController.swift in Sources */,
 				AAA9A79B2929455C003B926E /* Constants.swift in Sources */,
 				5783B55228ECCDDA00CFF460 /* KeyboardView.swift in Sources */,
+				E650D88C295C8128005B1262 /* ContainerView.swift in Sources */,
 				E69E3A53291546A70030EFA3 /* BottomBarView.swift in Sources */,
 				E6E161F12915B57D001E1698 /* RepoView.swift in Sources */,
 				E6E161F329162295001E1698 /* FavouritesView.swift in Sources */,
@@ -1020,6 +1037,7 @@
 				E650D85229560BA8005B1262 /* StickerPack.swift in Sources */,
 				5721D6C228F1E5A000148391 /* AddDefaultRepos.swift in Sources */,
 				E650D85429560C85005B1262 /* Limits.swift in Sources */,
+				E650D88B295C8126005B1262 /* ContainerView.swift in Sources */,
 				E69E3A452912D05C0030EFA3 /* SidebarItemView.swift in Sources */,
 				E68F2350292C17B200D67C1E /* SidebariPadView.swift in Sources */,
 				E68F2355292C42C400D67C1E /* HeaderViewModel.swift in Sources */,
@@ -1043,6 +1061,7 @@
 				E650D85E29560D48005B1262 /* WebPManager.swift in Sources */,
 				E650D86229560DCF005B1262 /* YYAnimatedImageView.m in Sources */,
 				E650D85829560CC5005B1262 /* Sticker.swift in Sources */,
+				E650D88E295C84BB005B1262 /* ContainerPillView.swift in Sources */,
 				AA9F089428E58B450098040D /* NitrolessApp.swift in Sources */,
 				E69E3A4D291457660030EFA3 /* FavouriteEmotesView.swift in Sources */,
 				AAA9A7982929453B003B926E /* Constants.swift in Sources */,
@@ -1061,6 +1080,7 @@
 				E67DFDC72954D52F0088E4D2 /* RepoView.swift in Sources */,
 				E67DFDBC2950EE9C0088E4D2 /* EmoteView.swift in Sources */,
 				E67DFD9D2950CB760088E4D2 /* Constants.swift in Sources */,
+				E650D890295C84BB005B1262 /* ContainerPillView.swift in Sources */,
 				E67DFDBA2950E61A0088E4D2 /* FrequentlyUsedView.swift in Sources */,
 				E67DFDCC2954DB0A0088E4D2 /* RepoEmotesView.swift in Sources */,
 				E67DFDC92954DA5E0088E4D2 /* FavouriteEmotesView.swift in Sources */,

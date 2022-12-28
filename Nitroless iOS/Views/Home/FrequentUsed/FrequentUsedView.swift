@@ -20,16 +20,7 @@ struct FrequentUsedView: View {
     
     var body: some View {
         VStack {
-            VStack {
-                HStack {
-                    Image(systemName: "clock.arrow.circlepath")
-                    Text("Frequently used")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
-                .font(.headline)
-                
-                Spacer()
-                
+            ContainerView(icon: "clock.arrow.circlepath", title: "Frequently used") {
                 if repoMan.frequentlyUsed.count == 0 {
                     Text("Start using Nitroless to show your frequently used emotes here.")
                         .frame(maxWidth: .infinity)
@@ -37,38 +28,11 @@ struct FrequentUsedView: View {
                     main.quickLookPreview($previewUrl).padding(.top, 20)
                 }
             }
-            .padding(20)
-            .background(Color.theme.appBGSecondaryColor)
-            .cornerRadius(20)
-            .overlay(
-                RoundedRectangle(cornerRadius: 20)
-                    .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
-            .padding(.top, 10)
-            .padding(.horizontal, 15)
-            .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
             
             if repoMan.frequentlyUsedStickers.count != 0 {
-                VStack {
-                    HStack {
-                        Image(systemName: "clock.arrow.circlepath")
-                        Text("Frequently used Stickers")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    .font(.headline)
-                    
-                    Spacer()
-                    
+                ContainerView(icon: "clock.arrow.circlepath", title: "Frequently used Stickers") {
                     stickerMain.quickLookPreview($previewUrl).padding(.top, 20)
                 }
-                .padding(20)
-                .background(Color.theme.appBGSecondaryColor)
-                .cornerRadius(20)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 20)
-                        .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
-                .padding(.top, 10)
-                .padding(.horizontal, 15)
-                .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
             }
         }
     }

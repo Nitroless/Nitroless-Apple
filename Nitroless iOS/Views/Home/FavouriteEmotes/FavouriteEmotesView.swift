@@ -22,27 +22,9 @@ struct FavouriteEmotesView: View {
     let stickerFlag: Bool
     
     var body: some View {
-        VStack {
-            HStack {
-                Image(systemName: "star")
-                Text(stickerFlag ? "Favourite Stickers" : "Favourite Emotes")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-            }
-            .font(.headline)
-            
-            Spacer()
-            
+        ContainerView(icon: "star", title: stickerFlag ? "Favourite Stickers" : "Favourite Emotes") {
             main.quickLookPreview($previewUrl).padding(.top, 20)
         }
-        .padding(20)
-        .background(Color.theme.appBGSecondaryColor)
-        .cornerRadius(20)
-        .overlay(
-            RoundedRectangle(cornerRadius: 20)
-                .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
-        .padding(.top, 10)
-        .padding(.horizontal, 15)
-        .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
     }
     
     @ViewBuilder
@@ -67,13 +49,23 @@ struct FavouriteEmotesView: View {
                 let emote = emotes[i]
                 
                 Button {
-                    UIPasteboard.general.url = emote
-                    toastShown = true
-                    
                     if stickerFlag {
+                        let imageUrlString = emote.absoluteString
+                        let imageCache: SDImageCache = SDImageCache.shared
+                        let filepath = URL(filePath: imageCache.diskCache.cachePath(forKey: imageUrlString)!)
+                        if let data = try? Data(contentsOf: filepath) {
+                            if let image = UIImage(data: data) {
+                                DispatchQueue.main.async {
+                                    UIPasteboard.general.image = image
+                                }
+                            }
+                        }
+                        toastShown = true
                         repoMan.addToFrequentlyUsedStickers(sticker: emote.absoluteString)
                         repoMan.reloadFrequentlyUsedStickers()
                     } else {
+                        UIPasteboard.general.url = emote
+                        toastShown = true
                         repoMan.addToFrequentlyUsed(emote: emote.absoluteString)
                         repoMan.reloadFrequentlyUsed()
                     }

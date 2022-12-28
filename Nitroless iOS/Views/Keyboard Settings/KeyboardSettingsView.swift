@@ -23,15 +23,7 @@ struct KeyboardSettingsView: View {
     
     var body: some View {
         ScrollView {
-            VStack {
-                HStack {
-                    Image(systemName: "gearshape.fill")
-                    Text("Activation")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
-                .font(.headline)
-                .padding(.bottom, 10)
-                
+            ContainerView(icon: "gearshape.fill", title: "Activation") {
                 VStack {
                     HStack {
                         Image(systemName: "hand.tap.fill")
@@ -78,54 +70,12 @@ struct KeyboardSettingsView: View {
                 }
                 .buttonStyle(.plain)
             }
-            .frame(minWidth: 0, maxWidth: .infinity)
-            .padding(20)
-            .background(Color.theme.appBGSecondaryColor)
-            .cornerRadius(20)
-            .overlay(
-                RoundedRectangle(cornerRadius: 20)
-                    .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
-            .padding(.top, 10)
-            .padding(.horizontal, 15)
-            .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
             
-            VStack {
+            ContainerView {
                 TextField("Test Keyboard", text: $testKeyboard)
             }
-            .frame(minWidth: 0, maxWidth: .infinity)
-            .padding(20)
-            .background(Color.theme.appBGSecondaryColor)
-            .cornerRadius(20)
-            .overlay(
-                RoundedRectangle(cornerRadius: 20)
-                    .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
-            .padding(.top, 10)
-            .padding(.horizontal, 15)
-            .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
             
-            //MARK: Not Working (TODO)
-            
-            VStack {
-                Toggle("Open Keyboard with Stickers", isOn: $openAsStickers)
-                    .toggleStyle(SwitchToggleStyle(tint: Color.theme.appPrimaryColor))
-                    .padding(.bottom, 10)
-
-                Text("This forces keyboard to start with Stickers Tab opened instead of the default Emotes")
-                    .padding(.bottom, 10)
-
-            }
-            .frame(minWidth: 0, maxWidth: .infinity)
-            .padding(20)
-            .background(Color.theme.appBGSecondaryColor)
-            .cornerRadius(20)
-            .overlay(
-                RoundedRectangle(cornerRadius: 20)
-                    .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
-            .padding(.top, 10)
-            .padding(.horizontal, 15)
-            .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
-            
-            VStack {
+            ContainerView {
                 Toggle("Copy Emotes as Images", isOn: $useEmotesAsStickers)
                     .toggleStyle(SwitchToggleStyle(tint: Color.theme.appPrimaryColor))
                     .padding(.bottom, 10)
@@ -134,24 +84,8 @@ struct KeyboardSettingsView: View {
                     .padding(.bottom, 10)
                 
             }
-            .frame(minWidth: 0, maxWidth: .infinity)
-            .padding(20)
-            .background(Color.theme.appBGSecondaryColor)
-            .cornerRadius(20)
-            .overlay(
-                RoundedRectangle(cornerRadius: 20)
-                    .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
-            .padding(.top, 10)
-            .padding(.horizontal, 15)
-            .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
             
-            VStack {
-                HStack {
-                    Image(systemName: "gearshape.fill")
-                    Text("Hide")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
-                .font(.headline)
+            ContainerView(icon: "gearshape.fill", title: "Hide") {
                 Toggle("Hide Favourite Emotes", isOn: $hideFavouriteEmotes)
                     .toggleStyle(SwitchToggleStyle(tint: Color.theme.appPrimaryColor))
                 Toggle("Hide Frequently Used Emotes", isOn: $hideFrequentlyUsedEmotes)
@@ -159,24 +93,8 @@ struct KeyboardSettingsView: View {
                 Toggle("Hide Repository Bottom bar", isOn: $hideRepoDrawer)
                     .toggleStyle(SwitchToggleStyle(tint: Color.theme.appPrimaryColor))
             }
-            .frame(minWidth: 0, maxWidth: .infinity)
-            .padding(20)
-            .background(Color.theme.appBGSecondaryColor)
-            .cornerRadius(20)
-            .overlay(
-                RoundedRectangle(cornerRadius: 20)
-                    .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
-            .padding(.top, 10)
-            .padding(.horizontal, 15)
-            .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
             
-            VStack {
-                HStack {
-                    Image(systemName: "gearshape.fill")
-                    Text("Theme")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
-                .font(.headline)
+            ContainerView(icon: "gearshape.fill", title: "Theme") {
                 if !systemTheme {
                     Toggle("Use Light Theme", isOn: $darkTheme.not)
                         .toggleStyle(SwitchToggleStyle(tint: Color.theme.appPrimaryColor))
@@ -186,17 +104,6 @@ struct KeyboardSettingsView: View {
                 Toggle("Use System Theme", isOn: $systemTheme)
                     .toggleStyle(SwitchToggleStyle(tint: Color.theme.appPrimaryColor))
             }
-            .frame(minWidth: 0, maxWidth: .infinity)
-            .padding(20)
-            .background(Color.theme.appBGSecondaryColor)
-            .cornerRadius(20)
-            .overlay(
-                RoundedRectangle(cornerRadius: 20)
-                    .strokeBorder(Color.theme.appBGTertiaryColor.opacity(0.2), lineWidth: 1))
-            .padding(.top, 10)
-            .padding(.horizontal, 15)
-            .padding(.bottom, 30)
-            .shadow(color: Color.theme.appBGTertiaryColor.opacity(0.5), radius: 10, x: -2, y: 7)
         }
         .padding(.horizontal, 10)
         .padding(.top, idiom == .pad && horizontalSizeClass == .regular ? 10 : 0)
