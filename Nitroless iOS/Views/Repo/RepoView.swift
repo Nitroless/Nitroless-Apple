@@ -118,6 +118,7 @@ struct RepoView: View {
                             }
                         }
                     }
+                    .padding(.bottom, 20)
                 }
             }
             .frame(minWidth: 0, maxWidth: .infinity)

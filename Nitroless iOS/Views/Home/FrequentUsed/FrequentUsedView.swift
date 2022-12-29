@@ -25,14 +25,16 @@ struct FrequentUsedView: View {
                     Text("Start using Nitroless to show your frequently used emotes here.")
                         .frame(maxWidth: .infinity)
                 } else {
-                    main.quickLookPreview($previewUrl).padding(.top, 20)
+                    main.quickLookPreview($previewUrl)
                 }
             }
+            .padding(.bottom, repoMan.frequentlyUsedStickers.count > 0 ? 0 : 20)
             
             if repoMan.frequentlyUsedStickers.count != 0 {
                 ContainerView(icon: "clock.arrow.circlepath", title: "Frequently used Stickers") {
-                    stickerMain.quickLookPreview($previewUrl).padding(.top, 20)
+                    stickerMain.quickLookPreview($previewUrl)
                 }
+                .padding(.bottom, 20)
             }
         }
     }

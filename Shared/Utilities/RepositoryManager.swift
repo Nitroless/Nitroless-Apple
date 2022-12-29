@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SDWebImage
 
 class RepoManager: ObservableObject {
     let fileManager = FileManager.default
@@ -712,6 +713,10 @@ class RepoManager: ObservableObject {
         }
     }
     
+    private func loadWhatsAppJson() {
+        
+    }
+    
     private func loadRepos() {
 
         let file = FileLocations.repoList
@@ -812,13 +817,7 @@ class RepoManager: ObservableObject {
                 
                 do {
                     let json = try JSONDecoder().decode(NitrolessRepo.self, from: data)
-                    
-                    print(json)
-                    
                     let final = Repo(url: url, repoData: json, favouriteEmotes: favouriteEmotes, favouriteStickers: favouriteStickers)
-                    
-                    
-                    
                     DispatchQueue.main.async {
                         self.repos.append(final)
                         self.reorderRepos()
@@ -829,7 +828,6 @@ class RepoManager: ObservableObject {
                     }
                 } catch {
                     print(error)
-                    
                     let repo = Repo(url: url, repoData: nil, favouriteEmotes: nil, favouriteStickers: nil)
                     DispatchQueue.main.async {
                         self.repos.append(repo)
@@ -849,6 +847,20 @@ class RepoManager: ObservableObject {
         let repodata = try JSONDecoder().decode(NitrolessRepo.self, from: data)
         let repo = Repo(url: url, repoData: repodata, favouriteEmotes: nil, favouriteStickers: nil)
         return repo
+    }
+    
+    public func addToWhatsApp(repo: Repo) async throws -> Void {
+        let whatsappJSONFile = repo.url.appending(path: "whatsapp.json")
+        let req = URLRequest(url: whatsappJSONFile)
+        let (data, _) = try await URLSession.shared.data(for: req)
+        let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+        print(json)
+        let result = try? JSONSerialization.data(withJSONObject: json, options: [])
+        
+        UIPasteboard.general.setItems(
+            [["net.whatsapp.third-party.sticker-pack": result]],
+            options: [.localOnly: true, .expirationDate: NSDate(timeIntervalSinceNow: 60)]
+        )
     }
     
     public func reloadRepos() {

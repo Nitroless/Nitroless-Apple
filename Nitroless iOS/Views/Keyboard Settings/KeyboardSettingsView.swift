@@ -61,7 +61,7 @@ struct KeyboardSettingsView: View {
                     VStack {
                         Text("Enable Keyboard")
                     }
-                    .frame(width: 250)
+                    .frame(maxWidth: .infinity)
                     .foregroundColor(Color.white)
                     .padding(10)
                     .background(Color.theme.appPrimaryColor)

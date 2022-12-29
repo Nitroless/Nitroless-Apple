@@ -65,6 +65,7 @@ struct RepoView: View {
                             }
                         }
                     }
+                    .padding(.bottom, 20)
                 }
             }
         }

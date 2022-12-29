@@ -21,11 +21,13 @@ struct ContentView: View {
     @State var showDefaultReposMenu = false
     @State var urlToDelete: URL? = nil
     @State var showDeletePrompt = false
+    @State var showRepoMenuPrompt = false
     @State private var offset: CGFloat = 0
     @State private var sidebarOpened: Bool = false
     private var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
     private var isPortrait : Bool { UIDevice.current.orientation.isPortrait }
     @State var repoMenu: RepoPages = .emotes
+    @State private var isWhatsAppDone = true
     
     var body: some View {
         if idiom == .pad && horizontalSizeClass == .regular {
@@ -198,15 +200,30 @@ struct ContentView: View {
                                             .foregroundColor(Color.theme.textColor)
                                     }
                                     .buttonStyle(.plain)
-                                    
-                                    Button {
-                                        urlToDelete = repoMan.selectedRepo!.repo.url
-                                        showDeletePrompt = true
-                                    } label: {
-                                        Image(systemName: "trash.fill")
-                                            .foregroundColor(Color.theme.textColor)
+                                    // MARK: - WhatsApp
+                                    if repoMan.hasRepoStickers(repo: repoMan.selectedRepo!.repo) {
+                                        Button {
+                                            if repoMan.selectedRepo != nil {
+                                                urlToDelete = repoMan.selectedRepo!.repo.url
+                                                showRepoMenuPrompt = true
+                                            }
+                                        } label: {
+                                            Image(systemName: "gearshape.fill")
+                                                .foregroundColor(Color.theme.textColor)
+                                        }
+                                        .buttonStyle(.plain)
+                                    } else {
+                                        Button {
+                                            if repoMan.selectedRepo != nil {
+                                                urlToDelete = repoMan.selectedRepo!.repo.url
+                                                showDeletePrompt = true
+                                            }
+                                        } label: {
+                                            Image(systemName: "trash.fill")
+                                                .foregroundColor(Color.theme.textColor)
+                                        }
+                                        .buttonStyle(.plain)
                                     }
-                                    .buttonStyle(.plain)
                                 }
                             }
                         }
@@ -243,6 +260,32 @@ struct ContentView: View {
             }
             .confirmationDialog("Are you sure you want to remove this Repo?", isPresented: $showDeletePrompt, titleVisibility: .visible) {
                 Button("Remove", role: .destructive) {
+                    repoMan.selectHome()
+                    repoMan.removeRepo(repo: urlToDelete!)
+                }
+            }
+            .confirmationDialog("What you want to do?", isPresented: $showRepoMenuPrompt, titleVisibility: .visible) {
+                // MARK: - WhatsApp
+                Button("Add Stickers to WhatsApp") {
+                    isWhatsAppDone = false
+                    Task {
+                        do {
+                            if repoMan.selectedRepo != nil {
+                                try await repoMan.addToWhatsApp(repo: repoMan.selectedRepo!.repo)
+                                isWhatsAppDone = true
+                                if isWhatsAppDone {
+                                    UIApplication.shared.open(URL(string: "whatsapp://stickerPack")!, options: [:], completionHandler: nil)
+                                }
+                            }
+                        } catch {
+                            print("WhatsApp Error")
+                            isWhatsAppDone = true
+                        }
+                    }
+                }
+                .disabled(!isWhatsAppDone)
+                
+                Button("Remove Repo", role: .destructive) {
                     repoMan.selectHome()
                     repoMan.removeRepo(repo: urlToDelete!)
                 }

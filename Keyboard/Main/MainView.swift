@@ -47,11 +47,15 @@ struct MainView: View {
                 }
                 
                 if !hideFavouriteEmotes {
-                    ContainerView(icon: "star", title: repoMenu == .emotes ? "Favourite Emotes" : "Favourite Stickers") {
-                        LazyVStack {
-                            if repoMenu == .emotes {
+                    if repoMenu == .emotes {
+                        if repoMan.favouriteEmotes.count > 0 {
+                            ContainerView(icon: "star", title: "Favourite Emotes") {
                                 favouritesGrid
-                            } else {
+                            }
+                        }
+                    } else {
+                        if repoMan.favouriteEmotes.count > 0 {
+                            ContainerView(icon: "star", title: "Favourite Emotes") {
                                 favouriteStickersGrid
                             }
                         }
@@ -80,6 +84,7 @@ struct MainView: View {
                             }
                         }
                     }
+                    .padding(.bottom, 20)
                 }
             }
         }

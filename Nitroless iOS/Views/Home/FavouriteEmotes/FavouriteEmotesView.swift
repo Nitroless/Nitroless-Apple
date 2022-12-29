@@ -23,7 +23,7 @@ struct FavouriteEmotesView: View {
     
     var body: some View {
         ContainerView(icon: "star", title: stickerFlag ? "Favourite Stickers" : "Favourite Emotes") {
-            main.quickLookPreview($previewUrl).padding(.top, 20)
+            main.quickLookPreview($previewUrl)
         }
     }
     
