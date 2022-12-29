@@ -31,6 +31,7 @@ struct RepoStickersView: View {
                     }
                 }
             }
+            .padding(.bottom, 20)
         }
     }
 }
