@@ -854,9 +854,7 @@ class RepoManager: ObservableObject {
         let req = URLRequest(url: whatsappJSONFile)
         let (data, _) = try await URLSession.shared.data(for: req)
         let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-        print(json)
         let result = try? JSONSerialization.data(withJSONObject: json, options: [])
-        
         UIPasteboard.general.setItems(
             [["net.whatsapp.third-party.sticker-pack": result]],
             options: [.localOnly: true, .expirationDate: NSDate(timeIntervalSinceNow: 60)]

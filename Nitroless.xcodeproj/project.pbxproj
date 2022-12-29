@@ -57,6 +57,7 @@
 		E650D88E295C84BB005B1262 /* ContainerPillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650D88D295C84BB005B1262 /* ContainerPillView.swift */; };
 		E650D88F295C84BB005B1262 /* ContainerPillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650D88D295C84BB005B1262 /* ContainerPillView.swift */; };
 		E650D890295C84BB005B1262 /* ContainerPillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650D88D295C84BB005B1262 /* ContainerPillView.swift */; };
+		E650D8DD295E0E13005B1262 /* TelegramStickersImport in Frameworks */ = {isa = PBXBuildFile; productRef = E650D8DC295E0E13005B1262 /* TelegramStickersImport */; };
 		E65775AE294AC0B0004ACEEB /* KeyboardSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E65775AD294AC0B0004ACEEB /* KeyboardSettingsView.swift */; };
 		E67DFD6E294FE3F20088E4D2 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = E67DFD6D294FE3F20088E4D2 /* AlertToast */; };
 		E67DFD822950B57F0088E4D2 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E67DFD812950B57F0088E4D2 /* Messages.framework */; };
@@ -264,6 +265,7 @@
 				AAD030A228EB155E0040718F /* AlertToast in Frameworks */,
 				E650D87929562041005B1262 /* Introspect in Frameworks */,
 				AA6250BC28EB047200C7030E /* SDWebImageWebPCoder in Frameworks */,
+				E650D8DD295E0E13005B1262 /* TelegramStickersImport in Frameworks */,
 				AA9F08AA28E5A6360098040D /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -783,6 +785,7 @@
 				AA6250BB28EB047200C7030E /* SDWebImageWebPCoder */,
 				AAD030A128EB155E0040718F /* AlertToast */,
 				E650D87829562041005B1262 /* Introspect */,
+				E650D8DC295E0E13005B1262 /* TelegramStickersImport */,
 			);
 			productName = Nitroless;
 			productReference = AA9F089028E58B450098040D /* Nitroless.app */;
@@ -848,6 +851,7 @@
 				AA6250BA28EB047200C7030E /* XCRemoteSwiftPackageReference "SDWebImageWebPCoder" */,
 				AAD030A028EB155D0040718F /* XCRemoteSwiftPackageReference "AlertToast" */,
 				571A78C328F344550089A0B1 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+				E650D8DB295E0E13005B1262 /* XCRemoteSwiftPackageReference "TelegramStickersImport" */,
 			);
 			productRefGroup = AA9F089128E58B450098040D /* Products */;
 			projectDirPath = "";
@@ -1226,7 +1230,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1280,7 +1284,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1523,6 +1527,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		E650D8DB295E0E13005B1262 /* XCRemoteSwiftPackageReference "TelegramStickersImport" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TelegramMessenger/TelegramStickersImport.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1575,6 +1587,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 571A78C328F344550089A0B1 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
+		};
+		E650D8DC295E0E13005B1262 /* TelegramStickersImport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E650D8DB295E0E13005B1262 /* XCRemoteSwiftPackageReference "TelegramStickersImport" */;
+			productName = TelegramStickersImport;
 		};
 		E67DFD6D294FE3F20088E4D2 /* AlertToast */ = {
 			isa = XCSwiftPackageProductDependency;

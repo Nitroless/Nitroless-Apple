@@ -9,6 +9,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 import SDWebImageWebPCoder
 import AlertToast
+import TelegramStickersImport
 
 struct ContentView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
@@ -265,6 +266,29 @@ struct ContentView: View {
                 }
             }
             .confirmationDialog("What you want to do?", isPresented: $showRepoMenuPrompt, titleVisibility: .visible) {
+                // MARK: - Telegram
+                Button("Add Stickers to Telegram") {
+                    let stickerSet = StickerSet(software: "com.llsc12.Nitroless", type: .image)
+                    if repoMan.selectedRepo != nil && repoMan.selectedRepo!.repo.repoData != nil && repoMan.selectedRepo!.repo.repoData!.stickers != nil {
+                        for sticker in repoMan.selectedRepo!.repo.repoData!.stickers! {
+                            let imageURLString = repoMan.selectedRepo!.repo.url
+                                .appending(path: repoMan.selectedRepo!.repo.repoData!.stickerPath!)
+                                .appending(path: sticker.name)
+                                .appendingPathExtension(sticker.type).absoluteString
+                            let imageCache: SDImageCache = SDImageCache.shared
+                            let filepath = URL(filePath: imageCache.diskCache.cachePath(forKey: imageURLString)!)
+                            if let data = try? Data(contentsOf: filepath) {
+                                if let image = UIImage(data: data) {
+                                    if let stickerData = Sticker.StickerData(image: image) {
+                                        try? stickerSet.addSticker(data: stickerData, emojis: ["😎"])
+                                    }
+                                }
+                            }
+                        }
+                        try? stickerSet.import()
+                    }
+                    
+                }
                 // MARK: - WhatsApp
                 Button("Add Stickers to WhatsApp") {
                     isWhatsAppDone = false

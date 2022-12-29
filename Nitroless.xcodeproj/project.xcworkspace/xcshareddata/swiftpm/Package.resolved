@@ -53,6 +53,15 @@
         "revision" : "f2616860a41f9d9932da412a8978fec79c06fe24",
         "version" : "0.1.4"
       }
+    },
+    {
+      "identity" : "telegramstickersimport",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/TelegramMessenger/TelegramStickersImport.git",
+      "state" : {
+        "revision" : "b8951c8a02b245142142d341644d0756cf16278c",
+        "version" : "1.1.0"
+      }
     }
   ],
   "version" : 2
